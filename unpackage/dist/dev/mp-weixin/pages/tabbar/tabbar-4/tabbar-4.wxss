@@ -1,0 +1,36 @@
+
+.content {
+	text-align: center;
+	height: 400rpx;
+	margin-top: 10rpx;
+}
+.tabs {
+	/*width: auto;
+	height: 80rpx;
+	display: flex;
+	margin-left: 30rpx;
+	margin-top: 10rpx;*/
+}
+.tabs .active {
+	color: red;
+}
+.tabs-wrap {
+	background: #ccc;
+}
+.scroll-tab {
+	white-space: nowrap;
+	border-bottom: 1rpx solid #eee;
+	text-align: center;
+}
+.scroll-tab-item {
+	display: inline-block;
+	margin: 20rpx 30rpx 0 30rpx;
+}
+.active .scroll-tab-line {
+	border-bottom: 10rpx solid red;
+	color: red;
+	border-radius: 20rpx;
+	width: auto;
+}
+
+

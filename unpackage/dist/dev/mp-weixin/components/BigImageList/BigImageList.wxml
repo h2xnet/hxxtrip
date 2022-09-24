@@ -1,0 +1,1 @@
+<view><block wx:for="{{modelDatas}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view><big-image-card class="card-view" vue-id="{{'18bf313c-1-'+index}}" itemData="{{item}}" bind:__l="__l"></big-image-card><view class="space-view"></view></view></block></view>

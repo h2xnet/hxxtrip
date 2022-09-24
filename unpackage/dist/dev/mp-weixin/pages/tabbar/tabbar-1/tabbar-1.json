@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "星游会",
+  "usingComponents": {
+    "big-image-list": "/components/BigImageList/BigImageList"
+  }
+}
