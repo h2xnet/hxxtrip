@@ -3,7 +3,7 @@
 <template>
 	<view>
 		<view class="grid-box">
-			<view v-for="(item, index) in modelDatas" :index="index" :key="index">
+			<block v-for="(item, index) in modelDatas" :index="index" :key="index">
 				<view class="grid-box-item">
 					<view class="grid-box-img-item">
 						<image mode="aspectFill" :src="item.icon"
@@ -13,7 +13,7 @@
 					</view>
 					<view class="grid-box-text-item">{{item.title}}</view>
 				</view>
-			</view>
+			</block>
 		</view>
 
 	</view>
@@ -42,12 +42,13 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	background-color: white;
+	width: 100%;
 }	
 
 .grid-box-item {
 	margin: 0;
 	border-radius: 0;
-	width: 80px;
+	width: 25%;
 	height: 80px;
 	display: flex;
 	flex-direction: column;

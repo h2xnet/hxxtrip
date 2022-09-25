@@ -16,12 +16,12 @@
 			
 			<scroll-view scroll-y="true" class="tabs-wrap" :style="{height: tabPageHeight + 'px'}">
 				
-				<!-- tab-page-0 -->
+				<!-- tab-page-0 今日消息页面 -->
 				<view :class="[currentIndex==0?'item':'']" v-show="currentIndex==0">
 					<text>今日消息页面</text>
 				</view>
 			
-				<!-- tab-page-1 -->
+				<!-- tab-page-1 历史消息页面 -->
 				<view :class="[currentIndex==1?'item':'']" v-show="currentIndex==1">
 					<text>历史消息页面</text>
 				</view>

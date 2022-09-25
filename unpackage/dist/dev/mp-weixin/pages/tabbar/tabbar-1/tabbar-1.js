@@ -106,13 +106,16 @@ var components
 try {
   components = {
     SearchHeadBar: function() {
-      return __webpack_require__.e(/*! import() | components/SearchHeadBar/SearchHeadBar */ "components/SearchHeadBar/SearchHeadBar").then(__webpack_require__.bind(null, /*! @/components/SearchHeadBar/SearchHeadBar.vue */ 118))
+      return __webpack_require__.e(/*! import() | components/SearchHeadBar/SearchHeadBar */ "components/SearchHeadBar/SearchHeadBar").then(__webpack_require__.bind(null, /*! @/components/SearchHeadBar/SearchHeadBar.vue */ 76))
     },
     BigImageList: function() {
-      return __webpack_require__.e(/*! import() | components/BigImageList/BigImageList */ "components/BigImageList/BigImageList").then(__webpack_require__.bind(null, /*! @/components/BigImageList/BigImageList.vue */ 76))
+      return __webpack_require__.e(/*! import() | components/BigImageList/BigImageList */ "components/BigImageList/BigImageList").then(__webpack_require__.bind(null, /*! @/components/BigImageList/BigImageList.vue */ 83))
     },
     GridListBar: function() {
-      return __webpack_require__.e(/*! import() | components/GridListBar/GridListBar */ "components/GridListBar/GridListBar").then(__webpack_require__.bind(null, /*! @/components/GridListBar/GridListBar.vue */ 138))
+      return __webpack_require__.e(/*! import() | components/GridListBar/GridListBar */ "components/GridListBar/GridListBar").then(__webpack_require__.bind(null, /*! @/components/GridListBar/GridListBar.vue */ 90))
+    },
+    DoubleImageList: function() {
+      return __webpack_require__.e(/*! import() | components/DoubleImageList/DoubleImageList */ "components/DoubleImageList/DoubleImageList").then(__webpack_require__.bind(null, /*! @/components/DoubleImageList/DoubleImageList.vue */ 146))
     }
   }
 } catch (e) {
@@ -168,6 +171,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -474,7 +487,65 @@ var _default =
       {
         id: "4",
         title: "历史",
-        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }] };
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }],
+
+
+
+      // 商品列表
+      goodList: [
+      {
+        id: "1",
+        type: "image",
+        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product1.jpg"],
+        title: "Apple iPhone X 256GB 深空灰色 移动联通电信4G手机",
+        originalPrice: 9999,
+        favourPrice: 8888,
+        tip: "自营" },
+
+      {
+        id: "2",
+        type: "image",
+        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product2.jpg"],
+        title: "Apple iPad 平板电脑 2018年新款9.7英寸",
+        originalPrice: 3499,
+        favourPrice: 3399,
+        tip: "优惠" },
+
+      {
+        id: "3",
+        type: "image",
+        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product3.jpg"],
+        title: "Apple MacBook Pro 13.3英寸笔记本电脑（2017款Core i5处理器/8GB内存/256GB硬盘 MupxT2CH/A）",
+        originalPrice: 12999,
+        favourPrice: 10688,
+        tip: "秒杀" },
+
+      {
+        id: "4",
+        type: "image",
+        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product4.jpg"],
+        title: "Kindle Paperwhite电纸书阅读器 电子书墨水屏 6英寸wifi 黑色",
+        originalPrice: 999,
+        favourPrice: 958,
+        tip: "秒杀" },
+
+      {
+        id: "5",
+        type: "image",
+        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product5.jpg"],
+        title: "微软（Microsoft）新Surface Pro 二合一平板电脑笔记本 12.3英寸（i5 8G内存 256G存储）",
+        originalPrice: 8888,
+        favourPrice: 8288,
+        tip: "优惠" },
+
+      {
+        id: "6",
+        type: "image",
+        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product6.jpg"],
+        title: "Apple Watch Series 3智能手表（GPS款 42毫米 深空灰色铝金属表壳 黑色运动型表带 MQL12CH/A）",
+        originalPrice: 2899,
+        favourPrice: 2799,
+        tip: "自营" }] };
 
 
 

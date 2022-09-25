@@ -9,8 +9,9 @@
 			:extra="itemData.extTitle" 
 			:thumbnail="itemData.headImg"
 		>
+			<!-- 封面图片 -->
 			<view style="height: 350rpx; width: 100%;">
-				<image style="height: 100%; " mode="aspectFill" :src="itemData.coverImg"></image>
+				<image style="height: 100%; width: 100%;" :src="itemData.coverImg"></image>
 			</view>
 			
 			<view class="content-box">

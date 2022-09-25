@@ -16,17 +16,17 @@
 			
 			<scroll-view scroll-y="true" class="tabs-wrap" :style="{height: tabPageHeight + 'px'}">
 				
-				<!-- tab-page-0 -->
+				<!-- tab-page-0 全部订单页面 -->
 				<view :class="[currentIndex==0?'item':'']" v-show="currentIndex==0">
 					<text>全部订单页面</text>
 				</view>
 			
-				<!-- tab-page-1 -->
+				<!-- tab-page-1 待支付页面 -->
 				<view :class="[currentIndex==1?'item':'']" v-show="currentIndex==1">
 					<text>待支付页面</text>
 				</view>
 				
-				<!-- tab-page-2 -->
+				<!-- tab-page-2 已支付页面 -->
 				<view :class="[currentIndex==2?'item':'']" v-show="currentIndex==2">
 					<text>已支付页面</text>
 				</view>
