@@ -115,7 +115,7 @@ try {
       return __webpack_require__.e(/*! import() | components/GridListBar/GridListBar */ "components/GridListBar/GridListBar").then(__webpack_require__.bind(null, /*! @/components/GridListBar/GridListBar.vue */ 90))
     },
     DoubleImageList: function() {
-      return __webpack_require__.e(/*! import() | components/DoubleImageList/DoubleImageList */ "components/DoubleImageList/DoubleImageList").then(__webpack_require__.bind(null, /*! @/components/DoubleImageList/DoubleImageList.vue */ 146))
+      return __webpack_require__.e(/*! import() | components/DoubleImageList/DoubleImageList */ "components/DoubleImageList/DoubleImageList").then(__webpack_require__.bind(null, /*! @/components/DoubleImageList/DoubleImageList.vue */ 97))
     }
   }
 } catch (e) {
@@ -496,7 +496,14 @@ var _default =
       {
         id: "1",
         type: "image",
-        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product1.jpg"],
+        coverImgs: [
+        {
+          img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+        "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png",
+        "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png",
+        "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png",
+        "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"],
         title: "Apple iPhone X 256GB 深空灰色 移动联通电信4G手机",
         originalPrice: 9999,
         favourPrice: 8888,
@@ -505,7 +512,9 @@ var _default =
       {
         id: "2",
         type: "image",
-        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product2.jpg"],
+        coverImgs: ["https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
+        "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png",
+        "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"],
         title: "Apple iPad 平板电脑 2018年新款9.7英寸",
         originalPrice: 3499,
         favourPrice: 3399,
@@ -514,7 +523,9 @@ var _default =
       {
         id: "3",
         type: "image",
-        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product3.jpg"],
+        coverImgs: ["https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png",
+        "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png",
+        "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"],
         title: "Apple MacBook Pro 13.3英寸笔记本电脑（2017款Core i5处理器/8GB内存/256GB硬盘 MupxT2CH/A）",
         originalPrice: 12999,
         favourPrice: 10688,
@@ -523,7 +534,8 @@ var _default =
       {
         id: "4",
         type: "image",
-        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product4.jpg"],
+        coverImgs: ["https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png",
+        "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"],
         title: "Kindle Paperwhite电纸书阅读器 电子书墨水屏 6英寸wifi 黑色",
         originalPrice: 999,
         favourPrice: 958,
@@ -532,7 +544,7 @@ var _default =
       {
         id: "5",
         type: "image",
-        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product5.jpg"],
+        coverImgs: ["https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"],
         title: "微软（Microsoft）新Surface Pro 二合一平板电脑笔记本 12.3英寸（i5 8G内存 256G存储）",
         originalPrice: 8888,
         favourPrice: 8288,
@@ -541,7 +553,7 @@ var _default =
       {
         id: "6",
         type: "image",
-        coverImgs: ["https://img-cdn-qiniu.dcloud.net.cn/uploads/example/product6.jpg"],
+        coverImgs: ["https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"],
         title: "Apple Watch Series 3智能手表（GPS款 42毫米 深空灰色铝金属表壳 黑色运动型表带 MQL12CH/A）",
         originalPrice: 2899,
         favourPrice: 2799,
