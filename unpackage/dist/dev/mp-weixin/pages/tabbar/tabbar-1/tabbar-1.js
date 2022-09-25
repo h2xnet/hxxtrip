@@ -105,8 +105,14 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    SearchHeadBar: function() {
+      return __webpack_require__.e(/*! import() | components/SearchHeadBar/SearchHeadBar */ "components/SearchHeadBar/SearchHeadBar").then(__webpack_require__.bind(null, /*! @/components/SearchHeadBar/SearchHeadBar.vue */ 118))
+    },
     BigImageList: function() {
       return __webpack_require__.e(/*! import() | components/BigImageList/BigImageList */ "components/BigImageList/BigImageList").then(__webpack_require__.bind(null, /*! @/components/BigImageList/BigImageList.vue */ 76))
+    },
+    GridListBar: function() {
+      return __webpack_require__.e(/*! import() | components/GridListBar/GridListBar */ "components/GridListBar/GridListBar").then(__webpack_require__.bind(null, /*! @/components/GridListBar/GridListBar.vue */ 138))
     }
   }
 } catch (e) {
@@ -225,15 +231,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 var _default =
 
 {
 
   data: function data() {
     return {
-      title: 'Hello',
+      headBarData: {
+        height: '80px',
+        title: '星游会' },
+
+
+      // tab组件
       tabPageHeight: 400,
       currentIndex: 1,
+
       // tab导航数据
       navItems: [
       { title: "关注", id: "focusId" },
@@ -244,6 +261,26 @@ var _default =
       { title: "景点", id: "spotId" },
       { title: "酒店", id: "hotelId" },
       { title: "人文", id: "humanId" }],
+
+
+      // 关注列表数据
+      focusItems: [
+      {
+        id: "1",
+        title: "推荐001",
+        extTitle: "没有上线",
+        content: "推荐了一款香水",
+        headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
+        coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" },
+
+      {
+        id: "3",
+        title: "推荐003",
+        extTitle: "上善若水",
+        content: "运动鞋",
+        headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
+        coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }],
+
 
 
       // 推荐列表数据
@@ -286,7 +323,160 @@ var _default =
         extTitle: "毫哥",
         content: "拍摄日出和日落",
         headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
-        coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }] };
+        coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }],
+
+
+
+      // 热门列表数据
+      hotItems: [
+      {
+        id: "4",
+        title: "推荐004",
+        extTitle: "星光",
+        content: "拍摄美丽的日出和日落",
+        headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
+        coverImg: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png" },
+
+      {
+        id: "5",
+        title: "推荐005",
+        extTitle: "毫哥",
+        content: "拍摄日出和日落",
+        headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
+        coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }],
+
+
+
+      // 旅行宫格
+      tripGridItems: [
+      {
+        id: "1",
+        title: "周末游",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "2",
+        title: "亲子游",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "3",
+        title: "老年游",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "4",
+        title: "自由行",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "5",
+        title: "飞机",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "6",
+        title: "火车",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "7",
+        title: "游轮",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }],
+
+
+
+
+      // 运动宫格数据
+      motionGridItems: [
+      {
+        id: "1",
+        title: "网球",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "2",
+        title: "羽毛球",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "3",
+        title: "跑步",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "4",
+        title: "健身",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }],
+
+
+
+      // 景点宫格数据
+      spotGridItems: [
+      {
+        id: "1",
+        title: "网红打卡",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "2",
+        title: "景区",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "3",
+        title: "博物馆",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "3",
+        title: "步行街",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }],
+
+
+
+      // 酒店宫格数据列表
+      hotelGridItems: [
+      {
+        id: "1",
+        title: "便捷",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "2",
+        title: "商务",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "3",
+        title: "星级",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }],
+
+
+
+      // 人文宫格数据列表
+      humanGridItems: [
+      {
+        id: "1",
+        title: "星座",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "2",
+        title: "艺术",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "3",
+        title: "哲学",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" },
+
+      {
+        id: "4",
+        title: "历史",
+        icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png" }] };
+
+
 
 
 

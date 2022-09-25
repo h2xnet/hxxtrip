@@ -1,3 +1,5 @@
+<!-- 大图选项卡组件 -->
+
 <template>
 	<view class="card-frame">
 		<uni-card 
@@ -7,8 +9,8 @@
 			:extra="itemData.extTitle" 
 			:thumbnail="itemData.headImg"
 		>
-			<view style="height: 350rpx; width: 100;">
-				<image style="height: 100%;" mode="aspectFill" :src="itemData.coverImg"></image>
+			<view style="height: 350rpx; width: 100%;">
+				<image style="height: 100%; " mode="aspectFill" :src="itemData.coverImg"></image>
 			</view>
 			
 			<view class="content-box">
@@ -42,7 +44,7 @@
 	import uniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue'
 		
 	export default {
-		components: {uniCard, uniIcons},
+		components: {uniCard,uniIcons},
 		
 		name:"BigImageCard",
 		

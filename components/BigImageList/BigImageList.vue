@@ -1,3 +1,5 @@
+<!-- 大图列表组件 -->
+
 <template>
 	<view>
 		<view v-for="(item, index) in modelDatas" :key="index">

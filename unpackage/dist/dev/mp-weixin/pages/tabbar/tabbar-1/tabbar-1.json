@@ -1,6 +1,9 @@
 {
+  "navigationStyle": "custom",
   "navigationBarTitleText": "星游会",
   "usingComponents": {
-    "big-image-list": "/components/BigImageList/BigImageList"
+    "search-head-bar": "/components/SearchHeadBar/SearchHeadBar",
+    "big-image-list": "/components/BigImageList/BigImageList",
+    "grid-list-bar": "/components/GridListBar/GridListBar"
   }
 }
