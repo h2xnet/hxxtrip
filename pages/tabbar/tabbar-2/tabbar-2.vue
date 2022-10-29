@@ -39,7 +39,7 @@
 			</scroll-view>
 			
 		</view>
-		页面 - 2
+		
 	</view>
 </template>
 

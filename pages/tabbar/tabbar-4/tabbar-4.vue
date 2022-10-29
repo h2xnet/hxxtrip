@@ -30,7 +30,6 @@
 			
 		</view>
 		
-		页面 - 4
 	</view>
 </template>
 

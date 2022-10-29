@@ -1,0 +1,5 @@
+//add adapter-interface，添加接口器，以适配所有平台
+npm i @cloudbase/adapter-interface
+
+//add cloud sdk，添加云开发SDK
+npm i @cloudbase/js-sdk
