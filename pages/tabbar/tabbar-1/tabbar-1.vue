@@ -193,37 +193,42 @@ export default {
 				{
 					id: "1",
 					title: "周末游",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/trip/trip1.png"
 				},
 				{
 					id: "2",
 					title: "亲子游",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/trip/trip5.png"
 				},
 				{
 					id: "3",
-					title: "老年游",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					title: "度假游",
+					icon: "/static/img/trip/trip4.png"
 				},
 				{
 					id: "4",
-					title: "自由行",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					title: "老年游",
+					icon: "/static/img/trip/trip6.png"
 				},
 				{
 					id: "5",
-					title: "飞机",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					title: "自由行",
+					icon: "/static/img/trip/trip7.png"
 				},
 				{
 					id: "6",
-					title: "火车",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					title: "飞机",
+					icon: "/static/img/trip/plane.png"
 				},
 				{
 					id: "7",
-					title: "游轮",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					title: "火车",
+					icon: "/static/img/trip/train.png"
+				},
+				{
+					id: "8",
+					title: "轮船",
+					icon: "/static/img/trip/ship.png"
 				}
 				
 			],
@@ -233,22 +238,37 @@ export default {
 				{
 					id: "1",
 					title: "网球",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/motion/tennis.png"
 				},
 				{
 					id: "2",
 					title: "羽毛球",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/motion/badminton.png"
 				},
 				{
 					id: "3",
-					title: "跑步",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					title: "蓝球",
+					icon: "/static/img/motion/blue_ball.png"
 				},
 				{
 					id: "4",
+					title: "桌球",
+					icon: "/static/img/motion/table_tennis.png"
+				},
+				{
+					id: "5",
+					title: "跑步",
+					icon: "/static/img/motion/run.png"
+				},
+				{
+					id: "6",
+					title: "瑜伽",
+					icon: "/static/img/motion/yoga.png"
+				},
+				{
+					id: "7",
 					title: "健身",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/motion/body_building.png"
 				}
 			],
 			
@@ -257,22 +277,22 @@ export default {
 				{
 					id: "1",
 					title: "网红打卡",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/spot/spot1.png"
 				},
 				{
 					id: "2",
 					title: "景区",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/spot/spot3.png"
 				},
 				{
 					id: "3",
 					title: "博物馆",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/spot/spot4.png"
 				},
 				{
-					id: "3",
+					id: "4",
 					title: "步行街",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/spot/shopping2.png"
 				}
 			],
 			
@@ -281,17 +301,22 @@ export default {
 				{
 					id: "1",
 					title: "便捷",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/hotel/hotel1.png"
 				},
 				{
 					id: "2",
 					title: "商务",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/hotel/hotel2.png"
 				},
 				{
 					id: "3",
 					title: "星级",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/hotel/hotel3.png"
+				},
+				{
+					id: "4",
+					title: "民宿",
+					icon: "/static/img/hotel/hotel4.png"
 				}
 			],
 			
@@ -300,22 +325,22 @@ export default {
 				{
 					id: "1",
 					title: "星座",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/human/constellation.png"
 				},
 				{
 					id: "2",
 					title: "艺术",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/human/art.png"
 				},
 				{
 					id: "3",
 					title: "哲学",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/human/philosophy.png"
 				},
 				{
 					id: "4",
 					title: "历史",
-					icon: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+					icon: "/static/img/human/history3.png"
 				}
 			],
 			
@@ -328,10 +353,18 @@ export default {
 						{
 							img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
 						},
-					"https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png",
-					"https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png",
-					"https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png",
-					"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"],
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
+						},
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+						},
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
+						},
+						{
+							img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+						}],
 					title: "Apple iPhone X 256GB 深空灰色 移动联通电信4G手机",
 					originalPrice: 9999,
 					favourPrice: 8888,
@@ -340,9 +373,16 @@ export default {
 				{
 					id: "2",
 					type: "image",
-					coverImgs: ["https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
-					"https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png",
-					"https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"],
+					coverImgs: [
+						{
+							img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+						},
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
+						},
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+						}],
 					title: "Apple iPad 平板电脑 2018年新款9.7英寸",
 					originalPrice: 3499,
 					favourPrice: 3399,
@@ -351,9 +391,16 @@ export default {
 				{
 					id: "3",
 					type: "image",
-					coverImgs: ["https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png",
-					"https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png",
-					"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"],
+					coverImgs: [
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+						},
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
+						},
+						{
+							img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+						}],
 					title: "Apple MacBook Pro 13.3英寸笔记本电脑（2017款Core i5处理器/8GB内存/256GB硬盘 MupxT2CH/A）",
 					originalPrice: 12999,
 					favourPrice: 10688,
@@ -362,8 +409,13 @@ export default {
 				{
 					id: "4",
 					type: "image",
-					coverImgs: ["https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png",
-					"https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"],
+					coverImgs: [
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
+						},
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+						}],
 					title: "Kindle Paperwhite电纸书阅读器 电子书墨水屏 6英寸wifi 黑色",
 					originalPrice: 999,
 					favourPrice: 958,
@@ -372,7 +424,11 @@ export default {
 				{
 					id: "5",
 					type: "image",
-					coverImgs: ["https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"],
+					coverImgs: [
+						{
+							img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
+						}
+					],
 					title: "微软（Microsoft）新Surface Pro 二合一平板电脑笔记本 12.3英寸（i5 8G内存 256G存储）",
 					originalPrice: 8888,
 					favourPrice: 8288,
@@ -381,7 +437,11 @@ export default {
 				{
 					id: "6",
 					type: "image",
-					coverImgs: ["https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"],
+					coverImgs: [
+						{
+							img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+						}
+					],
 					title: "Apple Watch Series 3智能手表（GPS款 42毫米 深空灰色铝金属表壳 黑色运动型表带 MQL12CH/A）",
 					originalPrice: 2899,
 					favourPrice: 2799,

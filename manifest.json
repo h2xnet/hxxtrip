@@ -41,7 +41,8 @@
         "appid" : "wx56e4f0b2026fbdf0",
         "setting" : {
             "urlCheck" : true,
-            "minified" : true
+            "minified" : true,
+            "postcss" : false
         },
         "usingComponents" : true
     },
