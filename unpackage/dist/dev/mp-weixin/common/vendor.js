@@ -34385,9 +34385,178 @@ module.exports = JSON.parse("{\"name\":\"@cloudbase/js-sdk\",\"version\":\"1.7.2
   !*** D:/curProject/h2x/hxxtrip/utils/adapter/adapter.js ***!
   \**********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\curProject\\h2x\\hxxtrip\\utils\\adapter\\adapter.js: Unexpected token (32:9)\n\n  30 | export class UniRequest extends AbstractSDKRequest {\n  31 |   // 实现post接口\n> 32 |   public post(options: IRequestOptions) {\n     |          ^\n  33 |     const { url, data, headers } = options\n  34 |     return new Promise((resolve, reject) => {\n  35 |       try {\n    at Object._raise (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:746:17)\n    at Object.raiseWithData (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:739:17)\n    at Object.raise (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:733:17)\n    at Object.unexpected (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8807:16)\n    at Object.parseClassMemberWithIsStatic (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12122:12)\n    at Object.parseClassMember (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12015:10)\n    at D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11960:14\n    at Object.withTopicForbiddingContext (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11031:14)\n    at Object.parseClassBody (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11937:10)\n    at Object.parseClass (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11911:22)\n    at Object.parseStatementContent (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11198:21)\n    at Object.parseStatement (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11156:17)\n    at Object.parseExportDeclaration (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12365:17)\n    at Object.maybeParseExportDeclaration (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12321:31)\n    at Object.parseExport (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12251:29)\n    at Object.parseStatementContent (D:\\extProgramFiles\\hbuilderx\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11260:27)");
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+var __extends = this && this.__extends || function () {
+  var extendStatics = Object.setPrototypeOf ||
+  { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} ||
+  function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};
+  return function (d, b) {
+    extendStatics(d, b);
+    function __() {this.constructor = d;}
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+var __assign = this && this.__assign || Object.assign || function (t) {
+  for (var s, i = 1, n = arguments.length; i < n; i++) {
+    s = arguments[i];
+    for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p))
+      t[p] = s[p];}
+  }
+  return t;
+};
+exports.__esModule = true;
+var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 20);
+// isMatch函数判断当前平台是否匹配
+function isMatch() {
+  if (uni)
+  return true;else
+
+  return false;
+}
+// Request类为平台特有的网络请求，必须实现post/upload/download三个public接口
+var uniappRequest = /** @class */function (_super) {
+  __extends(uniappRequest, _super);
+  function uniappRequest() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  // 实现post接口
+  uniappRequest.prototype.post = function (options) {
+    return new Promise(function (resolve, reject) {
+      try {
+        var url = options.url,data = options.data,headers = options.headers;
+        uni.request({
+          url: url,
+          data: data,
+          method: 'POST',
+          header: headers,
+          success: function success(res) {
+            resolve(res);
+          },
+          fail: function fail(err) {
+            reject(err);
+          } });
+
+      }
+      catch (e) {
+        reject(e);
+      }
+    });
+  };
+  // 实现upload接口
+  uniappRequest.prototype.upload = function (options) {
+    return new Promise(function (resolve, reject) {
+      var url = options.url,data = options.data,file = options.file,headers = options.headers;
+      uni.uploadFile({
+        url: url,
+        header: headers,
+        formData: data,
+        filePath: file,
+        name: 'file',
+        success: function success(uploadFileRes) {
+          var result = {
+            statusCode: uploadFileRes.statusCode,
+            data: uploadFileRes.data || {} };
+
+          resolve(result);
+        } });
+
+    });
+  };
+  // 实现download接口
+  uniappRequest.prototype.download = function (options) {
+    return new Promise(function (resolve, reject) {
+      var url = options.url,headers = options.headers;
+      uni.downloadFile({
+        url: url,
+        header: headers,
+        success: function success(res) {
+          resolve(res);
+        },
+        fail: function fail(data, code) {
+          reject(JSON.stringify({ data: data, code: code }));
+        } });
+
+    });
+  };
+  return uniappRequest;
+}(adapter_interface_1.AbstractSDKRequest);
+exports.uniappRequest = uniappRequest;
+// Storage为平台特有的本地存储，必须实现setItem/getItem/removeItem/clear四个接口
+exports.uniappStorage = {
+  setItem: function setItem(key, value) {
+    return uni.setStorageSync(key, value);
+  },
+  getItem: function getItem(key) {
+    return uni.getStorageSync(key);
+  },
+  removeItem: function removeItem(key) {
+    return uni.removeStorageSync(key);
+  },
+  clear: function clear() {
+    return uni.clearStorageSync();
+  } };
+
+// WebSocket为平台特有的WebSocket，与HTML5标准规范一致
+var uniappWebSocket = /** @class */function () {
+  function uniappWebSocket(url, options) {
+    if (options === void 0) {options = {};}
+    var uniws = uni.connectSocket(__assign({ url: url }, options, { complete: function complete() {} }));
+    var socketTask = {
+      set onopen(cb) {
+        uniws.onOpen(cb);
+      },
+      set onmessage(cb) {
+        uniws.onMessage(cb);
+      },
+      set onclose(cb) {
+        uniws.onClose(cb);
+      },
+      set onerror(cb) {
+        uniws.onError(cb);
+      },
+      send: function send(data) {
+        return uniws.send({ data: data });
+      },
+      close: function close(code, reason) {
+        return uniws.close({
+          code: code,
+          reason: reason });
+
+      },
+      get readyState() {
+        return uniws.readyState;
+      },
+      CONNECTING: 0,
+      OPEN: 1,
+      CLOSING: 2,
+      CLOSED: 3 };
+
+    return socketTask;
+  }
+  return uniappWebSocket;
+}();
+exports.uniappWebSocket = uniappWebSocket;
+// genAdapter函数创建adapter实体
+function genAdapter() {
+  var adapter = {
+    root: {},
+    reqClass: uniappRequest,
+    wsClass: uniappWebSocket,
+    localStorage: exports.uniappStorage };
+
+  return adapter;
+}
+var adapter = {
+  genAdapter: genAdapter,
+  isMatch: isMatch,
+  // runtime为标记平台唯一性的说明
+  runtime: 'uniapp' };
+
+exports["default"] = adapter;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 109 */,
@@ -35736,6 +35905,132 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     "font_class": "cart",
     "unicode": "e631",
     "unicode_decimal": 58929 }] };exports.default = _default;
+
+/***/ }),
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */
+/*!***************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/net/http.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _jsSdk = _interopRequireDefault(__webpack_require__(/*! @cloudbase/js-sdk */ 12));
+
+var _errorCode = __webpack_require__(/*! ./errorCode.js */ 260);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+//
+// errorHandler : 错误处理
+//
+function errorHandler(code, res) {
+  console.log("errorHandler params, code:" + code + ", res:" + JSON.stringify(res));
+}
+
+//
+// cloudAuth : 云匿名登录
+//
+var cloudAuth = function cloudAuth(callHandler) {
+  _jsSdk.default.auth().anonymousAuthProvider().signIn().then(function (res) {
+    if (callHandler) {
+      callHandler(_errorCode.error_code_ok, res);
+    }
+  }).catch(function (err) {
+    errorHandler(_errorCode.error_code_fail, err);
+    if (callHandler) {
+      callHandler(_errorCode.error_code_fail, err);
+    }
+  });
+};
+
+//
+// cloudCallFunc : 请求调用云函数
+//
+var cloudCallFunc = function cloudCallFunc(url, params, callHandler) {
+  _jsSdk.default.callFunction({
+    name: url,
+    data: params }).
+  then(function (res) {
+    if (callHandler) {
+      callHandler(_errorCode.error_code_ok, res);
+    }
+  }).catch(function (err) {
+    errorHandler(_errorCode.error_code_fail, err);
+    if (callHandler) {
+      callHandler(_errorCode.error_code_fail, err);
+    }
+  });
+};
+
+//
+// cloudUploadFile : 云上传文件
+// @cloudFilePath: 云端文件路径，即文件名
+// @localFilePath: 上传的本地文件路径
+// @uploadProgressEvent: 上传进度，可以为空
+// @callHandler: 上传结果
+//
+var cloudUploadFile = function cloudUploadFile(cloudFilePath, localFilePath, uploadProgressEvent, callHandler) {
+  _jsSdk.default.cloudUploadFile({
+    cloudPath: cloudFilePath,
+    filePath: localFilePath,
+    onUploadProgress: function onUploadProgress(progressEvent) {
+      var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
+      if (uploadProgressEvent) {
+        uploadProgressEvent(percentCompleted);
+      }
+
+    } }).
+  then(function (res) {
+    if (callHandler) {
+      callHandler(_errorCode.error_code_ok, res);
+    }
+  }).catch(function (err) {
+    errorHandler(_errorCode.error_code_fail, err);
+    if (callHandler) {
+      callHandler(_errorCode.error_code_fail, err);
+    }
+  });
+};var _default =
+
+{
+  cloudAuth: cloudAuth,
+  cloudCallFunc: cloudCallFunc,
+  cloudUploadFile: cloudUploadFile };exports.default = _default;
+
+/***/ }),
+/* 260 */
+/*!********************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/net/errorCode.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.error_code_fail = exports.error_code_ok = void 0; //
+// 错误代码
+//
+
+var error_code_ok = 0;exports.error_code_ok = error_code_ok;
+var error_code_fail = 1;exports.error_code_fail = error_code_fail;
 
 /***/ })
 ]]);

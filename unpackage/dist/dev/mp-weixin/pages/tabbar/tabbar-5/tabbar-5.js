@@ -132,20 +132,27 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+var _http = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net/http.js */ 259));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
 //
 //
-var _default =
-{
-  data: function data() {
-    return {
-      title: 'Hello' };
+var _default = { data: function data() {return { isLoginSuccess: false, title: 'Hello' };
 
   },
   onLoad: function onLoad() {
+    // 登录
+    _http.default.cloudAuth(function (code, res) {
+      console.log("tabbar-5.vue cloudAuth code:" + code + ", res:" + JSON.stringify(res));
+    });
 
   },
   methods: {} };exports.default = _default;
