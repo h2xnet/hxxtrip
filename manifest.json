@@ -46,5 +46,7 @@
         },
         "usingComponents" : true
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "fallbackLocale" : "zh-Hans",
+    "locale" : "zh-Hans"
 }
