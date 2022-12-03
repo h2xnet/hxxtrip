@@ -78,6 +78,9 @@
 </template>
 
 <script>	
+
+import request from '../../../utils/net/request.js'
+
 	
 export default {
 	
@@ -457,6 +460,7 @@ export default {
 		// cal scorll-view height
 		let That = this;
 		
+		// 获取系统信息
 		uni.getSystemInfo({
 			success(res) {
 				let winh = res.windowHeight; 
@@ -466,7 +470,14 @@ export default {
 					That.tabPageHeight = winh - data.top  //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
 				}).exec()
 			}
-		})
+		});
+		
+		//onInit();
+		// 加载根类别列表
+		request.categoryRootRequest({status: 1}, function(errorCode, res){
+			console.log("errorCode:" + errorCode + ", res:" + res);
+		});
+		
 	},
 	methods: {
 		// 切换tabs
@@ -475,6 +486,15 @@ export default {
 			
 			let itemObj = this.navItems[this.currentIndex];
 			console.log("tabbar-1.vue navChooseTab item id: " + itemObj.id)
+		},
+		
+		onInit() {
+			console.log("tabbar-1.vue onInit");
+			
+			request.categoryRootRequest({status: 1}, function(errorCode, res){
+				console.log("errorCode:" + errorCode + ", res:" + res);
+			});
+			
 		}
 		
 	} // end methods

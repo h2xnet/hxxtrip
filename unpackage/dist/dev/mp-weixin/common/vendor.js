@@ -1464,7 +1464,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8558,7 +8558,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8579,14 +8579,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8672,7 +8672,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9103,7 +9103,7 @@ internalMixin(Vue);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 7));var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 3);var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 10));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e33) {throw _e33;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e34) {didErr = true;err = _e34;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _createSuper(Derived) {var hasNativeReflectConstruct = _isNativeReflectConstruct();return function _createSuperInternal() {var Super = _getPrototypeOf(Derived),result;if (hasNativeReflectConstruct) {var NewTarget = _getPrototypeOf(this).constructor;result = Reflect.construct(Super, arguments, NewTarget);} else {result = Super.apply(this, arguments);}return _possibleConstructorReturn(this, result);};}function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _wrapNativeSuper(Class) {var _cache = typeof Map === "function" ? new Map() : undefined;_wrapNativeSuper = function _wrapNativeSuper(Class) {if (Class === null || !_isNativeFunction(Class)) return Class;if (typeof Class !== "function") {throw new TypeError("Super expression must either be null or a function");}if (typeof _cache !== "undefined") {if (_cache.has(Class)) return _cache.get(Class);_cache.set(Class, Wrapper);}function Wrapper() {return _construct(Class, arguments, _getPrototypeOf(this).constructor);}Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } });return _setPrototypeOf(Wrapper, Class);};return _wrapNativeSuper(Class);}function _construct(Parent, args, Class) {if (_isNativeReflectConstruct()) {_construct = Reflect.construct;} else {_construct = function _construct(Parent, args, Class) {var a = [null];a.push.apply(a, args);var Constructor = Function.bind.apply(Parent, a);var instance = new Constructor();if (Class) _setPrototypeOf(instance, Class.prototype);return instance;};}return _construct.apply(null, arguments);}function _isNativeReflectConstruct() {if (typeof Reflect === "undefined" || !Reflect.construct) return false;if (Reflect.construct.sham) return false;if (typeof Proxy === "function") return true;try {Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));return true;} catch (e) {return false;}}function _isNativeFunction(fn) {return Function.toString.call(fn).indexOf("[native code]") !== -1;}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}"undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self && self;function n(e) {return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;}function s(e, t, n) {return e(n = { path: t, exports: {}, require: function require(e, t) {return function () {throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs");}(null == t && n.path);} }, n.exports), n.exports;}var o = s(function (e, t) {var n;e.exports = (n = n || function (e, t) {var n = Object.create || function () {function e() {}return function (t) {var n;return e.prototype = t, n = new e(), e.prototype = null, n;};}(),s = {},o = s.lib = {},r = o.Base = { extend: function extend(e) {var t = n(this);return e && t.mixIn(e), t.hasOwnProperty("init") && this.init !== t.init || (t.init = function () {t.$super.init.apply(this, arguments);}), t.init.prototype = t, t.$super = this, t;}, create: function create() {var e = this.extend();return e.init.apply(e, arguments), e;}, init: function init() {}, mixIn: function mixIn(e) {for (var t in e) {e.hasOwnProperty(t) && (this[t] = e[t]);}e.hasOwnProperty("toString") && (this.toString = e.toString);}, clone: function clone() {return this.init.prototype.extend(this);} },i = o.WordArray = r.extend({ init: function init(e, n) {e = this.words = e || [], this.sigBytes = n != t ? n : 4 * e.length;}, toString: function toString(e) {return (e || c).stringify(this);}, concat: function concat(e) {var t = this.words,n = e.words,s = this.sigBytes,o = e.sigBytes;if (this.clamp(), s % 4) for (var r = 0; r < o; r++) {var i = n[r >>> 2] >>> 24 - r % 4 * 8 & 255;t[s + r >>> 2] |= i << 24 - (s + r) % 4 * 8;} else for (r = 0; r < o; r += 4) {t[s + r >>> 2] = n[r >>> 2];}return this.sigBytes += o, this;}, clamp: function clamp() {var t = this.words,n = this.sigBytes;t[n >>> 2] &= 4294967295 << 32 - n % 4 * 8, t.length = e.ceil(n / 4);}, clone: function clone() {var e = r.clone.call(this);return e.words = this.words.slice(0), e;}, random: function random(t) {for (var n, s = [], o = function o(t) {t = t;var n = 987654321,s = 4294967295;return function () {var o = ((n = 36969 * (65535 & n) + (n >> 16) & s) << 16) + (t = 18e3 * (65535 & t) + (t >> 16) & s) & s;return o /= 4294967296, (o += .5) * (e.random() > .5 ? 1 : -1);};}, r = 0; r < t; r += 4) {var a = o(4294967296 * (n || e.random()));n = 987654071 * a(), s.push(4294967296 * a() | 0);}return new i.init(s, t);} }),a = s.enc = {},c = a.Hex = { stringify: function stringify(e) {for (var t = e.words, n = e.sigBytes, s = [], o = 0; o < n; o++) {var r = t[o >>> 2] >>> 24 - o % 4 * 8 & 255;s.push((r >>> 4).toString(16)), s.push((15 & r).toString(16));}return s.join("");}, parse: function parse(e) {for (var t = e.length, n = [], s = 0; s < t; s += 2) {n[s >>> 3] |= parseInt(e.substr(s, 2), 16) << 24 - s % 8 * 4;}return new i.init(n, t / 2);} },u = a.Latin1 = { stringify: function stringify(e) {for (var t = e.words, n = e.sigBytes, s = [], o = 0; o < n; o++) {var r = t[o >>> 2] >>> 24 - o % 4 * 8 & 255;s.push(String.fromCharCode(r));}return s.join("");}, parse: function parse(e) {for (var t = e.length, n = [], s = 0; s < t; s++) {n[s >>> 2] |= (255 & e.charCodeAt(s)) << 24 - s % 4 * 8;}return new i.init(n, t);} },l = a.Utf8 = { stringify: function stringify(e) {try {return decodeURIComponent(escape(u.stringify(e)));} catch (e) {throw new Error("Malformed UTF-8 data");}}, parse: function parse(e) {return u.parse(unescape(encodeURIComponent(e)));} },h = o.BufferedBlockAlgorithm = r.extend({ reset: function reset() {this._data = new i.init(), this._nDataBytes = 0;}, _append: function _append(e) {"string" == typeof e && (e = l.parse(e)), this._data.concat(e), this._nDataBytes += e.sigBytes;}, _process: function _process(t) {var n = this._data,s = n.words,o = n.sigBytes,r = this.blockSize,a = o / (4 * r),c = (a = t ? e.ceil(a) : e.max((0 | a) - this._minBufferSize, 0)) * r,u = e.min(4 * c, o);if (c) {for (var l = 0; l < c; l += r) {this._doProcessBlock(s, l);}var h = s.splice(0, c);n.sigBytes -= u;}return new i.init(h, u);}, clone: function clone() {var e = r.clone.call(this);return e._data = this._data.clone(), e;}, _minBufferSize: 0 });o.Hasher = h.extend({ cfg: r.extend(), init: function init(e) {this.cfg = this.cfg.extend(e), this.reset();}, reset: function reset() {h.reset.call(this), this._doReset();}, update: function update(e) {return this._append(e), this._process(), this;}, finalize: function finalize(e) {return e && this._append(e), this._doFinalize();}, blockSize: 16, _createHelper: function _createHelper(e) {return function (t, n) {return new e.init(n).finalize(t);};}, _createHmacHelper: function _createHmacHelper(e) {return function (t, n) {return new d.HMAC.init(e, n).finalize(t);};} });var d = s.algo = {};return s;}(Math), n);}),r = (s(function (e, t) {var n;e.exports = (n = o, function (e) {var t = n,s = t.lib,o = s.WordArray,r = s.Hasher,i = t.algo,a = [];!function () {for (var t = 0; t < 64; t++) {a[t] = 4294967296 * e.abs(e.sin(t + 1)) | 0;}}();var c = i.MD5 = r.extend({ _doReset: function _doReset() {this._hash = new o.init([1732584193, 4023233417, 2562383102, 271733878]);}, _doProcessBlock: function _doProcessBlock(e, t) {for (var n = 0; n < 16; n++) {var s = t + n,o = e[s];e[s] = 16711935 & (o << 8 | o >>> 24) | 4278255360 & (o << 24 | o >>> 8);}var r = this._hash.words,i = e[t + 0],c = e[t + 1],f = e[t + 2],p = e[t + 3],g = e[t + 4],m = e[t + 5],y = e[t + 6],_ = e[t + 7],w = e[t + 8],k = e[t + 9],v = e[t + 10],T = e[t + 11],S = e[t + 12],A = e[t + 13],P = e[t + 14],I = e[t + 15],b = r[0],O = r[1],C = r[2],E = r[3];b = u(b, O, C, E, i, 7, a[0]), E = u(E, b, O, C, c, 12, a[1]), C = u(C, E, b, O, f, 17, a[2]), O = u(O, C, E, b, p, 22, a[3]), b = u(b, O, C, E, g, 7, a[4]), E = u(E, b, O, C, m, 12, a[5]), C = u(C, E, b, O, y, 17, a[6]), O = u(O, C, E, b, _, 22, a[7]), b = u(b, O, C, E, w, 7, a[8]), E = u(E, b, O, C, k, 12, a[9]), C = u(C, E, b, O, v, 17, a[10]), O = u(O, C, E, b, T, 22, a[11]), b = u(b, O, C, E, S, 7, a[12]), E = u(E, b, O, C, A, 12, a[13]), C = u(C, E, b, O, P, 17, a[14]), b = l(b, O = u(O, C, E, b, I, 22, a[15]), C, E, c, 5, a[16]), E = l(E, b, O, C, y, 9, a[17]), C = l(C, E, b, O, T, 14, a[18]), O = l(O, C, E, b, i, 20, a[19]), b = l(b, O, C, E, m, 5, a[20]), E = l(E, b, O, C, v, 9, a[21]), C = l(C, E, b, O, I, 14, a[22]), O = l(O, C, E, b, g, 20, a[23]), b = l(b, O, C, E, k, 5, a[24]), E = l(E, b, O, C, P, 9, a[25]), C = l(C, E, b, O, p, 14, a[26]), O = l(O, C, E, b, w, 20, a[27]), b = l(b, O, C, E, A, 5, a[28]), E = l(E, b, O, C, f, 9, a[29]), C = l(C, E, b, O, _, 14, a[30]), b = h(b, O = l(O, C, E, b, S, 20, a[31]), C, E, m, 4, a[32]), E = h(E, b, O, C, w, 11, a[33]), C = h(C, E, b, O, T, 16, a[34]), O = h(O, C, E, b, P, 23, a[35]), b = h(b, O, C, E, c, 4, a[36]), E = h(E, b, O, C, g, 11, a[37]), C = h(C, E, b, O, _, 16, a[38]), O = h(O, C, E, b, v, 23, a[39]), b = h(b, O, C, E, A, 4, a[40]), E = h(E, b, O, C, i, 11, a[41]), C = h(C, E, b, O, p, 16, a[42]), O = h(O, C, E, b, y, 23, a[43]), b = h(b, O, C, E, k, 4, a[44]), E = h(E, b, O, C, S, 11, a[45]), C = h(C, E, b, O, I, 16, a[46]), b = d(b, O = h(O, C, E, b, f, 23, a[47]), C, E, i, 6, a[48]), E = d(E, b, O, C, _, 10, a[49]), C = d(C, E, b, O, P, 15, a[50]), O = d(O, C, E, b, m, 21, a[51]), b = d(b, O, C, E, S, 6, a[52]), E = d(E, b, O, C, p, 10, a[53]), C = d(C, E, b, O, v, 15, a[54]), O = d(O, C, E, b, c, 21, a[55]), b = d(b, O, C, E, w, 6, a[56]), E = d(E, b, O, C, I, 10, a[57]), C = d(C, E, b, O, y, 15, a[58]), O = d(O, C, E, b, A, 21, a[59]), b = d(b, O, C, E, g, 6, a[60]), E = d(E, b, O, C, T, 10, a[61]), C = d(C, E, b, O, f, 15, a[62]), O = d(O, C, E, b, k, 21, a[63]), r[0] = r[0] + b | 0, r[1] = r[1] + O | 0, r[2] = r[2] + C | 0, r[3] = r[3] + E | 0;}, _doFinalize: function _doFinalize() {var t = this._data,n = t.words,s = 8 * this._nDataBytes,o = 8 * t.sigBytes;n[o >>> 5] |= 128 << 24 - o % 32;var r = e.floor(s / 4294967296),i = s;n[15 + (o + 64 >>> 9 << 4)] = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8), n[14 + (o + 64 >>> 9 << 4)] = 16711935 & (i << 8 | i >>> 24) | 4278255360 & (i << 24 | i >>> 8), t.sigBytes = 4 * (n.length + 1), this._process();for (var a = this._hash, c = a.words, u = 0; u < 4; u++) {var l = c[u];c[u] = 16711935 & (l << 8 | l >>> 24) | 4278255360 & (l << 24 | l >>> 8);}return a;}, clone: function clone() {var e = r.clone.call(this);return e._hash = this._hash.clone(), e;} });function u(e, t, n, s, o, r, i) {var a = e + (t & n | ~t & s) + o + i;return (a << r | a >>> 32 - r) + t;}function l(e, t, n, s, o, r, i) {var a = e + (t & s | n & ~s) + o + i;return (a << r | a >>> 32 - r) + t;}function h(e, t, n, s, o, r, i) {var a = e + (t ^ n ^ s) + o + i;return (a << r | a >>> 32 - r) + t;}function d(e, t, n, s, o, r, i) {var a = e + (n ^ (t | ~s)) + o + i;return (a << r | a >>> 32 - r) + t;}t.MD5 = r._createHelper(c), t.HmacMD5 = r._createHmacHelper(c);}(Math), n.MD5);}), s(function (e, t) {var n, s, r;e.exports = (s = (n = o).lib.Base, r = n.enc.Utf8, void (n.algo.HMAC = s.extend({ init: function init(e, t) {e = this._hasher = new e.init(), "string" == typeof t && (t = r.parse(t));var n = e.blockSize,s = 4 * n;t.sigBytes > s && (t = e.finalize(t)), t.clamp();for (var o = this._oKey = t.clone(), i = this._iKey = t.clone(), a = o.words, c = i.words, u = 0; u < n; u++) {a[u] ^= 1549556828, c[u] ^= 909522486;}o.sigBytes = i.sigBytes = s, this.reset();}, reset: function reset() {var e = this._hasher;e.reset(), e.update(this._iKey);}, update: function update(e) {return this._hasher.update(e), this;}, finalize: function finalize(e) {var t = this._hasher,n = t.finalize(e);return t.reset(), t.finalize(this._oKey.clone().concat(n));} })));}), s(function (e, t) {e.exports = o.HmacMD5;})),i = s(function (e, t) {e.exports = o.enc.Utf8;}),a = s(function (e, t) {var n;e.exports = (n = o, function () {var e = n,t = e.lib.WordArray;function s(e, n, s) {for (var o = [], r = 0, i = 0; i < n; i++) {if (i % 4) {var a = s[e.charCodeAt(i - 1)] << i % 4 * 2,c = s[e.charCodeAt(i)] >>> 6 - i % 4 * 2;o[r >>> 2] |= (a | c) << 24 - r % 4 * 8, r++;}}return t.create(o, r);}e.enc.Base64 = { stringify: function stringify(e) {var t = e.words,n = e.sigBytes,s = this._map;e.clamp();for (var o = [], r = 0; r < n; r += 3) {for (var i = (t[r >>> 2] >>> 24 - r % 4 * 8 & 255) << 16 | (t[r + 1 >>> 2] >>> 24 - (r + 1) % 4 * 8 & 255) << 8 | t[r + 2 >>> 2] >>> 24 - (r + 2) % 4 * 8 & 255, a = 0; a < 4 && r + .75 * a < n; a++) {o.push(s.charAt(i >>> 6 * (3 - a) & 63));}}var c = s.charAt(64);if (c) for (; o.length % 4;) {o.push(c);}return o.join("");}, parse: function parse(e) {var t = e.length,n = this._map,o = this._reverseMap;if (!o) {o = this._reverseMap = [];for (var r = 0; r < n.length; r++) {o[n.charCodeAt(r)] = r;}}var i = n.charAt(64);if (i) {var a = e.indexOf(i);-1 !== a && (t = a);}return s(e, t, o);}, _map: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=" };}(), n.enc.Base64);});var c = "FUNCTION",u = "OBJECT",l = "CLIENT_DB";function h(e) {return Object.prototype.toString.call(e).slice(8, -1).toLowerCase();}function d(e) {return "object" === h(e);}function f(e) {return e && "string" == typeof e ? JSON.parse(e) : e;}var p = "development" === "development",g = "mp-weixin";var m;"true" === Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).UNI_SECURE_NETWORK || Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).UNI_SECURE_NETWORK, m = "h5" === g ? "web" : "app-plus" === g ? "app" : g;var y = f({
+/* WEBPACK VAR INJECTION */(function(global, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 7));var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 3);var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 10));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e33) {throw _e33;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e34) {didErr = true;err = _e34;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _createSuper(Derived) {var hasNativeReflectConstruct = _isNativeReflectConstruct();return function _createSuperInternal() {var Super = _getPrototypeOf(Derived),result;if (hasNativeReflectConstruct) {var NewTarget = _getPrototypeOf(this).constructor;result = Reflect.construct(Super, arguments, NewTarget);} else {result = Super.apply(this, arguments);}return _possibleConstructorReturn(this, result);};}function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _wrapNativeSuper(Class) {var _cache = typeof Map === "function" ? new Map() : undefined;_wrapNativeSuper = function _wrapNativeSuper(Class) {if (Class === null || !_isNativeFunction(Class)) return Class;if (typeof Class !== "function") {throw new TypeError("Super expression must either be null or a function");}if (typeof _cache !== "undefined") {if (_cache.has(Class)) return _cache.get(Class);_cache.set(Class, Wrapper);}function Wrapper() {return _construct(Class, arguments, _getPrototypeOf(this).constructor);}Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } });return _setPrototypeOf(Wrapper, Class);};return _wrapNativeSuper(Class);}function _construct(Parent, args, Class) {if (_isNativeReflectConstruct()) {_construct = Reflect.construct;} else {_construct = function _construct(Parent, args, Class) {var a = [null];a.push.apply(a, args);var Constructor = Function.bind.apply(Parent, a);var instance = new Constructor();if (Class) _setPrototypeOf(instance, Class.prototype);return instance;};}return _construct.apply(null, arguments);}function _isNativeReflectConstruct() {if (typeof Reflect === "undefined" || !Reflect.construct) return false;if (Reflect.construct.sham) return false;if (typeof Proxy === "function") return true;try {Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));return true;} catch (e) {return false;}}function _isNativeFunction(fn) {return Function.toString.call(fn).indexOf("[native code]") !== -1;}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}"undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self && self;function n(e) {return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;}function s(e, t, n) {return e(n = { path: t, exports: {}, require: function require(e, t) {return function () {throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs");}(null == t && n.path);} }, n.exports), n.exports;}var o = s(function (e, t) {var n;e.exports = (n = n || function (e, t) {var n = Object.create || function () {function e() {}return function (t) {var n;return e.prototype = t, n = new e(), e.prototype = null, n;};}(),s = {},o = s.lib = {},r = o.Base = { extend: function extend(e) {var t = n(this);return e && t.mixIn(e), t.hasOwnProperty("init") && this.init !== t.init || (t.init = function () {t.$super.init.apply(this, arguments);}), t.init.prototype = t, t.$super = this, t;}, create: function create() {var e = this.extend();return e.init.apply(e, arguments), e;}, init: function init() {}, mixIn: function mixIn(e) {for (var t in e) {e.hasOwnProperty(t) && (this[t] = e[t]);}e.hasOwnProperty("toString") && (this.toString = e.toString);}, clone: function clone() {return this.init.prototype.extend(this);} },i = o.WordArray = r.extend({ init: function init(e, n) {e = this.words = e || [], this.sigBytes = n != t ? n : 4 * e.length;}, toString: function toString(e) {return (e || c).stringify(this);}, concat: function concat(e) {var t = this.words,n = e.words,s = this.sigBytes,o = e.sigBytes;if (this.clamp(), s % 4) for (var r = 0; r < o; r++) {var i = n[r >>> 2] >>> 24 - r % 4 * 8 & 255;t[s + r >>> 2] |= i << 24 - (s + r) % 4 * 8;} else for (r = 0; r < o; r += 4) {t[s + r >>> 2] = n[r >>> 2];}return this.sigBytes += o, this;}, clamp: function clamp() {var t = this.words,n = this.sigBytes;t[n >>> 2] &= 4294967295 << 32 - n % 4 * 8, t.length = e.ceil(n / 4);}, clone: function clone() {var e = r.clone.call(this);return e.words = this.words.slice(0), e;}, random: function random(t) {for (var n, s = [], o = function o(t) {t = t;var n = 987654321,s = 4294967295;return function () {var o = ((n = 36969 * (65535 & n) + (n >> 16) & s) << 16) + (t = 18e3 * (65535 & t) + (t >> 16) & s) & s;return o /= 4294967296, (o += .5) * (e.random() > .5 ? 1 : -1);};}, r = 0; r < t; r += 4) {var a = o(4294967296 * (n || e.random()));n = 987654071 * a(), s.push(4294967296 * a() | 0);}return new i.init(s, t);} }),a = s.enc = {},c = a.Hex = { stringify: function stringify(e) {for (var t = e.words, n = e.sigBytes, s = [], o = 0; o < n; o++) {var r = t[o >>> 2] >>> 24 - o % 4 * 8 & 255;s.push((r >>> 4).toString(16)), s.push((15 & r).toString(16));}return s.join("");}, parse: function parse(e) {for (var t = e.length, n = [], s = 0; s < t; s += 2) {n[s >>> 3] |= parseInt(e.substr(s, 2), 16) << 24 - s % 8 * 4;}return new i.init(n, t / 2);} },u = a.Latin1 = { stringify: function stringify(e) {for (var t = e.words, n = e.sigBytes, s = [], o = 0; o < n; o++) {var r = t[o >>> 2] >>> 24 - o % 4 * 8 & 255;s.push(String.fromCharCode(r));}return s.join("");}, parse: function parse(e) {for (var t = e.length, n = [], s = 0; s < t; s++) {n[s >>> 2] |= (255 & e.charCodeAt(s)) << 24 - s % 4 * 8;}return new i.init(n, t);} },l = a.Utf8 = { stringify: function stringify(e) {try {return decodeURIComponent(escape(u.stringify(e)));} catch (e) {throw new Error("Malformed UTF-8 data");}}, parse: function parse(e) {return u.parse(unescape(encodeURIComponent(e)));} },h = o.BufferedBlockAlgorithm = r.extend({ reset: function reset() {this._data = new i.init(), this._nDataBytes = 0;}, _append: function _append(e) {"string" == typeof e && (e = l.parse(e)), this._data.concat(e), this._nDataBytes += e.sigBytes;}, _process: function _process(t) {var n = this._data,s = n.words,o = n.sigBytes,r = this.blockSize,a = o / (4 * r),c = (a = t ? e.ceil(a) : e.max((0 | a) - this._minBufferSize, 0)) * r,u = e.min(4 * c, o);if (c) {for (var l = 0; l < c; l += r) {this._doProcessBlock(s, l);}var h = s.splice(0, c);n.sigBytes -= u;}return new i.init(h, u);}, clone: function clone() {var e = r.clone.call(this);return e._data = this._data.clone(), e;}, _minBufferSize: 0 });o.Hasher = h.extend({ cfg: r.extend(), init: function init(e) {this.cfg = this.cfg.extend(e), this.reset();}, reset: function reset() {h.reset.call(this), this._doReset();}, update: function update(e) {return this._append(e), this._process(), this;}, finalize: function finalize(e) {return e && this._append(e), this._doFinalize();}, blockSize: 16, _createHelper: function _createHelper(e) {return function (t, n) {return new e.init(n).finalize(t);};}, _createHmacHelper: function _createHmacHelper(e) {return function (t, n) {return new d.HMAC.init(e, n).finalize(t);};} });var d = s.algo = {};return s;}(Math), n);}),r = (s(function (e, t) {var n;e.exports = (n = o, function (e) {var t = n,s = t.lib,o = s.WordArray,r = s.Hasher,i = t.algo,a = [];!function () {for (var t = 0; t < 64; t++) {a[t] = 4294967296 * e.abs(e.sin(t + 1)) | 0;}}();var c = i.MD5 = r.extend({ _doReset: function _doReset() {this._hash = new o.init([1732584193, 4023233417, 2562383102, 271733878]);}, _doProcessBlock: function _doProcessBlock(e, t) {for (var n = 0; n < 16; n++) {var s = t + n,o = e[s];e[s] = 16711935 & (o << 8 | o >>> 24) | 4278255360 & (o << 24 | o >>> 8);}var r = this._hash.words,i = e[t + 0],c = e[t + 1],f = e[t + 2],p = e[t + 3],g = e[t + 4],m = e[t + 5],y = e[t + 6],_ = e[t + 7],w = e[t + 8],k = e[t + 9],v = e[t + 10],T = e[t + 11],S = e[t + 12],A = e[t + 13],P = e[t + 14],I = e[t + 15],b = r[0],O = r[1],C = r[2],E = r[3];b = u(b, O, C, E, i, 7, a[0]), E = u(E, b, O, C, c, 12, a[1]), C = u(C, E, b, O, f, 17, a[2]), O = u(O, C, E, b, p, 22, a[3]), b = u(b, O, C, E, g, 7, a[4]), E = u(E, b, O, C, m, 12, a[5]), C = u(C, E, b, O, y, 17, a[6]), O = u(O, C, E, b, _, 22, a[7]), b = u(b, O, C, E, w, 7, a[8]), E = u(E, b, O, C, k, 12, a[9]), C = u(C, E, b, O, v, 17, a[10]), O = u(O, C, E, b, T, 22, a[11]), b = u(b, O, C, E, S, 7, a[12]), E = u(E, b, O, C, A, 12, a[13]), C = u(C, E, b, O, P, 17, a[14]), b = l(b, O = u(O, C, E, b, I, 22, a[15]), C, E, c, 5, a[16]), E = l(E, b, O, C, y, 9, a[17]), C = l(C, E, b, O, T, 14, a[18]), O = l(O, C, E, b, i, 20, a[19]), b = l(b, O, C, E, m, 5, a[20]), E = l(E, b, O, C, v, 9, a[21]), C = l(C, E, b, O, I, 14, a[22]), O = l(O, C, E, b, g, 20, a[23]), b = l(b, O, C, E, k, 5, a[24]), E = l(E, b, O, C, P, 9, a[25]), C = l(C, E, b, O, p, 14, a[26]), O = l(O, C, E, b, w, 20, a[27]), b = l(b, O, C, E, A, 5, a[28]), E = l(E, b, O, C, f, 9, a[29]), C = l(C, E, b, O, _, 14, a[30]), b = h(b, O = l(O, C, E, b, S, 20, a[31]), C, E, m, 4, a[32]), E = h(E, b, O, C, w, 11, a[33]), C = h(C, E, b, O, T, 16, a[34]), O = h(O, C, E, b, P, 23, a[35]), b = h(b, O, C, E, c, 4, a[36]), E = h(E, b, O, C, g, 11, a[37]), C = h(C, E, b, O, _, 16, a[38]), O = h(O, C, E, b, v, 23, a[39]), b = h(b, O, C, E, A, 4, a[40]), E = h(E, b, O, C, i, 11, a[41]), C = h(C, E, b, O, p, 16, a[42]), O = h(O, C, E, b, y, 23, a[43]), b = h(b, O, C, E, k, 4, a[44]), E = h(E, b, O, C, S, 11, a[45]), C = h(C, E, b, O, I, 16, a[46]), b = d(b, O = h(O, C, E, b, f, 23, a[47]), C, E, i, 6, a[48]), E = d(E, b, O, C, _, 10, a[49]), C = d(C, E, b, O, P, 15, a[50]), O = d(O, C, E, b, m, 21, a[51]), b = d(b, O, C, E, S, 6, a[52]), E = d(E, b, O, C, p, 10, a[53]), C = d(C, E, b, O, v, 15, a[54]), O = d(O, C, E, b, c, 21, a[55]), b = d(b, O, C, E, w, 6, a[56]), E = d(E, b, O, C, I, 10, a[57]), C = d(C, E, b, O, y, 15, a[58]), O = d(O, C, E, b, A, 21, a[59]), b = d(b, O, C, E, g, 6, a[60]), E = d(E, b, O, C, T, 10, a[61]), C = d(C, E, b, O, f, 15, a[62]), O = d(O, C, E, b, k, 21, a[63]), r[0] = r[0] + b | 0, r[1] = r[1] + O | 0, r[2] = r[2] + C | 0, r[3] = r[3] + E | 0;}, _doFinalize: function _doFinalize() {var t = this._data,n = t.words,s = 8 * this._nDataBytes,o = 8 * t.sigBytes;n[o >>> 5] |= 128 << 24 - o % 32;var r = e.floor(s / 4294967296),i = s;n[15 + (o + 64 >>> 9 << 4)] = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8), n[14 + (o + 64 >>> 9 << 4)] = 16711935 & (i << 8 | i >>> 24) | 4278255360 & (i << 24 | i >>> 8), t.sigBytes = 4 * (n.length + 1), this._process();for (var a = this._hash, c = a.words, u = 0; u < 4; u++) {var l = c[u];c[u] = 16711935 & (l << 8 | l >>> 24) | 4278255360 & (l << 24 | l >>> 8);}return a;}, clone: function clone() {var e = r.clone.call(this);return e._hash = this._hash.clone(), e;} });function u(e, t, n, s, o, r, i) {var a = e + (t & n | ~t & s) + o + i;return (a << r | a >>> 32 - r) + t;}function l(e, t, n, s, o, r, i) {var a = e + (t & s | n & ~s) + o + i;return (a << r | a >>> 32 - r) + t;}function h(e, t, n, s, o, r, i) {var a = e + (t ^ n ^ s) + o + i;return (a << r | a >>> 32 - r) + t;}function d(e, t, n, s, o, r, i) {var a = e + (n ^ (t | ~s)) + o + i;return (a << r | a >>> 32 - r) + t;}t.MD5 = r._createHelper(c), t.HmacMD5 = r._createHmacHelper(c);}(Math), n.MD5);}), s(function (e, t) {var n, s, r;e.exports = (s = (n = o).lib.Base, r = n.enc.Utf8, void (n.algo.HMAC = s.extend({ init: function init(e, t) {e = this._hasher = new e.init(), "string" == typeof t && (t = r.parse(t));var n = e.blockSize,s = 4 * n;t.sigBytes > s && (t = e.finalize(t)), t.clamp();for (var o = this._oKey = t.clone(), i = this._iKey = t.clone(), a = o.words, c = i.words, u = 0; u < n; u++) {a[u] ^= 1549556828, c[u] ^= 909522486;}o.sigBytes = i.sigBytes = s, this.reset();}, reset: function reset() {var e = this._hasher;e.reset(), e.update(this._iKey);}, update: function update(e) {return this._hasher.update(e), this;}, finalize: function finalize(e) {var t = this._hasher,n = t.finalize(e);return t.reset(), t.finalize(this._oKey.clone().concat(n));} })));}), s(function (e, t) {e.exports = o.HmacMD5;})),i = s(function (e, t) {e.exports = o.enc.Utf8;}),a = s(function (e, t) {var n;e.exports = (n = o, function () {var e = n,t = e.lib.WordArray;function s(e, n, s) {for (var o = [], r = 0, i = 0; i < n; i++) {if (i % 4) {var a = s[e.charCodeAt(i - 1)] << i % 4 * 2,c = s[e.charCodeAt(i)] >>> 6 - i % 4 * 2;o[r >>> 2] |= (a | c) << 24 - r % 4 * 8, r++;}}return t.create(o, r);}e.enc.Base64 = { stringify: function stringify(e) {var t = e.words,n = e.sigBytes,s = this._map;e.clamp();for (var o = [], r = 0; r < n; r += 3) {for (var i = (t[r >>> 2] >>> 24 - r % 4 * 8 & 255) << 16 | (t[r + 1 >>> 2] >>> 24 - (r + 1) % 4 * 8 & 255) << 8 | t[r + 2 >>> 2] >>> 24 - (r + 2) % 4 * 8 & 255, a = 0; a < 4 && r + .75 * a < n; a++) {o.push(s.charAt(i >>> 6 * (3 - a) & 63));}}var c = s.charAt(64);if (c) for (; o.length % 4;) {o.push(c);}return o.join("");}, parse: function parse(e) {var t = e.length,n = this._map,o = this._reverseMap;if (!o) {o = this._reverseMap = [];for (var r = 0; r < n.length; r++) {o[n.charCodeAt(r)] = r;}}var i = n.charAt(64);if (i) {var a = e.indexOf(i);-1 !== a && (t = a);}return s(e, t, o);}, _map: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=" };}(), n.enc.Base64);});var c = "FUNCTION",u = "OBJECT",l = "CLIENT_DB";function h(e) {return Object.prototype.toString.call(e).slice(8, -1).toLowerCase();}function d(e) {return "object" === h(e);}function f(e) {return e && "string" == typeof e ? JSON.parse(e) : e;}var p = "development" === "development",g = "mp-weixin";var m;"true" === Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).UNI_SECURE_NETWORK || Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).UNI_SECURE_NETWORK, m = "h5" === g ? "web" : "app-plus" === g ? "app" : g;var y = f({
     "address": [
         "127.0.0.1",
         "192.168.72.1",
@@ -10071,9 +10071,138 @@ function normalizeComponent (
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
+/* 24 */
+/*!******************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/net/request.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+var _uniCloudHttp = _interopRequireDefault(__webpack_require__(/*! ./uniCloudHttp.js */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} /*
+                                                                                                                                                                        * ClassName: request
+                                                                                                                                                                        * Desc: 请求封装类
+                                                                                                                                                                        * Author: zfs
+                                                                                                                                                                        * Date: 2022-12-03 20:25
+                                                                                                                                                                        */ //
+// categoryRootRequest : 请求根类别列表
+//
+var categoryRootRequest = function categoryRootRequest(param, callfunc) {return _uniCloudHttp.default.cloudCallFunc("categoryRoot", param, callfunc);};var _default =
+{
+  categoryRootRequest: categoryRootRequest };exports.default = _default;
+
+/***/ }),
+/* 25 */
+/*!***********************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/net/uniCloudHttp.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+var _errorCode = __webpack_require__(/*! ./errorCode.js */ 26); /*
+                                             * ClassName: uniCloudHttp
+                                             * Desc: uniCloud网络请求封装类
+                                             * Author: zfs
+                                             * Date: 2022-12-03 16:16
+                                             */ //
+// errorHandler : 错误处理
+//
+function errorHandler(code, res) {console.log("uniCloudHttp.js errorHandler params, code:" + code + ", res:" + JSON.stringify(res));}
+function okHandler(code, res) {
+  console.log("uniCloudHttp.js okHandler params, code:" + code + ", res:" + JSON.stringify(res));
+}
+
+//
+// cloudCallFunc : 请求调用云函数
+//
+var cloudCallFunc = function cloudCallFunc(url, params, callHandler) {
+  uniCloud.callFunction({
+    name: url,
+    data: params }).
+  then(function (res) {
+    okHandler(_errorCode.error_code_ok, res);
+
+    if (callHandler) {
+      callHandler(_errorCode.error_code_ok, res);
+    }
+  }).catch(function (err) {
+    errorHandler(_errorCode.error_code_fail, err);
+    if (callHandler) {
+      callHandler(_errorCode.error_code_fail, err);
+    }
+  });
+};
+
+//
+// cloudUploadFile : 云上传文件
+// @cloudFilePath: 云端文件路径，即文件名
+// @localFilePath: 上传的本地文件路径
+// @uploadProgressEvent: 上传进度，可以为空
+// @callHandler: 上传结果
+//
+var cloudUploadFile = function cloudUploadFile(cloudFilePath, localFilePath, fileType, uploadProgressEvent, callHandler) {
+  uniCloud.uploadFile({
+    filePath: localFilePath,
+    cloudPath: cloudFilePath,
+    fileType: fileType,
+    onUploadProgress: function onUploadProgress(progressEvent) {
+      var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
+      if (uploadProgressEvent) {
+        uploadProgressEvent(percentCompleted);
+      }
+
+    } }).
+  then(function (res) {
+    okHandler(_errorCode.error_code_ok, res);
+    if (callHandler) {
+      callHandler(_errorCode.error_code_ok, res);
+    }
+  }).catch(function (err) {
+    errorHandler(_errorCode.error_code_fail, err);
+    if (callHandler) {
+      callHandler(_errorCode.error_code_fail, err);
+    }
+  });
+};var _default =
+
+{
+  cloudCallFunc: cloudCallFunc,
+  cloudUploadFile: cloudUploadFile };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 6)["default"]))
+
+/***/ }),
+/* 26 */
+/*!********************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/net/errorCode.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.error_code_fail = exports.error_code_ok = void 0; //
+// 错误代码
+//
+
+var error_code_ok = 0;exports.error_code_ok = error_code_ok;
+var error_code_fail = 1;exports.error_code_fail = error_code_fail;
+
+/***/ }),
 /* 27 */,
 /* 28 */,
 /* 29 */,
@@ -10103,7 +10232,10 @@ function normalizeComponent (
 /* 53 */,
 /* 54 */,
 /* 55 */,
-/* 56 */
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
 /*!***************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/utils/net/http.js ***!
   \***************************************************/
@@ -10111,9 +10243,9 @@ function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _jsSdk = _interopRequireDefault(__webpack_require__(/*! @cloudbase/js-sdk */ 57));
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _jsSdk = _interopRequireDefault(__webpack_require__(/*! @cloudbase/js-sdk */ 60));
 
-var _errorCode = __webpack_require__(/*! ./errorCode.js */ 153);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _errorCode = __webpack_require__(/*! ./errorCode.js */ 26);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 //
 // errorHandler : 错误处理
@@ -10193,7 +10325,7 @@ var cloudUploadFile = function cloudUploadFile(cloudFilePath, localFilePath, upl
   cloudUploadFile: cloudUploadFile };exports.default = _default;
 
 /***/ }),
-/* 57 */
+/* 60 */
 /*!**********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/js-sdk/dist/index.esm.js ***!
   \**********************************************************************************/
@@ -10201,14 +10333,14 @@ var cloudUploadFile = function cloudUploadFile(cloudFilePath, localFilePath, upl
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _app = _interopRequireDefault(__webpack_require__(/*! @cloudbase/app */ 58));
-var _auth = __webpack_require__(/*! @cloudbase/auth */ 88);
-var _functions = __webpack_require__(/*! @cloudbase/functions */ 97);
-var _storage = __webpack_require__(/*! @cloudbase/storage */ 98);
-var _realtime = __webpack_require__(/*! @cloudbase/realtime */ 99);
-var _analytics = __webpack_require__(/*! @cloudbase/analytics */ 113);
-var _database = __webpack_require__(/*! ./../database */ 114);
-var _package = _interopRequireDefault(__webpack_require__(/*! ../package.json */ 152));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _app = _interopRequireDefault(__webpack_require__(/*! @cloudbase/app */ 61));
+var _auth = __webpack_require__(/*! @cloudbase/auth */ 91);
+var _functions = __webpack_require__(/*! @cloudbase/functions */ 100);
+var _storage = __webpack_require__(/*! @cloudbase/storage */ 101);
+var _realtime = __webpack_require__(/*! @cloudbase/realtime */ 102);
+var _analytics = __webpack_require__(/*! @cloudbase/analytics */ 116);
+var _database = __webpack_require__(/*! ./../database */ 117);
+var _package = _interopRequireDefault(__webpack_require__(/*! ../package.json */ 155));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var version = _package.default.version;
 _app.default.registerVersion(version);
 try {
@@ -10227,7 +10359,7 @@ catch (e) {}var _default =
 _app.default;exports.default = _default;
 
 /***/ }),
-/* 58 */
+/* 61 */
 /*!*******************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/index.js ***!
   \*******************************************************************************/
@@ -10291,13 +10423,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _cloudbaseAdapterWx_mp = _interopRequireDefault(__webpack_require__(/*! cloudbase-adapter-wx_mp */ 81));
-var _component = __webpack_require__(/*! ./libs/component */ 82);
-var _adapter = __webpack_require__(/*! ./libs/adapter */ 83);
-var _cache = __webpack_require__(/*! ./libs/cache */ 84);
-var _request = __webpack_require__(/*! ./libs/request */ 85);
-var _common = __webpack_require__(/*! ./constants/common */ 86);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _cloudbaseAdapterWx_mp = _interopRequireDefault(__webpack_require__(/*! cloudbase-adapter-wx_mp */ 84));
+var _component = __webpack_require__(/*! ./libs/component */ 85);
+var _adapter = __webpack_require__(/*! ./libs/adapter */ 86);
+var _cache = __webpack_require__(/*! ./libs/cache */ 87);
+var _request = __webpack_require__(/*! ./libs/request */ 88);
+var _common = __webpack_require__(/*! ./constants/common */ 89);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var useAdapters = _utilities.adapters.useAdapters,useDefaultAdapter = _utilities.adapters.useDefaultAdapter,RUNTIME = _utilities.adapters.RUNTIME;
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var printWarn = _utilities.utils.printWarn;
@@ -10498,7 +10630,7 @@ cloudbase.useAdapters(_cloudbaseAdapterWx_mp.default);var _default =
 cloudbase;exports.default = _default;
 
 /***/ }),
-/* 59 */
+/* 62 */
 /*!*********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/index.js ***!
   \*********************************************************************************/
@@ -10528,21 +10660,21 @@ var __importStar = this && this.__importStar || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.helpers = exports.utils = exports.events = exports.cache = exports.adapters = exports.constants = void 0;
-var constants = __importStar(__webpack_require__(/*! ./constants */ 60));
+var constants = __importStar(__webpack_require__(/*! ./constants */ 63));
 exports.constants = constants;
-var adapters = __importStar(__webpack_require__(/*! ./adapters */ 63));
+var adapters = __importStar(__webpack_require__(/*! ./adapters */ 66));
 exports.adapters = adapters;
-var cache = __importStar(__webpack_require__(/*! ./libs/cache */ 75));
+var cache = __importStar(__webpack_require__(/*! ./libs/cache */ 78));
 exports.cache = cache;
-var events = __importStar(__webpack_require__(/*! ./libs/events */ 78));
+var events = __importStar(__webpack_require__(/*! ./libs/events */ 81));
 exports.events = events;
-var utils = __importStar(__webpack_require__(/*! ./libs/util */ 68));
+var utils = __importStar(__webpack_require__(/*! ./libs/util */ 71));
 exports.utils = utils;
-var helpers = __importStar(__webpack_require__(/*! ./helpers */ 79));
+var helpers = __importStar(__webpack_require__(/*! ./helpers */ 82));
 exports.helpers = helpers;
 
 /***/ }),
-/* 60 */
+/* 63 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/constants/index.js ***!
   \*******************************************************************************************/
@@ -10562,11 +10694,11 @@ var __exportStar = this && this.__exportStar || function (m, exports) {
   for (var p in m) {if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);}
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(/*! ./common */ 61), exports);
-__exportStar(__webpack_require__(/*! ./errors */ 62), exports);
+__exportStar(__webpack_require__(/*! ./common */ 64), exports);
+__exportStar(__webpack_require__(/*! ./errors */ 65), exports);
 
 /***/ }),
-/* 61 */
+/* 64 */
 /*!********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/constants/common.js ***!
   \********************************************************************************************/
@@ -10601,7 +10733,7 @@ exports.IS_DEBUG_MODE = "development" === 'development';
 exports.COMMUNITY_SITE_URL = 'https://support.qq.com/products/148793';
 
 /***/ }),
-/* 62 */
+/* 65 */
 /*!********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/constants/errors.js ***!
   \********************************************************************************************/
@@ -10621,7 +10753,7 @@ exports.ERRORS = {
   UNKOWN_ERROR: 'UNKOWN_ERROR' };
 
 /***/ }),
-/* 63 */
+/* 66 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/adapters/index.js ***!
   \******************************************************************************************/
@@ -10651,8 +10783,8 @@ var __importStar = this && this.__importStar || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDefaultAdapter = exports.useAdapters = exports.RUNTIME = void 0;
-var Web = __importStar(__webpack_require__(/*! ./platforms/web */ 64));
-var util_1 = __webpack_require__(/*! ../libs/util */ 68);
+var Web = __importStar(__webpack_require__(/*! ./platforms/web */ 67));
+var util_1 = __webpack_require__(/*! ../libs/util */ 71);
 var RUNTIME;
 (function (RUNTIME) {
   RUNTIME["WEB"] = "web";
@@ -10681,7 +10813,7 @@ function useDefaultAdapter() {
 exports.useDefaultAdapter = useDefaultAdapter;
 
 /***/ }),
-/* 64 */
+/* 67 */
 /*!**************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/adapters/platforms/web.js ***!
   \**************************************************************************************************/
@@ -10752,9 +10884,9 @@ var __generator = this && this.__generator || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebRequest = exports.genAdapter = void 0;
-var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 65);
-var util_1 = __webpack_require__(/*! ../../libs/util */ 68);
-var common_1 = __webpack_require__(/*! ../../constants/common */ 61);
+var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 68);
+var util_1 = __webpack_require__(/*! ../../libs/util */ 71);
+var common_1 = __webpack_require__(/*! ../../constants/common */ 64);
 var WebRequest = function (_super) {
   __extends(WebRequest, _super);
   function WebRequest(config) {
@@ -10900,7 +11032,7 @@ function genAdapter() {
 exports.genAdapter = genAdapter;
 
 /***/ }),
-/* 65 */
+/* 68 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/adapter-interface/dist/esm/index.js ***!
   \*********************************************************************************************/
@@ -10908,11 +11040,11 @@ exports.genAdapter = genAdapter;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });var _types = __webpack_require__(/*! ./types */ 66);Object.keys(_types).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _types[key];} });});
-var _utils = __webpack_require__(/*! ./utils */ 67);Object.keys(_utils).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _utils[key];} });});
+Object.defineProperty(exports, "__esModule", { value: true });var _types = __webpack_require__(/*! ./types */ 69);Object.keys(_types).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _types[key];} });});
+var _utils = __webpack_require__(/*! ./utils */ 70);Object.keys(_utils).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _utils[key];} });});
 
 /***/ }),
-/* 66 */
+/* 69 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/adapter-interface/dist/esm/types.js ***!
   \*********************************************************************************************/
@@ -10939,7 +11071,7 @@ var AbstractStorage = function () {
 }();exports.AbstractStorage = AbstractStorage;
 
 /***/ }),
-/* 67 */
+/* 70 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/adapter-interface/dist/esm/utils.js ***!
   \*********************************************************************************************/
@@ -10968,7 +11100,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.formatUrl 
 }
 
 /***/ }),
-/* 68 */
+/* 71 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/libs/util.js ***!
   \*************************************************************************************/
@@ -10982,10 +11114,10 @@ var __importDefault = this && this.__importDefault || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.transformPhone = exports.sleep = exports.printGroupLog = exports.throwError = exports.printInfo = exports.printError = exports.printWarn = exports.execCallback = exports.createPromiseCallback = exports.removeParam = exports.getHash = exports.getQuery = exports.toQueryString = exports.createSign = exports.formatUrl = exports.genSeqId = exports.isFormData = exports.isInstanceOf = exports.isNull = exports.isPalinObject = exports.isUndefined = exports.isString = exports.isArray = void 0;
-var hmac_sha256_1 = __importDefault(__webpack_require__(/*! crypto-js/hmac-sha256 */ 69));
-var enc_base64_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-base64 */ 73));
-var enc_utf8_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-utf8 */ 74));
-var constants_1 = __webpack_require__(/*! ../constants */ 60);
+var hmac_sha256_1 = __importDefault(__webpack_require__(/*! crypto-js/hmac-sha256 */ 72));
+var enc_base64_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-base64 */ 76));
+var enc_utf8_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-utf8 */ 77));
+var constants_1 = __webpack_require__(/*! ../constants */ 63);
 function isArray(val) {
   return Object.prototype.toString.call(val) === '[object Array]';
 }
@@ -11200,7 +11332,7 @@ function transformPhone(phoneNumber) {
 exports.transformPhone = transformPhone;
 
 /***/ }),
-/* 69 */
+/* 72 */
 /*!***********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/hmac-sha256.js ***!
   \***********************************************************************/
@@ -11210,7 +11342,7 @@ exports.transformPhone = transformPhone;
 ;(function (root, factory, undef) {
   if (true) {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 70), __webpack_require__(/*! ./sha256 */ 71), __webpack_require__(/*! ./hmac */ 72));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 73), __webpack_require__(/*! ./sha256 */ 74), __webpack_require__(/*! ./hmac */ 75));
   } else
   {}
 })(this, function (CryptoJS) {
@@ -11220,7 +11352,7 @@ exports.transformPhone = transformPhone;
 });
 
 /***/ }),
-/* 70 */
+/* 73 */
 /*!****************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/core.js ***!
   \****************************************************************/
@@ -11982,7 +12114,7 @@ exports.transformPhone = transformPhone;
 });
 
 /***/ }),
-/* 71 */
+/* 74 */
 /*!******************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/sha256.js ***!
   \******************************************************************/
@@ -11992,7 +12124,7 @@ exports.transformPhone = transformPhone;
 ;(function (root, factory) {
   if (true) {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 70));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 73));
   } else
   {}
 })(this, function (CryptoJS) {
@@ -12183,7 +12315,7 @@ exports.transformPhone = transformPhone;
 });
 
 /***/ }),
-/* 72 */
+/* 75 */
 /*!****************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/hmac.js ***!
   \****************************************************************/
@@ -12193,7 +12325,7 @@ exports.transformPhone = transformPhone;
 ;(function (root, factory) {
   if (true) {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 70));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 73));
   } else
   {}
 })(this, function (CryptoJS) {
@@ -12328,7 +12460,7 @@ exports.transformPhone = transformPhone;
 });
 
 /***/ }),
-/* 73 */
+/* 76 */
 /*!**********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/enc-base64.js ***!
   \**********************************************************************/
@@ -12338,7 +12470,7 @@ exports.transformPhone = transformPhone;
 ;(function (root, factory) {
   if (true) {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 70));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 73));
   } else
   {}
 })(this, function (CryptoJS) {
@@ -12465,7 +12597,7 @@ exports.transformPhone = transformPhone;
 });
 
 /***/ }),
-/* 74 */
+/* 77 */
 /*!********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/enc-utf8.js ***!
   \********************************************************************/
@@ -12475,7 +12607,7 @@ exports.transformPhone = transformPhone;
 ;(function (root, factory) {
   if (true) {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 70));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 73));
   } else
   {}
 })(this, function (CryptoJS) {
@@ -12485,7 +12617,7 @@ exports.transformPhone = transformPhone;
 });
 
 /***/ }),
-/* 75 */
+/* 78 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/libs/cache.js ***!
   \**************************************************************************************/
@@ -12545,9 +12677,9 @@ var __generator = this && this.__generator || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CloudbaseCache = void 0;
-var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 65);
-var util_1 = __webpack_require__(/*! ./util */ 68);
-var constants_1 = __webpack_require__(/*! ../constants */ 60);
+var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 68);
+var util_1 = __webpack_require__(/*! ./util */ 71);
+var constants_1 = __webpack_require__(/*! ../constants */ 63);
 var TcbCacheObject = function (_super) {
   __extends(TcbCacheObject, _super);
   function TcbCacheObject(root) {
@@ -12748,8 +12880,8 @@ var CloudbaseCache = function () {
       return;
     }
     try {
-      if (typeof process !== 'undefined' && ((_a = Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
-        return Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).tcb_token;
+      if (typeof process !== 'undefined' && ((_a = Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
+        return Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).tcb_token;
       }
       if (!this._storage) {
         return '';
@@ -12779,8 +12911,8 @@ var CloudbaseCache = function () {
         switch (_b.label) {
           case 0:
             try {
-              if (typeof process !== 'undefined' && ((_a = Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
-                return [2, Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).tcb_token];
+              if (typeof process !== 'undefined' && ((_a = Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
+                return [2, Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).tcb_token];
               }
               if (!this._storage) {
                 return [2, ''];
@@ -12830,10 +12962,10 @@ var CloudbaseCache = function () {
   return CloudbaseCache;
 }();
 exports.CloudbaseCache = CloudbaseCache;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 76)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 79)))
 
 /***/ }),
-/* 76 */
+/* 79 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -12864,7 +12996,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 77);
+        if (!path) path = __webpack_require__(/*! path */ 80);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -12877,7 +13009,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 77 */
+/* 80 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -13187,10 +13319,10 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 76)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 79)))
 
 /***/ }),
-/* 78 */
+/* 81 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/libs/events.js ***!
   \***************************************************************************************/
@@ -13221,7 +13353,7 @@ var __spreadArrays = this && this.__spreadArrays || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeEventListener = exports.activateEvent = exports.addEventListener = exports.CloudbaseEventEmitter = exports.IErrorEvent = exports.CloudbaseEvent = void 0;
-var util_1 = __webpack_require__(/*! ./util */ 68);
+var util_1 = __webpack_require__(/*! ./util */ 71);
 function _addEventListener(name, listener, listeners) {
   listeners[name] = listeners[name] || [];
   listeners[name].push(listener);
@@ -13303,7 +13435,7 @@ function removeEventListener(event, callback) {
 exports.removeEventListener = removeEventListener;
 
 /***/ }),
-/* 79 */
+/* 82 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/helpers/index.js ***!
   \*****************************************************************************************/
@@ -13323,10 +13455,10 @@ var __exportStar = this && this.__exportStar || function (m, exports) {
   for (var p in m) {if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);}
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(/*! ./decorators */ 80), exports);
+__exportStar(__webpack_require__(/*! ./decorators */ 83), exports);
 
 /***/ }),
-/* 80 */
+/* 83 */
 /*!**********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/helpers/decorators.js ***!
   \**********************************************************************************************/
@@ -13373,8 +13505,8 @@ var __generator = this && this.__generator || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.catchErrorsDecorator = void 0;
-var util_1 = __webpack_require__(/*! ../libs/util */ 68);
-var constants_1 = __webpack_require__(/*! ../constants */ 60);
+var util_1 = __webpack_require__(/*! ../libs/util */ 71);
+var constants_1 = __webpack_require__(/*! ../constants */ 63);
 var isFirefox = false;
 if (typeof navigator !== 'undefined' && navigator.userAgent) {
   isFirefox = navigator.userAgent.indexOf("Firefox") !== -1;
@@ -13547,7 +13679,7 @@ function getRewritedError(options) {
 }
 
 /***/ }),
-/* 81 */
+/* 84 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/cloudbase-adapter-wx_mp/dist/esm/index.js ***!
   \****************************************************************************************/
@@ -13615,7 +13747,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _adapterInterface = __webpack_require__(/*! @cloudbase/adapter-interface */ 65);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _adapterInterface = __webpack_require__(/*! @cloudbase/adapter-interface */ 68);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 function isMatch() {
   if (typeof wx === 'undefined') {
     return false;
@@ -13874,7 +14006,7 @@ var adapter = {
 adapter;exports.default = _default;
 
 /***/ }),
-/* 82 */
+/* 85 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/component.js ***!
   \****************************************************************************************/
@@ -13889,7 +14021,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.registerCo
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);var __spreadArrays = void 0 && (void 0).__spreadArrays || function () {for (var s = 0, i = 0, il = arguments.length; i < il; i++) {s += arguments[i].length;}for (var r = Array(s), k = 0, i = 0; i < il; i++) {for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {r[k] = a[j];}}return r;};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);var __spreadArrays = void 0 && (void 0).__spreadArrays || function () {for (var s = 0, i = 0, il = arguments.length; i < il; i++) {s += arguments[i].length;}for (var r = Array(s), k = 0, i = 0; i < il; i++) {for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {r[k] = a[j];}}return r;};
 var ERRORS = _utilities.constants.ERRORS;
 var components = {};
 function registerComponent(app, component) {
@@ -13997,7 +14129,7 @@ function registerHook(app, hook) {
 }
 
 /***/ }),
-/* 83 */
+/* 86 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/adapter.js ***!
   \**************************************************************************************/
@@ -14008,7 +14140,7 @@ function registerHook(app, hook) {
 Object.defineProperty(exports, "__esModule", { value: true });exports.Platform = void 0;var Platform = {};exports.Platform = Platform;
 
 /***/ }),
-/* 84 */
+/* 87 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/cache.js ***!
   \************************************************************************************/
@@ -14027,7 +14159,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.initCache 
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
 var KEY_ACCESS_TOKEN = 'access_token';
 var KEY_ACCESS_TOKEN_EXPIRE = 'access_token_expire';
 var KEY_REFRESH_TOKEN = 'refresh_token';
@@ -14066,7 +14198,7 @@ function getLocalCache(env) {
 }
 
 /***/ }),
-/* 85 */
+/* 88 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/request.js ***!
   \**************************************************************************************/
@@ -14121,12 +14253,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.initReques
 
 
 
-var _common = __webpack_require__(/*! ../constants/common */ 86);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _2 = __webpack_require__(/*! .. */ 58);
-var _cache = __webpack_require__(/*! ./cache */ 84);
-var _events = __webpack_require__(/*! ../constants/events */ 87);
-var _adapter = __webpack_require__(/*! ./adapter */ 83);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _common = __webpack_require__(/*! ../constants/common */ 89);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _2 = __webpack_require__(/*! .. */ 61);
+var _cache = __webpack_require__(/*! ./cache */ 87);
+var _events = __webpack_require__(/*! ../constants/events */ 90);
+var _adapter = __webpack_require__(/*! ./adapter */ 86);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var ERRORS = _utilities.constants.ERRORS;
 var genSeqId = _utilities.utils.genSeqId,isFormData = _utilities.utils.isFormData,formatUrl = _utilities.utils.formatUrl,createSign = _utilities.utils.createSign;
 var RUNTIME = _utilities.adapters.RUNTIME;
@@ -14563,7 +14695,7 @@ function getRequestByEnvId(env) {
 }
 
 /***/ }),
-/* 86 */
+/* 89 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/constants/common.js ***!
   \******************************************************************************************/
@@ -14571,7 +14703,7 @@ function getRequestByEnvId(env) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {Object.defineProperty(exports, "__esModule", { value: true });exports.setSdkVersion = setSdkVersion;exports.getSdkVersion = getSdkVersion;exports.setSdkName = setSdkName;exports.getSdkName = getSdkName;exports.setEndPoint = setEndPoint;exports.setRegionLevelEndpoint = setRegionLevelEndpoint;exports.getEndPoint = getEndPoint;exports.LOGINTYPE = exports.DATA_VERSION = void 0;var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
+/* WEBPACK VAR INJECTION */(function(process) {Object.defineProperty(exports, "__esModule", { value: true });exports.setSdkVersion = setSdkVersion;exports.getSdkVersion = getSdkVersion;exports.setSdkName = setSdkName;exports.getSdkName = getSdkName;exports.setEndPoint = setEndPoint;exports.setRegionLevelEndpoint = setRegionLevelEndpoint;exports.getEndPoint = getEndPoint;exports.LOGINTYPE = exports.DATA_VERSION = void 0;var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
 var setUtilitiesSdkName = _utilities.constants.setSdkName,setUtilitiesProtocol = _utilities.constants.setProtocol;
 var sdk_version = '';
 var sdk_name = '@cloudbase/js-sdk';
@@ -14592,7 +14724,7 @@ var DATA_VERSION = '2020-01-10';exports.DATA_VERSION = DATA_VERSION;
 var PROTOCOL = typeof location !== 'undefined' && location.protocol === 'http:' ?
 'http:' :
 'https:';
-var BASE_URL = typeof process !== 'undefined' && "development" === 'e2e' && Object({"NODE_ENV":"development","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).END_POINT === 'pre' ?
+var BASE_URL = typeof process !== 'undefined' && "development" === 'e2e' && Object({"VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).END_POINT === 'pre' ?
 '//tcb-pre.tencentcloudapi.com/web' :
 '//tcb-api.tencentcloudapi.com/web';
 function setEndPoint(url, protocol) {
@@ -14618,10 +14750,10 @@ var LOGINTYPE;exports.LOGINTYPE = LOGINTYPE;
   LOGINTYPE["CUSTOM"] = "CUSTOM";
   LOGINTYPE["NULL"] = "NULL";
 })(LOGINTYPE || (exports.LOGINTYPE = LOGINTYPE = {}));
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 76)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 79)))
 
 /***/ }),
-/* 87 */
+/* 90 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/constants/events.js ***!
   \******************************************************************************************/
@@ -14637,7 +14769,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.EVENTS = v
   ACCESS_TOKEN_REFRESHD: 'refreshAccessToken' };exports.EVENTS = EVENTS;
 
 /***/ }),
-/* 88 */
+/* 91 */
 /*!********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/index.js ***!
   \********************************************************************************/
@@ -14701,15 +14833,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.registerAu
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _weixinAuthProvider = __webpack_require__(/*! ./providers/weixinAuthProvider */ 89);
-var _anonymousAuthProvider = __webpack_require__(/*! ./providers/anonymousAuthProvider */ 92);
-var _customAuthProvider = __webpack_require__(/*! ./providers/customAuthProvider */ 93);
-var _constants = __webpack_require__(/*! ./constants */ 91);
-var _base = __webpack_require__(/*! ./providers/base */ 90);
-var _emailAuthProvider = __webpack_require__(/*! ./providers/emailAuthProvider */ 94);
-var _usernameAuthProvider = __webpack_require__(/*! ./providers/usernameAuthProvider */ 95);
-var _phoneAuthProvider = __webpack_require__(/*! ./providers/phoneAuthProvider */ 96);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _weixinAuthProvider = __webpack_require__(/*! ./providers/weixinAuthProvider */ 92);
+var _anonymousAuthProvider = __webpack_require__(/*! ./providers/anonymousAuthProvider */ 95);
+var _customAuthProvider = __webpack_require__(/*! ./providers/customAuthProvider */ 96);
+var _constants = __webpack_require__(/*! ./constants */ 94);
+var _base = __webpack_require__(/*! ./providers/base */ 93);
+var _emailAuthProvider = __webpack_require__(/*! ./providers/emailAuthProvider */ 97);
+var _usernameAuthProvider = __webpack_require__(/*! ./providers/usernameAuthProvider */ 98);
+var _phoneAuthProvider = __webpack_require__(/*! ./providers/phoneAuthProvider */ 99);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var CloudbaseEventEmitter = _utilities.events.CloudbaseEventEmitter;
 var RUNTIME = _utilities.adapters.RUNTIME;
 var printWarn = _utilities.utils.printWarn,throwError = _utilities.utils.throwError,transformPhone = _utilities.utils.transformPhone;
@@ -15830,7 +15962,7 @@ function registerProvider(name, provider) {
 }
 
 /***/ }),
-/* 89 */
+/* 92 */
 /*!*******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/weixinAuthProvider.js ***!
   \*******************************************************************************************************/
@@ -15896,10 +16028,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.WeixinAuth
 
 
 
-var _base = __webpack_require__(/*! ./base */ 90);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities/ */ 59);
-var _2 = __webpack_require__(/*! .. */ 88);
-var _constants = __webpack_require__(/*! ../constants */ 91);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _base = __webpack_require__(/*! ./base */ 93);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities/ */ 62);
+var _2 = __webpack_require__(/*! .. */ 91);
+var _constants = __webpack_require__(/*! ../constants */ 94);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var getSdkName = _utilities.constants.getSdkName,ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var RUNTIME = _utilities.adapters.RUNTIME;
 var getQuery = _utilities.utils.getQuery,getHash = _utilities.utils.getHash,removeParam = _utilities.utils.removeParam,printWarn = _utilities.utils.printWarn;
@@ -16130,7 +16262,7 @@ function getWeixinCode() {
 ;
 
 /***/ }),
-/* 90 */
+/* 93 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/base.js ***!
   \*****************************************************************************************/
@@ -16174,7 +16306,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.AuthProvid
 
 
 
-var _2 = __webpack_require__(/*! .. */ 88);var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _2 = __webpack_require__(/*! .. */ 91);var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var AuthProvider = function () {
   function AuthProvider(config) {
     this._config = config;
@@ -16293,7 +16425,7 @@ var AuthProvider = function () {
 }();exports.AuthProvider = AuthProvider;
 
 /***/ }),
-/* 91 */
+/* 94 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/constants.js ***!
   \************************************************************************************/
@@ -16315,7 +16447,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.LOGINTYPE 
 })(LOGINTYPE || (exports.LOGINTYPE = LOGINTYPE = {}));
 
 /***/ }),
-/* 92 */
+/* 95 */
 /*!**********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/anonymousAuthProvider.js ***!
   \**********************************************************************************************************/
@@ -16381,10 +16513,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.AnonymousA
 
 
 
-var _base = __webpack_require__(/*! ./base */ 90);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _constants = __webpack_require__(/*! ../constants */ 91);
-var _2 = __webpack_require__(/*! .. */ 88);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _base = __webpack_require__(/*! ./base */ 93);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _constants = __webpack_require__(/*! ../constants */ 94);
+var _2 = __webpack_require__(/*! .. */ 91);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var throwError = _utilities.utils.throwError,isString = _utilities.utils.isString;
 var addEventListener = _utilities.events.addEventListener;
@@ -16575,7 +16707,7 @@ var AnonymousAuthProvider = function (_super) {
 }(_base.AuthProvider);exports.AnonymousAuthProvider = AnonymousAuthProvider;
 
 /***/ }),
-/* 93 */
+/* 96 */
 /*!*******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/customAuthProvider.js ***!
   \*******************************************************************************************************/
@@ -16641,10 +16773,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.CustomAuth
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _base = __webpack_require__(/*! ./base */ 90);
-var _constants = __webpack_require__(/*! ../constants */ 91);
-var _2 = __webpack_require__(/*! .. */ 88);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _base = __webpack_require__(/*! ./base */ 93);
+var _constants = __webpack_require__(/*! ../constants */ 94);
+var _2 = __webpack_require__(/*! .. */ 91);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var isString = _utilities.utils.isString;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
@@ -16729,7 +16861,7 @@ var CustomAuthProvider = function (_super) {
 }(_base.AuthProvider);exports.CustomAuthProvider = CustomAuthProvider;
 
 /***/ }),
-/* 94 */
+/* 97 */
 /*!******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/emailAuthProvider.js ***!
   \******************************************************************************************************/
@@ -16795,10 +16927,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.EmailAuthP
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _base = __webpack_require__(/*! ./base */ 90);
-var _constants = __webpack_require__(/*! ../constants */ 91);
-var _2 = __webpack_require__(/*! .. */ 88);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _base = __webpack_require__(/*! ./base */ 93);
+var _constants = __webpack_require__(/*! ../constants */ 94);
+var _2 = __webpack_require__(/*! .. */ 91);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var throwError = _utilities.utils.throwError,isString = _utilities.utils.isString;
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
@@ -16982,7 +17114,7 @@ var EmailAuthProvider = function (_super) {
 }(_base.AuthProvider);exports.EmailAuthProvider = EmailAuthProvider;
 
 /***/ }),
-/* 95 */
+/* 98 */
 /*!*********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/usernameAuthProvider.js ***!
   \*********************************************************************************************************/
@@ -17048,10 +17180,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.UsernameAu
 
 
 
-var _base = __webpack_require__(/*! ./base */ 90);
-var _2 = __webpack_require__(/*! .. */ 88);
-var _constants = __webpack_require__(/*! ../constants */ 91);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _base = __webpack_require__(/*! ./base */ 93);
+var _2 = __webpack_require__(/*! .. */ 91);
+var _constants = __webpack_require__(/*! ../constants */ 94);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var printWarn = _utilities.utils.printWarn;
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
@@ -17155,7 +17287,7 @@ var UsernameAuthProvider = function (_super) {
 }(_base.AuthProvider);exports.UsernameAuthProvider = UsernameAuthProvider;
 
 /***/ }),
-/* 96 */
+/* 99 */
 /*!******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/phoneAuthProvider.js ***!
   \******************************************************************************************************/
@@ -17221,10 +17353,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.PhoneAuthP
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);
-var _base = __webpack_require__(/*! ./base */ 90);
-var _constants = __webpack_require__(/*! ../constants */ 91);
-var _2 = __webpack_require__(/*! .. */ 88);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);
+var _base = __webpack_require__(/*! ./base */ 93);
+var _constants = __webpack_require__(/*! ../constants */ 94);
+var _2 = __webpack_require__(/*! .. */ 91);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var throwError = _utilities.utils.throwError,isString = _utilities.utils.isString,transformPhone = _utilities.utils.transformPhone;
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
@@ -17377,7 +17509,7 @@ var PhoneAuthProvider = function (_super) {
 }(_base.AuthProvider);exports.PhoneAuthProvider = PhoneAuthProvider;
 
 /***/ }),
-/* 97 */
+/* 100 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/functions/dist/esm/index.js ***!
   \*************************************************************************************/
@@ -17430,7 +17562,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.registerFu
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var getSdkName = _utilities.constants.getSdkName,ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var execCallback = _utilities.utils.execCallback;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
@@ -17551,7 +17683,7 @@ function registerFunctions(app) {
 }
 
 /***/ }),
-/* 98 */
+/* 101 */
 /*!***********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/storage/dist/esm/index.js ***!
   \***********************************************************************************/
@@ -17604,7 +17736,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.registerSt
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var getSdkName = _utilities.constants.getSdkName,ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var isArray = _utilities.utils.isArray,isString = _utilities.utils.isString,isPalinObject = _utilities.utils.isPalinObject,execCallback = _utilities.utils.execCallback;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
@@ -17950,7 +18082,7 @@ function registerStorage(app) {
 }
 
 /***/ }),
-/* 99 */
+/* 102 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/index.js ***!
   \************************************************************************************/
@@ -17958,8 +18090,8 @@ function registerStorage(app) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.registerRealtime = registerRealtime;var _websocketClient = __webpack_require__(/*! ./websocket-client */ 100);
-var _common = __webpack_require__(/*! ./common */ 112);
+Object.defineProperty(exports, "__esModule", { value: true });exports.registerRealtime = registerRealtime;var _websocketClient = __webpack_require__(/*! ./websocket-client */ 103);
+var _common = __webpack_require__(/*! ./common */ 115);
 var hook = {
   target: 'database',
   entity: function entity() {
@@ -17991,7 +18123,7 @@ function registerRealtime(app) {
 }
 
 /***/ }),
-/* 100 */
+/* 103 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/websocket-client.js ***!
   \***********************************************************************************************/
@@ -18046,12 +18178,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.RealtimeWe
 
 
 
-var _virtualWebsocketClient = __webpack_require__(/*! ./virtual-websocket-client */ 101);
-var _message = __webpack_require__(/*! ./message */ 106);
-var _wsEvent = __webpack_require__(/*! ./ws-event */ 111);
-var _error = __webpack_require__(/*! ./error */ 109);
-var _common = __webpack_require__(/*! ./common */ 112);
-var _utils = __webpack_require__(/*! ./utils */ 110);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _virtualWebsocketClient = __webpack_require__(/*! ./virtual-websocket-client */ 104);
+var _message = __webpack_require__(/*! ./message */ 109);
+var _wsEvent = __webpack_require__(/*! ./ws-event */ 114);
+var _error = __webpack_require__(/*! ./error */ 112);
+var _common = __webpack_require__(/*! ./common */ 115);
+var _utils = __webpack_require__(/*! ./utils */ 113);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var WS_READY_STATE = {
   CONNECTING: 0,
   OPEN: 1,
@@ -18748,7 +18880,7 @@ var RealtimeWebSocketClient = function () {
 }();exports.RealtimeWebSocketClient = RealtimeWebSocketClient;
 
 /***/ }),
-/* 101 */
+/* 104 */
 /*!*******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/virtual-websocket-client.js ***!
   \*******************************************************************************************************/
@@ -18799,14 +18931,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.VirtualWeb
 
 
 
-var _lodash = _interopRequireDefault(__webpack_require__(/*! lodash.set */ 102));
-var _lodash2 = _interopRequireDefault(__webpack_require__(/*! lodash.unset */ 103));
-var _lodash3 = _interopRequireDefault(__webpack_require__(/*! lodash.clonedeep */ 104));
-var _message = __webpack_require__(/*! ./message */ 106);
-var _listener = __webpack_require__(/*! ./listener */ 107);
-var _snapshot = __webpack_require__(/*! ./snapshot */ 108);
-var _error = __webpack_require__(/*! ./error */ 109);
-var _utils = __webpack_require__(/*! ./utils */ 110);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};var __spreadArrays = void 0 && (void 0).__spreadArrays || function () {for (var s = 0, i = 0, il = arguments.length; i < il; i++) {s += arguments[i].length;}for (var r = Array(s), k = 0, i = 0; i < il; i++) {for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {r[k] = a[j];}}return r;};
+var _lodash = _interopRequireDefault(__webpack_require__(/*! lodash.set */ 105));
+var _lodash2 = _interopRequireDefault(__webpack_require__(/*! lodash.unset */ 106));
+var _lodash3 = _interopRequireDefault(__webpack_require__(/*! lodash.clonedeep */ 107));
+var _message = __webpack_require__(/*! ./message */ 109);
+var _listener = __webpack_require__(/*! ./listener */ 110);
+var _snapshot = __webpack_require__(/*! ./snapshot */ 111);
+var _error = __webpack_require__(/*! ./error */ 112);
+var _utils = __webpack_require__(/*! ./utils */ 113);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};var __spreadArrays = void 0 && (void 0).__spreadArrays || function () {for (var s = 0, i = 0, il = arguments.length; i < il; i++) {s += arguments[i].length;}for (var r = Array(s), k = 0, i = 0; i < il; i++) {for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {r[k] = a[j];}}return r;};
 var WATCH_STATUS;
 (function (WATCH_STATUS) {
   WATCH_STATUS["LOGGINGIN"] = "LOGGINGIN";
@@ -19700,7 +19832,7 @@ function getPublicEvent(event) {
 }
 
 /***/ }),
-/* 102 */
+/* 105 */
 /*!******************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/lodash.set/index.js ***!
   \******************************************************************/
@@ -20700,7 +20832,7 @@ module.exports = set;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 103 */
+/* 106 */
 /*!********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/lodash.unset/index.js ***!
   \********************************************************************/
@@ -21719,7 +21851,7 @@ module.exports = unset;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 104 */
+/* 107 */
 /*!************************************************!*\
   !*** ./node_modules/lodash.clonedeep/index.js ***!
   \************************************************/
@@ -23475,10 +23607,10 @@ function stubFalse() {
 
 module.exports = cloneDeep;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 2), __webpack_require__(/*! ./../webpack/buildin/module.js */ 105)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 2), __webpack_require__(/*! ./../webpack/buildin/module.js */ 108)(module)))
 
 /***/ }),
-/* 105 */
+/* 108 */
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
   \***********************************/
@@ -23510,7 +23642,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 106 */
+/* 109 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/message.js ***!
   \**************************************************************************************/
@@ -23527,7 +23659,7 @@ function isInitEventMessage(msg) {
 }
 
 /***/ }),
-/* 107 */
+/* 110 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/listener.js ***!
   \***************************************************************************************/
@@ -23552,7 +23684,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.RealtimeLi
 }();exports.RealtimeListener = RealtimeListener;
 
 /***/ }),
-/* 108 */
+/* 111 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/snapshot.js ***!
   \***************************************************************************************/
@@ -23602,7 +23734,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Snapshot =
 }();exports.Snapshot = Snapshot;
 
 /***/ }),
-/* 109 */
+/* 112 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/error.js ***!
   \************************************************************************************/
@@ -23712,7 +23844,7 @@ var ERR_CODE = {
   SDK_DATABASE_REALTIME_LISTENER_UNEXPECTED_FATAL_ERROR: 'SDK_DATABASE_REALTIME_LISTENER_UNEXPECTED_FATAL_ERROR' };exports.ERR_CODE = ERR_CODE;
 
 /***/ }),
-/* 110 */
+/* 113 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/utils.js ***!
   \************************************************************************************/
@@ -23726,7 +23858,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.sleep = vo
 };exports.sleep = sleep;
 
 /***/ }),
-/* 111 */
+/* 114 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/ws-event.js ***!
   \***************************************************************************************/
@@ -23734,7 +23866,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.sleep = vo
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getWSCloseError = exports.CLOSE_EVENT_CODE = exports.CLOSE_EVENT_CODE_INFO = void 0;var _error = __webpack_require__(/*! ./error */ 109);
+Object.defineProperty(exports, "__esModule", { value: true });exports.getWSCloseError = exports.CLOSE_EVENT_CODE = exports.CLOSE_EVENT_CODE_INFO = void 0;var _error = __webpack_require__(/*! ./error */ 112);
 var CLOSE_EVENT_CODE_INFO = {
   1000: {
     code: 1000,
@@ -23872,7 +24004,7 @@ var getWSCloseError = function getWSCloseError(code, reason) {
 };exports.getWSCloseError = getWSCloseError;
 
 /***/ }),
-/* 112 */
+/* 115 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/common.js ***!
   \*************************************************************************************/
@@ -23896,7 +24028,7 @@ function setRuntime(val) {
 }
 
 /***/ }),
-/* 113 */
+/* 116 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/analytics/dist/esm/index.js ***!
   \*************************************************************************************/
@@ -23949,7 +24081,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.registerAn
 
 
 
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 59);var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 62);var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {var c = arguments.length,r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,d;if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;}return c > 3 && r && Object.defineProperty(target, key, r), r;};var __metadata = void 0 && (void 0).__metadata || function (k, v) {if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var ERRORS = _utilities.constants.ERRORS,COMMUNITY_SITE_URL = _utilities.constants.COMMUNITY_SITE_URL;
 var catchErrorsDecorator = _utilities.helpers.catchErrorsDecorator;
 var COMPONENT_NAME = 'analytics';
@@ -24043,7 +24175,7 @@ function registerAnalytics(app) {
 }
 
 /***/ }),
-/* 114 */
+/* 117 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/js-sdk/database/dist/index.esm.js ***!
   \*******************************************************************************************/
@@ -24062,7 +24194,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.registerDa
 
 
 
-var _database = __webpack_require__(/*! @cloudbase/database */ 115);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
+var _database = __webpack_require__(/*! @cloudbase/database */ 118);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
 var COMPONENT_NAME = 'database';
 function database(dbConfig) {
   var _a = this.platform,adapter = _a.adapter,runtime = _a.runtime;
@@ -24100,7 +24232,7 @@ function registerDatabase(app) {
 }
 
 /***/ }),
-/* 115 */
+/* 118 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/index.js ***!
   \************************************************************************************/
@@ -24108,18 +24240,18 @@ function registerDatabase(app) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });Object.defineProperty(exports, "CollectionReference", { enumerable: true, get: function get() {return _collection.CollectionReference;} });Object.defineProperty(exports, "Query", { enumerable: true, get: function get() {return _query2.Query;} });Object.defineProperty(exports, "DocumentReference", { enumerable: true, get: function get() {return _document.DocumentReference;} });exports.Db = void 0;var Geo = _interopRequireWildcard(__webpack_require__(/*! ./geo/index */ 116));
-var _collection = __webpack_require__(/*! ./collection */ 130);
-var _command = __webpack_require__(/*! ./command */ 145);
-var _index2 = __webpack_require__(/*! ./serverDate/index */ 121);
-var _index3 = __webpack_require__(/*! ./regexp/index */ 146);
-var _index4 = __webpack_require__(/*! ./transaction/index */ 147);
-var _logic = __webpack_require__(/*! ./commands/logic */ 137);
-var _query = __webpack_require__(/*! ./commands/query */ 136);
-var _update = __webpack_require__(/*! ./commands/update */ 134);
-var _query2 = __webpack_require__(/*! ./query */ 141);
+Object.defineProperty(exports, "__esModule", { value: true });Object.defineProperty(exports, "CollectionReference", { enumerable: true, get: function get() {return _collection.CollectionReference;} });Object.defineProperty(exports, "Query", { enumerable: true, get: function get() {return _query2.Query;} });Object.defineProperty(exports, "DocumentReference", { enumerable: true, get: function get() {return _document.DocumentReference;} });exports.Db = void 0;var Geo = _interopRequireWildcard(__webpack_require__(/*! ./geo/index */ 119));
+var _collection = __webpack_require__(/*! ./collection */ 133);
+var _command = __webpack_require__(/*! ./command */ 148);
+var _index2 = __webpack_require__(/*! ./serverDate/index */ 124);
+var _index3 = __webpack_require__(/*! ./regexp/index */ 149);
+var _index4 = __webpack_require__(/*! ./transaction/index */ 150);
+var _logic = __webpack_require__(/*! ./commands/logic */ 140);
+var _query = __webpack_require__(/*! ./commands/query */ 139);
+var _update = __webpack_require__(/*! ./commands/update */ 137);
+var _query2 = __webpack_require__(/*! ./query */ 144);
 
-var _document = __webpack_require__(/*! ./document */ 131);function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}
+var _document = __webpack_require__(/*! ./document */ 134);function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}
 var Db = function () {
   function Db(config) {
     this.config = config;
@@ -24150,7 +24282,7 @@ var Db = function () {
 }();exports.Db = Db;
 
 /***/ }),
-/* 116 */
+/* 119 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/index.js ***!
   \****************************************************************************************/
@@ -24158,15 +24290,15 @@ var Db = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });var _point = __webpack_require__(/*! ./point */ 117);Object.keys(_point).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _point[key];} });});
-var _lineString = __webpack_require__(/*! ./lineString */ 125);Object.keys(_lineString).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _lineString[key];} });});
-var _polygon = __webpack_require__(/*! ./polygon */ 126);Object.keys(_polygon).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _polygon[key];} });});
-var _multiPoint = __webpack_require__(/*! ./multiPoint */ 127);Object.keys(_multiPoint).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _multiPoint[key];} });});
-var _multiLineString = __webpack_require__(/*! ./multiLineString */ 128);Object.keys(_multiLineString).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _multiLineString[key];} });});
-var _multiPolygon = __webpack_require__(/*! ./multiPolygon */ 129);Object.keys(_multiPolygon).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _multiPolygon[key];} });});
+Object.defineProperty(exports, "__esModule", { value: true });var _point = __webpack_require__(/*! ./point */ 120);Object.keys(_point).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _point[key];} });});
+var _lineString = __webpack_require__(/*! ./lineString */ 128);Object.keys(_lineString).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _lineString[key];} });});
+var _polygon = __webpack_require__(/*! ./polygon */ 129);Object.keys(_polygon).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _polygon[key];} });});
+var _multiPoint = __webpack_require__(/*! ./multiPoint */ 130);Object.keys(_multiPoint).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _multiPoint[key];} });});
+var _multiLineString = __webpack_require__(/*! ./multiLineString */ 131);Object.keys(_multiLineString).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _multiLineString[key];} });});
+var _multiPolygon = __webpack_require__(/*! ./multiPolygon */ 132);Object.keys(_multiPolygon).forEach(function (key) {if (key === "default" || key === "__esModule") return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _multiPolygon[key];} });});
 
 /***/ }),
-/* 117 */
+/* 120 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/point.js ***!
   \****************************************************************************************/
@@ -24174,9 +24306,9 @@ var _multiPolygon = __webpack_require__(/*! ./multiPolygon */ 129);Object.keys(_
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.Point = void 0;var _validate = __webpack_require__(/*! ../validate */ 118);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
+Object.defineProperty(exports, "__esModule", { value: true });exports.Point = void 0;var _validate = __webpack_require__(/*! ../validate */ 121);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
 var Point = function () {
   function Point(longitude, latitude) {
     _validate.Validate.isGeopoint('longitude', longitude);
@@ -24222,7 +24354,7 @@ var Point = function () {
 }();exports.Point = Point;
 
 /***/ }),
-/* 118 */
+/* 121 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/validate.js ***!
   \***************************************************************************************/
@@ -24230,8 +24362,8 @@ var Point = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.Validate = void 0;var _constant = __webpack_require__(/*! ./constant */ 119);
-var _util = __webpack_require__(/*! ./util */ 120);
+Object.defineProperty(exports, "__esModule", { value: true });exports.Validate = void 0;var _constant = __webpack_require__(/*! ./constant */ 122);
+var _util = __webpack_require__(/*! ./util */ 123);
 var Validate = function () {
   function Validate() {
   }
@@ -24288,7 +24420,7 @@ var Validate = function () {
 }();exports.Validate = Validate;
 
 /***/ }),
-/* 119 */
+/* 122 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/constant.js ***!
   \***************************************************************************************/
@@ -24362,7 +24494,7 @@ var QueryType;exports.QueryType = QueryType;
 })(QueryType || (exports.QueryType = QueryType = {}));
 
 /***/ }),
-/* 120 */
+/* 123 */
 /*!***********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/util.js ***!
   \***********************************************************************************/
@@ -24386,9 +24518,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Util = voi
 
 
 
-var _constant = __webpack_require__(/*! ./constant */ 119);
-var _index = __webpack_require__(/*! ./geo/index */ 116);
-var _index2 = __webpack_require__(/*! ./serverDate/index */ 121);var __read = void 0 && (void 0).__read || function (o, n) {var m = typeof Symbol === "function" && o[Symbol.iterator];if (!m) return o;var i = m.call(o),r,ar = [],e;try {while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {ar.push(r.value);}} catch (error) {e = { error: error };} finally {try {if (r && !r.done && (m = i["return"])) m.call(i);} finally {if (e) throw e.error;}}return ar;};
+var _constant = __webpack_require__(/*! ./constant */ 122);
+var _index = __webpack_require__(/*! ./geo/index */ 119);
+var _index2 = __webpack_require__(/*! ./serverDate/index */ 124);var __read = void 0 && (void 0).__read || function (o, n) {var m = typeof Symbol === "function" && o[Symbol.iterator];if (!m) return o;var i = m.call(o),r,ar = [],e;try {while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {ar.push(r.value);}} catch (error) {e = { error: error };} finally {try {if (r && !r.done && (m = i["return"])) m.call(i);} finally {if (e) throw e.error;}}return ar;};
 var Util = function () {
   function Util() {
   }
@@ -24513,7 +24645,7 @@ var Util = function () {
 }();exports.Util = Util;
 
 /***/ }),
-/* 121 */
+/* 124 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serverDate/index.js ***!
   \***********************************************************************************************/
@@ -24521,7 +24653,7 @@ var Util = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.ServerDateConstructor = ServerDateConstructor;exports.ServerDate = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
+Object.defineProperty(exports, "__esModule", { value: true });exports.ServerDateConstructor = ServerDateConstructor;exports.ServerDate = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
 var ServerDate = function () {
   function ServerDate(_a) {
     var _b = (_a === void 0 ? {} : _a).offset,offset = _b === void 0 ? 0 : _b;
@@ -24549,7 +24681,7 @@ function ServerDateConstructor(opt) {
 }
 
 /***/ }),
-/* 122 */
+/* 125 */
 /*!********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/helper/symbol.js ***!
   \********************************************************************************************/
@@ -24557,7 +24689,7 @@ function ServerDateConstructor(opt) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });var _exportNames = { SYMBOL_UNSET_FIELD_NAME: true, SYMBOL_UPDATE_COMMAND: true, SYMBOL_QUERY_COMMAND: true, SYMBOL_LOGIC_COMMAND: true, SYMBOL_GEO_POINT: true, SYMBOL_GEO_LINE_STRING: true, SYMBOL_GEO_POLYGON: true, SYMBOL_GEO_MULTI_POINT: true, SYMBOL_GEO_MULTI_LINE_STRING: true, SYMBOL_GEO_MULTI_POLYGON: true, SYMBOL_SERVER_DATE: true, SYMBOL_REGEXP: true };exports.SYMBOL_REGEXP = exports.SYMBOL_SERVER_DATE = exports.SYMBOL_GEO_MULTI_POLYGON = exports.SYMBOL_GEO_MULTI_LINE_STRING = exports.SYMBOL_GEO_MULTI_POINT = exports.SYMBOL_GEO_POLYGON = exports.SYMBOL_GEO_LINE_STRING = exports.SYMBOL_GEO_POINT = exports.SYMBOL_LOGIC_COMMAND = exports.SYMBOL_QUERY_COMMAND = exports.SYMBOL_UPDATE_COMMAND = exports.SYMBOL_UNSET_FIELD_NAME = void 0;var _symbol = _interopRequireWildcard(__webpack_require__(/*! ../utils/symbol */ 123));
+Object.defineProperty(exports, "__esModule", { value: true });var _exportNames = { SYMBOL_UNSET_FIELD_NAME: true, SYMBOL_UPDATE_COMMAND: true, SYMBOL_QUERY_COMMAND: true, SYMBOL_LOGIC_COMMAND: true, SYMBOL_GEO_POINT: true, SYMBOL_GEO_LINE_STRING: true, SYMBOL_GEO_POLYGON: true, SYMBOL_GEO_MULTI_POINT: true, SYMBOL_GEO_MULTI_LINE_STRING: true, SYMBOL_GEO_MULTI_POLYGON: true, SYMBOL_SERVER_DATE: true, SYMBOL_REGEXP: true };exports.SYMBOL_REGEXP = exports.SYMBOL_SERVER_DATE = exports.SYMBOL_GEO_MULTI_POLYGON = exports.SYMBOL_GEO_MULTI_LINE_STRING = exports.SYMBOL_GEO_MULTI_POINT = exports.SYMBOL_GEO_POLYGON = exports.SYMBOL_GEO_LINE_STRING = exports.SYMBOL_GEO_POINT = exports.SYMBOL_LOGIC_COMMAND = exports.SYMBOL_QUERY_COMMAND = exports.SYMBOL_UPDATE_COMMAND = exports.SYMBOL_UNSET_FIELD_NAME = void 0;var _symbol = _interopRequireWildcard(__webpack_require__(/*! ../utils/symbol */ 126));
 Object.keys(_symbol).forEach(function (key) {if (key === "default" || key === "__esModule") return;if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;Object.defineProperty(exports, key, { enumerable: true, get: function get() {return _symbol[key];} });});function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}
 var SYMBOL_UNSET_FIELD_NAME = _symbol.default.for('UNSET_FIELD_NAME');exports.SYMBOL_UNSET_FIELD_NAME = SYMBOL_UNSET_FIELD_NAME;
 var SYMBOL_UPDATE_COMMAND = _symbol.default.for('UPDATE_COMMAND');exports.SYMBOL_UPDATE_COMMAND = SYMBOL_UPDATE_COMMAND;
@@ -24573,7 +24705,7 @@ var SYMBOL_SERVER_DATE = _symbol.default.for('SERVER_DATE');exports.SYMBOL_SERVE
 var SYMBOL_REGEXP = _symbol.default.for('REGEXP');exports.SYMBOL_REGEXP = SYMBOL_REGEXP;
 
 /***/ }),
-/* 123 */
+/* 126 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/utils/symbol.js ***!
   \*******************************************************************************************/
@@ -24638,7 +24770,7 @@ var InternalSymbol = function (_super) {
 InternalSymbol;exports.default = _default;
 
 /***/ }),
-/* 124 */
+/* 127 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/utils/type.js ***!
   \*****************************************************************************************/
@@ -24646,7 +24778,7 @@ InternalSymbol;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.isPlainObject = exports.isInternalObject = exports.isRegExp = exports.isDate = exports.isArray = exports.isFunction = exports.isPromise = exports.isNumber = exports.isString = exports.isObject = exports.getType = void 0;var _symbol = __webpack_require__(/*! ./symbol */ 123);
+Object.defineProperty(exports, "__esModule", { value: true });exports.isPlainObject = exports.isInternalObject = exports.isRegExp = exports.isDate = exports.isArray = exports.isFunction = exports.isPromise = exports.isNumber = exports.isString = exports.isObject = exports.getType = void 0;var _symbol = __webpack_require__(/*! ./symbol */ 126);
 var getType = function getType(x) {return Object.prototype.toString.call(x).slice(8, -1).toLowerCase();};exports.getType = getType;
 var isObject = function isObject(x) {return getType(x) === 'object';};exports.isObject = isObject;
 var isString = function isString(x) {return getType(x) === 'string';};exports.isString = isString;
@@ -24668,7 +24800,7 @@ var isPlainObject = function isPlainObject(obj) {
 };exports.isPlainObject = isPlainObject;
 
 /***/ }),
-/* 125 */
+/* 128 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/lineString.js ***!
   \*********************************************************************************************/
@@ -24687,9 +24819,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.LineString
 
 
 
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _point = __webpack_require__(/*! ./point */ 117);
-var _type = __webpack_require__(/*! ../utils/type */ 124);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _point = __webpack_require__(/*! ./point */ 120);
+var _type = __webpack_require__(/*! ../utils/type */ 127);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
 var LineString = function () {
   function LineString(points) {
     if (!(0, _type.isArray)(points)) {
@@ -24760,7 +24892,7 @@ var LineString = function () {
 }();exports.LineString = LineString;
 
 /***/ }),
-/* 126 */
+/* 129 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/polygon.js ***!
   \******************************************************************************************/
@@ -24779,9 +24911,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Polygon = 
 
 
 
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _lineString = __webpack_require__(/*! ./lineString */ 125);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _lineString = __webpack_require__(/*! ./lineString */ 128);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
 var Polygon = function () {
   function Polygon(lines) {
     if (!(0, _type.isArray)(lines)) {
@@ -24875,7 +25007,7 @@ var Polygon = function () {
 }();exports.Polygon = Polygon;
 
 /***/ }),
-/* 127 */
+/* 130 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/multiPoint.js ***!
   \*********************************************************************************************/
@@ -24894,9 +25026,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.MultiPoint
 
 
 
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _point = __webpack_require__(/*! ./point */ 117);
-var _type = __webpack_require__(/*! ../utils/type */ 124);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _point = __webpack_require__(/*! ./point */ 120);
+var _type = __webpack_require__(/*! ../utils/type */ 127);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
 var MultiPoint = function () {
   function MultiPoint(points) {
     if (!(0, _type.isArray)(points)) {
@@ -24960,7 +25092,7 @@ var MultiPoint = function () {
 }();exports.MultiPoint = MultiPoint;
 
 /***/ }),
-/* 128 */
+/* 131 */
 /*!**************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/multiLineString.js ***!
   \**************************************************************************************************/
@@ -24979,9 +25111,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.MultiLineS
 
 
 
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _lineString = __webpack_require__(/*! ./lineString */ 125);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _lineString = __webpack_require__(/*! ./lineString */ 128);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
 var MultiLineString = function () {
   function MultiLineString(lines) {
     if (!(0, _type.isArray)(lines)) {
@@ -25061,7 +25193,7 @@ var MultiLineString = function () {
 }();exports.MultiLineString = MultiLineString;
 
 /***/ }),
-/* 129 */
+/* 132 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/multiPolygon.js ***!
   \***********************************************************************************************/
@@ -25080,9 +25212,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.MultiPolyg
 
 
 
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _polygon = __webpack_require__(/*! ./polygon */ 126);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _polygon = __webpack_require__(/*! ./polygon */ 129);var __values = void 0 && (void 0).__values || function (o) {var s = typeof Symbol === "function" && Symbol.iterator,m = s && o[s],i = 0;if (m) return m.call(o);if (o && typeof o.length === "number") return { next: function next() {if (o && i >= o.length) o = void 0;return { value: o && o[i++], done: !o };} };throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");};
 var MultiPolygon = function () {
   function MultiPolygon(polygons) {
     var e_1, _a;
@@ -25189,7 +25321,7 @@ var MultiPolygon = function () {
 }();exports.MultiPolygon = MultiPolygon;
 
 /***/ }),
-/* 130 */
+/* 133 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/collection.js ***!
   \*****************************************************************************************/
@@ -25210,9 +25342,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Collection
 
 
 
-var _document = __webpack_require__(/*! ./document */ 131);
-var _query = __webpack_require__(/*! ./query */ 141);
-var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 143));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();
+var _document = __webpack_require__(/*! ./document */ 134);
+var _query = __webpack_require__(/*! ./query */ 144);
+var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 146));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();
 var CollectionReference = function (_super) {
   __extends(CollectionReference, _super);
   function CollectionReference(db, coll) {
@@ -25242,7 +25374,7 @@ var CollectionReference = function (_super) {
 }(_query.Query);exports.CollectionReference = CollectionReference;
 
 /***/ }),
-/* 131 */
+/* 134 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/document.js ***!
   \***************************************************************************************/
@@ -25261,14 +25393,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.DocumentRe
 
 
 
-var _util = __webpack_require__(/*! ./lib/util */ 132);
-var _index = __webpack_require__(/*! ./index */ 115);
-var _util2 = __webpack_require__(/*! ./util */ 120);
-var _update = __webpack_require__(/*! ./serializer/update */ 133);
-var _datatype = __webpack_require__(/*! ./serializer/datatype */ 139);
-var _update2 = __webpack_require__(/*! ./commands/update */ 134);
-var _constant = __webpack_require__(/*! ./constant */ 119);
-var _utils = __webpack_require__(/*! ./utils/utils */ 140);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
+var _util = __webpack_require__(/*! ./lib/util */ 135);
+var _index = __webpack_require__(/*! ./index */ 118);
+var _util2 = __webpack_require__(/*! ./util */ 123);
+var _update = __webpack_require__(/*! ./serializer/update */ 136);
+var _datatype = __webpack_require__(/*! ./serializer/datatype */ 142);
+var _update2 = __webpack_require__(/*! ./commands/update */ 137);
+var _constant = __webpack_require__(/*! ./constant */ 122);
+var _utils = __webpack_require__(/*! ./utils/utils */ 143);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
 var DocumentReference = function () {
   function DocumentReference(db, coll, docID, projection) {
     var _this = this;
@@ -25501,7 +25633,7 @@ var DocumentReference = function () {
 }();exports.DocumentReference = DocumentReference;
 
 /***/ }),
-/* 132 */
+/* 135 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/lib/util.js ***!
   \***************************************************************************************/
@@ -25534,7 +25666,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.createProm
 };exports.createPromiseCallback = createPromiseCallback;
 
 /***/ }),
-/* 133 */
+/* 136 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/update.js ***!
   \************************************************************************************************/
@@ -25542,11 +25674,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.createProm
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.UpdateSerializer = void 0;var _update = __webpack_require__(/*! ../commands/update */ 134);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _operatorMap = __webpack_require__(/*! ../operator-map */ 135);
-var _common = __webpack_require__(/*! ./common */ 138);
+Object.defineProperty(exports, "__esModule", { value: true });exports.UpdateSerializer = void 0;var _update = __webpack_require__(/*! ../commands/update */ 137);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _operatorMap = __webpack_require__(/*! ../operator-map */ 138);
+var _common = __webpack_require__(/*! ./common */ 141);
 var UpdateSerializer = function () {
   function UpdateSerializer() {
   }
@@ -25682,7 +25814,7 @@ var UpdateSerializer = function () {
 }();exports.UpdateSerializer = UpdateSerializer;
 
 /***/ }),
-/* 134 */
+/* 137 */
 /*!**********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/commands/update.js ***!
   \**********************************************************************************************/
@@ -25690,7 +25822,7 @@ var UpdateSerializer = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.isUpdateCommand = isUpdateCommand;exports.isKnownUpdateCommand = isKnownUpdateCommand;exports.default = exports.UpdateCommand = exports.UPDATE_COMMANDS_LITERAL = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
+Object.defineProperty(exports, "__esModule", { value: true });exports.isUpdateCommand = isUpdateCommand;exports.isKnownUpdateCommand = isKnownUpdateCommand;exports.default = exports.UpdateCommand = exports.UPDATE_COMMANDS_LITERAL = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
 var UPDATE_COMMANDS_LITERAL;exports.UPDATE_COMMANDS_LITERAL = UPDATE_COMMANDS_LITERAL;
 (function (UPDATE_COMMANDS_LITERAL) {
   UPDATE_COMMANDS_LITERAL["SET"] = "set";
@@ -25738,7 +25870,7 @@ function isKnownUpdateCommand(object) {
 UpdateCommand;exports.default = _default;
 
 /***/ }),
-/* 135 */
+/* 138 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/operator-map.js ***!
   \*******************************************************************************************/
@@ -25746,9 +25878,9 @@ UpdateCommand;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.operatorToString = operatorToString;exports.OperatorMap = void 0;var _query = __webpack_require__(/*! ./commands/query */ 136);
-var _logic = __webpack_require__(/*! ./commands/logic */ 137);
-var _update = __webpack_require__(/*! ./commands/update */ 134);
+Object.defineProperty(exports, "__esModule", { value: true });exports.operatorToString = operatorToString;exports.OperatorMap = void 0;var _query = __webpack_require__(/*! ./commands/query */ 139);
+var _logic = __webpack_require__(/*! ./commands/logic */ 140);
+var _update = __webpack_require__(/*! ./commands/update */ 137);
 var OperatorMap = {};exports.OperatorMap = OperatorMap;
 for (var key in _query.QUERY_COMMANDS_LITERAL) {
   OperatorMap[key] = '$' + key;
@@ -25768,7 +25900,7 @@ function operatorToString(operator) {
 }
 
 /***/ }),
-/* 136 */
+/* 139 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/commands/query.js ***!
   \*********************************************************************************************/
@@ -25789,10 +25921,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.isQueryCom
 
 
 
-var _logic = __webpack_require__(/*! ./logic */ 137);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _index = __webpack_require__(/*! ../geo/index */ 116);
-var _type = __webpack_require__(/*! ../utils/type */ 124);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();
+var _logic = __webpack_require__(/*! ./logic */ 140);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _index = __webpack_require__(/*! ../geo/index */ 119);
+var _type = __webpack_require__(/*! ../utils/type */ 127);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();
 var EQ = 'eq';exports.EQ = EQ;
 var NEQ = 'neq';exports.NEQ = NEQ;
 var GT = 'gt';exports.GT = GT;
@@ -25930,7 +26062,7 @@ function isComparisonCommand(object) {
 QueryCommand;exports.default = _default;
 
 /***/ }),
-/* 137 */
+/* 140 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/commands/logic.js ***!
   \*********************************************************************************************/
@@ -25938,8 +26070,8 @@ QueryCommand;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.isLogicCommand = isLogicCommand;exports.isKnownLogicCommand = isKnownLogicCommand;exports.default = exports.LogicCommand = exports.LOGIC_COMMANDS_LITERAL = exports.NOR = exports.NOT = exports.OR = exports.AND = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _query = __webpack_require__(/*! ./query */ 136);
+Object.defineProperty(exports, "__esModule", { value: true });exports.isLogicCommand = isLogicCommand;exports.isKnownLogicCommand = isKnownLogicCommand;exports.default = exports.LogicCommand = exports.LOGIC_COMMANDS_LITERAL = exports.NOR = exports.NOT = exports.OR = exports.AND = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _query = __webpack_require__(/*! ./query */ 139);
 var AND = 'and';exports.AND = AND;
 var OR = 'or';exports.OR = OR;
 var NOT = 'not';exports.NOT = NOT;
@@ -26024,7 +26156,7 @@ function isKnownLogicCommand(object) {
 LogicCommand;exports.default = _default;
 
 /***/ }),
-/* 138 */
+/* 141 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/common.js ***!
   \************************************************************************************************/
@@ -26063,8 +26195,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.flattenQue
 
 
 
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _datatype = __webpack_require__(/*! ./datatype */ 139);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __read = void 0 && (void 0).__read || function (o, n) {var m = typeof Symbol === "function" && o[Symbol.iterator];if (!m) return o;var i = m.call(o),r,ar = [],e;try {while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {ar.push(r.value);}} catch (error) {e = { error: error };} finally {try {if (r && !r.done && (m = i["return"])) m.call(i);} finally {if (e) throw e.error;}}return ar;};var __spread = void 0 && (void 0).__spread || function () {for (var ar = [], i = 0; i < arguments.length; i++) {ar = ar.concat(__read(arguments[i]));}return ar;};
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _datatype = __webpack_require__(/*! ./datatype */ 142);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __read = void 0 && (void 0).__read || function (o, n) {var m = typeof Symbol === "function" && o[Symbol.iterator];if (!m) return o;var i = m.call(o),r,ar = [],e;try {while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {ar.push(r.value);}} catch (error) {e = { error: error };} finally {try {if (r && !r.done && (m = i["return"])) m.call(i);} finally {if (e) throw e.error;}}return ar;};var __spread = void 0 && (void 0).__spread || function () {for (var ar = [], i = 0; i < arguments.length; i++) {ar = ar.concat(__read(arguments[i]));}return ar;};
 function flatten(query, shouldPreserverObject, parents, visited) {
   var cloned = __assign({}, query);
   for (var key in query) {
@@ -26147,7 +26279,7 @@ function decodeInternalDataType(object) {
 }
 
 /***/ }),
-/* 139 */
+/* 142 */
 /*!**************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/datatype.js ***!
   \**************************************************************************************************/
@@ -26186,10 +26318,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.serialize 
 
 
 
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _index = __webpack_require__(/*! ../geo/index */ 116);
-var _index2 = __webpack_require__(/*! ../serverDate/index */ 121);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __read = void 0 && (void 0).__read || function (o, n) {var m = typeof Symbol === "function" && o[Symbol.iterator];if (!m) return o;var i = m.call(o),r,ar = [],e;try {while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {ar.push(r.value);}} catch (error) {e = { error: error };} finally {try {if (r && !r.done && (m = i["return"])) m.call(i);} finally {if (e) throw e.error;}}return ar;};var __spread = void 0 && (void 0).__spread || function () {for (var ar = [], i = 0; i < arguments.length; i++) {ar = ar.concat(__read(arguments[i]));}return ar;};
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _index = __webpack_require__(/*! ../geo/index */ 119);
+var _index2 = __webpack_require__(/*! ../serverDate/index */ 124);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __read = void 0 && (void 0).__read || function (o, n) {var m = typeof Symbol === "function" && o[Symbol.iterator];if (!m) return o;var i = m.call(o),r,ar = [],e;try {while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {ar.push(r.value);}} catch (error) {e = { error: error };} finally {try {if (r && !r.done && (m = i["return"])) m.call(i);} finally {if (e) throw e.error;}}return ar;};var __spread = void 0 && (void 0).__spread || function () {for (var ar = [], i = 0; i < arguments.length; i++) {ar = ar.concat(__read(arguments[i]));}return ar;};
 function serialize(val) {
   return serializeHelper(val, [val]);
 }
@@ -26279,7 +26411,7 @@ function deserialize(object) {
 }
 
 /***/ }),
-/* 140 */
+/* 143 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/utils/utils.js ***!
   \******************************************************************************************/
@@ -26287,7 +26419,7 @@ function deserialize(object) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getWsInstance = getWsInstance;exports.autoCount = exports.sleep = void 0;var _ = __webpack_require__(/*! ../ */ 115);
+Object.defineProperty(exports, "__esModule", { value: true });exports.getWsInstance = getWsInstance;exports.autoCount = exports.sleep = void 0;var _ = __webpack_require__(/*! ../ */ 118);
 var sleep = function sleep(ms) {
   if (ms === void 0) {ms = 0;}
   return new Promise(function (r) {return setTimeout(r, ms);});
@@ -26322,7 +26454,7 @@ function getWsInstance(db) {
 }
 
 /***/ }),
-/* 141 */
+/* 144 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/query.js ***!
   \************************************************************************************/
@@ -26341,15 +26473,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Query = vo
 
 
 
-var _util = __webpack_require__(/*! ./lib/util */ 132);
-var _constant = __webpack_require__(/*! ./constant */ 119);
-var _index = __webpack_require__(/*! ./index */ 115);
-var _validate = __webpack_require__(/*! ./validate */ 118);
-var _util2 = __webpack_require__(/*! ./util */ 120);
-var _query = __webpack_require__(/*! ./serializer/query */ 142);
-var _update = __webpack_require__(/*! ./serializer/update */ 133);
+var _util = __webpack_require__(/*! ./lib/util */ 135);
+var _constant = __webpack_require__(/*! ./constant */ 122);
+var _index = __webpack_require__(/*! ./index */ 118);
+var _validate = __webpack_require__(/*! ./validate */ 121);
+var _util2 = __webpack_require__(/*! ./util */ 123);
+var _query = __webpack_require__(/*! ./serializer/query */ 145);
+var _update = __webpack_require__(/*! ./serializer/update */ 136);
 
-var _utils = __webpack_require__(/*! ./utils/utils */ 140);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
+var _utils = __webpack_require__(/*! ./utils/utils */ 143);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};
 var Query = function () {
   function Query(db, coll, fieldFilters, fieldOrders, queryOptions) {
     var _this = this;
@@ -26580,7 +26712,7 @@ var Query = function () {
 }();exports.Query = Query;
 
 /***/ }),
-/* 142 */
+/* 145 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/query.js ***!
   \***********************************************************************************************/
@@ -26588,12 +26720,12 @@ var Query = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.QuerySerializer = void 0;var _query = __webpack_require__(/*! ../commands/query */ 136);
-var _logic = __webpack_require__(/*! ../commands/logic */ 137);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
-var _type = __webpack_require__(/*! ../utils/type */ 124);
-var _operatorMap = __webpack_require__(/*! ../operator-map */ 135);
-var _common = __webpack_require__(/*! ./common */ 138);
+Object.defineProperty(exports, "__esModule", { value: true });exports.QuerySerializer = void 0;var _query = __webpack_require__(/*! ../commands/query */ 139);
+var _logic = __webpack_require__(/*! ../commands/logic */ 140);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
+var _type = __webpack_require__(/*! ../utils/type */ 127);
+var _operatorMap = __webpack_require__(/*! ../operator-map */ 138);
+var _common = __webpack_require__(/*! ./common */ 141);
 var QuerySerializer = function () {
   function QuerySerializer() {
   }
@@ -26819,7 +26951,7 @@ var QueryEncoder = function () {
 }();
 
 /***/ }),
-/* 143 */
+/* 146 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/aggregate.js ***!
   \****************************************************************************************/
@@ -26863,9 +26995,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _index = __webpack_require__(/*! ./index */ 115);
-var _bson = __webpack_require__(/*! bson */ 144);
-var _query = __webpack_require__(/*! ./serializer/query */ 142);var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _index = __webpack_require__(/*! ./index */ 118);
+var _bson = __webpack_require__(/*! bson */ 147);
+var _query = __webpack_require__(/*! ./serializer/query */ 145);var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var Aggregation = function () {
   function Aggregation(db, collectionName) {
     this._stages = [];
@@ -26973,7 +27105,7 @@ var Aggregation = function () {
 Aggregation;exports.default = _default;
 
 /***/ }),
-/* 144 */
+/* 147 */
 /*!****************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/bson/dist/bson.browser.esm.js ***!
   \****************************************************************************/
@@ -34452,7 +34584,7 @@ BSON;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 145 */
+/* 148 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/command.js ***!
   \**************************************************************************************/
@@ -34460,11 +34592,11 @@ BSON;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = exports.Command = void 0;var _query = __webpack_require__(/*! ./commands/query */ 136);
-var _logic = __webpack_require__(/*! ./commands/logic */ 137);
-var _update = __webpack_require__(/*! ./commands/update */ 134);
-var _type = __webpack_require__(/*! ./utils/type */ 124);
-var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 143));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = exports.Command = void 0;var _query = __webpack_require__(/*! ./commands/query */ 139);
+var _logic = __webpack_require__(/*! ./commands/logic */ 140);
+var _update = __webpack_require__(/*! ./commands/update */ 137);
+var _type = __webpack_require__(/*! ./utils/type */ 127);
+var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 146));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var Command = {
   eq: function eq(val) {
     return new _query.QueryCommand(_query.QUERY_COMMANDS_LITERAL.EQ, [val]);
@@ -34758,7 +34890,7 @@ var ProjectionOperator = function () {
 Command;exports.default = _default;
 
 /***/ }),
-/* 146 */
+/* 149 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/regexp/index.js ***!
   \*******************************************************************************************/
@@ -34766,7 +34898,7 @@ Command;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.RegExpConstructor = RegExpConstructor;exports.RegExp = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 122);
+Object.defineProperty(exports, "__esModule", { value: true });exports.RegExpConstructor = RegExpConstructor;exports.RegExp = void 0;var _symbol = __webpack_require__(/*! ../helper/symbol */ 125);
 var RegExp = function () {
   function RegExp(_a) {
     var regexp = _a.regexp,options = _a.options;
@@ -34797,7 +34929,7 @@ function RegExpConstructor(param) {
 }
 
 /***/ }),
-/* 147 */
+/* 150 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/index.js ***!
   \************************************************************************************************/
@@ -34841,9 +34973,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.startTrans
 
 
 
-var _index = __webpack_require__(/*! ../index */ 115);
-var _collection = __webpack_require__(/*! ./collection */ 148);
-var _code = __webpack_require__(/*! ../const/code */ 150);var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _index = __webpack_require__(/*! ../index */ 118);
+var _collection = __webpack_require__(/*! ./collection */ 151);
+var _code = __webpack_require__(/*! ../const/code */ 153);var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var START = 'database.startTransaction';
 var COMMIT = 'database.commitTransaction';
 var ABORT = 'database.abortTransaction';
@@ -35017,7 +35149,7 @@ function runTransaction(callback, times) {
 }
 
 /***/ }),
-/* 148 */
+/* 151 */
 /*!*****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/collection.js ***!
   \*****************************************************************************************************/
@@ -35038,8 +35170,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Collection
 
 
 
-var _document = __webpack_require__(/*! ./document */ 149);
-var _query = __webpack_require__(/*! ./query */ 151);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();
+var _document = __webpack_require__(/*! ./document */ 152);
+var _query = __webpack_require__(/*! ./query */ 154);var __extends = void 0 && (void 0).__extends || function () {var _extendStatics = function extendStatics(d, b) {_extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {d.__proto__ = b;} || function (d, b) {for (var p in b) {if (b.hasOwnProperty(p)) d[p] = b[p];}};return _extendStatics(d, b);};return function (d, b) {_extendStatics(d, b);function __() {this.constructor = d;}d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());};}();
 var CollectionReference = function (_super) {
   __extends(CollectionReference, _super);
   function CollectionReference(transaction, coll) {
@@ -35070,7 +35202,7 @@ var CollectionReference = function (_super) {
 }(_query.Query);exports.CollectionReference = CollectionReference;
 
 /***/ }),
-/* 149 */
+/* 152 */
 /*!***************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/document.js ***!
   \***************************************************************************************************/
@@ -35125,11 +35257,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.DocumentRe
 
 
 
-var _bson = __webpack_require__(/*! bson */ 144);
-var _code = __webpack_require__(/*! ../const/code */ 150);
-var _update = __webpack_require__(/*! ../serializer/update */ 133);
-var _datatype = __webpack_require__(/*! ../serializer/datatype */ 139);
-var _util = __webpack_require__(/*! ../util */ 120);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
+var _bson = __webpack_require__(/*! bson */ 147);
+var _code = __webpack_require__(/*! ../const/code */ 153);
+var _update = __webpack_require__(/*! ../serializer/update */ 136);
+var _datatype = __webpack_require__(/*! ../serializer/datatype */ 142);
+var _util = __webpack_require__(/*! ../util */ 123);var __assign = void 0 && (void 0).__assign || function () {__assign = Object.assign || function (t) {for (var s, i = 1, n = arguments.length; i < n; i++) {s = arguments[i];for (var p in s) {if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];}}return t;};return __assign.apply(this, arguments);};var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};var __generator = void 0 && (void 0).__generator || function (thisArg, body) {var _ = { label: 0, sent: function sent() {if (t[0] & 1) throw t[1];return t[1];}, trys: [], ops: [] },f,y,t,g;return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {return this;}), g;function verb(n) {return function (v) {return step([n, v]);};}function step(op) {if (f) throw new TypeError("Generator is already executing.");while (_) {try {if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;if (y = 0, t) op = [op[0] & 2, t.value];switch (op[0]) {case 0:case 1:t = op;break;case 4:_.label++;return { value: op[1], done: false };case 5:_.label++;y = op[1];op = [0];continue;case 7:op = _.ops.pop();_.trys.pop();continue;default:if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {_ = 0;continue;}if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {_.label = op[1];break;}if (op[0] === 6 && _.label < t[1]) {_.label = t[1];t = op;break;}if (t && _.label < t[2]) {_.label = t[2];_.ops.push(op);break;}if (t[2]) _.ops.pop();_.trys.pop();continue;}op = body.call(thisArg, _);} catch (e) {op = [6, e];y = 0;} finally {f = t = 0;}}if (op[0] & 5) throw op[1];return { value: op[0] ? op[1] : void 0, done: true };}};
 var GET_DOC = 'database.getInTransaction';
 var UPDATE_DOC = 'database.updateDocInTransaction';
 var DELETE_DOC = 'database.deleteDocInTransaction';
@@ -35282,7 +35414,7 @@ var DocumentReference = function () {
 }();exports.DocumentReference = DocumentReference;
 
 /***/ }),
-/* 150 */
+/* 153 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/const/code.js ***!
   \*****************************************************************************************/
@@ -35320,7 +35452,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.ERRORS = v
     message: 'database transaction conflict' } };exports.ERRORS = ERRORS;
 
 /***/ }),
-/* 151 */
+/* 154 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/query.js ***!
   \************************************************************************************************/
@@ -35337,7 +35469,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Query = vo
 }();exports.Query = Query;
 
 /***/ }),
-/* 152 */
+/* 155 */
 /*!*****************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/js-sdk/package.json ***!
   \*****************************************************************************/
@@ -35347,24 +35479,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.Query = vo
 module.exports = JSON.parse("{\"name\":\"@cloudbase/js-sdk\",\"version\":\"1.7.2\",\"description\":\"cloudbase javascript sdk\",\"main\":\"dist/index.cjs.js\",\"module\":\"dist/index.esm.js\",\"miniprogram\":\"miniprogram_dist\",\"typings\":\"./index.d.ts\",\"scripts\":{\"lint\":\"eslint --fix \\\"./src/**/*.ts\\\" \\\"./database/**/*.ts\\\"\",\"build\":\"rm -rf dist/ && gulp build\",\"build:cdn\":\"gulp cdn\",\"build:miniapp\":\"gulp miniapp\",\"build:e2e\":\"rm -rf dist/ && NODE_ENV=e2e gulp e2e\"},\"publishConfig\":{\"access\":\"public\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/TencentCloudBase/cloudbase-js-sdk\"},\"keywords\":[\"tcb\",\"cloudbase\",\"Cloudbase\",\"serverless\",\"Serverless\",\"javascript\",\"JavaScript\"],\"files\":[\"miniprogram_dist\",\"**/dist/\",\"/index.d.ts\",\"**/package.json\"],\"components\":[\"app\",\"auth\",\"database\",\"functions\",\"storage\"],\"author\":\"\",\"license\":\"ISC\",\"dependencies\":{\"@cloudbase/analytics\":\"^1.1.1-alpha.0\",\"@cloudbase/app\":\"^1.4.1\",\"@cloudbase/auth\":\"^1.6.1\",\"@cloudbase/database\":\"0.9.18-next\",\"@cloudbase/functions\":\"^1.3.4\",\"@cloudbase/realtime\":\"^1.1.4-alpha.0\",\"@cloudbase/storage\":\"^1.3.4\",\"@cloudbase/types\":\"^1.1.3-alpha.0\",\"@cloudbase/utilities\":\"^1.3.4\"},\"devDependencies\":{\"@babel/core\":\"^7.9.0\",\"@babel/plugin-proposal-class-properties\":\"^7.8.3\",\"@babel/plugin-transform-runtime\":\"^7.9.0\",\"@babel/preset-env\":\"^7.9.5\",\"@babel/preset-typescript\":\"^7.9.0\",\"@typescript-eslint/eslint-plugin\":\"^3.8.0\",\"@typescript-eslint/parser\":\"^3.8.0\",\"awesome-typescript-loader\":\"^5.2.1\",\"babel-loader\":\"^8.1.0\",\"eslint\":\"^7.6.0\",\"eslint-config-alloy\":\"^3.7.4\",\"gulp\":\"^4.0.2\",\"gulp-clean\":\"^0.4.0\",\"gulp-rename\":\"^2.0.0\",\"gulp-sourcemaps\":\"^2.6.5\",\"gulp-typescript\":\"^6.0.0-alpha.1\",\"json-loader\":\"^0.5.7\",\"merge-stream\":\"^2.0.0\",\"package-json-cleanup-loader\":\"^1.0.3\",\"typescript\":\"^3.8.3\",\"webpack\":\"4.41.3\",\"webpack-cli\":\"^3.3.11\",\"webpack-node-externals\":\"^1.7.2\",\"webpack-stream\":\"^5.2.1\",\"webpack-visualizer-plugin\":\"^0.1.11\"},\"browserslist\":[\"last 2 version\",\"> 1%\",\"not dead\",\"chrome 53\"],\"gitHead\":\"29ca0bf24318daa1fbb230910edf0b1545e17e7f\"}");
 
 /***/ }),
-/* 153 */
-/*!********************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/utils/net/errorCode.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.error_code_fail = exports.error_code_ok = void 0; //
-// 错误代码
-//
-
-var error_code_ok = 0;exports.error_code_ok = error_code_ok;
-var error_code_fail = 1;exports.error_code_fail = error_code_fail;
-
-/***/ }),
-/* 154 */,
-/* 155 */,
 /* 156 */,
 /* 157 */,
 /* 158 */,
@@ -35422,7 +35536,9 @@ var error_code_fail = 1;exports.error_code_fail = error_code_fail;
 /* 210 */,
 /* 211 */,
 /* 212 */,
-/* 213 */
+/* 213 */,
+/* 214 */,
+/* 215 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
   \************************************************************************************************/
@@ -35430,16 +35546,16 @@ var error_code_fail = 1;exports.error_code_fail = error_code_fail;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 214));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 215));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 216));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 216));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 217));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 218));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   en: _en.default,
   'zh-Hans': _zhHans.default,
   'zh-Hant': _zhHant.default };exports.default = _default;
 
 /***/ }),
-/* 214 */
+/* 216 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
   \***********************************************************************************************/
@@ -35449,7 +35565,7 @@ var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 2
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
 
 /***/ }),
-/* 215 */
+/* 217 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
   \****************************************************************************************************/
@@ -35459,7 +35575,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
 
 /***/ }),
-/* 216 */
+/* 218 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \****************************************************************************************************/
@@ -35469,8 +35585,6 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
-/* 217 */,
-/* 218 */,
 /* 219 */,
 /* 220 */,
 /* 221 */,
@@ -35497,7 +35611,9 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 /* 242 */,
 /* 243 */,
 /* 244 */,
-/* 245 */
+/* 245 */,
+/* 246 */,
+/* 247 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \**************************************************************************************/

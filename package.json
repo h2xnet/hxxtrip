@@ -79,6 +79,7 @@
   "dependencies": {
     "@cloudbase/adapter-interface": "^0.4.1",
     "@cloudbase/js-sdk": "^1.7.2",
-    "@dcloudio/uni-ui": "^1.4.20"
+    "@dcloudio/uni-ui": "^1.4.20",
+    "uni-cloud-router": "^0.0.11"
   }
 }
