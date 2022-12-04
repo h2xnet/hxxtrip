@@ -97,14 +97,14 @@ export default {
 			
 			// tab导航数据
 			navItems: [
-				{title: "关注", id: "focusId"},
+				/*{title: "关注", id: "focusId"},
 				{title: "推荐", id: "specialId"},
 				{title: "热门", id: "hotId"},
 				{title: "旅行", id: "tripId"},
 				{title: "运动", id: "motionId"},
 				{title: "景点", id: "spotId"},
 				{title: "酒店", id: "hotelId"},
-				{title: "人文", id: "humanId"}
+				{title: "人文", id: "humanId"}*/
 			],
 			
 			// 关注列表数据
@@ -460,6 +460,7 @@ export default {
 		// cal scorll-view height
 		let That = this;
 		
+		
 		// 获取系统信息
 		uni.getSystemInfo({
 			success(res) {
@@ -472,14 +473,45 @@ export default {
 			}
 		});
 		
-		//onInit();
+		//初始化数据
+		That.initData();
+		
+		
 		// 加载根类别列表
-		request.categoryRootRequest({status: 1}, function(errorCode, res){
-			console.log("errorCode:" + errorCode + ", res:" + res);
+		request.categoryRootRequest({status: 1}, function(code, result){
+			console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
+			if (code == 0) {
+				if (result["errCode"] === 200) {
+					let dataObj = result["data"];
+					
+					let affectedDocs = dataObj["affectedDocs"];
+					let dataList = dataObj["data"];
+					
+					console.log("tabbar-1.vue categoryRootRequest 3 affectedDocs : " + affectedDocs);
+					console.log("tabbar-1.vue categoryRootRequest 4 dataList : " + JSON.stringify(dataList));
+					
+					That.navItems = dataList;
+					
+					console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
+				}
+			}
 		});
 		
 	},
+	
+	mounted() {
+		console.log("tabbar-1.vue mounted")
+		
+		let That = this;
+		
+	},
+	
 	methods: {
+		// 初始化
+		initData() {
+			console.log("tabbar-1.vue initData");
+		},
+		
 		// 切换tabs
 		navChooseTab(index) {
 			this.currentIndex = index
@@ -487,15 +519,6 @@ export default {
 			let itemObj = this.navItems[this.currentIndex];
 			console.log("tabbar-1.vue navChooseTab item id: " + itemObj.id)
 		},
-		
-		onInit() {
-			console.log("tabbar-1.vue onInit");
-			
-			request.categoryRootRequest({status: 1}, function(errorCode, res){
-				console.log("errorCode:" + errorCode + ", res:" + res);
-			});
-			
-		}
 		
 	} // end methods
 };

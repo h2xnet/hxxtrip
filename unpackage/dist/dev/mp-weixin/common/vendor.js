@@ -10136,13 +10136,13 @@ var cloudCallFunc = function cloudCallFunc(url, params, callHandler) {
     name: url,
     data: params }).
   then(function (res) {
-    okHandler(_errorCode.error_code_ok, res);
+    //okHandler(error_code_ok, res.result);
 
     if (callHandler) {
-      callHandler(_errorCode.error_code_ok, res);
+      callHandler(_errorCode.error_code_ok, res.result);
     }
   }).catch(function (err) {
-    errorHandler(_errorCode.error_code_fail, err);
+    //errorHandler(error_code_fail, err);
     if (callHandler) {
       callHandler(_errorCode.error_code_fail, err);
     }

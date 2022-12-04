@@ -27,13 +27,13 @@ const cloudCallFunc = (url, params, callHandler) => {
 		name: url,
 		data: params
 	}).then((res) => {
-		okHandler(error_code_ok, res);
+		//okHandler(error_code_ok, res.result);
 		
 		if (callHandler) {
-			callHandler(error_code_ok, res);
+			callHandler(error_code_ok, res.result);
 		}
 	}).catch(err => {
-		errorHandler(error_code_fail, err);
+		//errorHandler(error_code_fail, err);
 		if (callHandler) {
 			callHandler(error_code_fail, err);
 		}

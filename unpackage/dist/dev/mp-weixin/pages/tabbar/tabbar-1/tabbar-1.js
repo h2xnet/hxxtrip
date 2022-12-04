@@ -326,16 +326,16 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net
 //
 var _default = { data: function data() {return { headBarData: { height: '80px', title: '星游会' }, // tab组件
       tabPageHeight: 400, currentIndex: 1, // tab导航数据
-      navItems: [{ title: "关注", id: "focusId" }, { title: "推荐", id: "specialId" }, { title: "热门", id: "hotId" }, { title: "旅行", id: "tripId" }, { title: "运动", id: "motionId" }, { title: "景点", id: "spotId" }, { title: "酒店", id: "hotelId" }, { title: "人文", id: "humanId" }], // 关注列表数据
+      navItems: [/*{title: "关注", id: "focusId"},
+                 {title: "推荐", id: "specialId"},
+                 {title: "热门", id: "hotId"},
+                 {title: "旅行", id: "tripId"},
+                 {title: "运动", id: "motionId"},
+                 {title: "景点", id: "spotId"},
+                 {title: "酒店", id: "hotelId"},
+                 {title: "人文", id: "humanId"}*/], // 关注列表数据
       focusItems: [{ id: "1", title: "推荐001", extTitle: "没有上线", content: "推荐了一款香水", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }, { id: "3", title: "推荐003", extTitle: "上善若水", content: "运动鞋", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }], // 推荐列表数据
-      specialItems: [{ id: "1", title: "推荐001", extTitle: "没有上线", content: "推荐了一款香水", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }, { id: "2", title: "推荐002", extTitle: "一分钟前", content: "引入uni-icons插件 插件地址:点击此处跳转到uni-icons 引入以后,会发现uni-modules中新增如下目录和文件", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }, { id: "3", title: "推荐003", extTitle: "上善若水", content: "运动鞋", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }, { id: "4", title: "推荐004", extTitle: "星光", content: "拍摄美丽的日出和日落", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png" }, { id: "5",
-        title: "推荐005",
-        extTitle: "毫哥",
-        content: "拍摄日出和日落",
-        headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
-        coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }],
-
-
+      specialItems: [{ id: "1", title: "推荐001", extTitle: "没有上线", content: "推荐了一款香水", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }, { id: "2", title: "推荐002", extTitle: "一分钟前", content: "引入uni-icons插件 插件地址:点击此处跳转到uni-icons 引入以后,会发现uni-modules中新增如下目录和文件", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }, { id: "3", title: "推荐003", extTitle: "上善若水", content: "运动鞋", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png" }, { id: "4", title: "推荐004", extTitle: "星光", content: "拍摄美丽的日出和日落", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png" }, { id: "5", title: "推荐005", extTitle: "毫哥", content: "拍摄日出和日落", headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png", coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png" }],
 
       // 热门列表数据
       hotItems: [
@@ -626,6 +626,7 @@ var _default = { data: function data() {return { headBarData: { height: '80px', 
     // cal scorll-view height
     var That = this;
 
+
     // 获取系统信息
     uni.getSystemInfo({
       success: function success(res) {
@@ -638,29 +639,51 @@ var _default = { data: function data() {return { headBarData: { height: '80px', 
       } });
 
 
-    //onInit();
+    //初始化数据
+    That.initData();
+
+
     // 加载根类别列表
-    _request.default.categoryRootRequest({ status: 1 }, function (errorCode, res) {
-      console.log("errorCode:" + errorCode + ", res:" + res);
+    _request.default.categoryRootRequest({ status: 1 }, function (code, result) {
+      console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
+      if (code == 0) {
+        if (result["errCode"] === 200) {
+          var dataObj = result["data"];
+
+          var affectedDocs = dataObj["affectedDocs"];
+          var dataList = dataObj["data"];
+
+          console.log("tabbar-1.vue categoryRootRequest 3 affectedDocs : " + affectedDocs);
+          console.log("tabbar-1.vue categoryRootRequest 4 dataList : " + JSON.stringify(dataList));
+
+          That.navItems = dataList;
+
+          console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
+        }
+      }
     });
 
   },
+
+  mounted: function mounted() {
+    console.log("tabbar-1.vue mounted");
+
+    var That = this;
+
+  },
+
   methods: {
+    // 初始化
+    initData: function initData() {
+      console.log("tabbar-1.vue initData");
+    },
+
     // 切换tabs
     navChooseTab: function navChooseTab(index) {
       this.currentIndex = index;
 
       var itemObj = this.navItems[this.currentIndex];
       console.log("tabbar-1.vue navChooseTab item id: " + itemObj.id);
-    },
-
-    onInit: function onInit() {
-      console.log("tabbar-1.vue onInit");
-
-      _request.default.categoryRootRequest({ status: 1 }, function (errorCode, res) {
-        console.log("errorCode:" + errorCode + ", res:" + res);
-      });
-
     } }
 
   // end methods
