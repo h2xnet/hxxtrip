@@ -478,7 +478,7 @@ export default {
 		
 		
 		// 加载根类别列表
-		request.categoryRootRequest({status: 1}, function(code, result){
+		/*request.categoryRootRequest({status: 1}, function(code, result){
 			console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
 			if (code == 0) {
 				if (result["errCode"] === 200) {
@@ -495,7 +495,7 @@ export default {
 					console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
 				}
 			}
-		});
+		});*/
 		
 	},
 	
@@ -510,6 +510,15 @@ export default {
 		// 初始化
 		initData() {
 			console.log("tabbar-1.vue initData");
+			
+			let That = this;
+			
+			// 请求类别
+			request.getCategory({"status": 1}, function(code, res){
+				console.log("tabbar-1.vue initData routerRequest category code:" + code + ", res:" + JSON.stringify(res));
+				
+			});
+			
 		},
 		
 		// 切换tabs

@@ -644,24 +644,24 @@ var _default = { data: function data() {return { headBarData: { height: '80px', 
 
 
     // 加载根类别列表
-    _request.default.categoryRootRequest({ status: 1 }, function (code, result) {
-      console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
-      if (code == 0) {
-        if (result["errCode"] === 200) {
-          var dataObj = result["data"];
-
-          var affectedDocs = dataObj["affectedDocs"];
-          var dataList = dataObj["data"];
-
-          console.log("tabbar-1.vue categoryRootRequest 3 affectedDocs : " + affectedDocs);
-          console.log("tabbar-1.vue categoryRootRequest 4 dataList : " + JSON.stringify(dataList));
-
-          That.navItems = dataList;
-
-          console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
-        }
-      }
-    });
+    /*request.categoryRootRequest({status: 1}, function(code, result){
+    	console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
+    	if (code == 0) {
+    		if (result["errCode"] === 200) {
+    			let dataObj = result["data"];
+    			
+    			let affectedDocs = dataObj["affectedDocs"];
+    			let dataList = dataObj["data"];
+    			
+    			console.log("tabbar-1.vue categoryRootRequest 3 affectedDocs : " + affectedDocs);
+    			console.log("tabbar-1.vue categoryRootRequest 4 dataList : " + JSON.stringify(dataList));
+    			
+    			That.navItems = dataList;
+    			
+    			console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
+    		}
+    	}
+    });*/
 
   },
 
@@ -676,6 +676,15 @@ var _default = { data: function data() {return { headBarData: { height: '80px', 
     // 初始化
     initData: function initData() {
       console.log("tabbar-1.vue initData");
+
+      var That = this;
+
+      // 请求类别
+      _request.default.getCategory({ "status": 1 }, function (code, res) {
+        console.log("tabbar-1.vue initData routerRequest category code:" + code + ", res:" + JSON.stringify(res));
+
+      });
+
     },
 
     // 切换tabs

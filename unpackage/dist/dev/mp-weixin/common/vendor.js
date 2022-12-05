@@ -10094,9 +10094,33 @@ var _uniCloudHttp = _interopRequireDefault(__webpack_require__(/*! ./uniCloudHtt
                                                                                                                                                                         */ //
 // categoryRootRequest : 请求根类别列表
 //
-var categoryRootRequest = function categoryRootRequest(param, callfunc) {return _uniCloudHttp.default.cloudCallFunc("categoryRoot", param, callfunc);};var _default =
+var categoryRootRequest = function categoryRootRequest(param, callfunc) {return _uniCloudHttp.default.cloudCallFunc("categoryRoot", param, callfunc);};
+//
+// categoryTwoRequest : 请求二级子类别列表
+//
+var categoryTwoRequest = function categoryTwoRequest(param, callfunc) {
+  return _uniCloudHttp.default.cloudCallFunc("categoryTwo", param, callfunc);
+};
+
+//
+// routerRequest : 路由请求
+//
+var routerRequest = function routerRequest(param, callfunc) {
+  return _uniCloudHttp.default.cloudCallFunc("router", param, callfunc);
+};
+
+//
+// getCategory : 请求类别列表
+//
+var getCategory = function getCategory(param, callfunc) {
+  return _uniCloudHttp.default.cloudCallFunc("router", { "action": "category/index", "data": param }, callfunc);
+};var _default =
+
 {
-  categoryRootRequest: categoryRootRequest };exports.default = _default;
+  categoryRootRequest: categoryRootRequest,
+  categoryTwoRequest: categoryTwoRequest,
+  routerRequest: routerRequest,
+  getCategory: getCategory };exports.default = _default;
 
 /***/ }),
 /* 25 */
