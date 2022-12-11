@@ -34,7 +34,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabbar_1_vue_vue_type_template_id_42007077___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabbar-1.vue?vue&type=template&id=42007077& */ 43);
 /* harmony import */ var _tabbar_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabbar-1.vue?vue&type=script&lang=js& */ 45);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _tabbar_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _tabbar_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabbar-1.vue?vue&type=style&index=0&lang=scss& */ 50);
+/* harmony import */ var _tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabbar-1.vue?vue&type=style&index=0&lang=scss& */ 51);
 /* harmony import */ var _extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 40);
 
 var renderjs
@@ -102,16 +102,19 @@ var components
 try {
   components = {
     SearchHeadBar: function () {
-      return __webpack_require__.e(/*! import() | components/SearchHeadBar/SearchHeadBar */ "components/SearchHeadBar/SearchHeadBar").then(__webpack_require__.bind(null, /*! @/components/SearchHeadBar/SearchHeadBar.vue */ 205))
+      return __webpack_require__.e(/*! import() | components/SearchHeadBar/SearchHeadBar */ "components/SearchHeadBar/SearchHeadBar").then(__webpack_require__.bind(null, /*! @/components/SearchHeadBar/SearchHeadBar.vue */ 206))
     },
     BigImageList: function () {
-      return __webpack_require__.e(/*! import() | components/BigImageList/BigImageList */ "components/BigImageList/BigImageList").then(__webpack_require__.bind(null, /*! @/components/BigImageList/BigImageList.vue */ 212))
+      return __webpack_require__.e(/*! import() | components/BigImageList/BigImageList */ "components/BigImageList/BigImageList").then(__webpack_require__.bind(null, /*! @/components/BigImageList/BigImageList.vue */ 213))
     },
     GridListBar: function () {
-      return __webpack_require__.e(/*! import() | components/GridListBar/GridListBar */ "components/GridListBar/GridListBar").then(__webpack_require__.bind(null, /*! @/components/GridListBar/GridListBar.vue */ 219))
+      return __webpack_require__.e(/*! import() | components/GridListBar/GridListBar */ "components/GridListBar/GridListBar").then(__webpack_require__.bind(null, /*! @/components/GridListBar/GridListBar.vue */ 220))
     },
     DoubleImageList: function () {
-      return __webpack_require__.e(/*! import() | components/DoubleImageList/DoubleImageList */ "components/DoubleImageList/DoubleImageList").then(__webpack_require__.bind(null, /*! @/components/DoubleImageList/DoubleImageList.vue */ 226))
+      return __webpack_require__.e(/*! import() | components/DoubleImageList/DoubleImageList */ "components/DoubleImageList/DoubleImageList").then(__webpack_require__.bind(null, /*! @/components/DoubleImageList/DoubleImageList.vue */ 227))
+    },
+    TopicListBar: function () {
+      return __webpack_require__.e(/*! import() | components/TopicListBar/TopicListBar */ "components/TopicListBar/TopicListBar").then(__webpack_require__.bind(null, /*! @/components/TopicListBar/TopicListBar.vue */ 234))
     },
   }
 } catch (e) {
@@ -176,6 +179,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net/request.js */ 47));
+var _astrol_handler = _interopRequireDefault(__webpack_require__(/*! ../../../utils/handler/human/astrol_handler.js */ 50));
 //
 //
 //
@@ -255,6 +259,11 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net
 //
 //
 //
+//
+//
+//
+// 网络请求
+// 事件处理类
 var _default = {
   data: function data() {
     return {
@@ -264,17 +273,18 @@ var _default = {
       },
       // tab组件
       tabPageHeight: 400,
-      currentIndex: 1,
+      currentIndex: 0,
+      currentName: 'specialId',
       // tab导航数据
       navItems: [
-        /*{title: "关注", id: "focusId"},
-        {title: "推荐", id: "specialId"},
-        {title: "热门", id: "hotId"},
-        {title: "旅行", id: "tripId"},
-        {title: "运动", id: "motionId"},
-        {title: "景点", id: "spotId"},
-        {title: "酒店", id: "hotelId"},
-        {title: "人文", id: "humanId"}*/
+        /*{title: "关注", name: "focusId"},
+        {title: "推荐", name: "specialId"},
+        {title: "热门", name: "hotId"},
+        {title: "旅行", name: "tripId"},
+        {title: "运动", name: "motionId"},
+        {title: "景点", name: "spotId"},
+        {title: "酒店", name: "hotelId"},
+        {title: "人文", name: "humanId"}*/
       ],
       // 关注列表数据
       focusItems: [
@@ -358,235 +368,127 @@ var _default = {
         }*/
       ],
       // 旅行宫格
-      tripGridItems: [
-        /*{
-        	id: "1",
-        	title: "周末游",
-        	icon: "/static/img/trip/trip1.png"
-        },
-        {
-        	id: "2",
-        	title: "亲子游",
-        	icon: "/static/img/trip/trip5.png"
-        },
-        {
-        	id: "3",
-        	title: "度假游",
-        	icon: "/static/img/trip/trip4.png"
-        },
-        {
-        	id: "4",
-        	title: "老年游",
-        	icon: "/static/img/trip/trip6.png"
-        },
-        {
-        	id: "5",
-        	title: "自由行",
-        	icon: "/static/img/trip/trip7.png"
-        },
-        {
-        	id: "6",
-        	title: "飞机",
-        	icon: "/static/img/trip/plane.png"
-        },
-        {
-        	id: "7",
-        	title: "火车",
-        	icon: "/static/img/trip/train.png"
-        },
-        {
-        	id: "8",
-        	title: "轮船",
-        	icon: "/static/img/trip/ship.png"
-        }*/
-      ],
+      tripGridItems: [],
       // 运动宫格数据
-      motionGridItems: [
+      motionGridItems: [],
+      // 运动话题数据
+      motionTopicItems: [],
+      // 当前选中运动话题名称
+      motionTopicName: "",
+      // 景点宫格数据
+      spotGridItems: [],
+      // 酒店宫格数据列表
+      hotelGridItems: [],
+      // 人文宫格数据列表
+      humanGridItems: [],
+      // 人文话题列表
+      humanTopicItems: [],
+      // 当前选中人文话题名称
+      humanTopicName: "",
+      // 商品列表
+      goodList: [
         /*{
         	id: "1",
-        	title: "网球",
-        	icon: "/static/img/motion/tennis.png"
+        	type: "image",
+        	coverImgs: [
+        		{
+        			img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
+        		},
+        		{
+        			img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+        		}],
+        	title: "Apple iPhone X 256GB 深空灰色 移动联通电信4G手机",
+        	originalPrice: 9999,
+        	favourPrice: 8888,
+        	tip: "自营"
         },
         {
         	id: "2",
-        	title: "羽毛球",
-        	icon: "/static/img/motion/badminton.png"
+        	type: "image",
+        	coverImgs: [
+        		{
+        			img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+        		}],
+        	title: "Apple iPad 平板电脑 2018年新款9.7英寸",
+        	originalPrice: 3499,
+        	favourPrice: 3399,
+        	tip: "优惠"
         },
         {
         	id: "3",
-        	title: "蓝球",
-        	icon: "/static/img/motion/blue_ball.png"
+        	type: "image",
+        	coverImgs: [
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
+        		},
+        		{
+        			img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+        		}],
+        	title: "Apple MacBook Pro 13.3英寸笔记本电脑（2017款Core i5处理器/8GB内存/256GB硬盘 MupxT2CH/A）",
+        	originalPrice: 12999,
+        	favourPrice: 10688,
+        	tip: "秒杀"
         },
         {
         	id: "4",
-        	title: "桌球",
-        	icon: "/static/img/motion/table_tennis.png"
+        	type: "image",
+        	coverImgs: [
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
+        		},
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
+        		}],
+        	title: "Kindle Paperwhite电纸书阅读器 电子书墨水屏 6英寸wifi 黑色",
+        	originalPrice: 999,
+        	favourPrice: 958,
+        	tip: "秒杀"
         },
         {
         	id: "5",
-        	title: "跑步",
-        	icon: "/static/img/motion/run.png"
+        	type: "image",
+        	coverImgs: [
+        		{
+        			img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
+        		}
+        	],
+        	title: "微软（Microsoft）新Surface Pro 二合一平板电脑笔记本 12.3英寸（i5 8G内存 256G存储）",
+        	originalPrice: 8888,
+        	favourPrice: 8288,
+        	tip: "优惠"
         },
         {
         	id: "6",
-        	title: "瑜伽",
-        	icon: "/static/img/motion/yoga.png"
-        },
-        {
-        	id: "7",
-        	title: "健身",
-        	icon: "/static/img/motion/body_building.png"
+        	type: "image",
+        	coverImgs: [
+        		{
+        			img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
+        		}
+        	],
+        	title: "Apple Watch Series 3智能手表（GPS款 42毫米 深空灰色铝金属表壳 黑色运动型表带 MQL12CH/A）",
+        	originalPrice: 2899,
+        	favourPrice: 2799,
+        	tip: "自营"
         }*/
-      ],
-      // 景点宫格数据
-      spotGridItems: [
-        /*{
-        	id: "1",
-        	title: "网红打卡",
-        	icon: "/static/img/spot/spot1.png"
-        },
-        {
-        	id: "2",
-        	title: "景区",
-        	icon: "/static/img/spot/spot3.png"
-        },
-        {
-        	id: "3",
-        	title: "博物馆",
-        	icon: "/static/img/spot/spot4.png"
-        },
-        {
-        	id: "4",
-        	title: "步行街",
-        	icon: "/static/img/spot/shopping2.png"
-        }*/
-      ],
-      // 酒店宫格数据列表
-      hotelGridItems: [
-        /*{
-        	id: "1",
-        	title: "便捷",
-        	icon: "/static/img/hotel/hotel1.png"
-        },
-        {
-        	id: "2",
-        	title: "商务",
-        	icon: "/static/img/hotel/hotel2.png"
-        },
-        {
-        	id: "3",
-        	title: "星级",
-        	icon: "/static/img/hotel/hotel3.png"
-        },
-        {
-        	id: "4",
-        	title: "民宿",
-        	icon: "/static/img/hotel/hotel4.png"
-        }*/
-      ],
-      // 人文宫格数据列表
-      humanGridItems: [
-        /*{
-        	id: "1",
-        	title: "星座",
-        	icon: "/static/img/human/constellation.png"
-        },
-        {
-        	id: "2",
-        	title: "艺术",
-        	icon: "/static/img/human/art.png"
-        },
-        {
-        	id: "3",
-        	title: "哲学",
-        	icon: "/static/img/human/philosophy.png"
-        },
-        {
-        	id: "4",
-        	title: "历史",
-        	icon: "/static/img/human/history3.png"
-        }*/
-      ],
-      // 商品列表
-      goodList: [{
-        id: "1",
-        type: "image",
-        coverImgs: [{
-          img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
-        }, {
-          img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
-        }],
-        title: "Apple iPhone X 256GB 深空灰色 移动联通电信4G手机",
-        originalPrice: 9999,
-        favourPrice: 8888,
-        tip: "自营"
-      }, {
-        id: "2",
-        type: "image",
-        coverImgs: [{
-          img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
-        }],
-        title: "Apple iPad 平板电脑 2018年新款9.7英寸",
-        originalPrice: 3499,
-        favourPrice: 3399,
-        tip: "优惠"
-      }, {
-        id: "3",
-        type: "image",
-        coverImgs: [{
-          img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
-        }, {
-          img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
-        }],
-        title: "Apple MacBook Pro 13.3英寸笔记本电脑（2017款Core i5处理器/8GB内存/256GB硬盘 MupxT2CH/A）",
-        originalPrice: 12999,
-        favourPrice: 10688,
-        tip: "秒杀"
-      }, {
-        id: "4",
-        type: "image",
-        coverImgs: [{
-          img: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
-        }, {
-          img: "https://img-blog.csdnimg.cn/img_convert/213a362a143bd47b8b4e3dad5138d53d.png"
-        }],
-        title: "Kindle Paperwhite电纸书阅读器 电子书墨水屏 6英寸wifi 黑色",
-        originalPrice: 999,
-        favourPrice: 958,
-        tip: "秒杀"
-      }, {
-        id: "5",
-        type: "image",
-        coverImgs: [{
-          img: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
-        }],
-        title: "微软（Microsoft）新Surface Pro 二合一平板电脑笔记本 12.3英寸（i5 8G内存 256G存储）",
-        originalPrice: 8888,
-        favourPrice: 8288,
-        tip: "优惠"
-      }, {
-        id: "6",
-        type: "image",
-        coverImgs: [{
-          img: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png"
-        }],
-        title: "Apple Watch Series 3智能手表（GPS款 42毫米 深空灰色铝金属表壳 黑色运动型表带 MQL12CH/A）",
-        originalPrice: 2899,
-        favourPrice: 2799,
-        tip: "自营"
-      }]
+      ]
     };
   },
   onLoad: function onLoad() {
@@ -608,26 +510,6 @@ var _default = {
 
     //初始化数据
     That.initData();
-
-    // 加载根类别列表
-    /*request.categoryRootRequest({status: 1}, function(code, result){
-    	console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
-    	if (code == 0) {
-    		if (result["errCode"] === 200) {
-    			let dataObj = result["data"];
-    			
-    			let affectedDocs = dataObj["affectedDocs"];
-    			let dataList = dataObj["data"];
-    			
-    			console.log("tabbar-1.vue categoryRootRequest 3 affectedDocs : " + affectedDocs);
-    			console.log("tabbar-1.vue categoryRootRequest 4 dataList : " + JSON.stringify(dataList));
-    			
-    			That.navItems = dataList;
-    			
-    			console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
-    		}
-    	}
-    });*/
   },
   mounted: function mounted() {
     console.log("tabbar-1.vue mounted");
@@ -650,79 +532,137 @@ var _default = {
           var count = dataObj["count"];
           var dataList = dataObj["data"];
           if (count > 0) {
-            var rootCategoryData = [];
+            // 更新一级类别
+            That.navItems = dataList;
+
+            // 更新二级类别
             for (var idx = 0; idx < dataList.length; idx++) {
               var itemObj = dataList[idx];
-              // 解析数据
+              //console.log("---------- tabbar-1.vue onChooseTwoCategory idx:" + idx + ", itemObj:" + JSON.stringify(itemObj));
 
               var itemName = itemObj["name"];
               var itemTwoObj = itemObj["data"];
-              var itemRootObj = {};
-              itemRootObj["_id"] = itemObj["_id"];
-              itemRootObj["name"] = itemObj["name"];
-              itemRootObj["title"] = itemObj["title"];
-              itemRootObj["status"] = itemObj["status"];
-              itemRootObj["sort"] = itemObj["sort"];
-              rootCategoryData.push(itemRootObj);
-              switch (itemName) {
-                case "focusId":
-                  {
-                    // 关注
-                  }
-                  break;
-                case "specialId":
-                  {// 推荐
-                  }
-                  break;
-                case "hotId":
-                  {
-                    // 热门
-                  }
-                  break;
-                case "tripId":
-                  {
-                    // 旅行
-                    That.tripGridItems = itemTwoObj;
-                  }
-                  break;
-                case "motionId":
-                  {
-                    // 运动
-                    That.motionGridItems = itemTwoObj;
-                  }
-                  break;
-                case "spotId":
-                  {
-                    // 景点
-                    That.spotGridItems = itemTwoObj;
-                  }
-                  break;
-                case "hotelId":
-                  {
-                    // 酒店
-                    That.hotelGridItems = itemTwoObj;
-                  }
-                  break;
-                case "humanId":
-                  {
-                    // 人文
-                    That.humanGridItems = itemTwoObj;
-                  }
-                  break;
+              if (itemName === "focusId") {
+                // 关注
+              } else if (itemName === "specialId") {
+                // 推荐
+              } else if (itemName === "hotId") {
+                // 热门
+              } else if (itemName === "tripId") {
+                // 旅行
+                That.tripGridItems = itemTwoObj;
+              } else if (itemName === "motionId") {
+                // 运动
+                That.motionGridItems = itemTwoObj;
+              } else if (itemName === "spotId") {
+                // 景点
+                That.spotGridItems = itemTwoObj;
+              } else if (itemName === "hotelId") {
+                // 酒店
+                That.hotelGridItems = itemTwoObj;
+              } else if (itemName === "humanId") {
+                // 人文
+                That.humanGridItems = itemTwoObj;
               }
             }
-
-            // 更新数据
-            That.navItems = rootCategoryData;
           }
         }
+
+        // 选择第0个
+        That.navChooseTab(0);
       });
     },
-    // 切换tabs
+    // 一级tabs菜单事件
     navChooseTab: function navChooseTab(index) {
-      this.currentIndex = index;
-      var itemObj = this.navItems[this.currentIndex];
-      console.log("tabbar-1.vue navChooseTab item id: " + itemObj.id);
+      console.log("tabbar-1.vue navChooseTab params, index:" + index);
+      var That = this;
+      if (index >= 0 && index < That.navItems.length) {
+        var itemObj = That.navItems[index];
+        var itemName = itemObj["name"];
+        console.log("tabbar-1.vue navChooseTab item name: " + itemName);
+        That.currentName = itemName;
+        That.currentIndex = index;
+      }
+    },
+    //
+    // onMotionItemTap : 运动二级菜单事件
+    //
+    onMotionItemTap: function onMotionItemTap(index) {
+      console.log("tabbar-1.vue onMotionItemTap params, index:" + index);
+      var That = this;
+      if (index >= 0 && index < That.motionGridItems.length) {
+        var itemObj = That.motionGridItems[index];
+        var itemName = itemObj["name"];
+        console.log("tabbar-1.vue onMotionItemTap itemName: " + itemName);
+
+        // 更新话题列表
+        That.getTopicCategory("motionId", itemName);
+      }
+    },
+    //
+    // onHumanItemTap : 人文二级菜单事件
+    //
+    onHumanItemTap: function onHumanItemTap(index) {
+      console.log("tabbar-1.vue onHumanItemTap params, index:" + index);
+      var That = this;
+      if (index >= 0 && index < That.humanGridItems.length) {
+        var itemObj = That.humanGridItems[index];
+        var itemName = itemObj["name"];
+        console.log("tabbar-1.vue onHumanItemTap itemName: " + itemName);
+
+        // 更新话题列表
+        That.getTopicCategory("humanId", itemName);
+      }
+    },
+    //
+    // onHumanTopicItemTap : 人文话题单击事件
+    //
+    onHumanTopicItemTap: function onHumanTopicItemTap(index) {
+      console.log("tabbar-1.vue onHumanTopicItemTap params, index:" + index);
+      var That = this;
+      if (index >= 0 && index < That.humanTopicItems.length) {
+        var itemObj = That.humanTopicItems[index];
+        var itemName = itemObj["name"];
+        console.log("tabbar-1.vue onHumanTopicItemTap itemName:" + itemName);
+      }
+    },
+    //
+    // getTopicCategory : 获取话题类别
+    //
+    getTopicCategory: function getTopicCategory(parentName, name) {
+      console.log("tabbar-1.vue getTopicCategory params, parentName:" + parentName + ", name:" + name);
+      var That = this;
+      switch (parentName) {
+        case "motionId":
+          {
+            // 运动
+          }
+          break;
+        case "humanId":
+          {
+            // 人文
+            if (name == "humanId_001") {
+              // 星座
+              // 获取星座话题类别
+              _astrol_handler.default.getAstrolTopicCategory(That, _request.default);
+            } else {
+              // 清空话题列表
+              That.onClearAllTopicategory();
+            }
+          }
+          break;
+        default:
+          {}
+          break;
+      }
+    },
+    //
+    // onClearAllTopicategory : 清空话题列表
+    //
+    onClearAllTopicategory: function onClearAllTopicategory() {
+      console.log("tabbar-1.vue onClearAllTopicategory");
+      var That = this;
+      That.humanTopicItems = [];
     }
   } // end methods
 };
@@ -731,7 +671,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 50:
+/***/ 51:
 /*!******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/pages/tabbar/tabbar-1/tabbar-1.vue?vue&type=style&index=0&lang=scss& ***!
   \******************************************************************************************************/
@@ -740,14 +680,14 @@ exports.default = _default;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--8-oneOf-1-3!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./tabbar-1.vue?vue&type=style&index=0&lang=scss& */ 51);
+/* harmony import */ var _extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--8-oneOf-1-3!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./tabbar-1.vue?vue&type=style&index=0&lang=scss& */ 52);
 /* harmony import */ var _extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_2_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_sass_loader_dist_cjs_js_ref_8_oneOf_1_4_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_extProgramFiles_hbuilderx_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_tabbar_1_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ 51:
+/***/ 52:
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/curProject/h2x/hxxtrip/pages/tabbar/tabbar-1/tabbar-1.vue?vue&type=style&index=0&lang=scss& ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/

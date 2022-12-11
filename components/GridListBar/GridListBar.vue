@@ -4,7 +4,7 @@
 	<view>
 		<view class="grid-box">
 			<block v-for="(item, index) in modelDatas" :index="index" :key="index">
-				<view class="grid-box-item">
+				<view class="grid-box-item" :key="index" @tap="gridListItemTap(index)">
 					<view class="grid-box-img-item">
 						<image mode="aspectFill" :src="item.icon"
 							style="width: 32px; height: 32px; padding-top: 9px;"
@@ -31,6 +31,17 @@
 			return {
 				
 			};
+		},
+		methods: {
+			
+			gridListItemTap: function(index) {
+				console.log("GridListBar.vue gridListItemTap params, itemName:" + index);
+				this.$emit('gridListItemTap', index);
+			}
+			
+		},
+		mounted() {
+			
 		}
 	}
 </script>

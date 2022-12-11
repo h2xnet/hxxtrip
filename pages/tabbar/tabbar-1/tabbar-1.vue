@@ -21,22 +21,22 @@
 			<scroll-view scroll-y="true" class="tabs-wrap" :style="{height: tabPageHeight + 'px'}">
 				
 				<!-- tab-page-0 关注页面 -->
-				<view :class="[currentIndex==0?'item':'']" v-show="currentIndex==0">
+				<view :class="[currentName=='focusId'?'item':'']" v-show="currentName=='focusId'">
 					<BigImageList :modelDatas="focusItems"></BigImageList>
 				</view>
 			
 				<!-- tab-page-1 推荐页面 -->
-				<view :class="[currentIndex==1?'item':'']" v-show="currentIndex==1">
+				<view :class="[currentName=='specialId'?'item':'']" v-show="currentName=='specialId'">
 					<BigImageList :modelDatas="specialItems"></BigImageList>
 				</view>
 				
 				<!-- tab-page-2 热门页面 -->
-				<view :class="[currentIndex==2?'item':'']" v-show="currentIndex==2">
+				<view :class="[currentName=='hotId'?'item':'']" v-show="currentName=='hotId'">
 					<BigImageList :modelDatas="hotItems"></BigImageList>
 				</view>
 				
 				<!-- tab-page-3 旅行页面 -->
-				<view :class="[currentIndex==3?'item':'']" v-show="currentIndex==3">
+				<view :class="[currentName=='tripId'?'item':'']" v-show="currentName=='tripId'">
 					<!-- 宫格菜单栏 -->
 					<GridListBar :modelDatas="tripGridItems"></GridListBar>
 					<!-- 商品列表 -->
@@ -44,31 +44,34 @@
 				</view>
 				
 				<!-- tab-page-4 运动页面 -->
-				<view :class="[currentIndex==4?'item':'']" v-show="currentIndex==4">
-					<GridListBar :modelDatas="motionGridItems"></GridListBar>
+				<view :class="[currentName=='motionId'?'item':'']" v-show="currentName=='motionId'">
+					<GridListBar :modelDatas="motionGridItems" v-on:gridListItemTap="onMotionItemTap"></GridListBar>
 					<!-- 商品列表 -->
 					<DoubleImageList :modelDatas="goodList"></DoubleImageList>
 				</view>
 				
 				<!-- tab-page-5 景点页面 -->
-				<view :class="[currentIndex==5?'item':'']" v-show="currentIndex==5">
+				<view :class="[currentName=='spotId'?'item':'']" v-show="currentName=='spotId'">
 					<GridListBar :modelDatas="spotGridItems"></GridListBar>
 					<!-- 商品列表 -->
 					<DoubleImageList :modelDatas="goodList"></DoubleImageList>
 				</view>
 				
 				<!-- tab-page-6 酒店页面 -->
-				<view :class="[currentIndex==6?'item':'']" v-show="currentIndex==6">
+				<view :class="[currentName=='hotelId'?'item':'']" v-show="currentName=='hotelId'">
 					<GridListBar :modelDatas="hotelGridItems"></GridListBar>
 					<!-- 商品列表 -->
 					<DoubleImageList :modelDatas="goodList"></DoubleImageList>
 				</view>
 				
 				<!-- tab-page-7 人文页面 -->
-				<view :class="[currentIndex==7?'item':'']" v-show="currentIndex==7">
-					<GridListBar :modelDatas="humanGridItems"></GridListBar>
+				<view :class="[currentName=='humanId'?'item':'']" v-show="currentName=='humanId'">
+					<!-- 二级类别列表 -->
+					<GridListBar :modelDatas="humanGridItems" v-on:gridListItemTap="onHumanItemTap"></GridListBar>
+					<!-- 三级话题列表 -->
+					<TopicListBar :modelDatas="humanTopicItems" v-on:topicListItemTap="onHumanTopicItemTap"></TopicListBar>
 					<!-- 商品列表 -->
-					<DoubleImageList :modelDatas="goodList"></DoubleImageList>
+					<!--<DoubleImageList :modelDatas="goodList"></DoubleImageList>-->
 				</view>
 			
 			</scroll-view>
@@ -79,8 +82,11 @@
 
 <script>	
 
+// 网络请求
 import request from '../../../utils/net/request.js'
 
+// 事件处理类
+import astrolHandler from '../../../utils/handler/human/astrol_handler.js'
 	
 export default {
 	
@@ -93,18 +99,19 @@ export default {
 			
 			// tab组件
 			tabPageHeight: 400,
-			currentIndex: 1,
+			currentIndex: 0,
+			currentName: 'specialId',
 			
 			// tab导航数据
 			navItems: [
-				/*{title: "关注", id: "focusId"},
-				{title: "推荐", id: "specialId"},
-				{title: "热门", id: "hotId"},
-				{title: "旅行", id: "tripId"},
-				{title: "运动", id: "motionId"},
-				{title: "景点", id: "spotId"},
-				{title: "酒店", id: "hotelId"},
-				{title: "人文", id: "humanId"}*/
+				/*{title: "关注", name: "focusId"},
+				{title: "推荐", name: "specialId"},
+				{title: "热门", name: "hotId"},
+				{title: "旅行", name: "tripId"},
+				{title: "运动", name: "motionId"},
+				{title: "景点", name: "spotId"},
+				{title: "酒店", name: "hotelId"},
+				{title: "人文", name: "humanId"}*/
 			],
 			
 			// 关注列表数据
@@ -193,163 +200,38 @@ export default {
 			
 			// 旅行宫格
 			tripGridItems: [
-				/*{
-					id: "1",
-					title: "周末游",
-					icon: "/static/img/trip/trip1.png"
-				},
-				{
-					id: "2",
-					title: "亲子游",
-					icon: "/static/img/trip/trip5.png"
-				},
-				{
-					id: "3",
-					title: "度假游",
-					icon: "/static/img/trip/trip4.png"
-				},
-				{
-					id: "4",
-					title: "老年游",
-					icon: "/static/img/trip/trip6.png"
-				},
-				{
-					id: "5",
-					title: "自由行",
-					icon: "/static/img/trip/trip7.png"
-				},
-				{
-					id: "6",
-					title: "飞机",
-					icon: "/static/img/trip/plane.png"
-				},
-				{
-					id: "7",
-					title: "火车",
-					icon: "/static/img/trip/train.png"
-				},
-				{
-					id: "8",
-					title: "轮船",
-					icon: "/static/img/trip/ship.png"
-				}*/
-				
 			],
 			
 			// 运动宫格数据
 			motionGridItems: [
-				/*{
-					id: "1",
-					title: "网球",
-					icon: "/static/img/motion/tennis.png"
-				},
-				{
-					id: "2",
-					title: "羽毛球",
-					icon: "/static/img/motion/badminton.png"
-				},
-				{
-					id: "3",
-					title: "蓝球",
-					icon: "/static/img/motion/blue_ball.png"
-				},
-				{
-					id: "4",
-					title: "桌球",
-					icon: "/static/img/motion/table_tennis.png"
-				},
-				{
-					id: "5",
-					title: "跑步",
-					icon: "/static/img/motion/run.png"
-				},
-				{
-					id: "6",
-					title: "瑜伽",
-					icon: "/static/img/motion/yoga.png"
-				},
-				{
-					id: "7",
-					title: "健身",
-					icon: "/static/img/motion/body_building.png"
-				}*/
 			],
+			// 运动话题数据
+			motionTopicItems: [
+				
+			],
+			// 当前选中运动话题名称
+			motionTopicName: "",
 			
 			// 景点宫格数据
 			spotGridItems: [
-				/*{
-					id: "1",
-					title: "网红打卡",
-					icon: "/static/img/spot/spot1.png"
-				},
-				{
-					id: "2",
-					title: "景区",
-					icon: "/static/img/spot/spot3.png"
-				},
-				{
-					id: "3",
-					title: "博物馆",
-					icon: "/static/img/spot/spot4.png"
-				},
-				{
-					id: "4",
-					title: "步行街",
-					icon: "/static/img/spot/shopping2.png"
-				}*/
 			],
 			
 			// 酒店宫格数据列表
 			hotelGridItems: [
-				/*{
-					id: "1",
-					title: "便捷",
-					icon: "/static/img/hotel/hotel1.png"
-				},
-				{
-					id: "2",
-					title: "商务",
-					icon: "/static/img/hotel/hotel2.png"
-				},
-				{
-					id: "3",
-					title: "星级",
-					icon: "/static/img/hotel/hotel3.png"
-				},
-				{
-					id: "4",
-					title: "民宿",
-					icon: "/static/img/hotel/hotel4.png"
-				}*/
 			],
 			
 			// 人文宫格数据列表
 			humanGridItems: [
-				/*{
-					id: "1",
-					title: "星座",
-					icon: "/static/img/human/constellation.png"
-				},
-				{
-					id: "2",
-					title: "艺术",
-					icon: "/static/img/human/art.png"
-				},
-				{
-					id: "3",
-					title: "哲学",
-					icon: "/static/img/human/philosophy.png"
-				},
-				{
-					id: "4",
-					title: "历史",
-					icon: "/static/img/human/history3.png"
-				}*/
 			],
+			// 人文话题列表
+			humanTopicItems: [
+			],
+			// 当前选中人文话题名称
+			humanTopicName: "",
 			
 			// 商品列表
 			goodList: [
-				{
+				/*{
 					id: "1",
 					type: "image",
 					coverImgs: [
@@ -449,7 +331,7 @@ export default {
 					originalPrice: 2899,
 					favourPrice: 2799,
 					tip: "自营"
-				}
+				}*/
 			]
 			
 			
@@ -477,26 +359,6 @@ export default {
 		That.initData();
 		
 		
-		// 加载根类别列表
-		/*request.categoryRootRequest({status: 1}, function(code, result){
-			console.log("tabbar-1.vue categoryRootRequest code:" + code + ", result:" + JSON.stringify(result));
-			if (code == 0) {
-				if (result["errCode"] === 200) {
-					let dataObj = result["data"];
-					
-					let affectedDocs = dataObj["affectedDocs"];
-					let dataList = dataObj["data"];
-					
-					console.log("tabbar-1.vue categoryRootRequest 3 affectedDocs : " + affectedDocs);
-					console.log("tabbar-1.vue categoryRootRequest 4 dataList : " + JSON.stringify(dataList));
-					
-					That.navItems = dataList;
-					
-					console.log("tabbar-1.vue navItems :" + JSON.stringify(navItems));
-				}
-			}
-		});*/
-		
 	},
 	
 	mounted() {
@@ -507,6 +369,7 @@ export default {
 	},
 	
 	methods: {
+		
 		// 初始化
 		initData() {
 			console.log("tabbar-1.vue initData");
@@ -519,78 +382,191 @@ export default {
 				// 解析类别数据
 				if (code == 0 && res["errCode"] == 200) {
 					let dataObj = res["data"];
+					
 					let count = dataObj["count"];
 					let dataList = dataObj["data"];
 					if (count > 0) {
-						let rootCategoryData = [];
+						// 更新一级类别
+						That.navItems = dataList;
+						
+						// 更新二级类别
 						for(let idx = 0; idx < dataList.length; idx++) {
 							let itemObj = dataList[idx];
-							// 解析数据
+							//console.log("---------- tabbar-1.vue onChooseTwoCategory idx:" + idx + ", itemObj:" + JSON.stringify(itemObj));
 							
 							let itemName = itemObj["name"];
-							
 							let itemTwoObj = itemObj["data"];
 							
-							let itemRootObj = {};
-							itemRootObj["_id"] = itemObj["_id"];
-							itemRootObj["name"] = itemObj["name"];
-							itemRootObj["title"] = itemObj["title"];
-							itemRootObj["status"] = itemObj["status"];
-							itemRootObj["sort"] = itemObj["sort"];
-							
-							rootCategoryData.push(itemRootObj);
-							
-							switch(itemName) {
-								case "focusId": {
-									// 关注
-								}break;
-								case "specialId":
-								{ // 推荐
-									
-								}break;
-								case "hotId": {
-									// 热门
-								}break;
-								case "tripId": {
-									// 旅行
-									That.tripGridItems = itemTwoObj;
-								}break;
-								case "motionId": {
-									// 运动
-									That.motionGridItems = itemTwoObj;
-								}break;
-								case "spotId": {
-									// 景点
-									That.spotGridItems = itemTwoObj;
-								}break;
-								case "hotelId": {
-									// 酒店
-									That.hotelGridItems = itemTwoObj;
-								}break;
-								case "humanId": {
-									// 人文
-									That.humanGridItems = itemTwoObj
-								}break;
+							if (itemName === "focusId") {
+								// 关注
 							}
+							else if (itemName === "specialId") {
+								// 推荐
+							}
+							else if (itemName === "hotId") {
+								// 热门
+							}
+							else if (itemName === "tripId") {
+								// 旅行
+								That.tripGridItems = itemTwoObj;
+							}
+							else if (itemName === "motionId") {
+								// 运动
+								That.motionGridItems = itemTwoObj;
+							}
+							else if (itemName === "spotId") {
+								// 景点
+								That.spotGridItems = itemTwoObj;
+							}
+							else if (itemName === "hotelId") {
+								// 酒店
+								That.hotelGridItems = itemTwoObj;
+							}
+							else if (itemName === "humanId") {
+								// 人文
+								That.humanGridItems = itemTwoObj
+							}
+							
 							
 						}
 						
-						// 更新数据
-						That.navItems = rootCategoryData;
-						
 					}
 				}
+				
+				// 选择第0个
+				That.navChooseTab(0);
+				
+				
 			});
 			
 		},
 		
-		// 切换tabs
+		// 一级tabs菜单事件
 		navChooseTab(index) {
-			this.currentIndex = index
+			console.log("tabbar-1.vue navChooseTab params, index:" + index);
 			
-			let itemObj = this.navItems[this.currentIndex];
-			console.log("tabbar-1.vue navChooseTab item id: " + itemObj.id)
+			let That = this;
+			
+			if (index >= 0 && index < That.navItems.length) {
+				
+				let itemObj = That.navItems[index];
+				
+				let itemName = itemObj["name"];
+				console.log("tabbar-1.vue navChooseTab item name: " + itemName);
+				
+				That.currentName = itemName;
+				That.currentIndex = index
+				
+			}
+			
 		},
+		
+		//
+		// onMotionItemTap : 运动二级菜单事件
+		//
+		onMotionItemTap(index) {
+			console.log("tabbar-1.vue onMotionItemTap params, index:" + index);
+			
+			let That = this;
+			
+			if (index >= 0 && index < That.motionGridItems.length) {
+				let itemObj = That.motionGridItems[index];
+				
+				let itemName = itemObj["name"];
+				console.log("tabbar-1.vue onMotionItemTap itemName: " + itemName);
+				
+				// 更新话题列表
+				That.getTopicCategory("motionId", itemName);
+				
+			}
+			
+		},
+		
+		//
+		// onHumanItemTap : 人文二级菜单事件
+		//
+		onHumanItemTap(index) {
+			console.log("tabbar-1.vue onHumanItemTap params, index:" + index);
+			
+			let That = this;
+			
+			if (index >= 0 && index < That.humanGridItems.length) {
+				let itemObj = That.humanGridItems[index];
+				
+				let itemName = itemObj["name"];
+				console.log("tabbar-1.vue onHumanItemTap itemName: " + itemName);
+				
+				// 更新话题列表
+				That.getTopicCategory("humanId", itemName);
+				
+			}
+			
+		},
+		
+		//
+		// onHumanTopicItemTap : 人文话题单击事件
+		//
+		onHumanTopicItemTap(index) {
+			console.log("tabbar-1.vue onHumanTopicItemTap params, index:" + index);
+			
+			let That = this;
+			
+			if (index >= 0 && index < That.humanTopicItems.length) {
+				let itemObj = That.humanTopicItems[index];
+				
+				let itemName = itemObj["name"];
+				console.log("tabbar-1.vue onHumanTopicItemTap itemName:" + itemName);
+			}
+			
+		},
+		
+		//
+		// getTopicCategory : 获取话题类别
+		//
+		getTopicCategory(parentName, name) {
+			console.log("tabbar-1.vue getTopicCategory params, parentName:" + parentName + ", name:" + name);
+			
+			let That = this;
+			
+			switch(parentName) {
+			case "motionId": {
+				// 运动
+				
+			}break;
+			
+			case "humanId": {
+				// 人文
+				if (name == "humanId_001") {
+					// 星座
+					// 获取星座话题类别
+					astrolHandler.getAstrolTopicCategory(That, request);
+				}
+				else {
+					// 清空话题列表
+					That.onClearAllTopicategory();
+				}
+			}break;
+			
+			default: {
+				
+			}break;
+			
+			}
+		},
+		
+		//
+		// onClearAllTopicategory : 清空话题列表
+		//
+		onClearAllTopicategory() {
+			console.log("tabbar-1.vue onClearAllTopicategory");
+			
+			let That = this;
+			
+			That.humanTopicItems = [];
+			
+		},
+		
+		
 		
 	} // end methods
 };

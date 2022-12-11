@@ -8,6 +8,9 @@ const { Controller } = require("uni-cloud-router");
  */
 module.exports = class CategoryController extends Controller {
 	
+  //
+  // index: 获取APP类别，包括一级类别和二级类别
+  //
   index() {
 	console.log("controller/category index");
 	
@@ -18,5 +21,6 @@ module.exports = class CategoryController extends Controller {
 	
 	return service.category.getCategory(params);
   }
+  
   
 };

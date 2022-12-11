@@ -35,9 +35,17 @@ const getCategory = (param, callfunc) => {
 	return uniCloudHttp.cloudCallFunc("router", {"action": "category/index", "data":param}, callfunc);
 }
 
+//
+// getCategoryHumainAstro : 请求人文星座类别
+//
+const getCategoryHumainAstro = (param, callfunc) => {
+	return uniCloudHttp.cloudCallFunc("router", {"action": "humain/astrol/astrolCategory", "data": param}, callfunc);
+}
+
 export default {
 	categoryRootRequest,
 	categoryTwoRequest,
 	routerRequest,
-	getCategory
+	getCategory,
+	getCategoryHumainAstro
 }

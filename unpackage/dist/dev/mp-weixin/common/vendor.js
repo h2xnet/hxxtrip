@@ -15317,11 +15317,22 @@ var getCategory = function getCategory(param, callfunc) {
     "data": param
   }, callfunc);
 };
+
+//
+// getCategoryHumainAstro : 请求人文星座类别
+//
+var getCategoryHumainAstro = function getCategoryHumainAstro(param, callfunc) {
+  return _uniCloudHttp.default.cloudCallFunc("router", {
+    "action": "humain/astrol/astrolCategory",
+    "data": param
+  }, callfunc);
+};
 var _default = {
   categoryRootRequest: categoryRootRequest,
   categoryTwoRequest: categoryTwoRequest,
   routerRequest: routerRequest,
-  getCategory: getCategory
+  getCategory: getCategory,
+  getCategoryHumainAstro: getCategoryHumainAstro
 };
 exports.default = _default;
 
@@ -15441,7 +15452,49 @@ var error_code_fail = 1;
 exports.error_code_fail = error_code_fail;
 
 /***/ }),
-/* 50 */,
+/* 50 */
+/*!***********************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/handler/human/astrol_handler.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/*
+ * AstrolHandler: 星座处理类
+ */
+
+//
+// getAstrolTopicCategory : 获取星座话题类别
+//
+var getAstrolTopicCategory = function getAstrolTopicCategory(That, request) {
+  console.log("astrol_handler.js getAstrolTopicCategory");
+  request.getCategoryHumainAstro({
+    "status": 1
+  }, function (code, res) {
+    console.log("astrol_handler.js getCategoryHumainAstro code:" + code + ", res:" + JSON.stringify(res));
+    if (code == 0 && res["errCode"] == 200) {
+      var dataObj = res["data"];
+      var count = dataObj["count"];
+      if (count > 0) {
+        var listData = dataObj["data"];
+        That.humanTopicItems = listData;
+      }
+    }
+  });
+};
+var _default = {
+  getAstrolTopicCategory: getAstrolTopicCategory
+};
+exports.default = _default;
+
+/***/ }),
 /* 51 */,
 /* 52 */,
 /* 53 */,
@@ -15473,7 +15526,8 @@ exports.error_code_fail = error_code_fail;
 /* 79 */,
 /* 80 */,
 /* 81 */,
-/* 82 */
+/* 82 */,
+/* 83 */
 /*!***************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/utils/net/http.js ***!
   \***************************************************/
@@ -15488,7 +15542,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _jsSdk = _interopRequireDefault(__webpack_require__(/*! @cloudbase/js-sdk */ 83));
+var _jsSdk = _interopRequireDefault(__webpack_require__(/*! @cloudbase/js-sdk */ 84));
 var _errorCode = __webpack_require__(/*! ./errorCode.js */ 49);
 //
 // errorHandler : 错误处理
@@ -15568,7 +15622,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /*!**********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/js-sdk/dist/index.esm.js ***!
   \**********************************************************************************/
@@ -15583,14 +15637,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _app = _interopRequireDefault(__webpack_require__(/*! @cloudbase/app */ 84));
-var _auth = __webpack_require__(/*! @cloudbase/auth */ 114);
-var _functions = __webpack_require__(/*! @cloudbase/functions */ 123);
-var _storage = __webpack_require__(/*! @cloudbase/storage */ 124);
-var _realtime = __webpack_require__(/*! @cloudbase/realtime */ 125);
-var _analytics = __webpack_require__(/*! @cloudbase/analytics */ 139);
-var _database = __webpack_require__(/*! ./../database */ 140);
-var _package = _interopRequireDefault(__webpack_require__(/*! ../package.json */ 178));
+var _app = _interopRequireDefault(__webpack_require__(/*! @cloudbase/app */ 85));
+var _auth = __webpack_require__(/*! @cloudbase/auth */ 115);
+var _functions = __webpack_require__(/*! @cloudbase/functions */ 124);
+var _storage = __webpack_require__(/*! @cloudbase/storage */ 125);
+var _realtime = __webpack_require__(/*! @cloudbase/realtime */ 126);
+var _analytics = __webpack_require__(/*! @cloudbase/analytics */ 140);
+var _database = __webpack_require__(/*! ./../database */ 141);
+var _package = _interopRequireDefault(__webpack_require__(/*! ../package.json */ 179));
 var version = _package.default.version;
 _app.default.registerVersion(version);
 try {
@@ -15608,7 +15662,7 @@ var _default = _app.default;
 exports.default = _default;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /*!*******************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/index.js ***!
   \*******************************************************************************/
@@ -15624,13 +15678,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.cloudbase = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _cloudbaseAdapterWx_mp = _interopRequireDefault(__webpack_require__(/*! cloudbase-adapter-wx_mp */ 107));
-var _component = __webpack_require__(/*! ./libs/component */ 108);
-var _adapter = __webpack_require__(/*! ./libs/adapter */ 109);
-var _cache = __webpack_require__(/*! ./libs/cache */ 110);
-var _request = __webpack_require__(/*! ./libs/request */ 111);
-var _common = __webpack_require__(/*! ./constants/common */ 112);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _cloudbaseAdapterWx_mp = _interopRequireDefault(__webpack_require__(/*! cloudbase-adapter-wx_mp */ 108));
+var _component = __webpack_require__(/*! ./libs/component */ 109);
+var _adapter = __webpack_require__(/*! ./libs/adapter */ 110);
+var _cache = __webpack_require__(/*! ./libs/cache */ 111);
+var _request = __webpack_require__(/*! ./libs/request */ 112);
+var _common = __webpack_require__(/*! ./constants/common */ 113);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15985,7 +16039,7 @@ var _default = cloudbase;
 exports.default = _default;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /*!*********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/index.js ***!
   \*********************************************************************************/
@@ -16028,21 +16082,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.helpers = exports.utils = exports.events = exports.cache = exports.adapters = exports.constants = void 0;
-var constants = __importStar(__webpack_require__(/*! ./constants */ 86));
+var constants = __importStar(__webpack_require__(/*! ./constants */ 87));
 exports.constants = constants;
-var adapters = __importStar(__webpack_require__(/*! ./adapters */ 89));
+var adapters = __importStar(__webpack_require__(/*! ./adapters */ 90));
 exports.adapters = adapters;
-var cache = __importStar(__webpack_require__(/*! ./libs/cache */ 101));
+var cache = __importStar(__webpack_require__(/*! ./libs/cache */ 102));
 exports.cache = cache;
-var events = __importStar(__webpack_require__(/*! ./libs/events */ 104));
+var events = __importStar(__webpack_require__(/*! ./libs/events */ 105));
 exports.events = events;
-var utils = __importStar(__webpack_require__(/*! ./libs/util */ 94));
+var utils = __importStar(__webpack_require__(/*! ./libs/util */ 95));
 exports.utils = utils;
-var helpers = __importStar(__webpack_require__(/*! ./helpers */ 105));
+var helpers = __importStar(__webpack_require__(/*! ./helpers */ 106));
 exports.helpers = helpers;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/constants/index.js ***!
   \*******************************************************************************************/
@@ -16072,11 +16126,11 @@ var __exportStar = this && this.__exportStar || function (m, exports) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-__exportStar(__webpack_require__(/*! ./common */ 87), exports);
-__exportStar(__webpack_require__(/*! ./errors */ 88), exports);
+__exportStar(__webpack_require__(/*! ./common */ 88), exports);
+__exportStar(__webpack_require__(/*! ./errors */ 89), exports);
 
 /***/ }),
-/* 87 */
+/* 88 */
 /*!********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/constants/common.js ***!
   \********************************************************************************************/
@@ -16112,7 +16166,7 @@ exports.IS_DEBUG_MODE = "development" === 'development';
 exports.COMMUNITY_SITE_URL = 'https://support.qq.com/products/148793';
 
 /***/ }),
-/* 88 */
+/* 89 */
 /*!********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/constants/errors.js ***!
   \********************************************************************************************/
@@ -16136,7 +16190,7 @@ exports.ERRORS = {
 };
 
 /***/ }),
-/* 89 */
+/* 90 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/adapters/index.js ***!
   \******************************************************************************************/
@@ -16179,8 +16233,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.useDefaultAdapter = exports.useAdapters = exports.RUNTIME = void 0;
-var Web = __importStar(__webpack_require__(/*! ./platforms/web */ 90));
-var util_1 = __webpack_require__(/*! ../libs/util */ 94);
+var Web = __importStar(__webpack_require__(/*! ./platforms/web */ 91));
+var util_1 = __webpack_require__(/*! ../libs/util */ 95);
 var RUNTIME;
 (function (RUNTIME) {
   RUNTIME["WEB"] = "web";
@@ -16211,7 +16265,7 @@ function useDefaultAdapter() {
 exports.useDefaultAdapter = useDefaultAdapter;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /*!**************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/adapters/platforms/web.js ***!
   \**************************************************************************************************/
@@ -16375,9 +16429,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.WebRequest = exports.genAdapter = void 0;
-var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 91);
-var util_1 = __webpack_require__(/*! ../../libs/util */ 94);
-var common_1 = __webpack_require__(/*! ../../constants/common */ 87);
+var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 92);
+var util_1 = __webpack_require__(/*! ../../libs/util */ 95);
+var common_1 = __webpack_require__(/*! ../../constants/common */ 88);
 var WebRequest = function (_super) {
   __extends(WebRequest, _super);
   function WebRequest(config) {
@@ -16545,7 +16599,7 @@ function genAdapter() {
 exports.genAdapter = genAdapter;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/adapter-interface/dist/esm/index.js ***!
   \*********************************************************************************************/
@@ -16558,7 +16612,7 @@ exports.genAdapter = genAdapter;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _types = __webpack_require__(/*! ./types */ 92);
+var _types = __webpack_require__(/*! ./types */ 93);
 Object.keys(_types).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _types[key]) return;
@@ -16569,7 +16623,7 @@ Object.keys(_types).forEach(function (key) {
     }
   });
 });
-var _utils = __webpack_require__(/*! ./utils */ 93);
+var _utils = __webpack_require__(/*! ./utils */ 94);
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _utils[key]) return;
@@ -16582,7 +16636,7 @@ Object.keys(_utils).forEach(function (key) {
 });
 
 /***/ }),
-/* 92 */
+/* 93 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/adapter-interface/dist/esm/types.js ***!
   \*********************************************************************************************/
@@ -16615,7 +16669,7 @@ var AbstractStorage = function () {
 exports.AbstractStorage = AbstractStorage;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/adapter-interface/dist/esm/utils.js ***!
   \*********************************************************************************************/
@@ -16651,7 +16705,7 @@ function formatUrl(protocol, url, query) {
 }
 
 /***/ }),
-/* 94 */
+/* 95 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/libs/util.js ***!
   \*************************************************************************************/
@@ -16670,10 +16724,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.transformPhone = exports.sleep = exports.printGroupLog = exports.throwError = exports.printInfo = exports.printError = exports.printWarn = exports.execCallback = exports.createPromiseCallback = exports.removeParam = exports.getHash = exports.getQuery = exports.toQueryString = exports.createSign = exports.formatUrl = exports.genSeqId = exports.isFormData = exports.isInstanceOf = exports.isNull = exports.isPalinObject = exports.isUndefined = exports.isString = exports.isArray = void 0;
-var hmac_sha256_1 = __importDefault(__webpack_require__(/*! crypto-js/hmac-sha256 */ 95));
-var enc_base64_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-base64 */ 99));
-var enc_utf8_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-utf8 */ 100));
-var constants_1 = __webpack_require__(/*! ../constants */ 86);
+var hmac_sha256_1 = __importDefault(__webpack_require__(/*! crypto-js/hmac-sha256 */ 96));
+var enc_base64_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-base64 */ 100));
+var enc_utf8_1 = __importDefault(__webpack_require__(/*! crypto-js/enc-utf8 */ 101));
+var constants_1 = __webpack_require__(/*! ../constants */ 87);
 function isArray(val) {
   return Object.prototype.toString.call(val) === '[object Array]';
 }
@@ -16907,7 +16961,7 @@ function transformPhone(phoneNumber) {
 exports.transformPhone = transformPhone;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /*!***********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/hmac-sha256.js ***!
   \***********************************************************************/
@@ -16919,10 +16973,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (root, factory, undef) {
   if (( false ? undefined : _typeof(exports)) === "object") {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 96), __webpack_require__(/*! ./sha256 */ 97), __webpack_require__(/*! ./hmac */ 98));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 97), __webpack_require__(/*! ./sha256 */ 98), __webpack_require__(/*! ./hmac */ 99));
   } else if (true) {
     // AMD
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 96), __webpack_require__(/*! ./sha256 */ 97), __webpack_require__(/*! ./hmac */ 98)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 97), __webpack_require__(/*! ./sha256 */ 98), __webpack_require__(/*! ./hmac */ 99)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -16932,7 +16986,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 96 */
+/* 97 */
 /*!****************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/core.js ***!
   \****************************************************************/
@@ -17651,7 +17705,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 97 */
+/* 98 */
 /*!******************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/sha256.js ***!
   \******************************************************************/
@@ -17663,10 +17717,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (root, factory) {
   if (( false ? undefined : _typeof(exports)) === "object") {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 96));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 97));
   } else if (true) {
     // AMD
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 96)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 97)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -17835,7 +17889,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 98 */
+/* 99 */
 /*!****************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/hmac.js ***!
   \****************************************************************/
@@ -17847,10 +17901,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (root, factory) {
   if (( false ? undefined : _typeof(exports)) === "object") {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 96));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 97));
   } else if (true) {
     // AMD
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 96)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 97)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -17980,7 +18034,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 99 */
+/* 100 */
 /*!**********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/enc-base64.js ***!
   \**********************************************************************/
@@ -17992,10 +18046,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (root, factory) {
   if (( false ? undefined : _typeof(exports)) === "object") {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 96));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 97));
   } else if (true) {
     // AMD
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 96)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 97)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -18112,7 +18166,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 100 */
+/* 101 */
 /*!********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/crypto-js/enc-utf8.js ***!
   \********************************************************************/
@@ -18124,10 +18178,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (root, factory) {
   if (( false ? undefined : _typeof(exports)) === "object") {
     // CommonJS
-    module.exports = exports = factory(__webpack_require__(/*! ./core */ 96));
+    module.exports = exports = factory(__webpack_require__(/*! ./core */ 97));
   } else if (true) {
     // AMD
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 96)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./core */ 97)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -18137,7 +18191,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 101 */
+/* 102 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/libs/cache.js ***!
   \**************************************************************************************/
@@ -18289,9 +18343,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CloudbaseCache = void 0;
-var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 91);
-var util_1 = __webpack_require__(/*! ./util */ 94);
-var constants_1 = __webpack_require__(/*! ../constants */ 86);
+var adapter_interface_1 = __webpack_require__(/*! @cloudbase/adapter-interface */ 92);
+var util_1 = __webpack_require__(/*! ./util */ 95);
+var constants_1 = __webpack_require__(/*! ../constants */ 87);
 var TcbCacheObject = function (_super) {
   __extends(TcbCacheObject, _super);
   function TcbCacheObject(root) {
@@ -18578,10 +18632,10 @@ var CloudbaseCache = function () {
   return CloudbaseCache;
 }();
 exports.CloudbaseCache = CloudbaseCache;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 102)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 103)))
 
 /***/ }),
-/* 102 */
+/* 103 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -18612,7 +18666,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 103);
+        if (!path) path = __webpack_require__(/*! path */ 104);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -18625,7 +18679,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -18935,10 +18989,10 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 102)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 103)))
 
 /***/ }),
-/* 104 */
+/* 105 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/libs/events.js ***!
   \***************************************************************************************/
@@ -18984,7 +19038,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.removeEventListener = exports.activateEvent = exports.addEventListener = exports.CloudbaseEventEmitter = exports.IErrorEvent = exports.CloudbaseEvent = void 0;
-var util_1 = __webpack_require__(/*! ./util */ 94);
+var util_1 = __webpack_require__(/*! ./util */ 95);
 function _addEventListener(name, listener, listeners) {
   listeners[name] = listeners[name] || [];
   listeners[name].push(listener);
@@ -19071,7 +19125,7 @@ function removeEventListener(event, callback) {
 exports.removeEventListener = removeEventListener;
 
 /***/ }),
-/* 105 */
+/* 106 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/helpers/index.js ***!
   \*****************************************************************************************/
@@ -19101,10 +19155,10 @@ var __exportStar = this && this.__exportStar || function (m, exports) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-__exportStar(__webpack_require__(/*! ./decorators */ 106), exports);
+__exportStar(__webpack_require__(/*! ./decorators */ 107), exports);
 
 /***/ }),
-/* 106 */
+/* 107 */
 /*!**********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/utilities/dist/helpers/decorators.js ***!
   \**********************************************************************************************/
@@ -19235,8 +19289,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.catchErrorsDecorator = void 0;
-var util_1 = __webpack_require__(/*! ../libs/util */ 94);
-var constants_1 = __webpack_require__(/*! ../constants */ 86);
+var util_1 = __webpack_require__(/*! ../libs/util */ 95);
+var constants_1 = __webpack_require__(/*! ../constants */ 87);
 var isFirefox = false;
 if (typeof navigator !== 'undefined' && navigator.userAgent) {
   isFirefox = navigator.userAgent.indexOf("Firefox") !== -1;
@@ -19412,7 +19466,7 @@ function getRewritedError(options) {
 }
 
 /***/ }),
-/* 107 */
+/* 108 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/cloudbase-adapter-wx_mp/dist/esm/index.js ***!
   \****************************************************************************************/
@@ -19426,7 +19480,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.wxMpStorage = exports.default = exports.WxRequest = exports.WxMpWebSocket = void 0;
-var _adapterInterface = __webpack_require__(/*! @cloudbase/adapter-interface */ 91);
+var _adapterInterface = __webpack_require__(/*! @cloudbase/adapter-interface */ 92);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -19850,7 +19904,7 @@ var _default = adapter;
 exports.default = _default;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/component.js ***!
   \****************************************************************************************/
@@ -19865,7 +19919,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.registerComponent = registerComponent;
 exports.registerHook = registerHook;
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var __spreadArrays = void 0 && (void 0).__spreadArrays || function () {
   for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
     s += arguments[i].length;
@@ -19994,7 +20048,7 @@ function registerHook(app, hook) {
 }
 
 /***/ }),
-/* 109 */
+/* 110 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/adapter.js ***!
   \**************************************************************************************/
@@ -20012,7 +20066,7 @@ var Platform = {};
 exports.Platform = Platform;
 
 /***/ }),
-/* 110 */
+/* 111 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/cache.js ***!
   \************************************************************************************/
@@ -20028,7 +20082,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getCacheByEnvId = getCacheByEnvId;
 exports.getLocalCache = getLocalCache;
 exports.initCache = initCache;
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -20087,7 +20141,7 @@ function getLocalCache(env) {
 }
 
 /***/ }),
-/* 111 */
+/* 112 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/libs/request.js ***!
   \**************************************************************************************/
@@ -20103,12 +20157,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.CloudbaseRequest = void 0;
 exports.getRequestByEnvId = getRequestByEnvId;
 exports.initRequest = initRequest;
-var _common = __webpack_require__(/*! ../constants/common */ 112);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _2 = __webpack_require__(/*! .. */ 84);
-var _cache = __webpack_require__(/*! ./cache */ 110);
-var _events = __webpack_require__(/*! ../constants/events */ 113);
-var _adapter = __webpack_require__(/*! ./adapter */ 109);
+var _common = __webpack_require__(/*! ../constants/common */ 113);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _2 = __webpack_require__(/*! .. */ 85);
+var _cache = __webpack_require__(/*! ./cache */ 111);
+var _events = __webpack_require__(/*! ../constants/events */ 114);
+var _adapter = __webpack_require__(/*! ./adapter */ 110);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -20690,7 +20744,7 @@ function getRequestByEnvId(env) {
 }
 
 /***/ }),
-/* 112 */
+/* 113 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/constants/common.js ***!
   \******************************************************************************************/
@@ -20711,7 +20765,7 @@ exports.setEndPoint = setEndPoint;
 exports.setRegionLevelEndpoint = setRegionLevelEndpoint;
 exports.setSdkName = setSdkName;
 exports.setSdkVersion = setSdkVersion;
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var setUtilitiesSdkName = _utilities.constants.setSdkName,
   setUtilitiesProtocol = _utilities.constants.setProtocol;
 var sdk_version = '';
@@ -20758,10 +20812,10 @@ exports.LOGINTYPE = LOGINTYPE;
   LOGINTYPE["CUSTOM"] = "CUSTOM";
   LOGINTYPE["NULL"] = "NULL";
 })(LOGINTYPE || (exports.LOGINTYPE = LOGINTYPE = {}));
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 102)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 103)))
 
 /***/ }),
-/* 113 */
+/* 114 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/app/dist/esm/constants/events.js ***!
   \******************************************************************************************/
@@ -20785,7 +20839,7 @@ var EVENTS = {
 exports.EVENTS = EVENTS;
 
 /***/ }),
-/* 114 */
+/* 115 */
 /*!********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/index.js ***!
   \********************************************************************************/
@@ -20810,15 +20864,15 @@ exports.eventBus = exports.LoginState = exports.EVENTS = void 0;
 exports.registerAuth = registerAuth;
 exports.registerProvider = registerProvider;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _weixinAuthProvider = __webpack_require__(/*! ./providers/weixinAuthProvider */ 115);
-var _anonymousAuthProvider = __webpack_require__(/*! ./providers/anonymousAuthProvider */ 118);
-var _customAuthProvider = __webpack_require__(/*! ./providers/customAuthProvider */ 119);
-var _constants = __webpack_require__(/*! ./constants */ 117);
-var _base = __webpack_require__(/*! ./providers/base */ 116);
-var _emailAuthProvider = __webpack_require__(/*! ./providers/emailAuthProvider */ 120);
-var _usernameAuthProvider = __webpack_require__(/*! ./providers/usernameAuthProvider */ 121);
-var _phoneAuthProvider = __webpack_require__(/*! ./providers/phoneAuthProvider */ 122);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _weixinAuthProvider = __webpack_require__(/*! ./providers/weixinAuthProvider */ 116);
+var _anonymousAuthProvider = __webpack_require__(/*! ./providers/anonymousAuthProvider */ 119);
+var _customAuthProvider = __webpack_require__(/*! ./providers/customAuthProvider */ 120);
+var _constants = __webpack_require__(/*! ./constants */ 118);
+var _base = __webpack_require__(/*! ./providers/base */ 117);
+var _emailAuthProvider = __webpack_require__(/*! ./providers/emailAuthProvider */ 121);
+var _usernameAuthProvider = __webpack_require__(/*! ./providers/usernameAuthProvider */ 122);
+var _phoneAuthProvider = __webpack_require__(/*! ./providers/phoneAuthProvider */ 123);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -21950,7 +22004,7 @@ function registerProvider(name, provider) {
 }
 
 /***/ }),
-/* 115 */
+/* 116 */
 /*!*******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/weixinAuthProvider.js ***!
   \*******************************************************************************************************/
@@ -21966,10 +22020,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.WeixinAuthProvider = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _base = __webpack_require__(/*! ./base */ 116);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities/ */ 85);
-var _2 = __webpack_require__(/*! .. */ 114);
-var _constants = __webpack_require__(/*! ../constants */ 117);
+var _base = __webpack_require__(/*! ./base */ 117);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities/ */ 86);
+var _2 = __webpack_require__(/*! .. */ 115);
+var _constants = __webpack_require__(/*! ../constants */ 118);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -22326,7 +22380,7 @@ function getWeixinCode() {
 ;
 
 /***/ }),
-/* 116 */
+/* 117 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/base.js ***!
   \*****************************************************************************************/
@@ -22340,7 +22394,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.AuthProvider = void 0;
-var _2 = __webpack_require__(/*! .. */ 114);
+var _2 = __webpack_require__(/*! .. */ 115);
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
@@ -22579,7 +22633,7 @@ var AuthProvider = function () {
 exports.AuthProvider = AuthProvider;
 
 /***/ }),
-/* 117 */
+/* 118 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/constants.js ***!
   \************************************************************************************/
@@ -22608,7 +22662,7 @@ exports.LOGINTYPE = LOGINTYPE;
 })(LOGINTYPE || (exports.LOGINTYPE = LOGINTYPE = {}));
 
 /***/ }),
-/* 118 */
+/* 119 */
 /*!**********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/anonymousAuthProvider.js ***!
   \**********************************************************************************************************/
@@ -22624,10 +22678,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AnonymousAuthProvider = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _base = __webpack_require__(/*! ./base */ 116);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _constants = __webpack_require__(/*! ../constants */ 117);
-var _2 = __webpack_require__(/*! .. */ 114);
+var _base = __webpack_require__(/*! ./base */ 117);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _constants = __webpack_require__(/*! ../constants */ 118);
+var _2 = __webpack_require__(/*! .. */ 115);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -22970,7 +23024,7 @@ var AnonymousAuthProvider = function (_super) {
 exports.AnonymousAuthProvider = AnonymousAuthProvider;
 
 /***/ }),
-/* 119 */
+/* 120 */
 /*!*******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/customAuthProvider.js ***!
   \*******************************************************************************************************/
@@ -22986,10 +23040,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CustomAuthProvider = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _base = __webpack_require__(/*! ./base */ 116);
-var _constants = __webpack_require__(/*! ../constants */ 117);
-var _2 = __webpack_require__(/*! .. */ 114);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _base = __webpack_require__(/*! ./base */ 117);
+var _constants = __webpack_require__(/*! ../constants */ 118);
+var _2 = __webpack_require__(/*! .. */ 115);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -23215,7 +23269,7 @@ var CustomAuthProvider = function (_super) {
 exports.CustomAuthProvider = CustomAuthProvider;
 
 /***/ }),
-/* 120 */
+/* 121 */
 /*!******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/emailAuthProvider.js ***!
   \******************************************************************************************************/
@@ -23231,10 +23285,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EmailAuthProvider = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _base = __webpack_require__(/*! ./base */ 116);
-var _constants = __webpack_require__(/*! ../constants */ 117);
-var _2 = __webpack_require__(/*! .. */ 114);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _base = __webpack_require__(/*! ./base */ 117);
+var _constants = __webpack_require__(/*! ../constants */ 118);
+var _2 = __webpack_require__(/*! .. */ 115);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -23519,7 +23573,7 @@ var EmailAuthProvider = function (_super) {
 exports.EmailAuthProvider = EmailAuthProvider;
 
 /***/ }),
-/* 121 */
+/* 122 */
 /*!*********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/usernameAuthProvider.js ***!
   \*********************************************************************************************************/
@@ -23535,10 +23589,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UsernameAuthProvider = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _base = __webpack_require__(/*! ./base */ 116);
-var _2 = __webpack_require__(/*! .. */ 114);
-var _constants = __webpack_require__(/*! ../constants */ 117);
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _base = __webpack_require__(/*! ./base */ 117);
+var _2 = __webpack_require__(/*! .. */ 115);
+var _constants = __webpack_require__(/*! ../constants */ 118);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -23785,7 +23839,7 @@ var UsernameAuthProvider = function (_super) {
 exports.UsernameAuthProvider = UsernameAuthProvider;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /*!******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/auth/dist/esm/providers/phoneAuthProvider.js ***!
   \******************************************************************************************************/
@@ -23801,10 +23855,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SIGN_METHOD = exports.PhoneAuthProvider = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
-var _base = __webpack_require__(/*! ./base */ 116);
-var _constants = __webpack_require__(/*! ../constants */ 117);
-var _2 = __webpack_require__(/*! .. */ 114);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
+var _base = __webpack_require__(/*! ./base */ 117);
+var _constants = __webpack_require__(/*! ../constants */ 118);
+var _2 = __webpack_require__(/*! .. */ 115);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -24083,7 +24137,7 @@ var PhoneAuthProvider = function (_super) {
 exports.PhoneAuthProvider = PhoneAuthProvider;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/functions/dist/esm/index.js ***!
   \*************************************************************************************/
@@ -24099,7 +24153,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.registerFunctions = registerFunctions;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
     r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
@@ -24334,7 +24388,7 @@ function registerFunctions(app) {
 }
 
 /***/ }),
-/* 124 */
+/* 125 */
 /*!***********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/storage/dist/esm/index.js ***!
   \***********************************************************************************/
@@ -24350,7 +24404,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.registerStorage = registerStorage;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
     r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
@@ -24774,7 +24828,7 @@ function registerStorage(app) {
 }
 
 /***/ }),
-/* 125 */
+/* 126 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/index.js ***!
   \************************************************************************************/
@@ -24788,8 +24842,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.registerRealtime = registerRealtime;
-var _websocketClient = __webpack_require__(/*! ./websocket-client */ 126);
-var _common = __webpack_require__(/*! ./common */ 138);
+var _websocketClient = __webpack_require__(/*! ./websocket-client */ 127);
+var _common = __webpack_require__(/*! ./common */ 139);
 var hook = {
   target: 'database',
   entity: function entity() {
@@ -24821,7 +24875,7 @@ function registerRealtime(app) {
 }
 
 /***/ }),
-/* 126 */
+/* 127 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/websocket-client.js ***!
   \***********************************************************************************************/
@@ -24835,12 +24889,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.RealtimeWebSocketClient = void 0;
-var _virtualWebsocketClient = __webpack_require__(/*! ./virtual-websocket-client */ 127);
-var _message = __webpack_require__(/*! ./message */ 132);
-var _wsEvent = __webpack_require__(/*! ./ws-event */ 137);
-var _error = __webpack_require__(/*! ./error */ 135);
-var _common = __webpack_require__(/*! ./common */ 138);
-var _utils = __webpack_require__(/*! ./utils */ 136);
+var _virtualWebsocketClient = __webpack_require__(/*! ./virtual-websocket-client */ 128);
+var _message = __webpack_require__(/*! ./message */ 133);
+var _wsEvent = __webpack_require__(/*! ./ws-event */ 138);
+var _error = __webpack_require__(/*! ./error */ 136);
+var _common = __webpack_require__(/*! ./common */ 139);
+var _utils = __webpack_require__(/*! ./utils */ 137);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -25696,7 +25750,7 @@ var RealtimeWebSocketClient = function () {
 exports.RealtimeWebSocketClient = RealtimeWebSocketClient;
 
 /***/ }),
-/* 127 */
+/* 128 */
 /*!*******************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/virtual-websocket-client.js ***!
   \*******************************************************************************************************/
@@ -25712,14 +25766,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.VirtualWebSocketClient = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _lodash = _interopRequireDefault(__webpack_require__(/*! lodash.set */ 128));
-var _lodash2 = _interopRequireDefault(__webpack_require__(/*! lodash.unset */ 129));
-var _lodash3 = _interopRequireDefault(__webpack_require__(/*! lodash.clonedeep */ 130));
-var _message = __webpack_require__(/*! ./message */ 132);
-var _listener = __webpack_require__(/*! ./listener */ 133);
-var _snapshot = __webpack_require__(/*! ./snapshot */ 134);
-var _error = __webpack_require__(/*! ./error */ 135);
-var _utils = __webpack_require__(/*! ./utils */ 136);
+var _lodash = _interopRequireDefault(__webpack_require__(/*! lodash.set */ 129));
+var _lodash2 = _interopRequireDefault(__webpack_require__(/*! lodash.unset */ 130));
+var _lodash3 = _interopRequireDefault(__webpack_require__(/*! lodash.clonedeep */ 131));
+var _message = __webpack_require__(/*! ./message */ 133);
+var _listener = __webpack_require__(/*! ./listener */ 134);
+var _snapshot = __webpack_require__(/*! ./snapshot */ 135);
+var _error = __webpack_require__(/*! ./error */ 136);
+var _utils = __webpack_require__(/*! ./utils */ 137);
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
@@ -26794,7 +26848,7 @@ function getPublicEvent(event) {
 }
 
 /***/ }),
-/* 128 */
+/* 129 */
 /*!******************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/lodash.set/index.js ***!
   \******************************************************************/
@@ -27768,7 +27822,7 @@ module.exports = set;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 129 */
+/* 130 */
 /*!********************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/lodash.unset/index.js ***!
   \********************************************************************/
@@ -28764,7 +28818,7 @@ module.exports = unset;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 130 */
+/* 131 */
 /*!************************************************!*\
   !*** ./node_modules/lodash.clonedeep/index.js ***!
   \************************************************/
@@ -30520,10 +30574,10 @@ function stubFalse() {
 
 module.exports = cloneDeep;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 2), __webpack_require__(/*! ./../webpack/buildin/module.js */ 131)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 2), __webpack_require__(/*! ./../webpack/buildin/module.js */ 132)(module)))
 
 /***/ }),
-/* 131 */
+/* 132 */
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
   \***********************************/
@@ -30555,7 +30609,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/message.js ***!
   \**************************************************************************************/
@@ -30581,7 +30635,7 @@ function isInitEventMessage(msg) {
 }
 
 /***/ }),
-/* 133 */
+/* 134 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/listener.js ***!
   \***************************************************************************************/
@@ -30613,7 +30667,7 @@ var RealtimeListener = function () {
 exports.RealtimeListener = RealtimeListener;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/snapshot.js ***!
   \***************************************************************************************/
@@ -30680,7 +30734,7 @@ var Snapshot = function () {
 exports.Snapshot = Snapshot;
 
 /***/ }),
-/* 135 */
+/* 136 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/error.js ***!
   \************************************************************************************/
@@ -30810,7 +30864,7 @@ var ERR_CODE = {
 exports.ERR_CODE = ERR_CODE;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/utils.js ***!
   \************************************************************************************/
@@ -30835,7 +30889,7 @@ var sleep = function sleep(ms) {
 exports.sleep = sleep;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/ws-event.js ***!
   \***************************************************************************************/
@@ -30849,7 +30903,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getWSCloseError = exports.CLOSE_EVENT_CODE_INFO = exports.CLOSE_EVENT_CODE = void 0;
-var _error = __webpack_require__(/*! ./error */ 135);
+var _error = __webpack_require__(/*! ./error */ 136);
 var CLOSE_EVENT_CODE_INFO = {
   1000: {
     code: 1000,
@@ -30988,7 +31042,7 @@ var getWSCloseError = function getWSCloseError(code, reason) {
 exports.getWSCloseError = getWSCloseError;
 
 /***/ }),
-/* 138 */
+/* 139 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/realtime/dist/esm/common.js ***!
   \*************************************************************************************/
@@ -31021,7 +31075,7 @@ function setRuntime(val) {
 }
 
 /***/ }),
-/* 139 */
+/* 140 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/analytics/dist/esm/index.js ***!
   \*************************************************************************************/
@@ -31037,7 +31091,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.registerAnalytics = registerAnalytics;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 85);
+var _utilities = __webpack_require__(/*! @cloudbase/utilities */ 86);
 var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
     r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
@@ -31250,7 +31304,7 @@ function registerAnalytics(app) {
 }
 
 /***/ }),
-/* 140 */
+/* 141 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/js-sdk/database/dist/index.esm.js ***!
   \*******************************************************************************************/
@@ -31264,7 +31318,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.registerDatabase = registerDatabase;
-var _database = __webpack_require__(/*! @cloudbase/database */ 141);
+var _database = __webpack_require__(/*! @cloudbase/database */ 142);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -31314,7 +31368,7 @@ function registerDatabase(app) {
 }
 
 /***/ }),
-/* 141 */
+/* 142 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/index.js ***!
   \************************************************************************************/
@@ -31347,17 +31401,17 @@ Object.defineProperty(exports, "Query", {
     return _query2.Query;
   }
 });
-var Geo = _interopRequireWildcard(__webpack_require__(/*! ./geo/index */ 142));
-var _collection = __webpack_require__(/*! ./collection */ 156);
-var _command = __webpack_require__(/*! ./command */ 171);
-var _index2 = __webpack_require__(/*! ./serverDate/index */ 147);
-var _index3 = __webpack_require__(/*! ./regexp/index */ 172);
-var _index4 = __webpack_require__(/*! ./transaction/index */ 173);
-var _logic = __webpack_require__(/*! ./commands/logic */ 163);
-var _query = __webpack_require__(/*! ./commands/query */ 162);
-var _update = __webpack_require__(/*! ./commands/update */ 160);
-var _query2 = __webpack_require__(/*! ./query */ 167);
-var _document = __webpack_require__(/*! ./document */ 157);
+var Geo = _interopRequireWildcard(__webpack_require__(/*! ./geo/index */ 143));
+var _collection = __webpack_require__(/*! ./collection */ 157);
+var _command = __webpack_require__(/*! ./command */ 172);
+var _index2 = __webpack_require__(/*! ./serverDate/index */ 148);
+var _index3 = __webpack_require__(/*! ./regexp/index */ 173);
+var _index4 = __webpack_require__(/*! ./transaction/index */ 174);
+var _logic = __webpack_require__(/*! ./commands/logic */ 164);
+var _query = __webpack_require__(/*! ./commands/query */ 163);
+var _update = __webpack_require__(/*! ./commands/update */ 161);
+var _query2 = __webpack_require__(/*! ./query */ 168);
+var _document = __webpack_require__(/*! ./document */ 158);
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 var Db = function () {
@@ -31391,7 +31445,7 @@ var Db = function () {
 exports.Db = Db;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/index.js ***!
   \****************************************************************************************/
@@ -31404,7 +31458,7 @@ exports.Db = Db;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _point = __webpack_require__(/*! ./point */ 143);
+var _point = __webpack_require__(/*! ./point */ 144);
 Object.keys(_point).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _point[key]) return;
@@ -31415,7 +31469,7 @@ Object.keys(_point).forEach(function (key) {
     }
   });
 });
-var _lineString = __webpack_require__(/*! ./lineString */ 151);
+var _lineString = __webpack_require__(/*! ./lineString */ 152);
 Object.keys(_lineString).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _lineString[key]) return;
@@ -31426,7 +31480,7 @@ Object.keys(_lineString).forEach(function (key) {
     }
   });
 });
-var _polygon = __webpack_require__(/*! ./polygon */ 152);
+var _polygon = __webpack_require__(/*! ./polygon */ 153);
 Object.keys(_polygon).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _polygon[key]) return;
@@ -31437,7 +31491,7 @@ Object.keys(_polygon).forEach(function (key) {
     }
   });
 });
-var _multiPoint = __webpack_require__(/*! ./multiPoint */ 153);
+var _multiPoint = __webpack_require__(/*! ./multiPoint */ 154);
 Object.keys(_multiPoint).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _multiPoint[key]) return;
@@ -31448,7 +31502,7 @@ Object.keys(_multiPoint).forEach(function (key) {
     }
   });
 });
-var _multiLineString = __webpack_require__(/*! ./multiLineString */ 154);
+var _multiLineString = __webpack_require__(/*! ./multiLineString */ 155);
 Object.keys(_multiLineString).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _multiLineString[key]) return;
@@ -31459,7 +31513,7 @@ Object.keys(_multiLineString).forEach(function (key) {
     }
   });
 });
-var _multiPolygon = __webpack_require__(/*! ./multiPolygon */ 155);
+var _multiPolygon = __webpack_require__(/*! ./multiPolygon */ 156);
 Object.keys(_multiPolygon).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _multiPolygon[key]) return;
@@ -31472,7 +31526,7 @@ Object.keys(_multiPolygon).forEach(function (key) {
 });
 
 /***/ }),
-/* 143 */
+/* 144 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/point.js ***!
   \****************************************************************************************/
@@ -31486,9 +31540,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Point = void 0;
-var _validate = __webpack_require__(/*! ../validate */ 144);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
+var _validate = __webpack_require__(/*! ../validate */ 145);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
 var Point = function () {
   function Point(longitude, latitude) {
     _validate.Validate.isGeopoint('longitude', longitude);
@@ -31527,7 +31581,7 @@ var Point = function () {
 exports.Point = Point;
 
 /***/ }),
-/* 144 */
+/* 145 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/validate.js ***!
   \***************************************************************************************/
@@ -31541,8 +31595,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Validate = void 0;
-var _constant = __webpack_require__(/*! ./constant */ 145);
-var _util = __webpack_require__(/*! ./util */ 146);
+var _constant = __webpack_require__(/*! ./constant */ 146);
+var _util = __webpack_require__(/*! ./util */ 147);
 var Validate = function () {
   function Validate() {}
   Validate.isGeopoint = function (point, degree) {
@@ -31598,7 +31652,7 @@ var Validate = function () {
 exports.Validate = Validate;
 
 /***/ }),
-/* 145 */
+/* 146 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/constant.js ***!
   \***************************************************************************************/
@@ -31668,7 +31722,7 @@ exports.QueryType = QueryType;
 })(QueryType || (exports.QueryType = QueryType = {}));
 
 /***/ }),
-/* 146 */
+/* 147 */
 /*!***********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/util.js ***!
   \***********************************************************************************/
@@ -31682,9 +31736,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Util = void 0;
-var _constant = __webpack_require__(/*! ./constant */ 145);
-var _index = __webpack_require__(/*! ./geo/index */ 142);
-var _index2 = __webpack_require__(/*! ./serverDate/index */ 147);
+var _constant = __webpack_require__(/*! ./constant */ 146);
+var _index = __webpack_require__(/*! ./geo/index */ 143);
+var _index2 = __webpack_require__(/*! ./serverDate/index */ 148);
 var __read = void 0 && (void 0).__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
@@ -31839,7 +31893,7 @@ var Util = function () {
 exports.Util = Util;
 
 /***/ }),
-/* 147 */
+/* 148 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serverDate/index.js ***!
   \***********************************************************************************************/
@@ -31854,7 +31908,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ServerDate = void 0;
 exports.ServerDateConstructor = ServerDateConstructor;
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
 var ServerDate = function () {
   function ServerDate(_a) {
     var _b = (_a === void 0 ? {} : _a).offset,
@@ -31883,7 +31937,7 @@ function ServerDateConstructor(opt) {
 }
 
 /***/ }),
-/* 148 */
+/* 149 */
 /*!********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/helper/symbol.js ***!
   \********************************************************************************************/
@@ -31912,7 +31966,7 @@ var _exportNames = {
   SYMBOL_REGEXP: true
 };
 exports.SYMBOL_UPDATE_COMMAND = exports.SYMBOL_UNSET_FIELD_NAME = exports.SYMBOL_SERVER_DATE = exports.SYMBOL_REGEXP = exports.SYMBOL_QUERY_COMMAND = exports.SYMBOL_LOGIC_COMMAND = exports.SYMBOL_GEO_POLYGON = exports.SYMBOL_GEO_POINT = exports.SYMBOL_GEO_MULTI_POLYGON = exports.SYMBOL_GEO_MULTI_POINT = exports.SYMBOL_GEO_MULTI_LINE_STRING = exports.SYMBOL_GEO_LINE_STRING = void 0;
-var _symbol = _interopRequireWildcard(__webpack_require__(/*! ../utils/symbol */ 149));
+var _symbol = _interopRequireWildcard(__webpack_require__(/*! ../utils/symbol */ 150));
 Object.keys(_symbol).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
@@ -31952,7 +32006,7 @@ var SYMBOL_REGEXP = _symbol.default.for('REGEXP');
 exports.SYMBOL_REGEXP = SYMBOL_REGEXP;
 
 /***/ }),
-/* 149 */
+/* 150 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/utils/symbol.js ***!
   \*******************************************************************************************/
@@ -32032,7 +32086,7 @@ var _default = InternalSymbol;
 exports.default = _default;
 
 /***/ }),
-/* 150 */
+/* 151 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/utils/type.js ***!
   \*****************************************************************************************/
@@ -32048,7 +32102,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.isString = exports.isRegExp = exports.isPromise = exports.isPlainObject = exports.isObject = exports.isNumber = exports.isInternalObject = exports.isFunction = exports.isDate = exports.isArray = exports.getType = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _symbol = __webpack_require__(/*! ./symbol */ 149);
+var _symbol = __webpack_require__(/*! ./symbol */ 150);
 var getType = function getType(x) {
   return Object.prototype.toString.call(x).slice(8, -1).toLowerCase();
 };
@@ -32100,7 +32154,7 @@ var isPlainObject = function isPlainObject(obj) {
 exports.isPlainObject = isPlainObject;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/lineString.js ***!
   \*********************************************************************************************/
@@ -32116,9 +32170,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.LineString = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _point = __webpack_require__(/*! ./point */ 143);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _point = __webpack_require__(/*! ./point */ 144);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
 var __values = void 0 && (void 0).__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
     m = s && o[s],
@@ -32211,7 +32265,7 @@ var LineString = function () {
 exports.LineString = LineString;
 
 /***/ }),
-/* 152 */
+/* 153 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/polygon.js ***!
   \******************************************************************************************/
@@ -32227,9 +32281,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Polygon = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _lineString = __webpack_require__(/*! ./lineString */ 151);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _lineString = __webpack_require__(/*! ./lineString */ 152);
 var __values = void 0 && (void 0).__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
     m = s && o[s],
@@ -32350,7 +32404,7 @@ var Polygon = function () {
 exports.Polygon = Polygon;
 
 /***/ }),
-/* 153 */
+/* 154 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/multiPoint.js ***!
   \*********************************************************************************************/
@@ -32366,9 +32420,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MultiPoint = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _point = __webpack_require__(/*! ./point */ 143);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _point = __webpack_require__(/*! ./point */ 144);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
 var __values = void 0 && (void 0).__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
     m = s && o[s],
@@ -32454,7 +32508,7 @@ var MultiPoint = function () {
 exports.MultiPoint = MultiPoint;
 
 /***/ }),
-/* 154 */
+/* 155 */
 /*!**************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/multiLineString.js ***!
   \**************************************************************************************************/
@@ -32470,9 +32524,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MultiLineString = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _lineString = __webpack_require__(/*! ./lineString */ 151);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _lineString = __webpack_require__(/*! ./lineString */ 152);
 var __values = void 0 && (void 0).__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
     m = s && o[s],
@@ -32577,7 +32631,7 @@ var MultiLineString = function () {
 exports.MultiLineString = MultiLineString;
 
 /***/ }),
-/* 155 */
+/* 156 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/geo/multiPolygon.js ***!
   \***********************************************************************************************/
@@ -32593,9 +32647,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MultiPolygon = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _polygon = __webpack_require__(/*! ./polygon */ 152);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _polygon = __webpack_require__(/*! ./polygon */ 153);
 var __values = void 0 && (void 0).__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
     m = s && o[s],
@@ -32733,7 +32787,7 @@ var MultiPolygon = function () {
 exports.MultiPolygon = MultiPolygon;
 
 /***/ }),
-/* 156 */
+/* 157 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/collection.js ***!
   \*****************************************************************************************/
@@ -32748,9 +32802,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CollectionReference = void 0;
-var _document = __webpack_require__(/*! ./document */ 157);
-var _query = __webpack_require__(/*! ./query */ 167);
-var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 169));
+var _document = __webpack_require__(/*! ./document */ 158);
+var _query = __webpack_require__(/*! ./query */ 168);
+var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 170));
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -32802,7 +32856,7 @@ var CollectionReference = function (_super) {
 exports.CollectionReference = CollectionReference;
 
 /***/ }),
-/* 157 */
+/* 158 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/document.js ***!
   \***************************************************************************************/
@@ -32818,14 +32872,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DocumentReference = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _util = __webpack_require__(/*! ./lib/util */ 158);
-var _index = __webpack_require__(/*! ./index */ 141);
-var _util2 = __webpack_require__(/*! ./util */ 146);
-var _update = __webpack_require__(/*! ./serializer/update */ 159);
-var _datatype = __webpack_require__(/*! ./serializer/datatype */ 165);
-var _update2 = __webpack_require__(/*! ./commands/update */ 160);
-var _constant = __webpack_require__(/*! ./constant */ 145);
-var _utils = __webpack_require__(/*! ./utils/utils */ 166);
+var _util = __webpack_require__(/*! ./lib/util */ 159);
+var _index = __webpack_require__(/*! ./index */ 142);
+var _util2 = __webpack_require__(/*! ./util */ 147);
+var _update = __webpack_require__(/*! ./serializer/update */ 160);
+var _datatype = __webpack_require__(/*! ./serializer/datatype */ 166);
+var _update2 = __webpack_require__(/*! ./commands/update */ 161);
+var _constant = __webpack_require__(/*! ./constant */ 146);
+var _utils = __webpack_require__(/*! ./utils/utils */ 167);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -33063,7 +33117,7 @@ var DocumentReference = function () {
 exports.DocumentReference = DocumentReference;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /*!***************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/lib/util.js ***!
   \***************************************************************************************/
@@ -33105,7 +33159,7 @@ var createPromiseCallback = function createPromiseCallback() {
 exports.createPromiseCallback = createPromiseCallback;
 
 /***/ }),
-/* 159 */
+/* 160 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/update.js ***!
   \************************************************************************************************/
@@ -33119,11 +33173,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.UpdateSerializer = void 0;
-var _update = __webpack_require__(/*! ../commands/update */ 160);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _operatorMap = __webpack_require__(/*! ../operator-map */ 161);
-var _common = __webpack_require__(/*! ./common */ 164);
+var _update = __webpack_require__(/*! ../commands/update */ 161);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _operatorMap = __webpack_require__(/*! ../operator-map */ 162);
+var _common = __webpack_require__(/*! ./common */ 165);
 var UpdateSerializer = function () {
   function UpdateSerializer() {}
   UpdateSerializer.encode = function (query) {
@@ -33235,7 +33289,7 @@ var UpdateSerializer = function () {
 exports.UpdateSerializer = UpdateSerializer;
 
 /***/ }),
-/* 160 */
+/* 161 */
 /*!**********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/commands/update.js ***!
   \**********************************************************************************************/
@@ -33251,7 +33305,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = exports.UpdateCommand = exports.UPDATE_COMMANDS_LITERAL = void 0;
 exports.isKnownUpdateCommand = isKnownUpdateCommand;
 exports.isUpdateCommand = isUpdateCommand;
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
 var UPDATE_COMMANDS_LITERAL;
 exports.UPDATE_COMMANDS_LITERAL = UPDATE_COMMANDS_LITERAL;
 (function (UPDATE_COMMANDS_LITERAL) {
@@ -33301,7 +33355,7 @@ var _default = UpdateCommand;
 exports.default = _default;
 
 /***/ }),
-/* 161 */
+/* 162 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/operator-map.js ***!
   \*******************************************************************************************/
@@ -33316,9 +33370,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.OperatorMap = void 0;
 exports.operatorToString = operatorToString;
-var _query = __webpack_require__(/*! ./commands/query */ 162);
-var _logic = __webpack_require__(/*! ./commands/logic */ 163);
-var _update = __webpack_require__(/*! ./commands/update */ 160);
+var _query = __webpack_require__(/*! ./commands/query */ 163);
+var _logic = __webpack_require__(/*! ./commands/logic */ 164);
+var _update = __webpack_require__(/*! ./commands/update */ 161);
 var OperatorMap = {};
 exports.OperatorMap = OperatorMap;
 for (var key in _query.QUERY_COMMANDS_LITERAL) {
@@ -33339,7 +33393,7 @@ function operatorToString(operator) {
 }
 
 /***/ }),
-/* 162 */
+/* 163 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/commands/query.js ***!
   \*********************************************************************************************/
@@ -33358,10 +33412,10 @@ exports.isComparisonCommand = isComparisonCommand;
 exports.isKnownQueryCommand = isKnownQueryCommand;
 exports.isQueryCommand = isQueryCommand;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _logic = __webpack_require__(/*! ./logic */ 163);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _index = __webpack_require__(/*! ../geo/index */ 142);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
+var _logic = __webpack_require__(/*! ./logic */ 164);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _index = __webpack_require__(/*! ../geo/index */ 143);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -33526,7 +33580,7 @@ var _default = QueryCommand;
 exports.default = _default;
 
 /***/ }),
-/* 163 */
+/* 164 */
 /*!*********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/commands/logic.js ***!
   \*********************************************************************************************/
@@ -33542,8 +33596,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = exports.OR = exports.NOT = exports.NOR = exports.LogicCommand = exports.LOGIC_COMMANDS_LITERAL = exports.AND = void 0;
 exports.isKnownLogicCommand = isKnownLogicCommand;
 exports.isLogicCommand = isLogicCommand;
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _query = __webpack_require__(/*! ./query */ 162);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _query = __webpack_require__(/*! ./query */ 163);
 var AND = 'and';
 exports.AND = AND;
 var OR = 'or';
@@ -33632,7 +33686,7 @@ var _default = LogicCommand;
 exports.default = _default;
 
 /***/ }),
-/* 164 */
+/* 165 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/common.js ***!
   \************************************************************************************************/
@@ -33651,8 +33705,8 @@ exports.flattenObject = flattenObject;
 exports.flattenQueryObject = flattenQueryObject;
 exports.isConversionRequired = isConversionRequired;
 exports.mergeConditionAfterEncode = mergeConditionAfterEncode;
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _datatype = __webpack_require__(/*! ./datatype */ 165);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _datatype = __webpack_require__(/*! ./datatype */ 166);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -33768,7 +33822,7 @@ function decodeInternalDataType(object) {
 }
 
 /***/ }),
-/* 165 */
+/* 166 */
 /*!**************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/datatype.js ***!
   \**************************************************************************************************/
@@ -33783,10 +33837,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deserialize = deserialize;
 exports.serialize = serialize;
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _index = __webpack_require__(/*! ../geo/index */ 142);
-var _index2 = __webpack_require__(/*! ../serverDate/index */ 147);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _index = __webpack_require__(/*! ../geo/index */ 143);
+var _index2 = __webpack_require__(/*! ../serverDate/index */ 148);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -33918,7 +33972,7 @@ function deserialize(object) {
 }
 
 /***/ }),
-/* 166 */
+/* 167 */
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/utils/utils.js ***!
   \******************************************************************************************/
@@ -33934,7 +33988,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.autoCount = void 0;
 exports.getWsInstance = getWsInstance;
 exports.sleep = void 0;
-var _ = __webpack_require__(/*! ../ */ 141);
+var _ = __webpack_require__(/*! ../ */ 142);
 var sleep = function sleep(ms) {
   if (ms === void 0) {
     ms = 0;
@@ -33977,7 +34031,7 @@ function getWsInstance(db) {
 }
 
 /***/ }),
-/* 167 */
+/* 168 */
 /*!************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/query.js ***!
   \************************************************************************************/
@@ -33993,14 +34047,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Query = void 0;
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _util = __webpack_require__(/*! ./lib/util */ 158);
-var _constant = __webpack_require__(/*! ./constant */ 145);
-var _index = __webpack_require__(/*! ./index */ 141);
-var _validate = __webpack_require__(/*! ./validate */ 144);
-var _util2 = __webpack_require__(/*! ./util */ 146);
-var _query = __webpack_require__(/*! ./serializer/query */ 168);
-var _update = __webpack_require__(/*! ./serializer/update */ 159);
-var _utils = __webpack_require__(/*! ./utils/utils */ 166);
+var _util = __webpack_require__(/*! ./lib/util */ 159);
+var _constant = __webpack_require__(/*! ./constant */ 146);
+var _index = __webpack_require__(/*! ./index */ 142);
+var _validate = __webpack_require__(/*! ./validate */ 145);
+var _util2 = __webpack_require__(/*! ./util */ 147);
+var _query = __webpack_require__(/*! ./serializer/query */ 169);
+var _update = __webpack_require__(/*! ./serializer/update */ 160);
+var _utils = __webpack_require__(/*! ./utils/utils */ 167);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -34227,7 +34281,7 @@ var Query = function () {
 exports.Query = Query;
 
 /***/ }),
-/* 168 */
+/* 169 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/serializer/query.js ***!
   \***********************************************************************************************/
@@ -34241,12 +34295,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.QuerySerializer = void 0;
-var _query = __webpack_require__(/*! ../commands/query */ 162);
-var _logic = __webpack_require__(/*! ../commands/logic */ 163);
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
-var _type = __webpack_require__(/*! ../utils/type */ 150);
-var _operatorMap = __webpack_require__(/*! ../operator-map */ 161);
-var _common = __webpack_require__(/*! ./common */ 164);
+var _query = __webpack_require__(/*! ../commands/query */ 163);
+var _logic = __webpack_require__(/*! ../commands/logic */ 164);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
+var _type = __webpack_require__(/*! ../utils/type */ 151);
+var _operatorMap = __webpack_require__(/*! ../operator-map */ 162);
+var _common = __webpack_require__(/*! ./common */ 165);
 var QuerySerializer = function () {
   function QuerySerializer() {}
   QuerySerializer.encode = function (query) {
@@ -34434,7 +34488,7 @@ var QueryEncoder = function () {
 }();
 
 /***/ }),
-/* 169 */
+/* 170 */
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/aggregate.js ***!
   \****************************************************************************************/
@@ -34448,9 +34502,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _index = __webpack_require__(/*! ./index */ 141);
-var _bson = __webpack_require__(/*! bson */ 170);
-var _query = __webpack_require__(/*! ./serializer/query */ 168);
+var _index = __webpack_require__(/*! ./index */ 142);
+var _bson = __webpack_require__(/*! bson */ 171);
+var _query = __webpack_require__(/*! ./serializer/query */ 169);
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
@@ -34675,7 +34729,7 @@ var _default = Aggregation;
 exports.default = _default;
 
 /***/ }),
-/* 170 */
+/* 171 */
 /*!****************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/bson/dist/bson.browser.esm.js ***!
   \****************************************************************************/
@@ -41460,7 +41514,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../extProgramFiles/hbuilderx/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 171 */
+/* 172 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/command.js ***!
   \**************************************************************************************/
@@ -41475,11 +41529,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.Command = void 0;
-var _query = __webpack_require__(/*! ./commands/query */ 162);
-var _logic = __webpack_require__(/*! ./commands/logic */ 163);
-var _update = __webpack_require__(/*! ./commands/update */ 160);
-var _type = __webpack_require__(/*! ./utils/type */ 150);
-var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 169));
+var _query = __webpack_require__(/*! ./commands/query */ 163);
+var _logic = __webpack_require__(/*! ./commands/logic */ 164);
+var _update = __webpack_require__(/*! ./commands/update */ 161);
+var _type = __webpack_require__(/*! ./utils/type */ 151);
+var _aggregate = _interopRequireDefault(__webpack_require__(/*! ./aggregate */ 170));
 var Command = {
   eq: function eq(val) {
     return new _query.QueryCommand(_query.QUERY_COMMANDS_LITERAL.EQ, [val]);
@@ -41960,7 +42014,7 @@ var _default = Command;
 exports.default = _default;
 
 /***/ }),
-/* 172 */
+/* 173 */
 /*!*******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/regexp/index.js ***!
   \*******************************************************************************************/
@@ -41975,7 +42029,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RegExp = void 0;
 exports.RegExpConstructor = RegExpConstructor;
-var _symbol = __webpack_require__(/*! ../helper/symbol */ 148);
+var _symbol = __webpack_require__(/*! ../helper/symbol */ 149);
 var RegExp = function () {
   function RegExp(_a) {
     var regexp = _a.regexp,
@@ -42007,7 +42061,7 @@ function RegExpConstructor(param) {
 }
 
 /***/ }),
-/* 173 */
+/* 174 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/index.js ***!
   \************************************************************************************************/
@@ -42023,9 +42077,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.Transaction = void 0;
 exports.runTransaction = runTransaction;
 exports.startTransaction = startTransaction;
-var _index = __webpack_require__(/*! ../index */ 141);
-var _collection = __webpack_require__(/*! ./collection */ 174);
-var _code = __webpack_require__(/*! ../const/code */ 176);
+var _index = __webpack_require__(/*! ../index */ 142);
+var _collection = __webpack_require__(/*! ./collection */ 175);
+var _code = __webpack_require__(/*! ../const/code */ 177);
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
@@ -42323,7 +42377,7 @@ function runTransaction(callback, times) {
 }
 
 /***/ }),
-/* 174 */
+/* 175 */
 /*!*****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/collection.js ***!
   \*****************************************************************************************************/
@@ -42337,8 +42391,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CollectionReference = void 0;
-var _document = __webpack_require__(/*! ./document */ 175);
-var _query = __webpack_require__(/*! ./query */ 177);
+var _document = __webpack_require__(/*! ./document */ 176);
+var _query = __webpack_require__(/*! ./query */ 178);
 var __extends = void 0 && (void 0).__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -42391,7 +42445,7 @@ var CollectionReference = function (_super) {
 exports.CollectionReference = CollectionReference;
 
 /***/ }),
-/* 175 */
+/* 176 */
 /*!***************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/document.js ***!
   \***************************************************************************************************/
@@ -42405,11 +42459,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.DocumentReference = void 0;
-var _bson = __webpack_require__(/*! bson */ 170);
-var _code = __webpack_require__(/*! ../const/code */ 176);
-var _update = __webpack_require__(/*! ../serializer/update */ 159);
-var _datatype = __webpack_require__(/*! ../serializer/datatype */ 165);
-var _util = __webpack_require__(/*! ../util */ 146);
+var _bson = __webpack_require__(/*! bson */ 171);
+var _code = __webpack_require__(/*! ../const/code */ 177);
+var _update = __webpack_require__(/*! ../serializer/update */ 160);
+var _datatype = __webpack_require__(/*! ../serializer/datatype */ 166);
+var _util = __webpack_require__(/*! ../util */ 147);
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -42706,7 +42760,7 @@ var DocumentReference = function () {
 exports.DocumentReference = DocumentReference;
 
 /***/ }),
-/* 176 */
+/* 177 */
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/const/code.js ***!
   \*****************************************************************************************/
@@ -42753,7 +42807,7 @@ var ERRORS = {
 exports.ERRORS = ERRORS;
 
 /***/ }),
-/* 177 */
+/* 178 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/database/dist/esm/transaction/query.js ***!
   \************************************************************************************************/
@@ -42777,7 +42831,7 @@ var Query = function () {
 exports.Query = Query;
 
 /***/ }),
-/* 178 */
+/* 179 */
 /*!*****************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@cloudbase/js-sdk/package.json ***!
   \*****************************************************************************/
@@ -42787,7 +42841,6 @@ exports.Query = Query;
 module.exports = JSON.parse("{\"name\":\"@cloudbase/js-sdk\",\"version\":\"1.7.2\",\"description\":\"cloudbase javascript sdk\",\"main\":\"dist/index.cjs.js\",\"module\":\"dist/index.esm.js\",\"miniprogram\":\"miniprogram_dist\",\"typings\":\"./index.d.ts\",\"scripts\":{\"lint\":\"eslint --fix \\\"./src/**/*.ts\\\" \\\"./database/**/*.ts\\\"\",\"build\":\"rm -rf dist/ && gulp build\",\"build:cdn\":\"gulp cdn\",\"build:miniapp\":\"gulp miniapp\",\"build:e2e\":\"rm -rf dist/ && NODE_ENV=e2e gulp e2e\"},\"publishConfig\":{\"access\":\"public\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/TencentCloudBase/cloudbase-js-sdk\"},\"keywords\":[\"tcb\",\"cloudbase\",\"Cloudbase\",\"serverless\",\"Serverless\",\"javascript\",\"JavaScript\"],\"files\":[\"miniprogram_dist\",\"**/dist/\",\"/index.d.ts\",\"**/package.json\"],\"components\":[\"app\",\"auth\",\"database\",\"functions\",\"storage\"],\"author\":\"\",\"license\":\"ISC\",\"dependencies\":{\"@cloudbase/analytics\":\"^1.1.1-alpha.0\",\"@cloudbase/app\":\"^1.4.1\",\"@cloudbase/auth\":\"^1.6.1\",\"@cloudbase/database\":\"0.9.18-next\",\"@cloudbase/functions\":\"^1.3.4\",\"@cloudbase/realtime\":\"^1.1.4-alpha.0\",\"@cloudbase/storage\":\"^1.3.4\",\"@cloudbase/types\":\"^1.1.3-alpha.0\",\"@cloudbase/utilities\":\"^1.3.4\"},\"devDependencies\":{\"@babel/core\":\"^7.9.0\",\"@babel/plugin-proposal-class-properties\":\"^7.8.3\",\"@babel/plugin-transform-runtime\":\"^7.9.0\",\"@babel/preset-env\":\"^7.9.5\",\"@babel/preset-typescript\":\"^7.9.0\",\"@typescript-eslint/eslint-plugin\":\"^3.8.0\",\"@typescript-eslint/parser\":\"^3.8.0\",\"awesome-typescript-loader\":\"^5.2.1\",\"babel-loader\":\"^8.1.0\",\"eslint\":\"^7.6.0\",\"eslint-config-alloy\":\"^3.7.4\",\"gulp\":\"^4.0.2\",\"gulp-clean\":\"^0.4.0\",\"gulp-rename\":\"^2.0.0\",\"gulp-sourcemaps\":\"^2.6.5\",\"gulp-typescript\":\"^6.0.0-alpha.1\",\"json-loader\":\"^0.5.7\",\"merge-stream\":\"^2.0.0\",\"package-json-cleanup-loader\":\"^1.0.3\",\"typescript\":\"^3.8.3\",\"webpack\":\"4.41.3\",\"webpack-cli\":\"^3.3.11\",\"webpack-node-externals\":\"^1.7.2\",\"webpack-stream\":\"^5.2.1\",\"webpack-visualizer-plugin\":\"^0.1.11\"},\"browserslist\":[\"last 2 version\",\"> 1%\",\"not dead\",\"chrome 53\"],\"gitHead\":\"29ca0bf24318daa1fbb230910edf0b1545e17e7f\"}");
 
 /***/ }),
-/* 179 */,
 /* 180 */,
 /* 181 */,
 /* 182 */,
@@ -42846,7 +42899,15 @@ module.exports = JSON.parse("{\"name\":\"@cloudbase/js-sdk\",\"version\":\"1.7.2
 /* 235 */,
 /* 236 */,
 /* 237 */,
-/* 238 */
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
   \************************************************************************************************/
@@ -42861,9 +42922,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 239));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 240));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 241));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 247));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 248));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 249));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -42872,7 +42933,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 239 */
+/* 247 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
   \***********************************************************************************************/
@@ -42882,7 +42943,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
 
 /***/ }),
-/* 240 */
+/* 248 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
   \****************************************************************************************************/
@@ -42892,7 +42953,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
 
 /***/ }),
-/* 241 */
+/* 249 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \****************************************************************************************************/
@@ -42902,14 +42963,6 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
 /* 250 */,
 /* 251 */,
 /* 252 */,
@@ -42930,7 +42983,22 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 /* 267 */,
 /* 268 */,
 /* 269 */,
-/* 270 */
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \**************************************************************************************/

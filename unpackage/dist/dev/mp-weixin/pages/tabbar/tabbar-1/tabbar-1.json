@@ -5,6 +5,7 @@
     "search-head-bar": "/components/SearchHeadBar/SearchHeadBar",
     "big-image-list": "/components/BigImageList/BigImageList",
     "grid-list-bar": "/components/GridListBar/GridListBar",
-    "double-image-list": "/components/DoubleImageList/DoubleImageList"
+    "double-image-list": "/components/DoubleImageList/DoubleImageList",
+    "topic-list-bar": "/components/TopicListBar/TopicListBar"
   }
 }

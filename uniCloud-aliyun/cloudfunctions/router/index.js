@@ -1,5 +1,11 @@
 'use strict';
 
+/*
+ * Router: 统一路由云函数
+ * Author: zfs
+ * Date: 2022-12-03 15:57
+ */
+
 const Router = require("uni-cloud-router").Router; // 引入 Router
 const router = new Router(require("./routerConfig.js")); // 根据配置创建路由对象
 
