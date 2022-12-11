@@ -109,7 +109,7 @@ export default {
 			
 			// 关注列表数据
 			focusItems: [
-				{
+				/*{
 					id: "1",
 					title: "推荐001",
 					extTitle: "没有上线",
@@ -124,12 +124,12 @@ export default {
 					content: "运动鞋",
 					headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
 					coverImg: "https://img-blog.csdnimg.cn/img_convert/ec13b1d884b422ad6ac1746504fa0454.png"
-				}
+				}*/
 			],
 			
 			// 推荐列表数据
 			specialItems: [
-				{
+				/*{
 					id: "1",
 					title: "推荐001",
 					extTitle: "没有上线",
@@ -168,12 +168,12 @@ export default {
 					content: "拍摄日出和日落",
 					headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
 					coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
-				}
+				}*/
 			],
 			
 			// 热门列表数据
 			hotItems: [
-				{
+				/*{
 					id: "4",
 					title: "推荐004",
 					extTitle: "星光",
@@ -188,12 +188,12 @@ export default {
 					content: "拍摄日出和日落",
 					headImg: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
 					coverImg: "https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png"
-				}
+				}*/
 			],
 			
 			// 旅行宫格
 			tripGridItems: [
-				{
+				/*{
 					id: "1",
 					title: "周末游",
 					icon: "/static/img/trip/trip1.png"
@@ -232,13 +232,13 @@ export default {
 					id: "8",
 					title: "轮船",
 					icon: "/static/img/trip/ship.png"
-				}
+				}*/
 				
 			],
 			
 			// 运动宫格数据
 			motionGridItems: [
-				{
+				/*{
 					id: "1",
 					title: "网球",
 					icon: "/static/img/motion/tennis.png"
@@ -272,12 +272,12 @@ export default {
 					id: "7",
 					title: "健身",
 					icon: "/static/img/motion/body_building.png"
-				}
+				}*/
 			],
 			
 			// 景点宫格数据
 			spotGridItems: [
-				{
+				/*{
 					id: "1",
 					title: "网红打卡",
 					icon: "/static/img/spot/spot1.png"
@@ -296,12 +296,12 @@ export default {
 					id: "4",
 					title: "步行街",
 					icon: "/static/img/spot/shopping2.png"
-				}
+				}*/
 			],
 			
 			// 酒店宫格数据列表
 			hotelGridItems: [
-				{
+				/*{
 					id: "1",
 					title: "便捷",
 					icon: "/static/img/hotel/hotel1.png"
@@ -320,12 +320,12 @@ export default {
 					id: "4",
 					title: "民宿",
 					icon: "/static/img/hotel/hotel4.png"
-				}
+				}*/
 			],
 			
 			// 人文宫格数据列表
 			humanGridItems: [
-				{
+				/*{
 					id: "1",
 					title: "星座",
 					icon: "/static/img/human/constellation.png"
@@ -344,7 +344,7 @@ export default {
 					id: "4",
 					title: "历史",
 					icon: "/static/img/human/history3.png"
-				}
+				}*/
 			],
 			
 			// 商品列表
@@ -513,10 +513,73 @@ export default {
 			
 			let That = this;
 			
-			// 请求类别
+			// 请求所有类别数据
 			request.getCategory({"status": 1}, function(code, res){
 				console.log("tabbar-1.vue initData routerRequest category code:" + code + ", res:" + JSON.stringify(res));
-				
+				// 解析类别数据
+				if (code == 0 && res["errCode"] == 200) {
+					let dataObj = res["data"];
+					let count = dataObj["count"];
+					let dataList = dataObj["data"];
+					if (count > 0) {
+						let rootCategoryData = [];
+						for(let idx = 0; idx < dataList.length; idx++) {
+							let itemObj = dataList[idx];
+							// 解析数据
+							
+							let itemName = itemObj["name"];
+							
+							let itemTwoObj = itemObj["data"];
+							
+							let itemRootObj = {};
+							itemRootObj["_id"] = itemObj["_id"];
+							itemRootObj["name"] = itemObj["name"];
+							itemRootObj["title"] = itemObj["title"];
+							itemRootObj["status"] = itemObj["status"];
+							itemRootObj["sort"] = itemObj["sort"];
+							
+							rootCategoryData.push(itemRootObj);
+							
+							switch(itemName) {
+								case "focusId": {
+									// 关注
+								}break;
+								case "specialId":
+								{ // 推荐
+									
+								}break;
+								case "hotId": {
+									// 热门
+								}break;
+								case "tripId": {
+									// 旅行
+									That.tripGridItems = itemTwoObj;
+								}break;
+								case "motionId": {
+									// 运动
+									That.motionGridItems = itemTwoObj;
+								}break;
+								case "spotId": {
+									// 景点
+									That.spotGridItems = itemTwoObj;
+								}break;
+								case "hotelId": {
+									// 酒店
+									That.hotelGridItems = itemTwoObj;
+								}break;
+								case "humanId": {
+									// 人文
+									That.humanGridItems = itemTwoObj
+								}break;
+							}
+							
+						}
+						
+						// 更新数据
+						That.navItems = rootCategoryData;
+						
+					}
+				}
 			});
 			
 		},
