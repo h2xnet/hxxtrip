@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -148,16 +148,39 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      title: 'Hello'
+      title: 'Hello',
+      editorAreaHeight: 400
     };
   },
-  onLoad: function onLoad() {},
+  onLoad: function onLoad() {
+    console.log("tabbar-3-release.vue onLoad");
+    var That = this;
+    uni.getSystemInfo({
+      success: function success(res) {
+        var winh = res.windowHeight;
+        console.log("tabbar-3-release.vue winh: " + winh);
+        var pageEle = uni.createSelectorQuery().select(".editorArea"); //想要获取高度的元素名（class/id）
+        pageEle.boundingClientRect(function (data) {
+          That.editorAreaHeight = winh - data.top; //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
+        }).exec();
+      }
+    });
+  },
   methods: {}
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

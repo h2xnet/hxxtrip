@@ -181,7 +181,10 @@ var _default = {
   },
   methods: {
     goToPage: function goToPage(url) {
-      if (!url) return;
+      console.log("tabbar-3.vue goToPage params, url:" + url);
+      if (!url) {
+        return;
+      }
       uni.navigateTo({
         url: url
       });
