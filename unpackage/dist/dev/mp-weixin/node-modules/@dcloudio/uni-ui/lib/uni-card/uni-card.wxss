@@ -24,6 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.right {
+  position: absolute;
+  right: 0rpx;
+  padding-right: 30rpx;
+}
+.green {
+  color: seagreen;
+}
 .uni-card {
   margin: 10px;
   padding: 0 8px;

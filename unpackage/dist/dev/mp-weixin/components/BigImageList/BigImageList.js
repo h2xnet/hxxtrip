@@ -80,7 +80,7 @@ var components
 try {
   components = {
     BigImageCard: function () {
-      return __webpack_require__.e(/*! import() | components/BigImageCard/BigImageCard */ "components/BigImageCard/BigImageCard").then(__webpack_require__.bind(null, /*! @/components/BigImageCard/BigImageCard.vue */ 252))
+      return __webpack_require__.e(/*! import() | components/BigImageCard/BigImageCard */ "components/BigImageCard/BigImageCard").then(__webpack_require__.bind(null, /*! @/components/BigImageCard/BigImageCard.vue */ 271))
     },
   }
 } catch (e) {

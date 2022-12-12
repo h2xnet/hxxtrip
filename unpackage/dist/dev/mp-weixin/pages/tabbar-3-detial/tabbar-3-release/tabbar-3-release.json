@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
+    "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+    "mp-html": "/uni_modules/mp-html/components/mp-html/mp-html"
+  }
 }

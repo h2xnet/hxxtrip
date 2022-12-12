@@ -24,6 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.right.data-v-05d832b7 {
+  position: absolute;
+  right: 0rpx;
+  padding-right: 30rpx;
+}
+.green.data-v-05d832b7 {
+  color: seagreen;
+}
 .content.data-v-05d832b7 {
   display: flex;
   align-items: center;

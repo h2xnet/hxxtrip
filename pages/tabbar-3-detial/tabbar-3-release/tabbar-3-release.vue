@@ -1,13 +1,24 @@
 <template>
 	<view class="content">
-		<view class="workArea">
-			<view class="titleArea">
-				title
-			</view>
-			<view class="editorArea">
-				editor input
+		<view class="work-area">
+			<view>
+				<view class="line-box">
+					<view class="line-box-item green-color">下一步</view>
+					<view class="line-box-item gray-color">下一步</view>
+				</view>
 			</view>
 			
+			<uni-card :is-shadow="false" is-full>
+				<uni-easyinput v-model="articleTitle" :inputBorder="false" :placeholderStyle="placeholderStyle" 
+				placeholder="请输入标题" ></uni-easyinput>
+			</uni-card>
+			
+			<uni-card>
+				<uni-section  :is-shadow="false" is-full>
+				<mp-html :content="editorHtml"></mp-html container-style="padding:20px" lazy-load scroll-table selectable use-anchor :tag-style="tagStyle">
+				</uni-section >
+			</uni-card>
+				
 		</view>
 	</view>
 </template>
@@ -17,7 +28,10 @@
 		data() {
 			return {
 				title: 'Hello',
-				editorAreaHeight: 400
+				placeholderStyle: "font-size:14px;",
+				articleTitle: '',
+				editorAreaHeight: 400,
+				editorHtml: '<vid>Hell word</div>',
 			}
 		},
 		onLoad() {
@@ -25,7 +39,7 @@
 			
 			let That = this;
 					
-			uni.getSystemInfo({
+			/*uni.getSystemInfo({
 				success(res) {
 					let winh = res.windowHeight; 
 					console.log("tabbar-3-release.vue winh: " + winh)
@@ -34,7 +48,7 @@
 						That.editorAreaHeight = winh - data.top  //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
 					}).exec()
 				}
-			})
+			})*/
 			
 		},
 		methods: {
@@ -58,23 +72,30 @@
 		background-color: transparent;
 	}
 	
-	.workArea {
+	.line-box {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: right;
+		width: 100%;
+		height: 60upx;
+		font-size: 28upx;
+	}
+	
+	.line-box-item {
+		float: right;
+		height: 40upx;
+		padding-top: 10upx;
+		background-color: red;
+	}
+	
+	.work-area {
+		display: flex;
+		flex-direction: column;
 		width: 100%;
 		height: 100%;
 		background-color: white;
 		border-radius: 4upx;
-	}
-	
-	.titleArea {
-		width: 100%;
-		height: 80upx;
-		border-color: gray;
-		border-radius: 4upx;
-	}
-	
-	.editorArea {
-		width: 100%;
-		background-color: darkred;
 	}
 	
 </style>
