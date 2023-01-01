@@ -102,16 +102,10 @@ var components
 try {
   components = {
     uniCard: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 309))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 241))
     },
     uniEasyinput: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 356))
-    },
-    uniSection: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-section/components/uni-section/uni-section */ "uni_modules/uni-section/components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-section/components/uni-section/uni-section.vue */ 364))
-    },
-    mpHtml: function () {
-      return Promise.all(/*! import() | uni_modules/mp-html/components/mp-html/mp-html */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mp-html/components/mp-html/mp-html")]).then(__webpack_require__.bind(null, /*! @/uni_modules/mp-html/components/mp-html/mp-html.vue */ 241))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 248))
     },
   }
 } catch (e) {
@@ -168,45 +162,54 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var mpHtml = function mpHtml() {
+  Promise.all(/*! require.ensure | uni_modules/mp-html/components/mp-html/mp-html */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mp-html/components/mp-html/mp-html")]).then((function () {
+    return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 255));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+// 上传图片方法
+function upload(src, type) {
+  return new Promise(function (resolve, reject) {
+    console.log('上传', type === 'img' ? '图片' : '视频', '：', src);
+    resolve(src);
+    /*
+    // 实际使用时，上传到服务器
+    wx.uploadFile({
+      url: 'xxx', // 接口地址
+      filePath: src,
+      name: 'xxx',
+      success(res) {
+    	resolve(res.data.path) // 返回线上地址
+      },
+      fail: reject
+    })
+    */
+  });
+}
+// 删除图片方法
+function _remove(src) {
+  console.log('删除图片：', src);
+  // 实际使用时，删除线上资源
+}
 var _default = {
+  components: {
+    mpHtml: mpHtml
+  },
   data: function data() {
     return {
       title: 'Hello',
-      placeholderStyle: "font-size:14px;",
+      placeholder: '请输入内容...',
       articleTitle: '',
       editorAreaHeight: 400,
-      editorHtml: '<vid>Hell word</div>'
+      editorContent: '',
+      modal: null,
+      editable: true
     };
   },
   onLoad: function onLoad() {
@@ -225,9 +228,82 @@ var _default = {
     })*/
   },
 
-  methods: {}
+  methods: {
+    onEditorReady: function onEditorReady() {
+      var _this = this;
+      uni.createSelectorQuery().select('#editor').context(function (res) {
+        _this.editorCtx = res.context;
+      }).exec();
+    },
+    undo: function undo() {
+      this.editorCtx.undo();
+    },
+    // 删除图片/视频/音频标签事件
+    remove: function remove(e) {
+      // 删除线上资源
+      console.log("tabbar-3-release remove.");
+      _remove(e.src);
+    },
+    // 处理模态框
+    modalInput: function modalInput(e) {
+      this.value = e.detail.value;
+    },
+    modalConfirm: function modalConfirm() {
+      console.log("tabbar-3-release modalConfirm.");
+      this.callback.resolve(this.value || this.modal.value || '');
+      this.$set(this, 'modal', null);
+    },
+    modalCancel: function modalCancel() {
+      console.log("tabbar-3-release modalCancel.");
+      this.callback.reject();
+      this.$set(this, 'modal', null);
+    },
+    // 调用编辑器接口
+    edit: function edit(e) {
+      console.log("tabbar-3-release edit.");
+      var That = this;
+      That.$refs.article[e.currentTarget.dataset.method]();
+    },
+    // 清空编辑器内容
+    clear: function clear() {
+      console.log("tabbar-3-release clear.");
+      var That = this;
+      uni.showModal({
+        title: '确认',
+        content: '确定清空内容吗？',
+        success: function success(res) {
+          if (res.confirm) That.$refs.article.clear();
+        }
+      });
+    },
+    // 保存编辑器内容
+    save: function save() {
+      var _this2 = this;
+      console.log("tabbar-3-release save.");
+      var That = this;
+      setTimeout(function () {
+        var content = _this2.$refs.article.getContent();
+        uni.showModal({
+          title: '保存',
+          content: content,
+          confirmText: '完成',
+          success: function success(res) {
+            if (res.confirm) {
+              // 复制到剪贴板
+              uni.setClipboardData({
+                data: content
+              });
+              // 结束编辑
+              That.editable = false;
+            }
+          }
+        });
+      }, 50);
+    }
+  }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
