@@ -29,8 +29,11 @@
   right: 0rpx;
   padding-right: 30rpx;
 }
-.green {
+.green-color {
   color: seagreen;
+}
+.gray-color {
+  color: gray;
 }
 .content {
   text-align: center;

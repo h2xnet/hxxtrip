@@ -1477,7 +1477,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8834,7 +8834,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8855,14 +8855,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8958,7 +8958,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -18553,8 +18553,8 @@ var CloudbaseCache = function () {
       return;
     }
     try {
-      if (typeof process !== 'undefined' && ((_a = Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
-        return Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).tcb_token;
+      if (typeof process !== 'undefined' && ((_a = Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
+        return Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).tcb_token;
       }
       if (!this._storage) {
         return '';
@@ -18582,8 +18582,8 @@ var CloudbaseCache = function () {
         switch (_b.label) {
           case 0:
             try {
-              if (typeof process !== 'undefined' && ((_a = Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
-                return [2, Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).tcb_token];
+              if (typeof process !== 'undefined' && ((_a = Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"})) === null || _a === void 0 ? void 0 : _a.tcb_token)) {
+                return [2, Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).tcb_token];
               }
               if (!this._storage) {
                 return [2, ''];
@@ -20786,7 +20786,7 @@ function getSdkName() {
 var DATA_VERSION = '2020-01-10';
 exports.DATA_VERSION = DATA_VERSION;
 var PROTOCOL = typeof location !== 'undefined' && location.protocol === 'http:' ? 'http:' : 'https:';
-var BASE_URL = typeof process !== 'undefined' && "development" === 'e2e' && Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).END_POINT === 'pre' ? '//tcb-pre.tencentcloudapi.com/web' : '//tcb-api.tencentcloudapi.com/web';
+var BASE_URL = typeof process !== 'undefined' && "development" === 'e2e' && Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).END_POINT === 'pre' ? '//tcb-pre.tencentcloudapi.com/web' : '//tcb-api.tencentcloudapi.com/web';
 function setEndPoint(url, protocol) {
   BASE_URL = url;
   if (protocol) {
@@ -44140,15 +44140,7 @@ exports.default = _default;
 /* 265 */,
 /* 266 */,
 /* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */
+/* 268 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************/
@@ -44163,9 +44155,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 277));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 278));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 279));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 269));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 270));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 271));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -44174,7 +44166,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 277 */
+/* 269 */
 /*!***************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************/
@@ -44184,7 +44176,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
 
 /***/ }),
-/* 278 */
+/* 270 */
 /*!********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************/
@@ -44194,7 +44186,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
 
 /***/ }),
-/* 279 */
+/* 271 */
 /*!********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************/
@@ -44204,14 +44196,14 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
   \************************************************************************************************/
@@ -44226,9 +44218,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 288));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 289));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 290));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 280));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 281));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 282));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -44237,7 +44229,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 288 */
+/* 280 */
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
   \***********************************************************************************************/
@@ -44247,7 +44239,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
 
 /***/ }),
-/* 289 */
+/* 281 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
   \****************************************************************************************************/
@@ -44257,7 +44249,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
 
 /***/ }),
-/* 290 */
+/* 282 */
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \****************************************************************************************************/
@@ -44267,6 +44259,14 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
 /* 291 */,
 /* 292 */,
 /* 293 */,
@@ -44287,15 +44287,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 /* 308 */,
 /* 309 */,
 /* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */
+/* 311 */
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \*************************************************************************************/
@@ -45316,6 +45308,14 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
 /* 320 */,
 /* 321 */,
 /* 322 */,
@@ -45331,24 +45331,7 @@ exports.default = _default;
 /* 332 */,
 /* 333 */,
 /* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */
+/* 335 */
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \**************************************************************************************/

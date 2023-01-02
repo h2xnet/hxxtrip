@@ -29,8 +29,11 @@
   right: 0rpx;
   padding-right: 30rpx;
 }
-.green {
+.green-color {
   color: seagreen;
+}
+.gray-color {
+  color: gray;
 }
 /*每个页面公共css */
 /* 不显示滚动条 */

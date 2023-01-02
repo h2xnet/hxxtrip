@@ -29,8 +29,11 @@
   right: 0rpx;
   padding-right: 30rpx;
 }
-.green.data-v-05d832b7 {
+.green-color.data-v-05d832b7 {
   color: seagreen;
+}
+.gray-color.data-v-05d832b7 {
+  color: gray;
 }
 .content.data-v-05d832b7 {
   display: flex;

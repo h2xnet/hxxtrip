@@ -3,7 +3,7 @@
 		<view class="work-area">
 			<view class="line-box">
 				<view class="line-box-item green-color">下一步</view>
-				<view class="line-box-item gray-color">保存</view>
+				<!--<view class="line-box-item gray-color">保存</view>-->
 			</view>
 			
 			<uni-card :is-shadow="false" is-full>
@@ -12,43 +12,21 @@
 			</uni-card>
 			
 			<view class="editor-toolbox">
-				<i class="iconfont icon-undo" data-method="undo" @tap="edit" />
-				<i class="iconfont icon-redo" data-method="redo" @tap="edit" />
-				<i class="iconfont icon-img" data-method="insertImg" @tap="edit" />
-				<i class="iconfont icon-video" data-method="insertVideo" @tap="edit" />
-				<i class="iconfont icon-link" data-method="insertLink" @tap="edit" />
-				<i class="iconfont icon-text" data-method="insertText" @tap="edit" />
-				<i class="iconfont icon-clear" @tap="clear" />
-				<i class="iconfont icon-save" @tap="save" />
+				<i class="iconfont icon-undo" @tap="onEditorToolTap('undo');" />
+				<i class="iconfont icon-redo" @tap="onEditorToolTap('redo');" />
+				<i class="iconfont icon-img" @tap="onEditorToolTap('insertImg');" />
+				<i class="iconfont icon-video" @tap="onEditorToolTap('insertVideo');" />
+				<i class="iconfont icon-link" @tap="onEditorToolTap('insertLink');" />
+				<i class="iconfont icon-text" @tap="onEditorToolTap('insertDate');" />
+				<i class="iconfont icon-clear" @tap="onEditorToolTap('clear');" />
+				<i class="iconfont icon-save" @tap="onEditorToolTap('save');" />
 			</view>
 			
-			<view>
-				<!--<mp-html ref="article" :content="editorContent"
-								domain="https://mp-html.oss-cn-hangzhou.aliyuncs.com" :editable="editable" @remove="remove" />-->
-				<editor id="editor" class="editor-container" :placeholder="placeholder" @ready="onEditorReady"></editor>
-		
+			<view class="editor-body" :style="{height: editorBodyHeight + 'px'}">
+				<editor id="editorId" class="editor-plugin" :placeholder="placeholder" @ready="onEditorReady">
+				</editor>
 								
 			</view>
-			
-			<block v-if="modal">
-				<view class="mask" />
-				<view class="modal">
-					<view class="modal_title">{{modal.title}}</view>
-					<input class="modal_input" :value="modal.value" maxlength="-1" auto-focus @input="modalInput" />
-					<view class="modal_foot">
-						<view class="modal_button" @tap="modalCancel">取消</view>
-						<view class="modal_button" style="color:#576b95;border-left:1px solid rgba(0,0,0,.1)"
-							@tap="modalConfirm">确定</view>
-					</view>
-				</view>
-			</block>
-			
-			<!--<uni-card>
-				<view>
-					<mp-html :content="editorContent" selectable="true" showImgMenu="true">
-						</mp-html container-style="padding:20px" lazy-load scroll-table selectable use-anchor :tag-style="tagStyle">
-				</view>
-			</uni-card>-->
 				
 		</view>
 	</view>
@@ -58,31 +36,6 @@
 	
 	import mpHtml from '@/uni_modules/mp-html/components/mp-html/mp-html'
 	
-	// 上传图片方法
-	function upload(src, type) {
-		return new Promise((resolve, reject) => {
-			console.log('上传', type === 'img' ? '图片' : '视频', '：', src)
-			resolve(src)
-			/*
-			// 实际使用时，上传到服务器
-			wx.uploadFile({
-			  url: 'xxx', // 接口地址
-			  filePath: src,
-			  name: 'xxx',
-			  success(res) {
-				resolve(res.data.path) // 返回线上地址
-			  },
-			  fail: reject
-			})
-			*/
-		})
-	}
-	// 删除图片方法
-	function remove(src) {
-		console.log('删除图片：', src)
-		// 实际使用时，删除线上资源
-	}
-	
 	export default {
 		components: {
 			mpHtml
@@ -91,11 +44,8 @@
 			return {
 				title: 'Hello',
 				placeholder: '请输入内容...',
-				articleTitle: '',
-				editorAreaHeight: 400,
-				editorContent: '',
-				modal: null,
-				editable: true
+				editorBodyHeight: 400,
+				modal: null
 			}
 		},
 		onLoad() {
@@ -103,16 +53,16 @@
 			
 			let That = this;
 					
-			/*uni.getSystemInfo({
+			uni.getSystemInfo({
 				success(res) {
 					let winh = res.windowHeight; 
 					console.log("tabbar-3-release.vue winh: " + winh)
-					let pageEle = uni.createSelectorQuery().select(".editorArea"); //想要获取高度的元素名（class/id）
+					let pageEle = uni.createSelectorQuery().select(".editor-body"); //想要获取高度的元素名（class/id）
 					pageEle.boundingClientRect(data=>{
-						That.editorAreaHeight = winh - data.top  //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
+						That.editorBodyHeight = winh - data.top  //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
 					}).exec()
 				}
-			})*/
+			})
 			
 		},
 		
@@ -124,48 +74,92 @@
 				// #endif
 				
 				// #ifdef APP-PLUS || H5 ||MP-WEIXIN
-				uni.createSelectorQuery().select('#editor').context((res) => {
+				uni.createSelectorQuery().select('#editorId').context((res) => {
 				  this.editorCtx = res.context
 				}).exec()
 				// #endif
 			},
-			undo() {
-				this.editorCtx.undo()
-			},
-
-			// 删除图片/视频/音频标签事件
-			remove(e) {
-				// 删除线上资源
-				console.log("tabbar-3-release remove.");
+			
+			//
+			// onEditorToolTap : 编辑器工具栏按钮事件
+			//
+			onEditorToolTap(method) {
+				console.log("tabbar-3-release.vue onEditorTollTap params, method:" + method);
 				
-				remove(e.src)
-			},
-			// 处理模态框
-			modalInput(e) {
-				this.value = e.detail.value
-			},
-			modalConfirm() {
-				console.log("tabbar-3-release modalConfirm.");
+				let That = this;
+				if (method == 'undo') {
+					That.editorCtx.undo();
+				}
+				else if (method == "redo") {
+					That.editorCtx.redo();
+				}
+				else if (method == "insertImg") {
+					That.onInsertImg();
+				}
+				else if (method == "insertVideo") {
+					
+				}
+				else if (method == "insertLink") {
+					
+				}
+				else if (method == "insertDate") {
+					That.onInsertDate();
+				}
+				else if (method == "clear") {
+					That.onClear();
+				}
+				else if (method == "save") {
+					That.onSave();
+				}
 				
-				this.callback.resolve(this.value || this.modal.value || '')
-				this.$set(this, 'modal', null)
 			},
-			modalCancel() {
-				console.log("tabbar-3-release modalCancel.");
+			
+			//
+			// onInsertImg : 插入图片
+			//
+			onInsertImg() {
+				console.log("tabbar-3-release.vuew onInsertImg");
 				
-				this.callback.reject()
-				this.$set(this, 'modal', null)
+				let That = this;
+					
+				/*uni.chooseImage({
+					count: 1,
+					success: function(res) {
+						console.log("tabbar-3-release.vue onInsertImg uni.chooseImage res: " + JSON.stringify(res));
+						if(process.env.NODE_ENV === 'development'){
+							console.log('开发环境');
+							That.upurl = 'http://local.yongen.com/api.php/Upload/uploadMoreImg';
+						}
+						else{
+							console.log('生产环境');
+							That.upurl = '/api.php/Upload/uploadMoreImg';
+						}
+						
+						let url = res.tempFilePaths[0];
+						
+					}							
+				});*/
+				
 			},
-			// 调用编辑器接口
-			edit(e) {
-				console.log("tabbar-3-release edit.");
+			
+			//
+			// 添加日期
+			//
+			onInsertDate() {
+				console.log("tabbar-3-release onInsertDate");
+				
 				let That = this;
 				
-				That.$refs.article[e.currentTarget.dataset.method]()
+				const date = new Date();
+				const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+				That.editorCtx.insertText({
+					text: formatDate
+				});
 			},
+			
 			// 清空编辑器内容
-			clear() {
-				console.log("tabbar-3-release clear.");
+			onClear() {
+				console.log("tabbar-3-release onClear.");
 				
 				let That = this;
 				
@@ -173,34 +167,30 @@
 					title: '确认',
 					content: '确定清空内容吗？',
 					success: res => {
-						if (res.confirm)
-							That.$refs.article.clear()
+						if (res.confirm) {
+							That.editorCtx.clear({
+								success: function(res2) {
+									console.log("onClear success");
+								}
+							});
+						}
 					}
 				})
 			},
+			
 			// 保存编辑器内容
-			save() {
-				console.log("tabbar-3-release save.");
+			onSave() {
+				console.log("tabbar-3-release onSave.");
 				
 				let That = this;
 				
 				setTimeout(() => {
-					var content = this.$refs.article.getContent()
-					uni.showModal({
-						title: '保存',
-						content,
-						confirmText: '完成',
-						success: res => {
-							if (res.confirm) {
-								// 复制到剪贴板
-								uni.setClipboardData({
-									data: content,
-								})
-								// 结束编辑
-								That.editable = false
-							}
+					That.editorCtx.getContents({
+						success: function(res) {
+							console.log('保存内容:', res.html);
 						}
-					})
+					});
+					
 				}, 50)
 			}
 			
@@ -262,8 +252,15 @@
 		line-height: 1.6;
 	}
 	
-	.editor-container {
-		margin: 15upx 30upx 15upx 30upx;
+	.editor-body {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.editor-plugin {
+		padding: 15upx 30upx 15upx 30upx;
+		width: 100%;
+		height: 100%;
 	}
 	
 	@font-face {
@@ -304,6 +301,10 @@
 	.icon-text:before {
 		content: "\e6ce";
 	}
+	
+	.icon-date:before {
+		content: "\e6cf";
+	}
 
 	.icon-clear:before {
 		content: "\e637";
@@ -311,55 +312,6 @@
 
 	.icon-save:before {
 		content: "\e501";
-	}
-	
-	/* 模态框 */
-	.modal {
-		position: fixed;
-		top: 50%;
-		left: 16px;
-		right: 16px;
-		background-color: #fff;
-		border-radius: 12px;
-		transform: translateY(-50%);
-	}
-
-	.modal_title {
-		padding: 32px 24px 16px;
-		font-size: 17px;
-		font-weight: 700;
-		text-align: center;
-	}
-
-	.modal_input {
-		display: block;
-		padding: 5px;
-		margin: 0 24px 32px 24px;
-		font-size: 14px;
-		border: 1px solid #dfe2e5;
-	}
-
-	.modal_foot {
-		display: flex;
-		line-height: 56px;
-		font-weight: 700;
-		border-top: 1px solid rgba(0, 0, 0, .1);
-	}
-
-	.modal_button {
-		flex: 1;
-		text-align: center;
-	}
-
-	/* 蒙版 */
-	.mask {
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background-color: black;
-		opacity: 0.5;
 	}
 	
 	

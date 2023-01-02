@@ -173,30 +173,6 @@ var mpHtml = function mpHtml() {
     return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 255));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
-// 上传图片方法
-function upload(src, type) {
-  return new Promise(function (resolve, reject) {
-    console.log('上传', type === 'img' ? '图片' : '视频', '：', src);
-    resolve(src);
-    /*
-    // 实际使用时，上传到服务器
-    wx.uploadFile({
-      url: 'xxx', // 接口地址
-      filePath: src,
-      name: 'xxx',
-      success(res) {
-    	resolve(res.data.path) // 返回线上地址
-      },
-      fail: reject
-    })
-    */
-  });
-}
-// 删除图片方法
-function _remove(src) {
-  console.log('删除图片：', src);
-  // 实际使用时，删除线上资源
-}
 var _default = {
   components: {
     mpHtml: mpHtml
@@ -205,97 +181,114 @@ var _default = {
     return {
       title: 'Hello',
       placeholder: '请输入内容...',
-      articleTitle: '',
-      editorAreaHeight: 400,
-      editorContent: '',
-      modal: null,
-      editable: true
+      editorBodyHeight: 400,
+      modal: null
     };
   },
   onLoad: function onLoad() {
     console.log("tabbar-3-release.vue onLoad");
     var That = this;
-
-    /*uni.getSystemInfo({
-    	success(res) {
-    		let winh = res.windowHeight; 
-    		console.log("tabbar-3-release.vue winh: " + winh)
-    		let pageEle = uni.createSelectorQuery().select(".editorArea"); //想要获取高度的元素名（class/id）
-    		pageEle.boundingClientRect(data=>{
-    			That.editorAreaHeight = winh - data.top  //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
-    		}).exec()
-    	}
-    })*/
+    uni.getSystemInfo({
+      success: function success(res) {
+        var winh = res.windowHeight;
+        console.log("tabbar-3-release.vue winh: " + winh);
+        var pageEle = uni.createSelectorQuery().select(".editor-body"); //想要获取高度的元素名（class/id）
+        pageEle.boundingClientRect(function (data) {
+          That.editorBodyHeight = winh - data.top; //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
+        }).exec();
+      }
+    });
   },
-
   methods: {
     onEditorReady: function onEditorReady() {
       var _this = this;
-      uni.createSelectorQuery().select('#editor').context(function (res) {
+      uni.createSelectorQuery().select('#editorId').context(function (res) {
         _this.editorCtx = res.context;
       }).exec();
     },
-    undo: function undo() {
-      this.editorCtx.undo();
-    },
-    // 删除图片/视频/音频标签事件
-    remove: function remove(e) {
-      // 删除线上资源
-      console.log("tabbar-3-release remove.");
-      _remove(e.src);
-    },
-    // 处理模态框
-    modalInput: function modalInput(e) {
-      this.value = e.detail.value;
-    },
-    modalConfirm: function modalConfirm() {
-      console.log("tabbar-3-release modalConfirm.");
-      this.callback.resolve(this.value || this.modal.value || '');
-      this.$set(this, 'modal', null);
-    },
-    modalCancel: function modalCancel() {
-      console.log("tabbar-3-release modalCancel.");
-      this.callback.reject();
-      this.$set(this, 'modal', null);
-    },
-    // 调用编辑器接口
-    edit: function edit(e) {
-      console.log("tabbar-3-release edit.");
+    //
+    // onEditorToolTap : 编辑器工具栏按钮事件
+    //
+    onEditorToolTap: function onEditorToolTap(method) {
+      console.log("tabbar-3-release.vue onEditorTollTap params, method:" + method);
       var That = this;
-      That.$refs.article[e.currentTarget.dataset.method]();
+      if (method == 'undo') {
+        That.editorCtx.undo();
+      } else if (method == "redo") {
+        That.editorCtx.redo();
+      } else if (method == "insertImg") {
+        That.onInsertImg();
+      } else if (method == "insertVideo") {} else if (method == "insertLink") {} else if (method == "insertDate") {
+        That.onInsertDate();
+      } else if (method == "clear") {
+        That.onClear();
+      } else if (method == "save") {
+        That.onSave();
+      }
+    },
+    //
+    // onInsertImg : 插入图片
+    //
+    onInsertImg: function onInsertImg() {
+      console.log("tabbar-3-release.vuew onInsertImg");
+      var That = this;
+
+      /*uni.chooseImage({
+      	count: 1,
+      	success: function(res) {
+      		console.log("tabbar-3-release.vue onInsertImg uni.chooseImage res: " + JSON.stringify(res));
+      		if(process.env.NODE_ENV === 'development'){
+      			console.log('开发环境');
+      			That.upurl = 'http://local.yongen.com/api.php/Upload/uploadMoreImg';
+      		}
+      		else{
+      			console.log('生产环境');
+      			That.upurl = '/api.php/Upload/uploadMoreImg';
+      		}
+      		
+      		let url = res.tempFilePaths[0];
+      		
+      	}							
+      });*/
+    },
+    //
+    // 添加日期
+    //
+    onInsertDate: function onInsertDate() {
+      console.log("tabbar-3-release onInsertDate");
+      var That = this;
+      var date = new Date();
+      var formatDate = "".concat(date.getFullYear(), "/").concat(date.getMonth() + 1, "/").concat(date.getDate());
+      That.editorCtx.insertText({
+        text: formatDate
+      });
     },
     // 清空编辑器内容
-    clear: function clear() {
-      console.log("tabbar-3-release clear.");
+    onClear: function onClear() {
+      console.log("tabbar-3-release onClear.");
       var That = this;
       uni.showModal({
         title: '确认',
         content: '确定清空内容吗？',
         success: function success(res) {
-          if (res.confirm) That.$refs.article.clear();
+          if (res.confirm) {
+            That.editorCtx.clear({
+              success: function success(res2) {
+                console.log("onClear success");
+              }
+            });
+          }
         }
       });
     },
     // 保存编辑器内容
-    save: function save() {
-      var _this2 = this;
-      console.log("tabbar-3-release save.");
+    onSave: function onSave() {
+      console.log("tabbar-3-release onSave.");
       var That = this;
       setTimeout(function () {
-        var content = _this2.$refs.article.getContent();
-        uni.showModal({
-          title: '保存',
-          content: content,
-          confirmText: '完成',
+        That.editorCtx.getContents({
           success: function success(res) {
-            if (res.confirm) {
-              // 复制到剪贴板
-              uni.setClipboardData({
-                data: content
-              });
-              // 结束编辑
-              That.editable = false;
-            }
+            console.log('保存内容:', res.html);
           }
         });
       }, 50);
