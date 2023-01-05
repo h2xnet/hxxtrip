@@ -182,7 +182,7 @@ var _default = {
       title: 'Hello',
       placeholder: '请输入内容...',
       editorBodyHeight: 400,
-      modal: null
+      editorHtml: 'Hello word!'
     };
   },
   onLoad: function onLoad() {
@@ -201,9 +201,14 @@ var _default = {
   },
   methods: {
     onEditorReady: function onEditorReady() {
-      var _this = this;
+      var That = this;
       uni.createSelectorQuery().select('#editorId').context(function (res) {
-        _this.editorCtx = res.context;
+        That.editorCtx = res.context;
+
+        // 初始化
+        That.editorCtx.setContents({
+          html: That.editorHtml
+        });
       }).exec();
     },
     //
@@ -248,6 +253,13 @@ var _default = {
       		
       		let url = res.tempFilePaths[0];
       		
+      		That.editorCtx.insertImage({
+      			src: url,
+      			alt: '图片',
+      			success: function(e) {
+      				
+      			}
+      		});
       	}							
       });*/
     },
@@ -262,6 +274,41 @@ var _default = {
       That.editorCtx.insertText({
         text: formatDate
       });
+    },
+    //
+    // 加粗
+    //
+    onSetBold: function onSetBold() {
+      console.log("tabbar-3-release onSetBold");
+      var That = this;
+      That.editorCtx.format("bold");
+    },
+    //
+    // onAlignLeft : 排版，左对齐
+    //
+    onAlignLeft: function onAlignLeft() {
+      console.log("tabbar-3-release onAlignLeft");
+      var That = this;
+      That.textFormat.align = 'left';
+      That.editorCtx.format('align', That.textFormat.align == 'left' ? 'left' : false);
+    },
+    //
+    // onAlignCenter : 排版，居中对齐
+    //
+    onAlignCenter: function onAlignCenter() {
+      console.log("tabbar-3-release onAlignCenter");
+      var That = this;
+      That.textFormat.align = 'center';
+      That.editorCtx.format('align', That.textFormat.align == 'center' ? 'center' : false);
+    },
+    //
+    // onAlignRight : 排版，右对齐
+    //
+    onAlignRight: function onAlignRight() {
+      console.log("tabbar-3-release onAlignRight");
+      var That = this;
+      That.textFormat.align = 'right';
+      That.editorCtx.format('align', That.textFormat.align == 'right' ? 'right' : false);
     },
     // 清空编辑器内容
     onClear: function onClear() {
@@ -292,6 +339,18 @@ var _default = {
           }
         });
       }, 50);
+    },
+    //
+    // onNext : 下一步
+    //
+    onNext: function onNext() {
+      console.log("tabbar-3-release onNext.");
+      var That = this;
+      That.editorCtx.getContents({
+        success: function success(res) {
+          console.log('onNext editor contents:', res.html);
+        }
+      });
     }
   }
 };

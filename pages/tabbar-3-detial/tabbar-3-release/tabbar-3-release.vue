@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="work-area">
 			<view class="line-box">
-				<view class="line-box-item green-color">下一步</view>
+				<view class="line-box-item green-color" @tap="onNext">下一步</view>
 				<!--<view class="line-box-item gray-color">保存</view>-->
 			</view>
 			
@@ -45,7 +45,7 @@
 				title: 'Hello',
 				placeholder: '请输入内容...',
 				editorBodyHeight: 400,
-				modal: null
+				editorHtml: 'Hello word!'
 			}
 		},
 		onLoad() {
@@ -69,13 +69,21 @@
 		methods: {
 			
 			onEditorReady() {
+				let That = this;
+				
 				// #ifdef MP-BAIDU
-				this.editorCtx = requireDynamicLib('editorLib').createEditorContext('editor');
+				That.editorCtx = requireDynamicLib('editorLib').createEditorContext('editor');
 				// #endif
 				
 				// #ifdef APP-PLUS || H5 ||MP-WEIXIN
 				uni.createSelectorQuery().select('#editorId').context((res) => {
-				  this.editorCtx = res.context
+				  That.editorCtx = res.context
+				  
+				  // 初始化
+				  That.editorCtx.setContents({
+					  html: That.editorHtml
+				  });
+				  
 				}).exec()
 				// #endif
 			},
@@ -137,6 +145,13 @@
 						
 						let url = res.tempFilePaths[0];
 						
+						That.editorCtx.insertImage({
+							src: url,
+							alt: '图片',
+							success: function(e) {
+								
+							}
+						});
 					}							
 				});*/
 				
@@ -155,6 +170,52 @@
 				That.editorCtx.insertText({
 					text: formatDate
 				});
+			},
+			
+			//
+			// 加粗
+			//
+			onSetBold() {
+				console.log("tabbar-3-release onSetBold");
+				let That = this;
+				
+				That.editorCtx.format("bold");
+			},
+			
+			//
+			// onAlignLeft : 排版，左对齐
+			//
+			onAlignLeft() {
+				console.log("tabbar-3-release onAlignLeft");
+				
+				let That = this;
+				
+				That.textFormat.align = 'left';
+				That.editorCtx.format('align', That.textFormat.align == 'left' ? 'left' : false);
+			},
+			
+			//
+			// onAlignCenter : 排版，居中对齐
+			//
+			onAlignCenter() {
+				console.log("tabbar-3-release onAlignCenter");
+				
+				let That = this;
+				
+				That.textFormat.align = 'center';
+				That.editorCtx.format('align', That.textFormat.align == 'center' ? 'center' : false);
+			},
+			
+			//
+			// onAlignRight : 排版，右对齐
+			//
+			onAlignRight() {
+				console.log("tabbar-3-release onAlignRight");
+				
+				let That = this;
+				
+				That.textFormat.align = 'right';
+				That.editorCtx.format('align', That.textFormat.align == 'right' ? 'right' : false);
 			},
 			
 			// 清空编辑器内容
@@ -192,7 +253,23 @@
 					});
 					
 				}, 50)
-			}
+			},
+			
+			//
+			// onNext : 下一步
+			//
+			onNext() {
+				console.log("tabbar-3-release onNext.");
+				
+				let That = this;
+				
+				That.editorCtx.getContents({
+					success: function(res) {
+						console.log('onNext editor contents:', res.html);
+					}
+				});
+				
+			},
 			
 		}
 	}
