@@ -1,1 +1,1 @@
-<view class="content">{{'页面 - 5 - isLoginSuccess: '+isLoginSuccess+''}}</view>
+<view class="content"><view hidden="{{!(loginState==0)}}">页面 - not login</view><view hidden="{{!(loginState==1)}}">页面 - logined</view></view>

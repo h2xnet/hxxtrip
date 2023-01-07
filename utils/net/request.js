@@ -8,6 +8,13 @@
 import uniCloudHttp from './uniCloudHttp.js'
 
 //
+// getUuid : 获取UUID
+//
+const getUuid = (param, callfunc) => {
+	return uniCloudHttp.cloudCallFunc("global", {"action": "tools/getUuid", "data":param}, callfunc);
+}
+
+//
 // categoryRootRequest : 请求根类别列表
 //
 const categoryRootRequest = (param, callfunc) => {
@@ -43,6 +50,7 @@ const getCategoryHumainAstro = (param, callfunc) => {
 }
 
 export default {
+	getUuid,
 	categoryRootRequest,
 	categoryTwoRequest,
 	routerRequest,

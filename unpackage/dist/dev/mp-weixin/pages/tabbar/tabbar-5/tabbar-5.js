@@ -172,27 +172,56 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _http = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net/http.js */ 83));
+var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net/request.js */ 47));
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+// 网络请求
 var _default = {
   data: function data() {
     return {
-      isLoginSuccess: false,
+      loginState: this.$global_login_state,
       title: 'Hello'
     };
   },
   onLoad: function onLoad() {
+    var That = this;
+
+    // 初始化数据
+    That.onInitData();
     // 登录
-    _http.default.cloudAuth(function (code, res) {
-      console.log("tabbar-5.vue cloudAuth code:" + code + ", res:" + JSON.stringify(res));
-    });
+    //http.cloudAuth((code, res) => {
+    //	console.log("tabbar-5.vue cloudAuth code:" + code + ", res:" + JSON.stringify(res));
+    //});
   },
-  methods: {}
+
+  methods: {
+    onInitData: function onInitData() {
+      console.log("tabbar-5.vue onInitData");
+      var That = this;
+
+      // 获取登录状态
+      console.log("tabbar-5.vue login_state: " + That.$global_login_state);
+
+      // 获取UUID
+      _request.default.getUuid({
+        "len": 32,
+        "radix": 16
+      }, function (code, res) {
+        console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
+      });
+    }
+  }
 };
 exports.default = _default;
 

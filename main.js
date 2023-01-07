@@ -5,7 +5,10 @@ import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
 
-
+//
+// 全局变量
+//
+Vue.prototype.$global_login_state = 0 // 登录状态
 
 const app = new Vue({
 	...App
