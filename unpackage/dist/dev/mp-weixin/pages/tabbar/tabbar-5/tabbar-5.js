@@ -102,7 +102,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 209))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 144))
+    },
+    uniTag: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 267))
     },
   }
 } catch (e) {
@@ -215,6 +218,56 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // 网络请求
 var _default = {
   data: function data() {
@@ -228,7 +281,18 @@ var _default = {
         userDisplayName: '星光zfs',
         userPhone: '13560440305',
         ipHome: '广东',
-        introduce: '80后，程序员，公众号：星游会'
+        introduce: '80后，程序员，公众号：星游会',
+        tags: ['射手座', '广东广州', '程序员'],
+        // 标签
+        focus: 38,
+        // 关注数
+        fans: 128,
+        // 粉丝数
+        likes: 2,
+        // 点赞数
+        collects: 8,
+        // 收藏数
+        shopId: 'ab122' // 店铺ID，为空代表没有
       }
     };
   },

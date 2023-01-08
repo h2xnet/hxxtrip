@@ -2,6 +2,7 @@
   "navigationStyle": "custom",
   "navigationBarTitleText": "星游会",
   "usingComponents": {
-    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "uni-tag": "/uni_modules/uni-tag/components/uni-tag/uni-tag"
   }
 }

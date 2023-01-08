@@ -42,7 +42,7 @@
 }
 .custom-head {
   background-color: lightslategray;
-  height: 400rpx;
+  min-height: 250rpx;
 }
 .line-box {
   padding-top: 10rpx;
@@ -68,12 +68,33 @@
   font-weight: bold;
 }
 .userinfo-list-item {
-  font-size: 24rpx;
+  font-size: 30rpx;
   margin-top: 15rpx;
 }
 .label-text {
-  font-size: 28rpx;
+  font-size: 32rpx;
   padding-left: 15rpx;
   padding-right: 15rpx;
+}
+.font-size-max {
+  font-size: 32rpx;
+}
+.font-size-mid {
+  font-size: 30rpx;
+}
+.font-size-min {
+  font-size: 26rpx;
+}
+.color-white {
+  color: white;
+}
+.text-align-left {
+  text-align: left;
+}
+.line-button {
+  border-radius: 10rpx;
+  background-color: transparent;
+  color: white;
+  font-size: 30rpx;
 }
 
