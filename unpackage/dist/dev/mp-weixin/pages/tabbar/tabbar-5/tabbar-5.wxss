@@ -91,6 +91,9 @@
 .text-align-left {
   text-align: left;
 }
+.text-icon-space-min {
+  padding-left: 15rpx;
+}
 .line-button {
   border-radius: 10rpx;
   background-color: transparent;

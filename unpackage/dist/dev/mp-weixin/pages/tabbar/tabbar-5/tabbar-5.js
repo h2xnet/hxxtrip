@@ -104,8 +104,11 @@ try {
     uniIcons: function () {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 144))
     },
+    uniDrawer: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 275))
+    },
     uniTag: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 267))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 152))
     },
   }
 } catch (e) {
@@ -268,6 +271,90 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // 网络请求
 var _default = {
   data: function data() {
@@ -322,6 +409,24 @@ var _default = {
       }, function (code, res) {
         console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
       });
+    },
+    //
+    // onShowDrawer : 系统设置
+    //
+    onShowDrawer: function onShowDrawer(e) {
+      console.log("tabbar-5.vue onShowDrawer params, " + e);
+      var That = this;
+      That.$refs[e].open();
+    },
+    onCloseDrawer: function onCloseDrawer(e) {
+      console.log("tabbar-5.vue onCloseDrawer params, " + e);
+      var That = this;
+      That.$refs[e].close();
+    },
+    onChangeDrawer: function onChangeDrawer(e, type) {
+      console.log("tabbar-5.vue onChangeDrawer params, e:" + e + ", type:" + type);
+      var That = this;
+      That[type] = e;
     }
   }
 };

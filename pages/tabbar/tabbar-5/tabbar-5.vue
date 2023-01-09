@@ -5,9 +5,93 @@
 			<view style="width: 100%; height: 58upx; background-color: transparent;"></view>
 			<view class="line-box">
 				<view class="line-box-item">
-					<uni-icons type="settings" size="32"></uni-icons>
+					<uni-icons type="settings" size="32" @click="onShowDrawer('showSettingsDrawer')"></uni-icons>
 				</view>
 			</view>
+			
+			<!-- 设置抽屉列表 -->
+			<uni-drawer ref="showSettingsDrawer" mode="left" :width="240" @change="onChangeDrawer($event,'showSettingsDrawer')">
+				<!-- 自定义头部功能区 -->
+				<view class="close">
+					<button @click="onCloseDrawer('showSettingsDrawer')"><text class="word-btn-white">关闭Drawer</text></button>
+				</view>
+				
+				<!-- 功能区 -->
+				<view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="folder-add" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">我的草稿</text>
+						</view>
+					</view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="personadd-filled" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">创作中心</text>
+						</view>
+					</view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="calendar" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">浏览记录</text>
+						</view>
+					</view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="wallet" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">钱包</text>
+						</view>
+					</view>
+				</view>
+				
+				<!-- 商务区 -->
+				<view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="shop" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">订单</text>
+						</view>
+					</view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="cart" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">购物车</text>
+						</view>
+					</view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="gift" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">卡券</text>
+						</view>
+					</view>
+					<view class="line-box">
+						<view class="line-box-item">
+							<uni-icons type="staff" size="16"></uni-icons>
+							<text class="text-icon-space-min font-size-max">会员</text>
+						</view>
+					</view>
+				</view>
+				
+				<!-- 底部功能区 -->
+				<view>
+					<view class="line-box" style="height: 90upx; bottom: 0;">
+						<view class="line-box-item">
+							<view class="font-size-max"><uni-icons type="gear" size="24"></uni-icons></view>
+							<view class="font-size-max">设置</view>
+						</view>
+						<view class="line-box-item" style="margin-left: 50upx;">
+							<view class="font-size-max"><uni-icons type="headphones" size="24"></uni-icons></view>
+							<view class="font-size-max">帮助</view>
+						</view>
+						<view class="line-box-item" style="margin-left: 50upx;">
+							<view class="font-size-max"><uni-icons type="scan" size="24"></uni-icons></view>
+							<view class="font-size-max">扫一扫</view>
+						</view>
+					</view>
+					
+				</view>
+				
+			</uni-drawer>
 			
 			<!-- 用户基础信息 -->
 			<view class="line-box" style="height: 140upx; background-color: transparent;">
@@ -149,7 +233,29 @@
 					console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
 				});
 				
-			}
+			},
+			
+			//
+			// onShowDrawer : 系统设置
+			//
+			onShowDrawer(e) {
+				console.log("tabbar-5.vue onShowDrawer params, " + e);
+				let That = this;
+				
+				That.$refs[e].open()
+			},
+			onCloseDrawer(e) {
+				console.log("tabbar-5.vue onCloseDrawer params, " + e);
+				let That = this;
+				
+				That.$refs[e].close()
+			},
+			onChangeDrawer(e, type) {
+				console.log("tabbar-5.vue onChangeDrawer params, e:" + e + ", type:" + type);
+				let That = this;
+				
+				That[type] = e
+			},
 		}
 	}
 </script>
@@ -222,6 +328,10 @@
 	
 	.text-align-left {
 		text-align: left;
+	}
+	
+	.text-icon-space-min {
+		padding-left: 15upx;
 	}
 	
 	.line-button {
