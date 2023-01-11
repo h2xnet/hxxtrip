@@ -89,3 +89,61 @@ $uni-font-size-paragraph:30upx;
 .gray-color {
 	color: gray;
 }
+
+.line-box {
+	padding-top: 10upx;
+	padding-bottom: 10upx;
+	padding-left: 15upx;
+	padding-right: 15upx;
+	height: 60upx;
+	width: 100%;
+	display: inline-block;
+}
+
+.line-box-item {
+	margin: 0;
+	float: left;
+}
+
+.label-text {
+	font-size: 32upx;
+	padding-left: 15upx;
+	padding-right: 15upx;
+}
+
+.font-size-max {
+	font-size: 32upx;
+}
+
+.font-size-mid {
+	font-size: 30upx;
+}
+
+.font-size-min {
+	font-size: 26upx;
+}
+
+.color-white {
+	color: white;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-icon-space-min {
+	padding-left: 15upx;
+}
+
+.line-button {
+	border-radius: 10upx;
+	background-color: transparent;
+	color: white;
+	font-size: 30upx;
+}
+
+.space-gray-line {
+	width: 90%;
+	height: 1upx;
+	background-color: #d9d9d9;
+}

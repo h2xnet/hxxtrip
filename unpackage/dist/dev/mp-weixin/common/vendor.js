@@ -1477,7 +1477,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2471,7 +2471,25 @@ module.exports = _construct, module.exports.__esModule = true, module.exports["d
 
 /***/ }),
 
-/***/ 149:
+/***/ 15:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  return _setPrototypeOf(o, p);
+}
+module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 156:
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \*************************************************************************************/
@@ -3493,24 +3511,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 15:
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _setPrototypeOf(o, p);
-}
-module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 16:
 /*!*************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
@@ -3551,7 +3551,22 @@ module.exports = _toConsumableArray, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 178:
+/***/ 18:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 8);
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 185:
 /*!**********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/mp-html/components/mp-html/parser.js ***!
   \**********************************************************************************/
@@ -4764,81 +4779,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 18:
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 8);
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return arrayLikeToArray(arr);
-}
-module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 186:
-/*!****************************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 3);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 187));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 188));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 189));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 187:
-/*!***************************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
-  \***************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 188:
-/*!********************************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 189:
-/*!********************************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
-
-/***/ }),
-
 /***/ 19:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
@@ -4853,10 +4793,10 @@ module.exports = _iterableToArray, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 197:
-/*!************************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
-  \************************************************************************************************/
+/***/ 193:
+/*!****************************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4868,9 +4808,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 198));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 199));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 200));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 194));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 195));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 196));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -4880,10 +4820,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 198:
-/*!***********************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
-  \***********************************************************************************************/
+/***/ 194:
+/*!***************************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
+  \***************************************************************************************************/
 /*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
 /***/ (function(module) {
 
@@ -4891,14 +4831,25 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 199:
-/*!****************************************************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
-  \****************************************************************************************************/
+/***/ 195:
+/*!********************************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \********************************************************************************************************/
 /*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 196:
+/*!********************************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
 
@@ -4947,7 +4898,56 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 200:
+/***/ 204:
+/*!************************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 3);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 205));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 206));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 207));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 205:
+/*!***********************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
+  \***********************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 206:
+/*!****************************************************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
+  \****************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 207:
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \****************************************************************************************************/
@@ -11072,7 +11072,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -11093,14 +11093,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -11196,7 +11196,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -11614,7 +11614,18 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 245:
+/***/ 25:
+/*!********************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/pages.json ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 252:
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \**************************************************************************************/
@@ -12633,17 +12644,6 @@ var _default = {
   }]
 };
 exports.default = _default;
-
-/***/ }),
-
-/***/ 25:
-/*!********************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/pages.json ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
@@ -18345,6 +18345,9 @@ var _default = {
     "style": {}
   }, {
     "path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
+    "style": {}
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info",
     "style": {}
   }],
   "globalStyle": {

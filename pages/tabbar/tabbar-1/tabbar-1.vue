@@ -576,7 +576,7 @@ export default {
 	.content {
 		text-align: center;
 		height: 400upx;
-		margin-top: 10upx;
+		margin-top: 0;
 	}
 	
 	.tabs {

@@ -10,10 +10,10 @@
 			</view>
 			
 			<!-- 设置抽屉列表 -->
-			<uni-drawer ref="showSettingsDrawer" mode="left" :width="240" @change="onChangeDrawer($event,'showSettingsDrawer')">
+			<uni-drawer ref="showSettingsDrawer" mode="left" :width="200" @change="onChangeDrawer($event,'showSettingsDrawer')">
 				<!-- 自定义头部功能区 -->
-				<view class="close">
-					<button @click="onCloseDrawer('showSettingsDrawer')"><text class="word-btn-white">关闭Drawer</text></button>
+				<view>
+					<button type="default" style="width: 100%; height: 80upx;"></button>
 				</view>
 				
 				<!-- 功能区 -->
@@ -44,6 +44,8 @@
 					</view>
 				</view>
 				
+				<view class="margin-left-min space-gray-line"></view>
+				
 				<!-- 商务区 -->
 				<view>
 					<view class="line-box">
@@ -72,9 +74,11 @@
 					</view>
 				</view>
 				
+				<view class="margin-left-min space-gray-line"></view>
+				
 				<!-- 底部功能区 -->
 				<view>
-					<view class="line-box" style="height: 90upx; bottom: 0;">
+					<view class="line-box">
 						<view class="line-box-item">
 							<view class="font-size-max"><uni-icons type="gear" size="24"></uni-icons></view>
 							<view class="font-size-max">设置</view>
@@ -146,7 +150,7 @@
 				</view>
 				<view class="line-box-item" style="float: right; margin-right: 30upx;">
 					<view class="button-group">
-						<button class="line-button">编辑资料</button>
+						<button class="line-button"  @click="goToPage('pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info', {})">编辑资料</button>
 					</view>
 				</view>
 				
@@ -235,6 +239,19 @@
 				
 			},
 			
+			goToPage(url, param) {
+				console.log("tabbar-5.vue goToPage params, url:" + url + ", param: " + JSON.stringify(param));
+				if (!url) {
+					return;
+				}
+				uni.navigateTo({
+					url: url,
+					fail(err) {
+						console.log("gotoPage fail, err:" + JSON.stringify(err));
+					}
+				});
+			},
+			
 			//
 			// onShowDrawer : 系统设置
 			//
@@ -272,21 +289,6 @@
 		min-height: 250upx;
 	}
 	
-	.line-box {
-		padding-top: 10upx;
-		padding-bottom: 10upx;
-		padding-left: 15upx;
-		padding-right: 15upx;
-		height: 60upx;
-		width: 100%;
-		display: inline-block;
-	}
-	
-	.line-box-item {
-		margin: 0;
-		float: left;
-	}
-	
 	.userinfo-list {
 		display: flex;
 		flex-direction: column;
@@ -304,41 +306,8 @@
 		margin-top: 15upx;
 	}
 	
-	.label-text {
-		font-size: 32upx;
-		padding-left: 15upx;
-		padding-right: 15upx;
-	}
-	
-	.font-size-max {
-		font-size: 32upx;
-	}
-	
-	.font-size-mid {
-		font-size: 30upx;
-	}
-	
-	.font-size-min {
-		font-size: 26upx;
-	}
-	
-	.color-white {
-		color: white;
-	}
-	
-	.text-align-left {
-		text-align: left;
-	}
-	
-	.text-icon-space-min {
-		padding-left: 15upx;
-	}
-	
-	.line-button {
-		border-radius: 10upx;
-		background-color: transparent;
-		color: white;
-		font-size: 30upx;
+	.margin-left-min {
+		margin-left: 15upx;
 	}
 	
 </style>
