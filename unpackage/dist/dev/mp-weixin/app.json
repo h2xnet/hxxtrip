@@ -8,7 +8,18 @@
     "pages/tabbar-3-detial/tabbar-3-release/tabbar-3-release",
     "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
     "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
-    "pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info"
+    "pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info",
+    "pages/tabbar-5-detail/tabbar-5-detail-draft/tabbar-5-detail-draft",
+    "pages/tabbar-5-detail/tabbar-5-detail-create-center/tabbar-5-detail-create-center",
+    "pages/tabbar-5-detail/tabbar-5-detail-browse-records/tabbar-5-detail-browse-records",
+    "pages/tabbar-5-detail/tabbar-5-detail-wallet/tabbar-5-detail-wallet",
+    "pages/tabbar-5-detail/tabbar-5-detail-cart/tabbar-5-detail-cart",
+    "pages/tabbar-5-detail/tabbar-5-detail-member/tabbar-5-detail-member",
+    "pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings",
+    "pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help",
+    "pages/tabbar-5-detail/tabbar-5-detail-scan/tabbar-5-detail-scan",
+    "pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order",
+    "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store"
   ],
   "subPackages": [],
   "window": {

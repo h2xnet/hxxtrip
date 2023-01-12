@@ -19,25 +19,25 @@
 				<!-- 功能区 -->
 				<view>
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-draft/tabbar-5-detail-draft', {})">
 							<uni-icons type="folder-add" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">我的草稿</text>
 						</view>
 					</view>
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-create-center/tabbar-5-detail-create-center', {})">
 							<uni-icons type="personadd-filled" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">创作中心</text>
 						</view>
 					</view>
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-browse-records/tabbar-5-detail-browse-records', {})">
 							<uni-icons type="calendar" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">浏览记录</text>
 						</view>
 					</view>
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-wallet/tabbar-5-detail-wallet', {})">
 							<uni-icons type="wallet" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">钱包</text>
 						</view>
@@ -49,25 +49,25 @@
 				<!-- 商务区 -->
 				<view>
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order', {});">
 							<uni-icons type="shop" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">订单</text>
 						</view>
 					</view>
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-cart/tabbar-5-detail-cart', {});">
 							<uni-icons type="cart" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">购物车</text>
 						</view>
 					</view>
-					<view class="line-box">
+					<!--<view class="line-box">
 						<view class="line-box-item">
 							<uni-icons type="gift" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">卡券</text>
 						</view>
-					</view>
+					</view>-->
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-member/tabbar-5-detail-member', {});">
 							<uni-icons type="staff" size="16"></uni-icons>
 							<text class="text-icon-space-min font-size-max">会员</text>
 						</view>
@@ -77,17 +77,19 @@
 				<view class="margin-left-min space-gray-line"></view>
 				
 				<!-- 底部功能区 -->
-				<view>
+				<view class="fixed-bottom">
 					<view class="line-box">
-						<view class="line-box-item">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings', {});"
+							style="margin-left: 35upx;">
 							<view class="font-size-max"><uni-icons type="gear" size="24"></uni-icons></view>
 							<view class="font-size-max">设置</view>
 						</view>
-						<view class="line-box-item" style="margin-left: 50upx;">
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help', {});" 
+							style="margin-left: 50upx;">
 							<view class="font-size-max"><uni-icons type="headphones" size="24"></uni-icons></view>
 							<view class="font-size-max">帮助</view>
 						</view>
-						<view class="line-box-item" style="margin-left: 50upx;">
+						<view class="line-box-item" @click="onScan();" style="margin-left: 50upx;">
 							<view class="font-size-max"><uni-icons type="scan" size="24"></uni-icons></view>
 							<view class="font-size-max">扫一扫</view>
 						</view>
@@ -150,7 +152,7 @@
 				</view>
 				<view class="line-box-item" style="float: right; margin-right: 30upx;">
 					<view class="button-group">
-						<button class="line-button"  @click="goToPage('pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info', {})">编辑资料</button>
+						<button class="line-button"  @click="goToPage('/pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info', {})">编辑资料</button>
 					</view>
 				</view>
 				
@@ -159,7 +161,8 @@
 			<!-- 店铺信息 -->
 			<block v-if="userInfo.shopId != ''">
 				<view class="line-box" style="padding: 0; text-align: center; ">
-					<button class="line-button" style="width: 90%;">
+					<button class="line-button" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store', {});" 
+						style="width: 90%;">
 						<uni-icons type="shop" size="16" color="white"></uni-icons>
 						<text style="margin-left: 10upx; ">管理店铺</text>
 					</button>
@@ -273,6 +276,13 @@
 				
 				That[type] = e
 			},
+			
+			onScan() {
+				// 扫一扫
+				console.log("tabbar-5.vue onScan");
+				let That = this;
+			},
+			
 		}
 	}
 </script>
@@ -308,6 +318,20 @@
 	
 	.margin-left-min {
 		margin-left: 15upx;
+	}
+	
+	.fixed-bottom {
+		width: 100%;
+		bottom: 0upx;
+		position: fixed;
+		padding-left: 0upx;
+		padding-right: 0upx;
+		padding-bottom: 30upx;
+		background-color: #ffffff;
+		transform: translateZ(0);
+		bottom: env(safe-area-inset-bottom);
+		box-shadow: 0upx -5upx 14upx #e3e6e6;
+		bottom: contant(safe-area-inset-bottom);
 	}
 	
 </style>

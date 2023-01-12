@@ -42,12 +42,117 @@
 			"path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
 			"style": {}
 		},
-		{
-			// 编辑资料
-			"path": "pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info",
-			"style": {}
-		}
-	],
+	    {
+			// 编辑资料页面
+            "path" : "pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+			// 草稿页面
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-draft/tabbar-5-detail-draft",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-create-center/tabbar-5-detail-create-center",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-browse-records/tabbar-5-detail-browse-records",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-wallet/tabbar-5-detail-wallet",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-cart/tabbar-5-detail-cart",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-member/tabbar-5-detail-member",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-scan/tabbar-5-detail-scan",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "星游会",
