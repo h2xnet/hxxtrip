@@ -152,6 +152,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户登录",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

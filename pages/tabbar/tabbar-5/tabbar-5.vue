@@ -76,6 +76,19 @@
 				
 				<view class="margin-left-min space-gray-line"></view>
 				
+				<!-- 扩展功能区 -->
+				<view>
+					<block v-if="loginState > 0">
+						<view class="line-box">
+							<view class="line-box-item" @click="onLogout();">
+								<uni-icons type="close" size="16"></uni-icons>
+								<text class="text-icon-space-min font-size-max">退出登录</text>
+							</view>
+						</view>
+					</block>
+					
+				</view>
+				
 				<!-- 底部功能区 -->
 				<view class="fixed-bottom">
 					<view class="line-box">
@@ -115,6 +128,16 @@
 						<view class="userinfo-list-item color-white font-size-min">{{userInfo.ipHome}}</view>
 					</view>
 				</view>
+				
+				<!-- 登录、注册 -->
+				<block v-if="loginState <= 0">
+					<view class="line-box-item margin-left-max">
+						<button type="primary" size="mini" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});">
+							<uni-icons type="person" size="16" color="white"></uni-icons>
+							<text class="margin-left-min">登录 / 注册</text>
+						</button>
+					</view>
+				</block>
 				
 			</view>
 			
@@ -235,10 +258,15 @@
 				// 获取登录状态
 				console.log("tabbar-5.vue login_state: " + That.$global_login_state);
 				
+				if (That.$global_login_state <= 0) {
+					// 未登录状态，则跳转到登录页
+					That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
+				}
+				
 				// 获取UUID
-				request.getUuid({"len": 32, "radix": 16}, function(code, res){
-					console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
-				});
+				//request.getUuid({"len": 32, "radix": 16}, function(code, res){
+				//	console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
+				//});
 				
 			},
 			
@@ -275,6 +303,11 @@
 				let That = this;
 				
 				That[type] = e
+			},
+			
+			onLogout() {
+				console.log("tabbar-5.vue onLogout");
+				let That = this;
 			},
 			
 			onScan() {
@@ -316,11 +349,7 @@
 		margin-top: 15upx;
 	}
 	
-	.margin-left-min {
-		margin-left: 15upx;
-	}
-	
-	.fixed-bottom {
+	/*.fixed-bottom {
 		width: 100%;
 		bottom: 0upx;
 		position: fixed;
@@ -332,6 +361,18 @@
 		bottom: env(safe-area-inset-bottom);
 		box-shadow: 0upx -5upx 14upx #e3e6e6;
 		bottom: contant(safe-area-inset-bottom);
+	}*/
+	
+	.margin-left-min {
+		margin-left: 15upx;
+	}
+	
+	.margin-left-mid {
+		margin-left: 20upx;
+	}
+	
+	.margin-left-max {
+		margin-left: 30upx;
 	}
 	
 </style>

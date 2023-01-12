@@ -142,8 +142,36 @@ $uni-font-size-paragraph:30upx;
 	font-size: 30upx;
 }
 
+// 灰色分隔线
 .space-gray-line {
 	width: 90%;
 	height: 1upx;
 	background-color: #d9d9d9;
+}
+
+.margin-left-min {
+	margin-left: 15upx;
+}
+
+.margin-left-mid {
+	margin-left: 20upx;
+}
+
+.margin-left-max {
+	margin-left: 30upx;
+}
+
+// 底部显示栏
+.fixed-bottom {
+	width: 100%;
+	bottom: 0upx;
+	position: fixed;
+	padding-left: 0upx;
+	padding-right: 0upx;
+	padding-bottom: 30upx;
+	background-color: #ffffff;
+	transform: translateZ(0);
+	bottom: env(safe-area-inset-bottom);
+	box-shadow: 0upx -5upx 14upx #e3e6e6;
+	bottom: contant(safe-area-inset-bottom);
 }

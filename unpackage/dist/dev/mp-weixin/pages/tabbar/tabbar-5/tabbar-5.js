@@ -102,13 +102,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 153))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 225))
     },
     uniDrawer: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 161))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 233))
     },
     uniTag: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 168))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 240))
     },
   }
 } catch (e) {
@@ -362,6 +362,29 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // 网络请求
 var _default = {
   data: function data() {
@@ -408,14 +431,15 @@ var _default = {
 
       // 获取登录状态
       console.log("tabbar-5.vue login_state: " + That.$global_login_state);
+      if (That.$global_login_state <= 0) {
+        // 未登录状态，则跳转到登录页
+        That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
+      }
 
       // 获取UUID
-      _request.default.getUuid({
-        "len": 32,
-        "radix": 16
-      }, function (code, res) {
-        console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
-      });
+      //request.getUuid({"len": 32, "radix": 16}, function(code, res){
+      //	console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
+      //});
     },
     goToPage: function goToPage(url, param) {
       console.log("tabbar-5.vue goToPage params, url:" + url + ", param: " + JSON.stringify(param));
@@ -446,6 +470,10 @@ var _default = {
       console.log("tabbar-5.vue onChangeDrawer params, e:" + e + ", type:" + type);
       var That = this;
       That[type] = e;
+    },
+    onLogout: function onLogout() {
+      console.log("tabbar-5.vue onLogout");
+      var That = this;
     },
     onScan: function onScan() {
       // 扫一扫

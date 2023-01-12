@@ -19,7 +19,8 @@
     "pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help",
     "pages/tabbar-5-detail/tabbar-5-detail-scan/tabbar-5-detail-scan",
     "pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order",
-    "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store"
+    "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store",
+    "pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login"
   ],
   "subPackages": [],
   "window": {

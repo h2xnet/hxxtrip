@@ -82,6 +82,29 @@
   height: 1rpx;
   background-color: #d9d9d9;
 }
+.margin-left-min {
+  margin-left: 15rpx;
+}
+.margin-left-mid {
+  margin-left: 20rpx;
+}
+.margin-left-max {
+  margin-left: 30rpx;
+}
+.fixed-bottom {
+  width: 100%;
+  bottom: 0rpx;
+  position: fixed;
+  padding-left: 0rpx;
+  padding-right: 0rpx;
+  padding-bottom: 30rpx;
+  background-color: #ffffff;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  bottom: env(safe-area-inset-bottom);
+  box-shadow: 0rpx -5rpx 14rpx #e3e6e6;
+  bottom: contant(safe-area-inset-bottom);
+}
 .uni-card {
   margin: 10px;
   padding: 0 8px;
