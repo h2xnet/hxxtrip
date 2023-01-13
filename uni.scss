@@ -161,6 +161,10 @@ $uni-font-size-paragraph:30upx;
 	margin-left: 30upx;
 }
 
+.text-align-center {
+	text-align: center;
+}
+
 // 底部显示栏
 .fixed-bottom {
 	width: 100%;
@@ -174,4 +178,21 @@ $uni-font-size-paragraph:30upx;
 	bottom: env(safe-area-inset-bottom);
 	box-shadow: 0upx -5upx 14upx #e3e6e6;
 	bottom: contant(safe-area-inset-bottom);
+}
+
+
+// 居中模块
+.center-wrap {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+// 居中元素
+.center-container-wrap {
+	min-height: 40upx;
+	width: 100%;
+	background-color: #ffffff;
 }

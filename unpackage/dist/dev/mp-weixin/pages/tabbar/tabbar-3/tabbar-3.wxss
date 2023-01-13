@@ -91,6 +91,9 @@
 .margin-left-max.data-v-05d832b7 {
   margin-left: 30rpx;
 }
+.text-align-center.data-v-05d832b7 {
+  text-align: center;
+}
 .fixed-bottom.data-v-05d832b7 {
   width: 100%;
   bottom: 0rpx;
@@ -104,6 +107,18 @@
   bottom: env(safe-area-inset-bottom);
   box-shadow: 0rpx -5rpx 14rpx #e3e6e6;
   bottom: contant(safe-area-inset-bottom);
+}
+.center-wrap.data-v-05d832b7 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center-container-wrap.data-v-05d832b7 {
+  min-height: 40rpx;
+  width: 100%;
+  background-color: #ffffff;
 }
 .content.data-v-05d832b7 {
   display: flex;

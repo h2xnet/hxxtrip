@@ -91,6 +91,9 @@
 .margin-left-max {
   margin-left: 30rpx;
 }
+.text-align-center {
+  text-align: center;
+}
 .fixed-bottom {
   width: 100%;
   bottom: 0rpx;
@@ -104,6 +107,18 @@
   bottom: env(safe-area-inset-bottom);
   box-shadow: 0rpx -5rpx 14rpx #e3e6e6;
   bottom: contant(safe-area-inset-bottom);
+}
+.center-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center-container-wrap {
+  min-height: 40rpx;
+  width: 100%;
+  background-color: #ffffff;
 }
 .card-frame {
   border-radius: 0;
