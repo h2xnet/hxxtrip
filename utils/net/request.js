@@ -66,6 +66,27 @@ const uniGetUserInfo = (provider, callfunc) => {
 }
 
 //
+// uniGetUserProfile : 微信授权获取用户信息
+//
+const uniGetUserProfile = (callfunc) => {
+	uni.getUserProfile({
+		desc: "用户登录/注册",
+		success(res) {
+			console.log("request.js uniGetUserProfile success, res:" + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(error_code_ok, res);
+			}
+		},
+		fail(err) {
+			console.log("request.js uniGetUserProfile fail, err:" + JSON.stringify(err));
+			if (callfunc) {
+				callfunc(error_code_fail, err);
+			}
+		}
+	});
+}
+
+//
 // getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
 //
 const getWeixinOepnInfo = (appId, secret, accessCode, callfunc) => {
@@ -135,6 +156,7 @@ export default {
 	getPhoneNumber,
 	uniLogin,
 	uniGetUserInfo,
+	uniGetUserProfile,
 	getWeixinOepnInfo,
 	categoryRootRequest,
 	categoryTwoRequest,

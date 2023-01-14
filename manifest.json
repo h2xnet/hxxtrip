@@ -50,7 +50,11 @@
             "minified" : true,
             "postcss" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "secureNetwork" : {
+            "enable" : false
+        },
+        "permission" : {}
     },
     "vueVersion" : "2",
     "fallbackLocale" : "zh-Hans",
