@@ -7,11 +7,90 @@
 
 import uniCloudHttp from './uniCloudHttp.js'
 
+import {error_code_ok,error_code_fail} from './errorCode.js'
+
 //
 // getUuid : 获取UUID
 //
 const getUuid = (param, callfunc) => {
-	return uniCloudHttp.cloudCallFunc("global", {"action": "tools/getUuid", "data":param}, callfunc);
+	return uniCloudHttp.cloudCallFunc("global", {"action": "tools/getUuid", "data": param}, callfunc);
+}
+
+//
+// getPhoneNumber : 获取手机号
+//
+const getPhoneNumber = (param, callfunc) => {
+	return uniCloudHttp.cloudCallFunc("global", {"action": "user/user/getPhoneNumber", "data": param}, callfunc);
+}
+
+//
+// uniLogin : uni客户端登录，换取code
+//
+const uniLogin = (provider, callfunc) => {
+	uni.login({
+		provider: provider,
+		success(res) {
+			console.log("request.js uniLogin success, provider:" + provider + ", res:" + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(error_code_ok, res);
+			}
+		},
+		fail(err) {
+			console.log("request.js uniLogin fail, provider:" + provider + ", err:" + JSON.stringify(err));
+			if (callfunc) {
+				callfunc(error_code_fail, err);
+			}
+		}
+	})
+}
+
+//
+// uniGetUserInfo : 获取用户信息
+//
+const uniGetUserInfo = (provider, callfunc) => {
+	uni.getUserInfo({
+		provider: provider,
+		success(res) {
+			console.log("request.js uniGetUserInfo success, res:" + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(error_code_ok, res);
+			}
+		},
+		fail(err) {
+			console.log("request.js uniGetUserInfo fail, err:" + JSON.stringify(err));
+			if (callfunc) {
+				callfunc(error_code_fail, err);
+			}
+		}
+	})
+}
+
+//
+// getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
+//
+const getWeixinOepnInfo = (appId, secret, accessCode, callfunc) => {
+	uni.request({
+		url: "https://api.weixin.qq.com/sns/jscode2session",
+		method: "GET",
+		data: {
+			appid: appId,
+			secret: secret,
+			js_code: accessCode,
+			grant_type: "authorization_code"
+		},
+		success(res) {
+			console.log("request.js getWeixinOepnInfo success, res:" + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(error_code_ok, res);
+			}
+		},
+		fail(err) {
+			console.log("request.js getWeixinOepnInfo fail, err:" + JSON.stringify(err));
+			if (callfunc) {
+				callfunc(error_code_fail, err);
+			}
+		}
+	});
 }
 
 //
@@ -49,8 +128,14 @@ const getCategoryHumainAstro = (param, callfunc) => {
 	return uniCloudHttp.cloudCallFunc("router", {"action": "humain/astrol/astrolCategory", "data": param}, callfunc);
 }
 
+
+
 export default {
 	getUuid,
+	getPhoneNumber,
+	uniLogin,
+	uniGetUserInfo,
+	getWeixinOepnInfo,
 	categoryRootRequest,
 	categoryTwoRequest,
 	routerRequest,
