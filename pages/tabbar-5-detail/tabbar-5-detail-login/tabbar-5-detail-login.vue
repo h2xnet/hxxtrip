@@ -8,7 +8,7 @@
 						<view class="text-align-center">{{userInfo.phone}}</view>
 					</view>
 					<view class="line-box" style="padding: 0;">
-						<button type="primary">手机号一键登录</button>
+						<button type="primary" @click="onGetPhoneNumberLogin();">手机号一键登录</button>
 					</view>
 				</view>	
 				<view v-else-if="loginMethod == 1">
@@ -147,6 +147,15 @@
 					}
 				})
 				
+			},
+			
+			//
+			// onGetPhoneNumberLogin : 手机号一键登录
+			//
+			onGetPhoneNumberLogin() {
+				uni.navigateTo({
+					url: "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=univerify"
+				})
 			},
 			
 			//

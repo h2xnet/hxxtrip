@@ -1,9 +1,14 @@
 <script>
 	
+	import uniIdPageInit from '@/uni_modules/uni-id-pages/init.js';
+	
 export default {
+	
 	
 	onLaunch: function() {
 		console.log('App Launch');
+		
+		uniIdPageInit();
 
 		// 状态栏高度
 		uni.getSystemInfo({

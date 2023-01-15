@@ -20,7 +20,22 @@
     "pages/tabbar-5-detail/tabbar-5-detail-scan/tabbar-5-detail-scan",
     "pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order",
     "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store",
-    "pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login"
+    "pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login",
+    "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+    "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+    "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+    "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+    "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+    "uni_modules/uni-id-pages/pages/login/login-withpwd",
+    "uni_modules/uni-id-pages/pages/login/login-smscode",
+    "uni_modules/uni-id-pages/pages/register/register",
+    "uni_modules/uni-id-pages/pages/register/register-by-email",
+    "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+    "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+    "uni_modules/uni-id-pages/pages/common/webview/webview",
+    "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+    "uni_modules/uni-id-pages/pages/register/register-admin",
+    "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd"
   ],
   "subPackages": [],
   "window": {
