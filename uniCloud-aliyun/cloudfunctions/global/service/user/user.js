@@ -50,5 +50,30 @@ module.exports = class UserService extends Service {
 		return res
 		
 	}
+	
+	//
+	// accountLoginRegist : 账号登录/注册
+	//
+	async accountLoginRegist(params) {
+		console.log("global/service/user/user.js accountLoginRegist params: " + JSON.stringify(params));
+		
+		const { ctx, db } = this;
+		
+		let userAccount = "";
+		if (params.hasOwnProperty("userAccount")) {
+			userAccount = params["userAccount"];
+		}
+		let userPswd = "";
+		if (params.hasOwnProperty("userPswd")) {
+			userPswd = params["userPswd"];
+		}
+		
+		return {
+			errCode: 0,
+			errMsg: 'ok',
+			data: null
+		}
+		
+	}
 
 };

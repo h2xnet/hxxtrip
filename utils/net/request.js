@@ -24,6 +24,13 @@ const getPhoneNumber = (param, callfunc) => {
 }
 
 //
+// 账号登录/注册
+//
+const getAccountLoginRegist = (param, callfunc) => {
+	return uniCloudHttp.cloudCallFunc("global", {"action": "user/user/accountLoginRegist", "data": param}, callfunc);
+}
+
+//
 // uniLogin : uni客户端登录，换取code
 //
 const uniLogin = (provider, callfunc) => {
@@ -158,6 +165,7 @@ export default {
 	uniGetUserInfo,
 	uniGetUserProfile,
 	getWeixinOepnInfo,
+	getAccountLoginRegist,
 	categoryRootRequest,
 	categoryTwoRequest,
 	routerRequest,

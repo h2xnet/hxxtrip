@@ -28,8 +28,9 @@
 					</view>
 				</view>
 				<view v-else-if="loginMethod == 3">
+					<!-- 账号登录 -->
 					<view class="line-box" style="padding: 0;">
-						<AccountLogin>
+						<AccountLogin ref="accountLoginRef" @accountLoginSubmit="onAccountLogin">
 							
 						</AccountLogin>
 					</view>
@@ -175,6 +176,26 @@
 						
 						That.userInfo = userInfo;
 					}
+				});
+				
+			},
+			
+			//
+			// onAccountLogin : 账号登录
+			//
+			onAccountLogin(data) {
+				console.log("tabbar-5-detail-login.vue onAccountLogin params: " + JSON.stringify(data));
+				
+				let That = this;
+				
+				// 修改组件状态
+				That.$refs.accountLoginRef.setLoadingState("true");
+				
+				That.$refs.accountLoginRef.setErrorMsg("正在登录中...");
+				
+				request.getAccountLoginRegist(data, function(code, res){
+					console.log("tabbar-5-detail-login.vue onAccountLogin getAccountLoginRegist code:" + code + ", res:" + JSON.stringify(res));
+					
 				});
 				
 			}

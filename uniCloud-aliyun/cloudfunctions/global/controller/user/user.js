@@ -16,16 +16,28 @@ module.exports = class UserController extends Controller {
 		const { ctx, service } = this;
 		
 		let params = ctx.data;
-		console.log("global/controller/category getPhoneNumber params: " + JSON.stringify(params));
+		console.log("global/controller/user/user.js getPhoneNumber params: " + JSON.stringify(params));
 		
 		let event = ctx.event;
-		console.log('global/controller/category getPhoneNumber event:', JSON.stringify(event));
+		console.log('global/controller/user/user.js getPhoneNumber event:', JSON.stringify(event));
 		
 		let access_token = params["access_token"];
 		//let access_token = event.access_token;
 		let openid = event.openid;
 		
-		return service.user.user.getPhoneNumber(params, access_token, openid);
+		return await service.user.user.getPhoneNumber(params, access_token, openid);
+	}
+	
+	//
+	// accountLoginRegist : 账号登录/注册，如果存在则登录，不存在则注册
+	//
+	async accountLoginRegist() {
+		const { ctx, service } = this;
+		
+		let params = ctx.data;
+		console.log("global/controller/user/user.js accountLoginRegist params: " + JSON.stringify(params));
+		
+		return await service.user.user.accountLoginRegist(params);
 	}
 	
 };

@@ -10777,7 +10777,7 @@ function m(e) {
 }
 var y = "development" === "development",
   _ = "mp-weixin",
-  w = "true" === undefined || !0 === undefined,
+  w = "true" === false || !0 === false,
   v = m([]);
 var S;
 S = "h5" === _ ? "web" : "app-plus" === _ ? "app" : _;
@@ -10786,8 +10786,7 @@ var k = m({
         "127.0.0.1",
         "192.168.118.1",
         "192.168.30.1",
-        "192.168.1.101",
-        "10.136.100.3"
+        "192.168.1.101"
     ],
     "debugPort": 9000,
     "initialLaunchType": "local",
@@ -20567,6 +20566,16 @@ var getPhoneNumber = function getPhoneNumber(param, callfunc) {
 };
 
 //
+// 账号登录/注册
+//
+var getAccountLoginRegist = function getAccountLoginRegist(param, callfunc) {
+  return _uniCloudHttp.default.cloudCallFunc("global", {
+    "action": "user/user/accountLoginRegist",
+    "data": param
+  }, callfunc);
+};
+
+//
 // uniLogin : uni客户端登录，换取code
 //
 var uniLogin = function uniLogin(provider, callfunc) {
@@ -20704,6 +20713,7 @@ var _default = {
   uniGetUserInfo: uniGetUserInfo,
   uniGetUserProfile: uniGetUserProfile,
   getWeixinOepnInfo: getWeixinOepnInfo,
+  getAccountLoginRegist: getAccountLoginRegist,
   categoryRootRequest: categoryRootRequest,
   categoryTwoRequest: categoryTwoRequest,
   routerRequest: routerRequest,

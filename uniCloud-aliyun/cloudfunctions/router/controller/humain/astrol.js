@@ -12,7 +12,7 @@ module.exports = class AstrolController extends Controller {
   //
   // index: 获取星座类别
   //
-  astrolCategory() {
+  async astrolCategory() {
 	console.log("controller/humain/astrol astrolCategory");
 	
 	const { ctx, service } = this;
@@ -20,7 +20,7 @@ module.exports = class AstrolController extends Controller {
 	let params = ctx.data;
 	console.log("controller/humain/astrol getAstrolCategory params: " + JSON.stringify(params));
 	
-	return service.humain.astrol.getAstrolCategory(params);
+	return await service.humain.astrol.getAstrolCategory(params);
   }
   
   
