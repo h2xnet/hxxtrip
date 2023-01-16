@@ -8,7 +8,7 @@
 						<view class="text-align-center">{{userInfo.phone}}</view>
 					</view>
 					<view class="line-box" style="padding: 0;">
-						<button type="primary" open-type="getPhoneNumber" @click="onGetPhoneNumber">手机号一键登录</button>
+						<button type="primary" @click="onGetPhoneNumberLogin();">手机号一键登录</button>
 					</view>
 				</view>	
 				<view v-else-if="loginMethod == 1">
@@ -19,7 +19,7 @@
 						<view>{{userInfo.nickName}}</view>
 					</view>
 					<view class="line-box" style="padding: 0;">
-						<button type="primary">微信登录</button>
+						<button type="primary" @click="onGetWeixinUserInfo();">微信登录</button>
 					</view>
 				</view>
 				<view v-else-if="loginMethod == 2">
@@ -28,8 +28,9 @@
 					</view>
 				</view>
 				<view v-else-if="loginMethod == 3">
+					<!-- 账号登录 -->
 					<view class="line-box" style="padding: 0;">
-						<AccountLogin>
+						<AccountLogin ref="accountLoginRef" @accountLoginSubmit="onAccountLogin">
 							
 						</AccountLogin>
 					</view>
@@ -109,16 +110,6 @@
 				
 				That.loginMethod = method;
 				
-				switch(method) {
-					case 0: {
-						// 手机号一键登录
-					}break;
-					case 1: {
-						// 微信登录
-						That.onGetWeixinUserInfo();
-					}break;
-				}
-				
 			},
 			
 			//
@@ -140,7 +131,7 @@
 				
 				
 				// get code
-				/*request.uniLogin("weixin", function(code, res){
+				request.uniLogin("weixin", function(code, res){
 					console.log("tabbar-5-detail-login.vue onLogin uniLogin weixin code:" + code + ", res:" + JSON.stringify(res));
 					if (code == 0) {
 						let access_code = res["code"];
@@ -154,16 +145,17 @@
 						});
 						
 					}
-				})*/
+				})
 				
 			},
 			
 			//
-			// onGetPhoneNumber : 获取手机号
+			// onGetPhoneNumberLogin : 手机号一键登录
 			//
-			onGetPhoneNumber(e) {
-				console.log("tabbar-5-detail-login.vue onGetPhoneNumber params, " + JSON.stringify(e));
-				
+			onGetPhoneNumberLogin() {
+				//uni.navigateTo({
+				//	url: "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=univerify"
+				//})
 			},
 			
 			//
@@ -178,29 +170,60 @@
 					return;
 				}
 				
-				request.uniLogin("weixin", function(code, res){
-					console.log("tabbar-5-detail-login.vue onGetWeixinUserInfo uniGetUserInfo weixin code:" + code + ", res:" + JSON.stringify(res));
+				// uni.setStorageSync
+				
+				// 授权获取用户信息
+				request.uniGetUserProfile(function(code, res){
+					console.log("tabbar-5-detail-login.vue onGetWeixinUserInfo uniGetUserProfile code:" + code + ", res:" + JSON.stringify(res));
+					
+					if (code == 0) {
+						// 授权成功
+						let userInfo = res["userInfo"];
+						let signature = res["signature"];
+						let iv = res["iv"];
+						let cloudID = res["cloudID"];
+						
+						That.userInfo = userInfo;
+					}
+				});
+				
+			},
+			
+			//
+			// onAccountLogin : 账号登录
+			//
+			onAccountLogin(data) {
+				console.log("tabbar-5-detail-login.vue onAccountLogin params: " + JSON.stringify(data));
+				
+				let That = this;
+				
+				// 修改组件状态
+				That.$refs.accountLoginRef.setLoadingState("true");
+				
+				That.$refs.accountLoginRef.setErrorMsg("正在登录中...");
+				
+				request.getAccountLoginRegist(data, function(code, res){
+					console.log("tabbar-5-detail-login.vue onAccountLogin getAccountLoginRegist code:" + code + ", res:" + JSON.stringify(res));
+					
+					That.$refs.accountLoginRef.setLoadingState("false");
+					
 					if (code != 0) {
+						That.$refs.accountLoginRef.setErrorMsg("网络异常");
 						return;
 					}
 					
-					let access_code = res["code"];
-					That.access_code = access_code;
+					let errCode = res["errCode"];
+					let errMsg = res["errMsg"];
+					if (errCode != 200) {
+						That.$refs.accountLoginRef.setErrorMsg(errMsg);
+						return;
+					}
 					
-					// getUserInfo
-					request.uniGetUserInfo("weixin", function(code2, res2){
-						console.log("tabbar-5-detail-login.vue onGetWeixinUserInfo uniGetUserInfo weixin code2:" + code2 + ", res2:" + JSON.stringify(res2));
-						if (code2 == 0) {
-							let errMsg = res2["errMsg"];
-							if (errMsg == "getUserInfo:ok") {
-								let userInfo = res2["userInfo"];
-								console.log("tabbar-5-detail-login.vue onGetWeixinUserInfo uniGetUserInfo userInfo:" + JSON.stringify(userInfo));
-								That.userInfo = userInfo;
-								
-							}
-						}
-						
-					});
+					// 登录成功
+					That.$global_login_state = 1
+					
+					// 刷新上一页并返回
+					uni.navigateBack();
 					
 				});
 				

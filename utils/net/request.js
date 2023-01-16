@@ -24,6 +24,13 @@ const getPhoneNumber = (param, callfunc) => {
 }
 
 //
+// 账号登录/注册
+//
+const getAccountLoginRegist = (param, callfunc) => {
+	return uniCloudHttp.cloudCallFunc("global", {"action": "user/user/accountLoginRegist", "data": param}, callfunc);
+}
+
+//
 // uniLogin : uni客户端登录，换取code
 //
 const uniLogin = (provider, callfunc) => {
@@ -63,6 +70,27 @@ const uniGetUserInfo = (provider, callfunc) => {
 			}
 		}
 	})
+}
+
+//
+// uniGetUserProfile : 微信授权获取用户信息
+//
+const uniGetUserProfile = (callfunc) => {
+	uni.getUserProfile({
+		desc: "用户登录/注册",
+		success(res) {
+			console.log("request.js uniGetUserProfile success, res:" + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(error_code_ok, res);
+			}
+		},
+		fail(err) {
+			console.log("request.js uniGetUserProfile fail, err:" + JSON.stringify(err));
+			if (callfunc) {
+				callfunc(error_code_fail, err);
+			}
+		}
+	});
 }
 
 //
@@ -135,7 +163,9 @@ export default {
 	getPhoneNumber,
 	uniLogin,
 	uniGetUserInfo,
+	uniGetUserProfile,
 	getWeixinOepnInfo,
+	getAccountLoginRegist,
 	categoryRootRequest,
 	categoryTwoRequest,
 	routerRequest,

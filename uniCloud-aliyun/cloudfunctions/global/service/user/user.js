@@ -1,5 +1,12 @@
 const { Service } = require("uni-cloud-router");
 
+const {
+	ERROR_CODE,
+	ERROR_MSG,
+	getAck
+} = require("../../common/ackHelper.js");
+
+
 /*
  * ClassName: UserService
  * Desc: 用户服务
@@ -48,6 +55,36 @@ module.exports = class UserService extends Service {
 		})*/
 	
 		return res
+		
+	}
+	
+	//
+	// accountLoginRegist : 账号登录/注册
+	//
+	async accountLoginRegist(params) {
+		console.log("global/service/user/user.js accountLoginRegist params: " + JSON.stringify(params));
+		
+		const { ctx, db } = this;
+		
+		let userAccount = "";
+		if (params.hasOwnProperty("userAccount")) {
+			userAccount = params["userAccount"];
+		}
+		let userPswd = "";
+		if (params.hasOwnProperty("userPswd")) {
+			userPswd = params["userPswd"];
+		}
+		
+		if (userAccount == "") {
+			return getAck(ERROR_CODE.ERROR_CODE_ACCOUNT_EMPTY, ERROR_MSG.ERROR_MSG_ACCOUNT_EMPTY, null);
+		}
+		
+		if (userPswd == "") {
+			return getAck(ERROR_CODE.ERROR_CODE_PSWD_EMPTY, ERROR_MSG.ERROR_MSG_PSWD_EMPTY, null);
+		}
+		
+		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, {});
+		
 		
 	}
 
