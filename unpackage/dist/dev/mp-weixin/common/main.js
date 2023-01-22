@@ -106,13 +106,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _init = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/init.js */ 192));
 var _default = {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    (0, _init.default)();
 
     // 状态栏高度
     uni.getSystemInfo({

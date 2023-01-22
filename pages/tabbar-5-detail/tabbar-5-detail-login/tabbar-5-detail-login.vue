@@ -154,9 +154,15 @@
 			// onGetPhoneNumberLogin : 手机号一键登录
 			//
 			onGetPhoneNumberLogin() {
+<<<<<<< HEAD
 				//uni.navigateTo({
 				//	url: "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=univerify"
 				//})
+=======
+				uni.navigateTo({
+					url: "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=univerify"
+				})
+>>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
 			},
 			
 			//
@@ -176,6 +182,7 @@
 				// 授权获取用户信息
 				request.uniGetUserProfile(function(code, res){
 					console.log("tabbar-5-detail-login.vue onGetWeixinUserInfo uniGetUserProfile code:" + code + ", res:" + JSON.stringify(res));
+<<<<<<< HEAD
 					
 					if (code == 0) {
 						// 授权成功
@@ -229,6 +236,37 @@
 					
 					// 刷新上一页并返回
 					uni.navigateBack({});
+=======
+					
+					if (code == 0) {
+						// 授权成功
+						let userInfo = res["userInfo"];
+						let signature = res["signature"];
+						let iv = res["iv"];
+						let cloudID = res["cloudID"];
+						
+						That.userInfo = userInfo;
+					}
+				});
+				
+			},
+			
+			//
+			// onAccountLogin : 账号登录
+			//
+			onAccountLogin(data) {
+				console.log("tabbar-5-detail-login.vue onAccountLogin params: " + JSON.stringify(data));
+				
+				let That = this;
+				
+				// 修改组件状态
+				That.$refs.accountLoginRef.setLoadingState("true");
+				
+				That.$refs.accountLoginRef.setErrorMsg("正在登录中...");
+				
+				request.getAccountLoginRegist(data, function(code, res){
+					console.log("tabbar-5-detail-login.vue onAccountLogin getAccountLoginRegist code:" + code + ", res:" + JSON.stringify(res));
+>>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
 					
 				});
 				

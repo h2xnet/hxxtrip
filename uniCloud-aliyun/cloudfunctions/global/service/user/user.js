@@ -77,6 +77,7 @@ module.exports = class UserService extends Service {
 			userPswd = params["userPswd"];
 		}
 		
+<<<<<<< HEAD
 		if (userAccount == "") {
 			return getAck(ERROR_CODE.ERROR_CODE_ACCOUNT_EMPTY, ERROR_MSG.ERROR_MSG_ACCOUNT_EMPTY, null);
 		}
@@ -187,6 +188,14 @@ module.exports = class UserService extends Service {
 		
 		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, retUserInfo);
 		
+=======
+		return {
+			errCode: 0,
+			errMsg: 'ok',
+			data: null
+		}
+		
+>>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
 	}
 
 };

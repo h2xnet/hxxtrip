@@ -240,24 +240,138 @@ module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.ex
 /***/ }),
 
 /***/ 192:
-/*!*********************************************************!*\
-  !*** D:/h2x/hxxtrip/utils/handler/user/user_handler.js ***!
-  \*********************************************************/
+/*!*******************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/init.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-/*
- * 用户请求事件处理
- */
-var _default = {};
 exports.default = _default;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
+var _config = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/config.js */ 378));
+// 导入配置
+
+// uni-id的云对象
+var uniIdCo = uniCloud.importObject("uni-id-co", {
+  customUI: true
+});
+// 用户配置的登录方式、是否打开调试模式
+var loginTypes = _config.default.loginTypes,
+  debug = _config.default.debug;
+function _default() {
+  return _ref.apply(this, arguments);
+}
+function _ref() {
+  _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+    var _yield$uniIdCo$getSup, supportedLoginType, data, list, db, onDBError;
+    return _regenerator.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            onDBError = function _onDBError(_ref2) {
+              var code = _ref2.code,
+                message = _ref2.message;
+            } // console.error('onDBError', {code,message});
+            ;
+            if (!debug) {
+              _context2.next = 10;
+              break;
+            }
+            _context2.next = 4;
+            return uniIdCo.getSupportedLoginType();
+          case 4:
+            _yield$uniIdCo$getSup = _context2.sent;
+            supportedLoginType = _yield$uniIdCo$getSup.supportedLoginType;
+            console.log("supportedLoginType: " + JSON.stringify(supportedLoginType));
+            //登录方式，服务端和客户端的映射关系
+            data = {
+              smsCode: 'mobile-code',
+              univerify: 'univerify',
+              username: 'username-password',
+              weixin: 'weixin',
+              qq: 'qq',
+              xiaomi: 'xiaomi',
+              sinaweibo: 'sinaweibo',
+              taobao: 'taobao',
+              facebook: 'facebook',
+              google: 'google',
+              alipay: 'alipay',
+              apple: "apple"
+            }; //遍历客户端配置的登录方式，与服务端比对。并在错误时抛出错误提示
+            list = loginTypes.filter(function (type) {
+              return !supportedLoginType.includes(data[type]);
+            });
+            if (list.length) {
+              console.error("\u9519\u8BEF\uFF1A\u524D\u7AEF\u542F\u7528\u7684\u767B\u5F55\u65B9\u5F0F:".concat(list.join('，'), ";\u6CA1\u6709\u5728\u670D\u52A1\u7AEF\u5B8C\u6210\u914D\u7F6E\u3002\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A\"/uni_modules/uni-config-center/uniCloud/cloudfunctions/common/uni-config-center/uni-id/config.json\""));
+            }
+          case 10:
+            //3. 绑定clientDB错误事件
+            // clientDB对象
+            db = uniCloud.database();
+            db.on('error', onDBError);
+            //clientDB的错误提示
+
+            // 解绑clientDB错误事件
+            //db.off('error', onDBError)
+
+            //4. 同步客户端push_clientid至device表
+            if (uniCloud.onRefreshToken) {
+              uniCloud.onRefreshToken(function () {
+                // console.log('onRefreshToken');
+                if (uni.getPushClientId) {
+                  uni.getPushClientId({
+                    success: function () {
+                      var _success = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {
+                        var pushClientId, res;
+                        return _regenerator.default.wrap(function _callee$(_context) {
+                          while (1) {
+                            switch (_context.prev = _context.next) {
+                              case 0:
+                                // console.log(e)
+                                pushClientId = e.cid; // console.log(pushClientId);
+                                _context.next = 3;
+                                return uniIdCo.setPushCid({
+                                  pushClientId: pushClientId
+                                });
+                              case 3:
+                                res = _context.sent;
+                              case 4:
+                              case "end":
+                                return _context.stop();
+                            }
+                          }
+                        }, _callee);
+                      }));
+                      function success(_x) {
+                        return _success.apply(this, arguments);
+                      }
+                      return success;
+                    }(),
+                    fail: function fail(e) {
+                      console.log(e);
+                    }
+                  });
+                }
+              });
+            }
+          case 13:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _ref.apply(this, arguments);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
@@ -20289,6 +20403,85 @@ var _default = {
       "navigationBarTitleText": "用户登录",
       "enablePullDownRefresh": false
     }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+    "style": {
+      "navigationBarTitleText": "注销账号"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+    "style": {
+      "navigationBarTitleText": "个人资料"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+    "style": {
+      "navigationBarTitleText": "绑定手机号码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+    "style": {
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+    "style": {
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+    "style": {
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/login/login-smscode",
+    "style": {
+      "navigationBarTitleText": "手机验证码登录"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/register/register",
+    "style": {
+      "navigationBarTitleText": "注册"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/register/register-by-email",
+    "style": {
+      "navigationBarTitleText": "邮箱验证码注册"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+    "style": {
+      "navigationBarTitleText": "重置密码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+    "style": {
+      "navigationBarTitleText": "通过邮箱重置密码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/common/webview/webview",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": "修改密码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/register/register-admin",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": "注册管理员账号"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": "设置密码"
+    }
   }],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -20332,6 +20525,83 @@ var _default = {
       "text": "我的"
     }]
   }
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 378:
+/*!*********************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/config.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  //调试模式
+  "debug": false,
+  /*
+  	登录类型 未列举到的或运行环境不支持的，将被自动隐藏。
+  	如果需要在不同平台有不同的配置，直接用条件编译即可
+  */
+  "isAdmin": true,
+  // 区分管理端与用户端
+  "loginTypes": [
+  // "qq",
+  // "xiaomi",
+  // "sinaweibo",
+  // "taobao",
+  // "facebook",
+  // "google",
+  // "alipay",
+  // "douyin",
+
+  "weixin", "username", "smsCode"],
+  //政策协议
+  "agreements": {
+    "serviceUrl": "https://xxx",
+    //用户服务协议链接
+    "privacyUrl": "https://xxx",
+    //隐私政策条款链接
+    // 哪些场景下显示，1.注册（包括登录并注册，如：微信登录、苹果登录、短信验证码登录）、2.登录（如：用户名密码登录）
+    "scope": ['register', 'login']
+  },
+  // 提供各类服务接入（如微信登录服务）的应用id
+  "appid": {
+    "weixin": {
+      // 微信公众号的appid，来源:登录微信公众号（https://mp.weixin.qq.com）-> 设置与开发 -> 基本配置 -> 公众号开发信息 -> AppID
+      "h5": "xxxxxx",
+      // 微信开放平台的appid，来源:登录微信开放平台（https://open.weixin.qq.com） -> 管理中心 -> 网站应用 -> 选择对应的应用名称，点击查看 -> AppID
+      "web": "xxxxxx"
+    }
+  },
+  /**
+   * 密码强度
+   * super（超强：密码必须包含大小写字母、数字和特殊符号，长度范围：8-16位之间）
+   * strong（强: 密密码必须包含字母、数字和特殊符号，长度范围：8-16位之间）
+   * medium (中：密码必须为字母、数字和特殊符号任意两种的组合，长度范围：8-16位之间)
+   * weak（弱：密码必须包含字母和数字，长度范围：6-16位之间）
+   * 为空或false则不验证密码强度
+   */
+  "passwordStrength": "medium",
+  /**
+   * 登录后允许用户设置密码（只针对未设置密码得用户）
+   * 开启此功能将 setPasswordAfterLogin 设置为 true 即可
+   * "setPasswordAfterLogin": false
+   *
+   * 如果允许用户跳过设置密码 将 allowSkip 设置为 true
+   * "setPasswordAfterLogin": {
+   *   "allowSkip": true
+   * }
+   * */
+  "setPasswordAfterLogin": false
 };
 exports.default = _default;
 

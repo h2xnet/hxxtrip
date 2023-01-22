@@ -37,9 +37,12 @@ module.exports = class UserController extends Controller {
 		let params = ctx.data;
 		console.log("global/controller/user/user.js accountLoginRegist params: " + JSON.stringify(params));
 		
+<<<<<<< HEAD
 		//let event = ctx.event;
 		//console.log('global/controller/user/user.js accountLoginRegist event:', JSON.stringify(event));
 		
+=======
+>>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
 		return await service.user.user.accountLoginRegist(params);
 	}
 	
