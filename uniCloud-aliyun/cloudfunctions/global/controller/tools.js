@@ -1,5 +1,8 @@
 const { Controller } = require("uni-cloud-router");
 
+const appId = "wx56e4f0b2026fbdf0";
+const secret = "gh_6f2621d527fb";
+
 //
 // uuid : 生成UUID
 // @len: 长度，默认为16位
@@ -33,6 +36,33 @@ const uuid = (len, radix) => {
 }
 
 /*
+ * Func: getOpenId
+ * Desc: 获取openid
+ * Author: zfs
+ * Date: 2023-01-22 16:57
+ */
+const getOpenId = async (code) => {
+	let url =
+		"https://api.weixin.qq.com/sns/jscode2session?appid=" +
+		appId +
+		"&secret=" +
+		secret +
+		"&js_code=" +
+		code +
+		"&grant_type=authorization_code";
+		
+	let res = await uniCloud.httpclient.request(
+			url ,// 请求路径,
+			{
+				dataType:"json"
+			}
+		);
+	console.log("global/controller/tools getOpenId res:" + JSON.stringify(res));
+	let openid = res.data.openid
+	return openid
+}
+
+/*
  * ClassName: ToolsController
  * Desc: 工具控制器类
  * Author: zfs
@@ -43,8 +73,8 @@ module.exports = class ToolsController extends Controller {
   //
   // getUuid: 获取uuid
   //
-  getUuid() {
-	console.log("controller/category index");
+  async getUuid() {
+	console.log("global/controller/tools index");
 	
 	const { ctx, service } = this;
 	
@@ -62,6 +92,24 @@ module.exports = class ToolsController extends Controller {
 	}
 	
 	return uuid(len, radix);
+  }
+  
+  //
+  // getOpenId : 获取openid
+  //
+  async getOpenId() {
+	  const { ctx, service } = this;
+	  
+	  let params = ctx.data;
+	  console.log("global/controller/tools getOpenId params: " + JSON.stringify(params));
+	  
+	  if (!params.hasOwnProperty("code")) {
+		  return "";
+	  }
+	  
+	  let code = params["code"];
+	  
+	  return getOpenId(code);
   }
   
   

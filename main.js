@@ -10,6 +10,12 @@ App.mpType = 'app'
 //
 Vue.prototype.$global_login_state = 0 // 登录状态
 
+//
+// 缓存
+//
+import storage from '@/utils/cache/storage.js';
+Vue.prototype.$storage = storage;  
+
 const app = new Vue({
 	...App
 })

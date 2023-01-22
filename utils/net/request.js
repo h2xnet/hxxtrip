@@ -16,6 +16,10 @@ const getUuid = (param, callfunc) => {
 	return uniCloudHttp.cloudCallFunc("global", {"action": "tools/getUuid", "data": param}, callfunc);
 }
 
+const getOpenId = (param, callfunc) => {
+	return uniCloudHttp.cloudCallFunc("global", {"action": "tools/getOpenId", "data": param}, callfunc);
+}
+
 //
 // getPhoneNumber : 获取手机号
 //
@@ -160,6 +164,7 @@ const getCategoryHumainAstro = (param, callfunc) => {
 
 export default {
 	getUuid,
+	getOpenId,
 	getPhoneNumber,
 	uniLogin,
 	uniGetUserInfo,

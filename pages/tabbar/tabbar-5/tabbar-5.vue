@@ -249,11 +249,30 @@
 			//});
 
 		},
+		
+		onShow() {
+			let That = this;
+			
+			// 获取缓存用户信息
+			let cacheUserInfo = That.$storage.get("userInfo");
+			console.log("tabbar-5.vue onShow cacheUserInfo:" + JSON.stringify(cacheUserInfo));
+			if (cacheUserInfo != null) {
+				
+			}
+		},
+		
 		methods: {
 			onInitData() {
 				console.log("tabbar-5.vue onInitData");
 
 				let That = this;
+				
+				// 获取缓存用户信息
+				let cacheUserInfo = That.$storage.get("userInfo");
+				console.log("tabbar-5.vue onInitData cacheUserInfo:" + JSON.stringify(cacheUserInfo));
+				if (cacheUserInfo != null) {
+					
+				}
 				
 				// 获取登录状态
 				console.log("tabbar-5.vue login_state: " + That.$global_login_state);
@@ -263,10 +282,6 @@
 					That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
 				}
 				
-				// 获取UUID
-				//request.getUuid({"len": 32, "radix": 16}, function(code, res){
-				//	console.log("tabbar-5.vue onInitData getUuid params, code:" + code + ", res:" + JSON.stringify(res));
-				//});
 				
 			},
 			
@@ -281,6 +296,13 @@
 						console.log("gotoPage fail, err:" + JSON.stringify(err));
 					}
 				});
+			},
+			
+			//
+			// setUserInfo : 设置用户信息
+			//
+			setUserInfo(userInfo) {
+				console.log("tabbar-5.vue setUserInfo params, userInfo: " + JSON.stringify(userInfo));
 			},
 			
 			//
@@ -315,6 +337,7 @@
 				console.log("tabbar-5.vue onScan");
 				let That = this;
 			},
+			
 			
 		}
 	}

@@ -3,7 +3,9 @@ const { Service } = require("uni-cloud-router");
 const {
 	ERROR_CODE,
 	ERROR_MSG,
-	getAck
+	getAck,
+	objIsEmpty,
+	uuid
 } = require("../../common/ackHelper.js");
 
 
@@ -83,8 +85,107 @@ module.exports = class UserService extends Service {
 			return getAck(ERROR_CODE.ERROR_CODE_PSWD_EMPTY, ERROR_MSG.ERROR_MSG_PSWD_EMPTY, null);
 		}
 		
-		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, {});
+		let times = new Date().getTime();
+		console.log("===== times: " + JSON.stringify(times) + " =====")
 		
+		//let time = new Date().toLocaleString('zh-cn').toString();
+		let loginType = "login";
+		let userInfo = {};
+		let updateUserInfo = {};
+		
+		// 验证用户
+		let hxxtripUser = await db.collection("hxxtrip_user");
+		let result = await hxxtripUser.where({account: userAccount}).get();
+		console.log("global/service/user/user.js accountLoginRegist get account:" + userAccount + ", result:" + JSON.stringify(result));
+		// {"affectedDocs":0,"data":[]}
+		let affectedDocs = result["affectedDocs"];
+		if (affectedDocs > 0) {
+			loginType = "login";
+			
+			// 验证密码
+			let userData = result["data"];
+			userInfo = userData[0];
+			
+			if (userPswd != userInfo["pswd"]) {
+				// 密码错误
+				return getAck(ERROR_CODE.ERROR_CODE_PSWD_ERROR, ERROR_MSG.ERROR_MSG_PSWD_ERROR, {});
+			}
+			
+			// 修改登录信息
+			updateUserInfo["login_type"] = loginType;
+			updateUserInfo["last_modify_time"] = times;
+			updateUserInfo["last_login_time"] = times;
+			
+		}
+		else {
+			loginType = "regist"
+			
+			let regist_env = {};
+			regist_env["platform"] = "mp-weixin";
+			regist_env["app_name"] = "hxxtrip";
+			regist_env["app_version"] = "1.0.0";
+			regist_env["channel"] = "1001";
+			regist_env["client_ip"] = "";
+			
+			userInfo["account_id"] = uuid(10, 16); // 自定义ID，必须唯一
+			userInfo["phone"] = "";
+			userInfo["wechat"] = "";
+			userInfo["account"] = userAccount;
+			userInfo["pswd"] = userPswd;
+			userInfo["nick_name"] = userAccount;
+			userInfo["avatar_url"] = ""; // 头像
+			userInfo["sex"] = 0; //0未知,1是男，2是女
+			userInfo["email"] = "";
+			
+			userInfo["regist_time"] = times;
+			userInfo["last_modify_time"] = times;
+			userInfo["last_login_time"] = times;
+			userInfo["last_login_ip"] = "";
+			userInfo["login_type"] = loginType;
+			userInfo["regist_env"] = regist_env;
+			
+			// 地址
+			userInfo["city"] = "";
+			userInfo["province"] = "";
+			userInfo["country"] = "";
+			
+			// 简介
+			userInfo["introduce"] = ""; 
+			
+			// 统计
+			userInfo["focus"] = 0; // 关注数
+			userInfo["fans"] = 0; // 粉丝数
+			userInfo["likes"] = 0; // 点赞数
+			userInfo["collects"] = 0; // 收藏数
+			
+			userInfo["shopId"] = ""; // 店铺ID
+			
+			userInfo["token"] = "";
+			userInfo["fresh_token"] = "";
+			
+			let addResult = await hxxtripUser.add(userInfo);
+			console.log("global/service/user/user.js accountLoginRegist add result:" + JSON.stringify(addResult) + ", userInfo:" + JSON.stringify(userInfo));
+			
+			// add success : {"id":"63cceebee1a35c99699406dc"}
+			if (addResult.hasOwnProperty("id")) {
+				userInfo["id"] = addResult["id"];
+			}
+			else {
+				// fail
+				return getAck(ERROR_CODE.ERROR_CODE_ADD_USER_FAIL, ERROR_MSG.ERROR_MSG_ADD_USER_FAIL);
+			}
+		}
+		
+		// 更新登录信息，包括token
+		
+		// 登录成功
+		//userInfo["pswd"] = "";
+		
+		// delete object property
+		const { pswd, regist_env, ...retUserInfo } = userInfo;
+		console.log("global/service/user/user.js accountLoginRegist retUserInfo:" + JSON.stringify(retUserInfo));
+		
+		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, retUserInfo);
 		
 	}
 

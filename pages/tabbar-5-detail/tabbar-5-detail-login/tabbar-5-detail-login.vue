@@ -138,10 +138,11 @@
 						That.access_code = access_code;
 						
 						// get openId and session_key
-						request.getWeixinOepnInfo(appid, apiSecret, access_code, function(code2, res2){
-							console.log("tabbar-5-detail-login.vue onLogin getWeixinOepnInfo code2:" + code2 + ", res2:" + JSON.stringify(res2));
-						
-						
+						let openIdParams = {};
+						openIdParams["code"] = access_code;
+						request.getOpenId(openIdParams, function(code2, res2){
+							console.log("tabbar-5-detail-login.vue onLogin getOpenId code:" + code2 + ", res:" + JSON.stringify(res2));
+							
 						});
 						
 					}
@@ -218,12 +219,16 @@
 						That.$refs.accountLoginRef.setErrorMsg(errMsg);
 						return;
 					}
+					let resData = res["data"];
 					
 					// 登录成功
 					That.$global_login_state = 1
 					
+					// 缓存
+					That.$storage.set("userInfo", resData);
+					
 					// 刷新上一页并返回
-					uni.navigateBack();
+					uni.navigateBack({});
 					
 				});
 				
