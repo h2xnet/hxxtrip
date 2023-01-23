@@ -35,6 +35,27 @@ const getAccountLoginRegist = (param, callfunc) => {
 }
 
 //
+// uniGotoPage : 页面跳转
+//
+const uniGotoPage = (url, param, callfunc) => {
+	uni.navigateTo({
+		url: url,
+		success(res) {
+			console.log("request.js uniGotoPage success, res:" + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(0, res, param);
+			}
+		},
+		fail(err) {
+			console.log("request.js uniGotoPage fail, err:" + JSON.stringify(err));
+			if (callfunc) {
+				callfunc(err, null, param);
+			}
+		}
+	});
+}
+
+//
 // uniLogin : uni客户端登录，换取code
 //
 const uniLogin = (provider, callfunc) => {
@@ -95,6 +116,29 @@ const uniGetUserProfile = (callfunc) => {
 			}
 		}
 	});
+}
+
+const uniShowModel = (title, content, cancenText = "取消", confirmText = "确定", 
+showCancel = true, callfunc) => {
+	uni.showModal({
+		title: title,
+		content: content,
+		cancelText: cancenText,
+		confirmText: confirmText,
+		confirmColor: "#f55850",
+		cancelColor: "#39B54A",
+		showCancel: showCancel,
+		success(res){
+			console.log("request.js uniShowModel res: " + JSON.stringify(res));
+			if (callfunc) {
+				callfunc(res.confirm);
+			}
+			/*if (res.confirm) {
+			}
+			else {
+			}*/
+		}
+	})
 }
 
 //
@@ -166,9 +210,11 @@ export default {
 	getUuid,
 	getOpenId,
 	getPhoneNumber,
+	uniGotoPage,
 	uniLogin,
 	uniGetUserInfo,
 	uniGetUserProfile,
+	uniShowModel,
 	getWeixinOepnInfo,
 	getAccountLoginRegist,
 	categoryRootRequest,

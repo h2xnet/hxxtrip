@@ -44,7 +44,7 @@
 		},
 	    {
 			// 编辑资料页面
-            "path" : "pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info",
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-edit-info/tabbar-5-detail-edit-info",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

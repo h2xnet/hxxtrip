@@ -42,5 +42,16 @@ export default {
 	
     clear() { // 清空缓存
         uni.clearStorageSync();
-    }
+    },
+	
+	getUserInfo() {
+		let That = this;
+		return That.get("userInfo");
+	},
+	
+	setUserInfo(info) {
+		let That = this;
+		That.set("userInfo", info);
+	}
+	
 }

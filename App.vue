@@ -8,6 +8,8 @@ export default {
 	onLaunch: function() {
 		console.log('App Launch');
 		
+		let That = this;
+		
 		uniIdPageInit();
 
 		// 状态栏高度
@@ -15,7 +17,7 @@ export default {
 			success: (res) => {
 				console.log("App.vue statusBarHeight: " + res.statusBarHeight)
 			}
-		})
+		});
 		/*setTimeout(() => {
 			// 初始化标记
 			uni.setTabBarBadge({
@@ -26,6 +28,7 @@ export default {
 				index: 3
 			});
 		}, 1000);*/
+		
 	},
 	onShow: function() {
 		console.log('App Show');

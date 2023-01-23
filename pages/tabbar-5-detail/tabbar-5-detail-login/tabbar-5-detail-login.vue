@@ -76,6 +76,8 @@
 			return {
 				loginMethod: 0,
 				access_code: '',
+				open_id: '',
+				session_key: '',
 				userInfo: {
 					phone: ''
 				}
@@ -127,11 +129,11 @@
 				
 				// 星游会小程序
 				let appid = "wx56e4f0b2026fbdf0";
-				let apiSecret = "gh_6f2621d527fb";
+				let apiSecret = "8191a650d4e5b4be0127d84a02389f40";
 				
 				
 				// get code
-				request.uniLogin("weixin", function(code, res){
+				/*request.uniLogin("weixin", function(code, res){
 					console.log("tabbar-5-detail-login.vue onLogin uniLogin weixin code:" + code + ", res:" + JSON.stringify(res));
 					if (code == 0) {
 						let access_code = res["code"];
@@ -142,11 +144,22 @@
 						openIdParams["code"] = access_code;
 						request.getOpenId(openIdParams, function(code2, res2){
 							console.log("tabbar-5-detail-login.vue onLogin getOpenId code:" + code2 + ", res:" + JSON.stringify(res2));
+							if (code2 == 0) {
+								// openId : oHc3l5S_aanU8ZagY3o8N2uMzxB4
+								let openId = res2["openid"];
+								let sessionKey = res2["session_key"];
+								That.open_id = openId;
+								That.session_key = sessionKey;
+								
+								request.uniShowModel("test", JSON.stringify(res2), "取消", "确定", true, function(res3){
+									console.log("request.uniShowModel res: " + JSON.stringify(res3));
+								});
+							}
 							
 						});
 						
 					}
-				})
+				})*/
 				
 			},
 			
@@ -154,15 +167,9 @@
 			// onGetPhoneNumberLogin : 手机号一键登录
 			//
 			onGetPhoneNumberLogin() {
-<<<<<<< HEAD
-				//uni.navigateTo({
-				//	url: "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=univerify"
-				//})
-=======
 				uni.navigateTo({
 					url: "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=univerify"
-				})
->>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
+				});
 			},
 			
 			//
@@ -182,7 +189,6 @@
 				// 授权获取用户信息
 				request.uniGetUserProfile(function(code, res){
 					console.log("tabbar-5-detail-login.vue onGetWeixinUserInfo uniGetUserProfile code:" + code + ", res:" + JSON.stringify(res));
-<<<<<<< HEAD
 					
 					if (code == 0) {
 						// 授权成功
@@ -227,50 +233,22 @@
 						return;
 					}
 					let resData = res["data"];
+					That.userInfo = resData;
 					
 					// 登录成功
 					That.$global_login_state = 1
 					
 					// 缓存
-					That.$storage.set("userInfo", resData);
+					That.$storage.setUserInfo(resData);
 					
 					// 刷新上一页并返回
 					uni.navigateBack({});
-=======
 					
-					if (code == 0) {
-						// 授权成功
-						let userInfo = res["userInfo"];
-						let signature = res["signature"];
-						let iv = res["iv"];
-						let cloudID = res["cloudID"];
-						
-						That.userInfo = userInfo;
-					}
 				});
 				
 			},
 			
-			//
-			// onAccountLogin : 账号登录
-			//
-			onAccountLogin(data) {
-				console.log("tabbar-5-detail-login.vue onAccountLogin params: " + JSON.stringify(data));
-				
-				let That = this;
-				
-				// 修改组件状态
-				That.$refs.accountLoginRef.setLoadingState("true");
-				
-				That.$refs.accountLoginRef.setErrorMsg("正在登录中...");
-				
-				request.getAccountLoginRegist(data, function(code, res){
-					console.log("tabbar-5-detail-login.vue onAccountLogin getAccountLoginRegist code:" + code + ", res:" + JSON.stringify(res));
->>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
-					
-				});
-				
-			}
+			
 			
 			
 			

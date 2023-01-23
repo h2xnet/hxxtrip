@@ -8,6 +8,11 @@ const {
 	uuid
 } = require("../../common/ackHelper.js");
 
+const {
+	createToken,
+	verifyToken
+} = require("../../common/ctool.js");
+
 
 /*
  * ClassName: UserService
@@ -77,7 +82,6 @@ module.exports = class UserService extends Service {
 			userPswd = params["userPswd"];
 		}
 		
-<<<<<<< HEAD
 		if (userAccount == "") {
 			return getAck(ERROR_CODE.ERROR_CODE_ACCOUNT_EMPTY, ERROR_MSG.ERROR_MSG_ACCOUNT_EMPTY, null);
 		}
@@ -177,25 +181,33 @@ module.exports = class UserService extends Service {
 			}
 		}
 		
+		// 创建token
+		let tmpAccountId = userInfo["account_id"];
+		let token = await createToken(tmpAccountId, "create", 60 * 60 * 24 * 30 );
+		let freshToken = await createToken(tmpAccountId, "fresh", 60 * 60 * 24 * 30 );
+		console.log("global/service/user/user.js accountLoginRegist token:" + token + ", freshToken:" + freshToken);
+		
+		userInfo["token"] = token;
+		userInfo["fresh_token"] = freshToken;
+		
+		updateUserInfo["token"] = token;
+		updateUserInfo["fresh_token"] = freshToken;
+		
 		// 更新登录信息，包括token
+		//let tokenDec = await verifyToken(token);
+		// {"accountId":"C1C2B566AE","flag":"create","iat":1674453286,"exp":1677045286}
+		//console.log("global/service/user/user.js accountLoginRegist dec token: " + JSON.stringify(tokenDec));
+		let resUpdate = await hxxtripUser.doc(userInfo["_id"]).update(updateUserInfo);
+		// {"affectedDocs":1,"updated":1,"upsertedId":null}
+		console.log("global/service/user/user.js accountLoginRegist update result:" + JSON.stringify(resUpdate));
 		
 		// 登录成功
-		//userInfo["pswd"] = "";
-		
 		// delete object property
 		const { pswd, regist_env, ...retUserInfo } = userInfo;
 		console.log("global/service/user/user.js accountLoginRegist retUserInfo:" + JSON.stringify(retUserInfo));
 		
 		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, retUserInfo);
 		
-=======
-		return {
-			errCode: 0,
-			errMsg: 'ok',
-			data: null
-		}
-		
->>>>>>> 8910d34fa94d19f893e4be280d9acd1e5c384024
 	}
 
 };

@@ -175,7 +175,7 @@
 				</view>
 				<view class="line-box-item" style="float: right; margin-right: 30upx;">
 					<view class="button-group">
-						<button class="line-button"  @click="goToPage('/pages/tabbar-5-detail/tabbar-5-edit-info/tabbar-5-edit-info', {})">编辑资料</button>
+						<button class="line-button"  @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-edit-info/tabbar-5-detail-edit-info', {})">编辑资料</button>
 					</view>
 				</view>
 				
@@ -222,17 +222,17 @@
 				title: 'Hello',
 				userInfo: {
 					headUrl: 'https://img-blog.csdnimg.cn/img_convert/462ba175388a6005201d8a73f186c527.png',
-					userId: 'abc123456',
-					userAccount: 'xgzfs',
-					userDisplayName: '星光zfs',
-					userPhone: '13560440305',
+					userId: '',
+					userAccount: '',
+					userDisplayName: '未知',
+					userPhone: '',
 					ipHome: '广东',
-					introduce: '80后，程序员，公众号：星游会',
+					introduce: '公众号：星游会',
 					tags: ['射手座', '广东广州', '程序员'], // 标签
-					focus: 38, // 关注数
-					fans: 128, // 粉丝数
-					likes: 2, // 点赞数
-					collects: 8, // 收藏数
+					focus: 0, // 关注数
+					fans: 0, // 粉丝数
+					likes: 0, // 点赞数
+					collects: 0, // 收藏数
 					shopId: 'ab122', // 店铺ID，为空代表没有
 				}
 			}
@@ -243,10 +243,6 @@
 			
 			// 初始化数据
 			That.onInitData();
-			// 登录
-			//http.cloudAuth((code, res) => {
-			//	console.log("tabbar-5.vue cloudAuth code:" + code + ", res:" + JSON.stringify(res));
-			//});
 
 		},
 		
@@ -254,11 +250,22 @@
 			let That = this;
 			
 			// 获取缓存用户信息
-			let cacheUserInfo = That.$storage.get("userInfo");
+			let cacheUserInfo = That.$storage.getUserInfo();
 			console.log("tabbar-5.vue onShow cacheUserInfo:" + JSON.stringify(cacheUserInfo));
 			if (cacheUserInfo != null) {
-				
+				That.setUserInfo(cacheUserInfo);
 			}
+			else {
+				That.setUserInfo(null);
+			}
+			
+			// 获取登录状态
+			console.log("tabbar-5.vue login_state: " + That.$global_login_state);
+			if (That.$global_login_state <= 0) {
+				// 未登录状态，则跳转到登录页
+				That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
+			}
+			
 		},
 		
 		methods: {
@@ -266,21 +273,6 @@
 				console.log("tabbar-5.vue onInitData");
 
 				let That = this;
-				
-				// 获取缓存用户信息
-				let cacheUserInfo = That.$storage.get("userInfo");
-				console.log("tabbar-5.vue onInitData cacheUserInfo:" + JSON.stringify(cacheUserInfo));
-				if (cacheUserInfo != null) {
-					
-				}
-				
-				// 获取登录状态
-				console.log("tabbar-5.vue login_state: " + That.$global_login_state);
-				
-				if (That.$global_login_state <= 0) {
-					// 未登录状态，则跳转到登录页
-					That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
-				}
 				
 				
 			},
@@ -301,8 +293,51 @@
 			//
 			// setUserInfo : 设置用户信息
 			//
-			setUserInfo(userInfo) {
-				console.log("tabbar-5.vue setUserInfo params, userInfo: " + JSON.stringify(userInfo));
+			setUserInfo(info) {
+				console.log("tabbar-5.vue setUserInfo params, info: " + JSON.stringify(info));
+				
+				let That = this;
+				
+				if (info == null) {
+					That.userInfo.userId = "";
+					That.userInfo.userAccount = "";
+					That.userInfo.userDisplayName = "未知";
+					That.userInfo.userPhone = "";
+					That.userInfo.introduce = "";
+					That.userInfo.headUrl = "";
+					
+					That.userInfo.focus = 0;
+					That.userInfo.fans = 0;
+					That.userInfo.likes = 0;
+					That.userInfo.collects = 0;
+					That.userInfo.shopId = 0;
+					
+					// 修改登录状态
+					That.loginState = 0;
+					That.$global_login_state = 0;
+				}
+				else {
+					That.userInfo.userId = info["account_id"];
+					That.userInfo.userAccount = info["account"];
+					That.userInfo.userDisplayName = info["nick_name"];
+					That.userInfo.userPhone = info["phone"];
+					That.userInfo.introduce = info["introduce"];
+					That.userInfo.headUrl = info["avatar_url"];
+					
+					That.userInfo.focus = info["focus"];
+					That.userInfo.fans = info["fans"];
+					That.userInfo.likes = info["likes"];
+					That.userInfo.collects = info["collects"];
+					That.userInfo.shopId = info["shopId"];
+					
+					// 修改登录状态
+					That.loginState = 1;
+					That.$global_login_state = 1;
+				}
+				
+				if (That.userInfo.headUrl == "") {
+					That.userInfo.headUrl = "/static/gray_head.jpeg"
+				}
 			},
 			
 			//
@@ -327,9 +362,19 @@
 				That[type] = e
 			},
 			
+			//
+			// onLogout : 退出登录
+			//
 			onLogout() {
 				console.log("tabbar-5.vue onLogout");
 				let That = this;
+				
+				// 清理缓存
+				That.$storage.remove("userInfo");
+				
+				// 重置用户信息
+				That.setUserInfo(null);
+				
 			},
 			
 			onScan() {
