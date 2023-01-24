@@ -126,6 +126,17 @@ $uni-font-size-paragraph:30upx;
 .color-white {
 	color: white;
 }
+.color-green {
+	color: seagreen;
+}
+
+.color-gray {
+	color: gray;
+}
+
+.color-red {
+	color: red;
+}
 
 .text-align-left {
 	text-align: left;
@@ -161,8 +172,41 @@ $uni-font-size-paragraph:30upx;
 	margin-left: 30upx;
 }
 
+.margin-top-min {
+	margin-top: 10upx;
+}
+
+.margin-top-mid {
+	margin-top: 15upx;
+}
+
+.margin-top-max {
+	margin-top: 20upx;
+}
+
+.margin-right-min {
+	margin-right: 15upx;
+}
+
+.margin-right-mid {
+	margin-right: 20upx;
+}
+
+.margin-right-max {
+	margin-right: 30upx;
+}
+
 .text-align-center {
 	text-align: center;
+}
+
+// 水平和垂直居中
+.align-center {
+	flex: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 // 底部显示栏

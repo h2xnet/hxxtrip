@@ -141,6 +141,9 @@ module.exports = class UserService extends Service {
 			userInfo["avatar_url"] = ""; // 头像
 			userInfo["sex"] = 0; //0未知,1是男，2是女
 			userInfo["email"] = "";
+			userInfo["birthday"] = ""; // 生日
+			userInfo["astrol"] = ""; // 星座
+			userInfo["position"] = []; // 职位
 			
 			userInfo["regist_time"] = times;
 			userInfo["last_modify_time"] = times;

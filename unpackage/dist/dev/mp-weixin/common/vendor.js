@@ -224,7 +224,22 @@ module.exports = _toConsumableArray, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 189:
+/***/ 19:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 196:
 /*!*********************************************************!*\
   !*** D:/h2x/hxxtrip/utils/handler/user/user_handler.js ***!
   \*********************************************************/
@@ -243,21 +258,6 @@ exports.default = void 0;
  */
 var _default = {};
 exports.default = _default;
-
-/***/ }),
-
-/***/ 19:
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return arrayLikeToArray(arr);
-}
-module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -2639,7 +2639,21 @@ module.exports = _iterableToArray, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 206:
+/***/ 21:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 213:
 /*!***************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/common/store.js ***!
   \***************************************************************/
@@ -2855,20 +2869,6 @@ exports.mutations = mutations;
 var store = _vue.default.observable(data);
 exports.store = store;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 21:
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -3418,7 +3418,7 @@ module.exports = _classCallCheck, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 231:
+/***/ 238:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/common/login-page.mixin.js ***!
   \**************************************************************************/
@@ -3434,7 +3434,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 206);
+var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 213);
 var _config = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/config.js */ 43));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -9630,7 +9630,18 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 256:
+/***/ 26:
+/*!*********************************!*\
+  !*** D:/h2x/hxxtrip/pages.json ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 263:
 /*!***************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/pages/register/validator.js ***!
   \***************************************************************************/
@@ -9646,7 +9657,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _password = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/common/password.js */ 257));
+var _password = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/common/password.js */ 264));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var _default = _objectSpread({
@@ -9706,7 +9717,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 257:
+/***/ 264:
 /*!******************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/common/password.js ***!
   \******************************************************************/
@@ -9800,17 +9811,6 @@ var _default = {
   getPwdRules: getPwdRules
 };
 exports.default = _default;
-
-/***/ }),
-
-/***/ 26:
-/*!*********************************!*\
-  !*** D:/h2x/hxxtrip/pages.json ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
@@ -17269,7 +17269,21 @@ module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 354:
+/***/ 36:
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+module.exports = _isNativeFunction, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 369:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**************************************************************************/
@@ -18291,20 +18305,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 36:
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-module.exports = _isNativeFunction, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 37:
 /*!**************************************************************!*\
   !*** D:/h2x/hxxtrip/pages.json?{"type":"origin-pages-json"} ***!
@@ -18507,6 +18507,13 @@ var _default = {
       "enablePullDownRefresh": false,
       "navigationBarTitleText": "设置密码"
     }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-edit-info-item/tabbar-5-detail-edit-info-item",
+    "style": {
+      "navigationStyle": "custom",
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
   }],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -18576,7 +18583,23 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 390:
+/***/ 4:
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 405:
 /*!***********************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/mp-html/components/mp-html/parser.js ***!
   \***********************************************************************/
@@ -19789,22 +19812,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 4:
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 42:
 /*!*******************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/init.js ***!
@@ -20018,7 +20025,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 433:
+/***/ 448:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
   \**************************************************************************/
@@ -20060,7 +20067,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 434:
+/***/ 449:
 /*!*******************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
   \*******************************************************************************/
@@ -20075,9 +20082,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 435));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 436));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 437));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 450));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 451));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 452));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -20087,7 +20094,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 435:
+/***/ 450:
 /*!******************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
   \******************************************************************************/
@@ -20098,7 +20105,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 436:
+/***/ 451:
 /*!***********************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
   \***********************************************************************************/
@@ -20109,7 +20116,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 437:
+/***/ 452:
 /*!***********************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
   \***********************************************************************************/
@@ -20249,7 +20256,84 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 466:
+/***/ 47:
+/*!*********************************************!*\
+  !*** D:/h2x/hxxtrip/utils/cache/storage.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+/**
+ * 判断字符串是否是json字符串
+ * 判断条件 1. 排除null可能性 
+           2. 确保数据是对象或数组
+ * @param str  数据
+ * @returns Boolean
+ */
+var isJsonString = function isJsonString(str) {
+  // 判断字符串是否是json字符串
+  try {
+    var toObj = JSON.parse(str);
+    if (toObj && (0, _typeof2.default)(toObj) === 'object') {
+      return true;
+    }
+  } catch (_unused) {}
+  return false;
+};
+var _default = {
+  set: function set(name, value) {
+    if (value && (0, _typeof2.default)(value) == 'object') {
+      //设置json缓存数据
+      uni.setStorageSync(name, JSON.stringify(value));
+    } else {
+      //设置缓存数据
+      uni.setStorageSync(name, value);
+    }
+  },
+  get: function get(name) {
+    //获取缓存数据
+    var data = uni.getStorageSync(name);
+    if (data) {
+      if (isJsonString(data)) {
+        //json字符串转对象
+        return JSON.parse(data);
+      }
+      return data;
+    }
+    return null;
+  },
+  remove: function remove(name) {
+    // 清除某项缓存
+    uni.removeStorageSync(name);
+  },
+  clear: function clear() {
+    // 清空缓存
+    uni.clearStorageSync();
+  },
+  getUserInfo: function getUserInfo() {
+    var That = this;
+    return That.get("userInfo");
+  },
+  setUserInfo: function setUserInfo(info) {
+    var That = this;
+    That.set("userInfo", info);
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 481:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils.js ***!
   \*********************************************************************************************/
@@ -20505,84 +20589,25 @@ function imageTouchMoveOfCalcOffset(data, clientXForLeft, clientYForLeft) {
 
 /***/ }),
 
-/***/ 47:
-/*!*********************************************!*\
-  !*** D:/h2x/hxxtrip/utils/cache/storage.js ***!
-  \*********************************************/
+/***/ 5:
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
-/**
- * 判断字符串是否是json字符串
- * 判断条件 1. 排除null可能性 
-           2. 确保数据是对象或数组
- * @param str  数据
- * @returns Boolean
- */
-var isJsonString = function isJsonString(str) {
-  // 判断字符串是否是json字符串
-  try {
-    var toObj = JSON.parse(str);
-    if (toObj && (0, _typeof2.default)(toObj) === 'object') {
-      return true;
-    }
-  } catch (_unused) {}
-  return false;
-};
-var _default = {
-  set: function set(name, value) {
-    if (value && (0, _typeof2.default)(value) == 'object') {
-      //设置json缓存数据
-      uni.setStorageSync(name, JSON.stringify(value));
-    } else {
-      //设置缓存数据
-      uni.setStorageSync(name, value);
-    }
-  },
-  get: function get(name) {
-    //获取缓存数据
-    var data = uni.getStorageSync(name);
-    if (data) {
-      if (isJsonString(data)) {
-        //json字符串转对象
-        return JSON.parse(data);
-      }
-      return data;
-    }
-    return null;
-  },
-  remove: function remove(name) {
-    // 清除某项缓存
-    uni.removeStorageSync(name);
-  },
-  clear: function clear() {
-    // 清空缓存
-    uni.clearStorageSync();
-  },
-  getUserInfo: function getUserInfo() {
-    var That = this;
-    return That.get("userInfo");
-  },
-  setUserInfo: function setUserInfo(info) {
-    var That = this;
-    That.set("userInfo", info);
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 6);
+var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 7);
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
+var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 10);
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
-/***/ 488:
+/***/ 503:
 /*!*****************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \*****************************************************************************/
@@ -21274,7 +21299,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 489:
+/***/ 504:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/utils.js ***!
   \**************************************************************************/
@@ -21607,144 +21632,6 @@ var isEqual = function isEqual(a, b) {
   }
 };
 exports.isEqual = isEqual;
-
-/***/ }),
-
-/***/ 5:
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 6);
-var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 7);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
-var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 10);
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 518:
-/*!*****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 519));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 520));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 521));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 519:
-/*!****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
-  \****************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 520:
-/*!*********************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
-  \*********************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 521:
-/*!*********************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
-  \*********************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
-
-/***/ }),
-
-/***/ 529:
-/*!*************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 530));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 531));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 532));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 530:
-/*!************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
-  \************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 531:
-/*!*****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
-  \*****************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 532:
-/*!*****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
-  \*****************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
 
@@ -22099,6 +21986,66 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ 554:
+/*!*****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 555));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 556));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 557));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 555:
+/*!****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
+  \****************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 556:
+/*!*********************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \*********************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 557:
+/*!*********************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \*********************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+
 /***/ 56:
 /*!*********************************************!*\
   !*** D:/h2x/hxxtrip/utils/net/errorCode.js ***!
@@ -22121,6 +22068,66 @@ var error_code_ok = 0;
 exports.error_code_ok = error_code_ok;
 var error_code_fail = 1;
 exports.error_code_fail = error_code_fail;
+
+/***/ }),
+
+/***/ 565:
+/*!*************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 566));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 567));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 568));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 566:
+/*!************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
+  \************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 567:
+/*!*****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
+  \*****************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 568:
+/*!*****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
+  \*****************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
 
@@ -22168,7 +22175,21 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 582:
+/***/ 6:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 618:
 /*!**********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \**********************************************************************************************/
@@ -22302,21 +22323,7 @@ function createAnimation(option, _this) {
 
 /***/ }),
 
-/***/ 6:
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 602:
+/***/ 638:
 /*!***************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \***************************************************************************/

@@ -563,6 +563,15 @@
 .color-white {
   color: white;
 }
+.color-green {
+  color: seagreen;
+}
+.color-gray {
+  color: gray;
+}
+.color-red {
+  color: red;
+}
 .text-align-left {
   text-align: left;
 }
@@ -589,8 +598,33 @@
 .margin-left-max {
   margin-left: 30rpx;
 }
+.margin-top-min {
+  margin-top: 10rpx;
+}
+.margin-top-mid {
+  margin-top: 15rpx;
+}
+.margin-top-max {
+  margin-top: 20rpx;
+}
+.margin-right-min {
+  margin-right: 15rpx;
+}
+.margin-right-mid {
+  margin-right: 20rpx;
+}
+.margin-right-max {
+  margin-right: 30rpx;
+}
 .text-align-center {
   text-align: center;
+}
+.align-center {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .fixed-bottom {
   width: 100%;

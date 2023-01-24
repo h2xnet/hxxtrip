@@ -255,7 +255,17 @@
         "navigationBarTitleText": "设置密码"
     }
 }
-],
+    ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-edit-info-item/tabbar-5-detail-edit-info-item",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom", // 自定义头
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "星游会",

@@ -65,6 +65,15 @@
 .color-white.data-v-05d832b7 {
   color: white;
 }
+.color-green.data-v-05d832b7 {
+  color: seagreen;
+}
+.color-gray.data-v-05d832b7 {
+  color: gray;
+}
+.color-red.data-v-05d832b7 {
+  color: red;
+}
 .text-align-left.data-v-05d832b7 {
   text-align: left;
 }
@@ -91,8 +100,33 @@
 .margin-left-max.data-v-05d832b7 {
   margin-left: 30rpx;
 }
+.margin-top-min.data-v-05d832b7 {
+  margin-top: 10rpx;
+}
+.margin-top-mid.data-v-05d832b7 {
+  margin-top: 15rpx;
+}
+.margin-top-max.data-v-05d832b7 {
+  margin-top: 20rpx;
+}
+.margin-right-min.data-v-05d832b7 {
+  margin-right: 15rpx;
+}
+.margin-right-mid.data-v-05d832b7 {
+  margin-right: 20rpx;
+}
+.margin-right-max.data-v-05d832b7 {
+  margin-right: 30rpx;
+}
 .text-align-center.data-v-05d832b7 {
   text-align: center;
+}
+.align-center.data-v-05d832b7 {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .fixed-bottom.data-v-05d832b7 {
   width: 100%;
