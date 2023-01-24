@@ -45,6 +45,10 @@
 			<view class="head-bar align-center">
 				<view><text class="font-size-max font-weight-bold">编辑生日</text></view>
 			</view>
+			<BirthdayBar :startDate="startDate" :endDate="endDate" :birthday="userInfoKeyValue"
+			  :astrol="userInfo.astrol" @birthdayBarClick="onBirthdayClick">
+				
+			</BirthdayBar>
 			
 		</view>
 		
@@ -75,7 +79,9 @@
 			return {
 				userInfoKey: '',
 				userInfoKeyValue: '',
-				userInfo: {}
+				userInfo: {},
+				startDate: '',
+				endDate: ''
 			}
 		},
 		
@@ -95,8 +101,25 @@
 				That.userInfo = cacheUserInfo;
 				That.userInfoKeyValue = cacheUserInfo[userInfoKey];
 				
+				if (userInfoKey == "birthday" && cacheUserInfo[userInfoKey] == "") {
+					// 如果生日为空，则赋当前日期
+					let date = new Date();
+					let year = date.getFullYear();
+					let month = date.getMonth() + 1;
+					let day = date.getDate();
+					let cdate = `${year}-${month}-${day}`;
+					That.userInfoKeyValue = cdate;
+				}
+				
 				console.log("tabbar-5-detail-edit-info-item.vue onLoad userInfoKeyValue:" + That.userInfoKeyValue);
 			}
+			
+			// 初始化日期
+			That.startDate = That.getDate("start");
+			That.endDate = That.getDate("end");
+			console.log("tabbar-5-detail-edit-info-item.vue onLoad startDate: " + That.startDate);
+			console.log("tabbar-5-detail-edit-info-item.vue onLoad endDate: " + That.endDate);
+			
 		},
 		
 		methods: {
@@ -105,6 +128,25 @@
 			//
 			onPageBack() {
 				uni.navigateBack();
+			},
+			
+			//
+			// getDate : 获取日期
+			//
+			getDate(type) {
+				const date = new Date();
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+	
+				if (type === 'start') {
+					year = year - 60;
+				} else if (type === 'end') {
+					year = year + 2;
+				}
+				month = month > 9 ? month : '0' + month;
+				day = day > 9 ? day : '0' + day;
+				return `${year}-${month}-${day}`;
 			},
 			
 			// 显示名称事件
@@ -155,6 +197,21 @@
 			// onSexClick : 性别
 			onSexClick(e, newValue) {
 				console.log("tabbar-5-detail-edit-info-item.vue onSexClick params: " + JSON.stringify(e) + ", newValue:" + newValue);
+				let That = this;
+				
+				if (e == "cancel") {
+					
+				}
+				else if (e == "save") {
+					
+				}
+				
+				That.onPageBack();
+			},
+			
+			// onBirthdayClick : 生日事件
+			onBirthdayClick(e, newBirthday, newAstrol) {
+				console.log("tabbar-5-detail-edit-info-item.vue onBirthdayClick params: " + JSON.stringify(e) + ", newBirthday:" + newBirthday + ", newAstrol:" + newAstrol);
 				let That = this;
 				
 				if (e == "cancel") {
