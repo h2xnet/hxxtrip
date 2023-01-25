@@ -27,7 +27,7 @@
 				<view><text class="font-size-max font-weight-bold">编辑简介</text></view>
 			</view>
 			<InputTextAreaBar labelText1="七天内可修改三次简介" inputPlaceholderText="填写兴趣爱好,生活方式等个人简介"
-				inputMaxLength="250" @inputTextAreaBarClick="onIntroduceClick">
+				inputMaxLength="250" :inputTextDef="userInfoKeyValue" @inputTextAreaBarClick="onIntroduceClick">
 				
 			</InputTextAreaBar>
 		</view>
@@ -58,7 +58,7 @@
 			</view>
 		</view>-->
 		
-		<view v-else-if="userInfoKey == 'area'">
+		<view v-else-if="userInfoKey == 'city'">
 			<view class="head-bar align-center">
 				<view><text class="font-size-max font-weight-bold">编辑区域</text></view>
 			</view>
@@ -69,12 +69,6 @@
 				</wangding-pickerAddress>
 			</view>
 		</view>
-		
-		<!--<view v-else-if="userInfoKey == 'astrol'">
-			<view class="head-bar align-center">
-				<view><text class="font-size-max font-weight-bold">编辑星座</text></view>
-			</view>
-		</view>-->
 		
 		<view v-else>
 			<view class="head-bar align-center">
@@ -128,6 +122,10 @@ import request from '../../../utils/net/request';
 					let cdate = `${year}-${month}-${day}`;
 					That.userInfoKeyValue = cdate;
 				}
+				else if (userInfoKey == "city") {
+					That.city = That.userInfoKeyValue;
+				}
+				
 				
 				console.log("tabbar-5-detail-edit-info-item.vue onLoad userInfoKeyValue:" + That.userInfoKeyValue);
 			}
@@ -175,6 +173,11 @@ import request from '../../../utils/net/request';
 				
 				let That = this;
 				
+				if (key == "" || values[key] == "") {
+					request.uniShowToast("参数为空", null, 3000);
+					return;
+				}
+				
 				if (!That.userInfo.hasOwnProperty("token")) {
 					console.log("tabbar-5-detail-edit-info-item.vue onCommitUserInfoChange not token");
 					request.uniShowToast("令牌无效，请重新登录", null, 3000);
@@ -192,7 +195,12 @@ import request from '../../../utils/net/request';
 						return;
 					}
 					
-					let resCode = res["code"];
+					let errCode = res["errCode"];
+					let errMsg = res["errMsg"];
+					if (errCode != 200) {
+						request.uniShowToast(errMsg, null, 3000);
+						return;
+					}
 					
 					// 更新本地缓存
 					let newUserInfo = Object.assign(That.userInfo, params);

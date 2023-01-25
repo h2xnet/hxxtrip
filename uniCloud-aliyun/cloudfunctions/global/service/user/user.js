@@ -225,7 +225,23 @@ module.exports = class UserService extends Service {
 		
 		let hxxtripUser = await db.collection("hxxtrip_user");
 		
-		let resUpdate = await hxxtripUser.doc(accountId).update(userInfo);
+		let resultUser = await hxxtripUser.field({"_id":true, "account_id":true}).where({"account_id": accountId}).get();
+		// {"affectedDocs":1,"data":[{"_id":"63cceebee1a35c99699406dc","account_id":"C1C2B566AE"}]}
+		console.log("global/service/user/user.js userAttrUpdate getUser result:" + JSON.stringify(resultUser));
+		
+		let _id = "";
+		if (resultUser != null && resultUser.hasOwnProperty("affectedDocs")) {
+			if (resultUser["affectedDocs"] > 0) {
+				let resUserData = resultUser["data"];
+				_id = resUserData[0]._id;
+			}
+		}
+		
+		if (_id == "") {
+			return getAck(ERROR_CODE.ERROR_CODE_UPDATE_USER_FAIL, ERROR_MSG.ERROR_MSG_UPDATE_USER_FAIL, null);
+		}
+		
+		let resUpdate = await hxxtripUser.doc(_id).update(userInfo);
 		// {"affectedDocs":1,"updated":1,"upsertedId":null}
 		console.log("global/service/user/user.js userAttrUpdate update result:" + JSON.stringify(resUpdate));
 		

@@ -92,12 +92,12 @@
 				<!-- 底部功能区 -->
 				<view class="fixed-bottom">
 					<view class="line-box">
-						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings', {});"
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings', {'name': 'settings'});"
 							style="margin-left: 35upx;">
 							<view class="font-size-max"><uni-icons type="gear" size="24"></uni-icons></view>
 							<view class="font-size-max">设置</view>
 						</view>
-						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help', {});" 
+						<view class="line-box-item" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help', {'name': 'help'});" 
 							style="margin-left: 50upx;">
 							<view class="font-size-max"><uni-icons type="headphones" size="24"></uni-icons></view>
 							<view class="font-size-max">帮助</view>
@@ -132,7 +132,7 @@
 				<!-- 登录、注册 -->
 				<block v-if="loginState <= 0">
 					<view class="line-box-item margin-left-max">
-						<button type="primary" size="mini" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});">
+						<button type="primary" size="mini" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {'name': 'login'});">
 							<uni-icons type="person" size="16" color="white"></uni-icons>
 							<text class="margin-left-min">登录 / 注册</text>
 						</button>
@@ -175,7 +175,7 @@
 				</view>
 				<view class="line-box-item" style="float: right; margin-right: 30upx;">
 					<view class="button-group">
-						<button class="line-button"  @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-edit-info/tabbar-5-detail-edit-info', {})">编辑资料</button>
+						<button class="line-button"  @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-edit-info/tabbar-5-detail-edit-info', {'name': 'editInfo'})">编辑资料</button>
 					</view>
 				</view>
 				
@@ -184,7 +184,7 @@
 			<!-- 店铺信息 -->
 			<block v-if="userInfo.shopId != ''">
 				<view class="line-box" style="padding: 0; text-align: center; ">
-					<button class="line-button" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store', {});" 
+					<button class="line-button" @click="goToPage('/pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store', {'name': 'managerStore'});" 
 						style="width: 90%;">
 						<uni-icons type="shop" size="16" color="white"></uni-icons>
 						<text style="margin-left: 10upx; ">管理店铺</text>
@@ -228,7 +228,7 @@
 					userPhone: '',
 					ipHome: '广东',
 					introduce: '公众号：星游会',
-					tags: ['射手座', '广东广州', '程序员'], // 标签
+					tags: [], // 标签
 					focus: 0, // 关注数
 					fans: 0, // 粉丝数
 					likes: 0, // 点赞数
@@ -279,9 +279,21 @@
 			
 			goToPage(url, param) {
 				console.log("tabbar-5.vue goToPage params, url:" + url + ", param: " + JSON.stringify(param));
+				
+				let That = this;
+				
+				// {"name": "editInfo"}
 				if (!url) {
 					return;
 				}
+				
+				// 需求登录
+				if (param["name"] == "editInfo" && That.$global_login_state <= 0) {
+					// 跳转登录
+					That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
+					return;
+				}
+				
 				uni.navigateTo({
 					url: url,
 					fail(err) {
@@ -306,6 +318,8 @@
 					That.userInfo.introduce = "";
 					That.userInfo.headUrl = "";
 					
+					That.userInfo.tags = [];
+					
 					That.userInfo.focus = 0;
 					That.userInfo.fans = 0;
 					That.userInfo.likes = 0;
@@ -323,6 +337,34 @@
 					That.userInfo.userPhone = info["phone"];
 					That.userInfo.introduce = info["introduce"];
 					That.userInfo.headUrl = info["avatar_url"];
+					
+					That.userInfo.focus = info["focus"];
+					That.userInfo.fans = info["fans"];
+					That.userInfo.likes = info["likes"];
+					That.userInfo.collects = info["collects"];
+					That.userInfo.shopId = info["shopId"];
+					
+					That.userInfo.tags = [];
+					// 星座
+					if (info["astrol"] != "") {
+						That.userInfo.tags.push(info["astrol"]);
+					}
+					// 城市
+					if (info["city"] != "") {
+						let cityArr = info["city"].split(" ");
+						if (cityArr.length == 3) {
+							let addr = `${cityArr[1]} ${cityArr[2]}`;
+							That.userInfo.tags.push(addr);
+						}
+					}
+					// 身份
+					if (info["position"].length > 0) {
+						let positions = info["position"];
+						for(let idx = 0; idx < positions.length; idx++) {
+							That.userInfo.tags.push(positions[idx]);
+						}
+					}
+					console.log("tabbar-5.vue setUserInfo tags:" + JSON.stringify(That.tags));
 					
 					That.userInfo.focus = info["focus"];
 					That.userInfo.fans = info["fans"];

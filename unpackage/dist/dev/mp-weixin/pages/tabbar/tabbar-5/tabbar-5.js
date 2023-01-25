@@ -399,7 +399,7 @@ var _default = {
         userPhone: '',
         ipHome: '广东',
         introduce: '公众号：星游会',
-        tags: ['射手座', '广东广州', '程序员'],
+        tags: [],
         // 标签
         focus: 0,
         // 关注数
@@ -445,7 +445,17 @@ var _default = {
     },
     goToPage: function goToPage(url, param) {
       console.log("tabbar-5.vue goToPage params, url:" + url + ", param: " + JSON.stringify(param));
+      var That = this;
+
+      // {"name": "editInfo"}
       if (!url) {
+        return;
+      }
+
+      // 需求登录
+      if (param["name"] == "editInfo" && That.$global_login_state <= 0) {
+        // 跳转登录
+        That.goToPage('/pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login', {});
         return;
       }
       uni.navigateTo({
@@ -468,6 +478,7 @@ var _default = {
         That.userInfo.userPhone = "";
         That.userInfo.introduce = "";
         That.userInfo.headUrl = "";
+        That.userInfo.tags = [];
         That.userInfo.focus = 0;
         That.userInfo.fans = 0;
         That.userInfo.likes = 0;
@@ -484,6 +495,32 @@ var _default = {
         That.userInfo.userPhone = info["phone"];
         That.userInfo.introduce = info["introduce"];
         That.userInfo.headUrl = info["avatar_url"];
+        That.userInfo.focus = info["focus"];
+        That.userInfo.fans = info["fans"];
+        That.userInfo.likes = info["likes"];
+        That.userInfo.collects = info["collects"];
+        That.userInfo.shopId = info["shopId"];
+        That.userInfo.tags = [];
+        // 星座
+        if (info["astrol"] != "") {
+          That.userInfo.tags.push(info["astrol"]);
+        }
+        // 城市
+        if (info["city"] != "") {
+          var cityArr = info["city"].split(" ");
+          if (cityArr.length == 3) {
+            var addr = "".concat(cityArr[1], " ").concat(cityArr[2]);
+            That.userInfo.tags.push(addr);
+          }
+        }
+        // 身份
+        if (info["position"].length > 0) {
+          var positions = info["position"];
+          for (var idx = 0; idx < positions.length; idx++) {
+            That.userInfo.tags.push(positions[idx]);
+          }
+        }
+        console.log("tabbar-5.vue setUserInfo tags:" + JSON.stringify(That.tags));
         That.userInfo.focus = info["focus"];
         That.userInfo.fans = info["fans"];
         That.userInfo.likes = info["likes"];

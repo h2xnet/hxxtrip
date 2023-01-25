@@ -1,17 +1,19 @@
 <template>
 	<view class="container">
-		<view class="head-wrap">
-			
+		<view class="head-wrap" style="margin-top: 40upx;">
+			<HeadImageBar>
+				
+			</HeadImageBar>
 		</view>
 		<view class="list-wrap">
 			<uni-list border="true">
 				<uni-list-item showArrow title="显示名称" :rightText="userInfo.nick_name" clickable="true" @click="onEditUserInfo('nick_name');"></uni-list-item>
-				<uni-list-item showArrow title="账号" :rightText="userInfo.account_id" clickable="true" @click="onEditUserInfo('account_id');"></uni-list-item>
+				<uni-list-item title="账号" :rightText="userInfo.account_id"></uni-list-item>
 				<uni-list-item showArrow title="简介" :rightText="userInfo.introduce" clickable="true" @click="onEditUserInfo('introduce');"></uni-list-item>
 				<uni-list-item showArrow title="性别" :rightText="sexs[userInfo.sex]" clickable="true" @click="onEditUserInfo('sex');"></uni-list-item>
 				<uni-list-item showArrow title="生日" :rightText="userInfo.birthday" clickable="true" @click="onEditUserInfo('birthday');"></uni-list-item>
-				<uni-list-item showArrow title="身份" :rightText="userInfo.position_list" clickable="true" @click="onEditUserInfo('position');"></uni-list-item>
-				<uni-list-item showArrow title="地区" :rightText="userInfo.area" clickable="true" @click="onEditUserInfo('area');"></uni-list-item>
+				<!--<uni-list-item showArrow title="身份" :rightText="userInfo.position_list" clickable="true" @click="onEditUserInfo('position');"></uni-list-item>-->
+				<uni-list-item showArrow title="地区" :rightText="userInfo.city" clickable="true" @click="onEditUserInfo('city');"></uni-list-item>
 				<uni-list-item title="星座" :rightText="userInfo.astrol"></uni-list-item>
 			</uni-list>
 		</view>
@@ -40,7 +42,6 @@
 			let cacheUserInfo = That.$storage.getUserInfo();
 			console.log("tabbar-5-detail-edit-info.vue onLoad cacheUserInfo:" + JSON.stringify(cacheUserInfo));
 			if (cacheUserInfo != null) {
-				cacheUserInfo["area"] = cacheUserInfo["country"] + "-" + cacheUserInfo["province"] + "-" + cacheUserInfo["city"];
 				cacheUserInfo["position_list"] = cacheUserInfo["position"].join(",");
 				That.userInfo = cacheUserInfo;
 			}
@@ -72,5 +73,17 @@
 	height: 300upx;
 	width: 100%;
 }	
+
+.margin-top-min {
+	margin-top: 10upx;
+}
+
+.margin-top-mid {
+	margin-top: 15upx;
+}
+
+.margin-top-max {
+	margin-top: 20upx;
+}
 
 </style>
