@@ -52,28 +52,45 @@
 			
 		</view>
 		
-		<view v-else-if="userInfoKey == 'position'">
+		<!--<view v-else-if="userInfoKey == 'position'">
 			<view class="head-bar align-center">
 				<view><text class="font-size-max font-weight-bold">编辑身份</text></view>
 			</view>
-		</view>
+		</view>-->
 		
 		<view v-else-if="userInfoKey == 'area'">
 			<view class="head-bar align-center">
 				<view><text class="font-size-max font-weight-bold">编辑区域</text></view>
 			</view>
+			<view>
+				<wangding-pickerAddress class="city" @wangdingPickerAddressChange="onAreaChange" 
+					@wangdingPickerAddressClick="onAreaClick">
+					{{city}}
+				</wangding-pickerAddress>
+			</view>
 		</view>
 		
-		<view v-else-if="userInfoKey == 'astrol'">
+		<!--<view v-else-if="userInfoKey == 'astrol'">
 			<view class="head-bar align-center">
 				<view><text class="font-size-max font-weight-bold">编辑星座</text></view>
 			</view>
+		</view>-->
+		
+		<view v-else>
+			<view class="head-bar align-center">
+				<view><text class="font-size-max font-weight-bold">星游会</text></view>
+			</view>
+			<NotFindBar @notFindBarClick="onNotFindClick">
+				
+			</NotFindBar>
+			
 		</view>
 		
 	</view>
 </template>
 
 <script>
+import request from '../../../utils/net/request';
 	export default {
 		data() {
 			return {
@@ -81,7 +98,8 @@
 				userInfoKeyValue: '',
 				userInfo: {},
 				startDate: '',
-				endDate: ''
+				endDate: '',
+				city: '请选择城市'
 			}
 		},
 		
@@ -149,6 +167,45 @@
 				return `${year}-${month}-${day}`;
 			},
 			
+			//
+			// onCommitUserInfoChange : 提交用户信息改变
+			//
+			onCommitUserInfoChange(key, values = {}) {
+				console.log("tabbar-5-detail-edit-info-item.vue onCommitUserInfoChange params, key:" + key + ", values:" + JSON.stringify(values));
+				
+				let That = this;
+				
+				if (!That.userInfo.hasOwnProperty("token")) {
+					console.log("tabbar-5-detail-edit-info-item.vue onCommitUserInfoChange not token");
+					request.uniShowToast("令牌无效，请重新登录", null, 3000);
+					return;
+				}
+				
+				let token = That.userInfo["token"];
+				
+				let params = values;
+				request.getUserAttrUpdate(token, params, function(code, res){
+					console.log("tabbar-5-detail-edit-info-item.vue onCommitUserInfoChange getUserAttrUpdate code:" + code + ", res:" + JSON.stringify(res));
+					
+					if (code != 0) {
+						request.uniShowToast("修改失败", null, 3000);
+						return;
+					}
+					
+					let resCode = res["code"];
+					
+					// 更新本地缓存
+					let newUserInfo = Object.assign(That.userInfo, params);
+					console.log("tabbar-5-detail-edit-info-item.vue onCommitUserInfoChange getUserAttrUpdate success, newUserInfp:" + JSON.stringify(newUserInfo));
+					
+					// 更新缓存
+					That.$storage.setUserInfo(newUserInfo);
+					
+					That.onPageBack();
+					
+				});
+			},
+			
 			// 显示名称事件
 			onNickNameClick(e, newValue) {
 				console.log("tabbar-5-detail-edit-info-item.vue onNickNameClick params: " + JSON.stringify(e) + ", newValue:" + newValue);
@@ -158,7 +215,7 @@
 					
 				}
 				else if (e == "save") {
-					
+					That.onCommitUserInfoChange("nick_name", {"nick_name": newValue});
 				}
 				
 				That.onPageBack();
@@ -173,7 +230,7 @@
 					
 				}
 				else if (e == "save") {
-					
+					That.onCommitUserInfoChange("account_id", {"account_id": newValue});
 				}
 				
 				That.onPageBack();
@@ -188,7 +245,7 @@
 					
 				}
 				else if (e == "save") {
-					
+					That.onCommitUserInfoChange("introduce", {"introduce": newValue});
 				}
 				
 				That.onPageBack();
@@ -203,7 +260,7 @@
 					
 				}
 				else if (e == "save") {
-					
+					That.onCommitUserInfoChange("sex", {"sex": newValue});
 				}
 				
 				That.onPageBack();
@@ -218,8 +275,41 @@
 					
 				}
 				else if (e == "save") {
+					That.onCommitUserInfoChange("birthday", {"birthday": newBirthday, "astrol": newAstrol});
+				}
+				
+				That.onPageBack();
+			},
+			
+			// onAreaChange : 区域改变
+			onAreaChange(e) {
+				console.log("tabbar-5-detail-edit-info-item.vue onAreaChange params: " + JSON.stringify(e));
+				
+				let That = this;
+				That.city = e.data.join(" ");
+			},
+			
+			// onAreaClick : 区域事件
+			onAreaClick(e, newValue) {
+				console.log("tabbar-5-detail-edit-info-item.vue onAreaClick params: " + JSON.stringify(e) + ", newValue:" + newValue);
+				
+				let That = this;
+				That.city = newValue;
+				
+				if (e == "cancel") {
 					
 				}
+				else if (e == "save") {
+					That.onCommitUserInfoChange("city", {"city": newValue});
+				}
+				
+				That.onPageBack();
+			},
+			
+			// onNotFindClick : 未找到
+			onNotFindClick(e) {
+				console.log("tabbar-5-detail-edit-info-item.vue onNotFindClick params: " + JSON.stringify(e));
+				let That = this;
 				
 				That.onPageBack();
 			}

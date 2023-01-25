@@ -209,8 +209,33 @@ module.exports = class UserService extends Service {
 		const { pswd, regist_env, ...retUserInfo } = userInfo;
 		console.log("global/service/user/user.js accountLoginRegist retUserInfo:" + JSON.stringify(retUserInfo));
 		
-		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, retUserInfo);
+		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, retUserInfo);	
+	}
+	
+	//
+	// userAttrUpdate : 用户属性修改
+	//
+	async userAttrUpdate(accountId, userInfo) {
+		console.log("global/service/user/user.js userAttrUpdate params, accountId:" + accountId + ", userInfo:" + JSON.stringify(userInfo));
+		const { ctx, db } = this;
 		
+		let times = new Date().getTime();
+		
+		userInfo["last_modify_time"] = times;
+		
+		let hxxtripUser = await db.collection("hxxtrip_user");
+		
+		let resUpdate = await hxxtripUser.doc(accountId).update(userInfo);
+		// {"affectedDocs":1,"updated":1,"upsertedId":null}
+		console.log("global/service/user/user.js userAttrUpdate update result:" + JSON.stringify(resUpdate));
+		
+		if (resUpdate != null && resUpdate.hasOwnProperty("affectedDocs")) {
+			if (resUpdate["affectedDocs"] > 0) {
+				return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, resUpdate);
+			}
+		}
+		
+		return getAck(ERROR_CODE.ERROR_CODE_UPDATE_USER_FAIL, ERROR_MSG.ERROR_MSG_UPDATE_USER_FAIL, resUpdate);
 	}
 
 };

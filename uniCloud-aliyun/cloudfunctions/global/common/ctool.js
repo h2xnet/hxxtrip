@@ -105,9 +105,39 @@ async function verifyToken(token) {
 	}); 
 }
 
+/*
+ * Func: virifyTokenValid
+ * Desc: 验证token有效性
+ * Author: zfs
+ * Date: 2023-01-25 14:20
+ * 返回值：成功返回账号ID，失败返回空
+ */
+async function virifyTokenValid(token) {
+	console.log("global/controller/tools.js virifyTokenValid params, token:" + token);
+	if (token == "") {
+		return "";
+	}
+	
+	let decode = await verifyToken(token);
+	console.log("global/controller/tools.js virifyTokenValid verifyToken result:" + decode);
+	
+	// {"accountId":"C1C2B566AE","flag":"create","iat":1674453286,"exp":1677045286}
+	if (decode.hasOwnProperty("accountId") && decode.hasOwnProperty("exp")) {
+		let tokenTimes = Math.round(decode["exp"]); // 单位：秒
+		let ctimes = Math.round(new Date().getTime() / 1000); // 1674628218526，单位毫秒
+		console.log("global/controller/tools.js virifyTokenValid tokenTime:" + tokenTimes + ", ctimes:" + ctimes);
+		//if (tokenTimes > ctimes) {
+			return decode["accountId"];
+		//}
+	}
+	
+	return "";
+}
+
 module.exports = {
 	uuid,
 	getOpenId,
 	createToken,
-	verifyToken
+	verifyToken,
+	virifyTokenValid
 }

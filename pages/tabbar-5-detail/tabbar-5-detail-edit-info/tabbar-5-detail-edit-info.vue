@@ -12,7 +12,7 @@
 				<uni-list-item showArrow title="生日" :rightText="userInfo.birthday" clickable="true" @click="onEditUserInfo('birthday');"></uni-list-item>
 				<uni-list-item showArrow title="身份" :rightText="userInfo.position_list" clickable="true" @click="onEditUserInfo('position');"></uni-list-item>
 				<uni-list-item showArrow title="地区" :rightText="userInfo.area" clickable="true" @click="onEditUserInfo('area');"></uni-list-item>
-				<!--<uni-list-item showArrow title="星座" :rightText="userInfo.astrol" clickable="true" @click="onEditUserInfo('astrol');"></uni-list-item>-->
+				<uni-list-item title="星座" :rightText="userInfo.astrol"></uni-list-item>
 			</uni-list>
 		</view>
 	</view>

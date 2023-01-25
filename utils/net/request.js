@@ -35,6 +35,16 @@ const getAccountLoginRegist = (param, callfunc) => {
 }
 
 //
+// getUserAttrUpdate : 更新用户属性
+//
+const getUserAttrUpdate = (token, param, callfunc) => {
+	let postParam = {};
+	postParam["token"] = token;
+	postParam["param"] = param;
+	return uniCloudHttp.cloudCallFunc("global", {"action": "user/user/userAttrUpdate", "data": postParam}, callfunc);
+}
+
+//
 // uniGotoPage : 页面跳转
 //
 const uniGotoPage = (url, param, callfunc) => {
@@ -141,6 +151,22 @@ showCancel = true, callfunc) => {
 	})
 }
 
+const uniShowToast = (title, icon, duration = 3000) => {
+	if (icon == null || icon == "") {
+		uni.showToast({
+			title: title,
+			duration: duration
+		});
+	}
+	else {
+		uni.showToast({
+			title: title,
+			icon: icon,
+			duration: duration
+		});
+	}
+}
+
 //
 // getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
 //
@@ -215,8 +241,10 @@ export default {
 	uniGetUserInfo,
 	uniGetUserProfile,
 	uniShowModel,
+	uniShowToast,
 	getWeixinOepnInfo,
 	getAccountLoginRegist,
+	getUserAttrUpdate,
 	categoryRootRequest,
 	categoryTwoRequest,
 	routerRequest,

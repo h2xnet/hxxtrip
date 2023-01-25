@@ -76,7 +76,6 @@
 			
 			let That = this;
 			
-			//That.inputTextValueLength = 
 		},
 		
 		methods: {
