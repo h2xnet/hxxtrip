@@ -226,7 +226,7 @@
 					userAccount: '',
 					userDisplayName: '未知',
 					userPhone: '',
-					ipHome: '广东',
+					ipHome: '',
 					introduce: '公众号：星游会',
 					tags: [], // 标签
 					focus: 0, // 关注数
@@ -318,6 +318,7 @@
 					That.userInfo.introduce = "";
 					That.userInfo.headUrl = "";
 					
+					That.userInfo.ipHome = "";
 					That.userInfo.tags = [];
 					
 					That.userInfo.focus = 0;
@@ -353,6 +354,8 @@
 					if (info["city"] != "") {
 						let cityArr = info["city"].split(" ");
 						if (cityArr.length == 3) {
+							That.userInfo.ipHome = cityArr[0];
+							
 							let addr = `${cityArr[1]} ${cityArr[2]}`;
 							That.userInfo.tags.push(addr);
 						}

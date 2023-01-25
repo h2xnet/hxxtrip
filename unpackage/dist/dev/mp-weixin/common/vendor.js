@@ -17283,7 +17283,270 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 369:
+/***/ 37:
+/*!**************************************************************!*\
+  !*** D:/h2x/hxxtrip/pages.json?{"type":"origin-pages-json"} ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  "pages": [{
+    "path": "pages/tabbar/tabbar-1/tabbar-1",
+    "style": {
+      "navigationStyle": "custom",
+      "navigationBarTitleText": "星游会"
+    }
+  }, {
+    "path": "pages/tabbar/tabbar-2/tabbar-2",
+    "style": {}
+  }, {
+    "path": "pages/tabbar/tabbar-3/tabbar-3",
+    "style": {}
+  }, {
+    "path": "pages/tabbar/tabbar-4/tabbar-4",
+    "style": {}
+  }, {
+    "path": "pages/tabbar/tabbar-5/tabbar-5",
+    "style": {
+      "navigationStyle": "custom",
+      "navigationBarTitleText": "星游会"
+    }
+  }, {
+    "path": "pages/tabbar-3-detial/tabbar-3-release/tabbar-3-release",
+    "style": {}
+  }, {
+    "path": "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
+    "style": {}
+  }, {
+    "path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
+    "style": {}
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-edit-info/tabbar-5-detail-edit-info",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-draft/tabbar-5-detail-draft",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-create-center/tabbar-5-detail-create-center",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-browse-records/tabbar-5-detail-browse-records",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-wallet/tabbar-5-detail-wallet",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-cart/tabbar-5-detail-cart",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-member/tabbar-5-detail-member",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-scan/tabbar-5-detail-scan",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login",
+    "style": {
+      "navigationBarTitleText": "用户登录",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+    "style": {
+      "navigationBarTitleText": "注销账号"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+    "style": {
+      "navigationBarTitleText": "个人资料"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+    "style": {
+      "navigationBarTitleText": "绑定手机号码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+    "style": {
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+    "style": {
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+    "style": {
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/login/login-smscode",
+    "style": {
+      "navigationBarTitleText": "手机验证码登录"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/register/register",
+    "style": {
+      "navigationBarTitleText": "注册"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/register/register-by-email",
+    "style": {
+      "navigationBarTitleText": "邮箱验证码注册"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+    "style": {
+      "navigationBarTitleText": "重置密码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+    "style": {
+      "navigationBarTitleText": "通过邮箱重置密码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/common/webview/webview",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": ""
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": "修改密码"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/register/register-admin",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": "注册管理员账号"
+    }
+  }, {
+    "path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
+    "style": {
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": "设置密码"
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-edit-info-item/tabbar-5-detail-edit-info-item",
+    "style": {
+      "navigationStyle": "custom",
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/tabbar-5-detail/tabbar-5-detail-preview-image/tabbar-5-detail-preview-image",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "星游会",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "app-plus": {
+      "bounce": "none",
+      "scrollIndicator": "none"
+    }
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#F8F8F8",
+    "color": "#8F8F94",
+    "selectedColor": "#f33e54",
+    "list": [{
+      "pagePath": "pages/tabbar/tabbar-1/tabbar-1",
+      "iconPath": "static/img/tabbar/home.png",
+      "selectedIconPath": "static/img/tabbar/homeactive.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/tabbar/tabbar-2/tabbar-2",
+      "iconPath": "static/img/tabbar/guanzhu.png",
+      "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
+      "text": "订单"
+    }, {
+      "pagePath": "pages/tabbar/tabbar-3/tabbar-3",
+      "iconPath": "static/img/tabbar/add.png",
+      "selectedIconPath": "static/img/tabbar/addactive.png",
+      "text": "发布"
+    }, {
+      "pagePath": "pages/tabbar/tabbar-4/tabbar-4",
+      "iconPath": "static/img/tabbar/news.png",
+      "selectedIconPath": "static/img/tabbar/newsactive.png",
+      "text": "消息"
+    }, {
+      "pagePath": "pages/tabbar/tabbar-5/tabbar-5",
+      "iconPath": "static/img/tabbar/me.png",
+      "selectedIconPath": "static/img/tabbar/meactive.png",
+      "text": "我的"
+    }]
+  }
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 377:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**************************************************************************/
@@ -18305,263 +18568,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 37:
-/*!**************************************************************!*\
-  !*** D:/h2x/hxxtrip/pages.json?{"type":"origin-pages-json"} ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  "pages": [{
-    "path": "pages/tabbar/tabbar-1/tabbar-1",
-    "style": {
-      "navigationStyle": "custom",
-      "navigationBarTitleText": "星游会"
-    }
-  }, {
-    "path": "pages/tabbar/tabbar-2/tabbar-2",
-    "style": {}
-  }, {
-    "path": "pages/tabbar/tabbar-3/tabbar-3",
-    "style": {}
-  }, {
-    "path": "pages/tabbar/tabbar-4/tabbar-4",
-    "style": {}
-  }, {
-    "path": "pages/tabbar/tabbar-5/tabbar-5",
-    "style": {
-      "navigationStyle": "custom",
-      "navigationBarTitleText": "星游会"
-    }
-  }, {
-    "path": "pages/tabbar-3-detial/tabbar-3-release/tabbar-3-release",
-    "style": {}
-  }, {
-    "path": "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
-    "style": {}
-  }, {
-    "path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
-    "style": {}
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-edit-info/tabbar-5-detail-edit-info",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-draft/tabbar-5-detail-draft",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-create-center/tabbar-5-detail-create-center",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-browse-records/tabbar-5-detail-browse-records",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-wallet/tabbar-5-detail-wallet",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-cart/tabbar-5-detail-cart",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-member/tabbar-5-detail-member",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-settings/tabbar-5-detail-settings",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-help/tabbar-5-detail-help",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-scan/tabbar-5-detail-scan",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-order/tabbar-5-detail-order",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-manager-store/tabbar-5-detail-manager-store",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-login/tabbar-5-detail-login",
-    "style": {
-      "navigationBarTitleText": "用户登录",
-      "enablePullDownRefresh": false
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
-    "style": {
-      "navigationBarTitleText": "注销账号"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
-    "style": {
-      "navigationBarTitleText": "个人资料"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
-    "style": {
-      "navigationBarTitleText": "绑定手机号码"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
-    "style": {
-      "navigationBarTitleText": ""
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
-    "style": {
-      "navigationBarTitleText": ""
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
-    "style": {
-      "navigationBarTitleText": ""
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/login/login-smscode",
-    "style": {
-      "navigationBarTitleText": "手机验证码登录"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/register/register",
-    "style": {
-      "navigationBarTitleText": "注册"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/register/register-by-email",
-    "style": {
-      "navigationBarTitleText": "邮箱验证码注册"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
-    "style": {
-      "navigationBarTitleText": "重置密码"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
-    "style": {
-      "navigationBarTitleText": "通过邮箱重置密码"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/common/webview/webview",
-    "style": {
-      "enablePullDownRefresh": false,
-      "navigationBarTitleText": ""
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
-    "style": {
-      "enablePullDownRefresh": false,
-      "navigationBarTitleText": "修改密码"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/register/register-admin",
-    "style": {
-      "enablePullDownRefresh": false,
-      "navigationBarTitleText": "注册管理员账号"
-    }
-  }, {
-    "path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
-    "style": {
-      "enablePullDownRefresh": false,
-      "navigationBarTitleText": "设置密码"
-    }
-  }, {
-    "path": "pages/tabbar-5-detail/tabbar-5-detail-edit-info-item/tabbar-5-detail-edit-info-item",
-    "style": {
-      "navigationStyle": "custom",
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
-  }],
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "星游会",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8",
-    "app-plus": {
-      "bounce": "none",
-      "scrollIndicator": "none"
-    }
-  },
-  "tabBar": {
-    "borderStyle": "white",
-    "backgroundColor": "#F8F8F8",
-    "color": "#8F8F94",
-    "selectedColor": "#f33e54",
-    "list": [{
-      "pagePath": "pages/tabbar/tabbar-1/tabbar-1",
-      "iconPath": "static/img/tabbar/home.png",
-      "selectedIconPath": "static/img/tabbar/homeactive.png",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/tabbar/tabbar-2/tabbar-2",
-      "iconPath": "static/img/tabbar/guanzhu.png",
-      "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
-      "text": "订单"
-    }, {
-      "pagePath": "pages/tabbar/tabbar-3/tabbar-3",
-      "iconPath": "static/img/tabbar/add.png",
-      "selectedIconPath": "static/img/tabbar/addactive.png",
-      "text": "发布"
-    }, {
-      "pagePath": "pages/tabbar/tabbar-4/tabbar-4",
-      "iconPath": "static/img/tabbar/news.png",
-      "selectedIconPath": "static/img/tabbar/newsactive.png",
-      "text": "消息"
-    }, {
-      "pagePath": "pages/tabbar/tabbar-5/tabbar-5",
-      "iconPath": "static/img/tabbar/me.png",
-      "selectedIconPath": "static/img/tabbar/meactive.png",
-      "text": "我的"
-    }]
-  }
-};
-exports.default = _default;
-
-/***/ }),
-
 /***/ 38:
 /*!*************************************************!*\
   !*** D:/h2x/hxxtrip/pages.json?{"type":"stat"} ***!
@@ -18599,7 +18605,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 405:
+/***/ 413:
 /*!***********************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/mp-html/components/mp-html/parser.js ***!
   \***********************************************************************/
@@ -20025,108 +20031,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 448:
-/*!**************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  data: function data() {
-    return {};
-  },
-  created: function created() {
-    this.popup = this.getParent();
-  },
-  methods: {
-    /**
-     * 获取父元素实例
-     */
-    getParent: function getParent() {
-      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'uniPopup';
-      var parent = this.$parent;
-      var parentName = parent.$options.name;
-      while (parentName !== name) {
-        parent = parent.$parent;
-        if (!parent) return false;
-        parentName = parent.$options.name;
-      }
-      return parent;
-    }
-  }
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 449:
-/*!*******************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 450));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 451));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 452));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 450:
-/*!******************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
-  \******************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
-
-/***/ }),
-
-/***/ 451:
-/*!***********************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
-  \***********************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
-/***/ 452:
-/*!***********************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
-  \***********************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
 /***/ 46:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -20256,6 +20160,108 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 463:
+/*!**************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  data: function data() {
+    return {};
+  },
+  created: function created() {
+    this.popup = this.getParent();
+  },
+  methods: {
+    /**
+     * 获取父元素实例
+     */
+    getParent: function getParent() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'uniPopup';
+      var parent = this.$parent;
+      var parentName = parent.$options.name;
+      while (parentName !== name) {
+        parent = parent.$parent;
+        if (!parent) return false;
+        parentName = parent.$options.name;
+      }
+      return parent;
+    }
+  }
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 464:
+/*!*******************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 465));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 466));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 467));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 465:
+/*!******************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
+  \******************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
+
+/***/ }),
+
+/***/ 466:
+/*!***********************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \***********************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 467:
+/*!***********************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \***********************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
 /***/ 47:
 /*!*********************************************!*\
   !*** D:/h2x/hxxtrip/utils/cache/storage.js ***!
@@ -20333,7 +20339,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 481:
+/***/ 496:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils.js ***!
   \*********************************************************************************************/
@@ -20607,7 +20613,7 @@ module.exports = _slicedToArray, module.exports.__esModule = true, module.export
 
 /***/ }),
 
-/***/ 503:
+/***/ 518:
 /*!*****************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \*****************************************************************************/
@@ -21299,7 +21305,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 504:
+/***/ 519:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/utils.js ***!
   \**************************************************************************/
@@ -22042,7 +22048,51 @@ exports.error_code_fail = error_code_fail;
 
 /***/ }),
 
-/***/ 561:
+/***/ 57:
+/*!************************************************************!*\
+  !*** D:/h2x/hxxtrip/utils/handler/human/astrol_handler.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/*
+ * AstrolHandler: 星座处理类
+ */
+
+//
+// getAstrolTopicCategory : 获取星座话题类别
+//
+var getAstrolTopicCategory = function getAstrolTopicCategory(That, request) {
+  console.log("astrol_handler.js getAstrolTopicCategory");
+  request.getCategoryHumainAstro({
+    "status": 1
+  }, function (code, res) {
+    console.log("astrol_handler.js getCategoryHumainAstro code:" + code + ", res:" + JSON.stringify(res));
+    if (code == 0 && res["errCode"] == 200) {
+      var dataObj = res["data"];
+      var count = dataObj["count"];
+      if (count > 0) {
+        var listData = dataObj["data"];
+        That.humanTopicItems = listData;
+      }
+    }
+  });
+};
+var _default = {
+  getAstrolTopicCategory: getAstrolTopicCategory
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 576:
 /*!****************************************************************!*\
   !*** D:/h2x/hxxtrip/components/wangding-pickerAddress/data.js ***!
   \****************************************************************/
@@ -32323,170 +32373,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 57:
-/*!************************************************************!*\
-  !*** D:/h2x/hxxtrip/utils/handler/human/astrol_handler.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/*
- * AstrolHandler: 星座处理类
- */
-
-//
-// getAstrolTopicCategory : 获取星座话题类别
-//
-var getAstrolTopicCategory = function getAstrolTopicCategory(That, request) {
-  console.log("astrol_handler.js getAstrolTopicCategory");
-  request.getCategoryHumainAstro({
-    "status": 1
-  }, function (code, res) {
-    console.log("astrol_handler.js getCategoryHumainAstro code:" + code + ", res:" + JSON.stringify(res));
-    if (code == 0 && res["errCode"] == 200) {
-      var dataObj = res["data"];
-      var count = dataObj["count"];
-      if (count > 0) {
-        var listData = dataObj["data"];
-        That.humanTopicItems = listData;
-      }
-    }
-  });
-};
-var _default = {
-  getAstrolTopicCategory: getAstrolTopicCategory
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 576:
-/*!*****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 577));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 578));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 579));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 577:
-/*!****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
-  \****************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 578:
-/*!*********************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
-  \*********************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 579:
-/*!*********************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
-  \*********************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
-
-/***/ }),
-
-/***/ 587:
-/*!*************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 588));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 589));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 590));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 588:
-/*!************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
-  \************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 589:
-/*!*****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
-  \*****************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 590:
-/*!*****************************************************************************************!*\
-  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
-  \*****************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
-
-/***/ }),
-
 /***/ 6:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
@@ -32501,7 +32387,127 @@ module.exports = _arrayWithHoles, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 640:
+/***/ 600:
+/*!*****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 601));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 602));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 603));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 601:
+/*!****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
+  \****************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 602:
+/*!*********************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \*********************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 603:
+/*!*********************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \*********************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+
+/***/ 611:
+/*!*************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 612));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 613));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 614));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 612:
+/*!************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
+  \************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 613:
+/*!*****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
+  \*****************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 614:
+/*!*****************************************************************************************!*\
+  !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
+  \*****************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+
+/***/ 664:
 /*!**********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \**********************************************************************************************/
@@ -32635,7 +32641,7 @@ function createAnimation(option, _this) {
 
 /***/ }),
 
-/***/ 660:
+/***/ 684:
 /*!***************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \***************************************************************************/

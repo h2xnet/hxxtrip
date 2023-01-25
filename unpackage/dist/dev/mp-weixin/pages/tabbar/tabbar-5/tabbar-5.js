@@ -102,13 +102,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 364))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 372))
     },
     uniDrawer: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 372))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 380))
     },
     uniTag: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 379))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 387))
     },
   }
 } catch (e) {
@@ -397,7 +397,7 @@ var _default = {
         userAccount: '',
         userDisplayName: '未知',
         userPhone: '',
-        ipHome: '广东',
+        ipHome: '',
         introduce: '公众号：星游会',
         tags: [],
         // 标签
@@ -478,6 +478,7 @@ var _default = {
         That.userInfo.userPhone = "";
         That.userInfo.introduce = "";
         That.userInfo.headUrl = "";
+        That.userInfo.ipHome = "";
         That.userInfo.tags = [];
         That.userInfo.focus = 0;
         That.userInfo.fans = 0;
@@ -509,6 +510,7 @@ var _default = {
         if (info["city"] != "") {
           var cityArr = info["city"].split(" ");
           if (cityArr.length == 3) {
+            That.userInfo.ipHome = cityArr[0];
             var addr = "".concat(cityArr[1], " ").concat(cityArr[2]);
             That.userInfo.tags.push(addr);
           }

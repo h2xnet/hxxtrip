@@ -4,8 +4,8 @@
 			<image mode="aspectFill" :src="imageUrl" style="width: 256upx; height: 256upx; border-radius: 8upx;">
 			</image>
 		</view>
-		<view class="image-camera">
-			<uni-icons type="camera" size="48"></uni-icons>
+		<view class="image-camera" @click="onChoseImage">
+			<uni-icons type="camera" size="48" color="green"></uni-icons>
 		</view>
 	</view>
 </template>
@@ -23,6 +23,31 @@
 			return {
 				
 			};
+		},
+		
+		methods: {
+			
+			//
+			// onChoseImage : 选择图片
+			// 
+			onChoseImage() {
+				console.log("HeadImageBar.vue onChoseImage.");
+				
+				let That = this;
+				
+				uni.chooseImage({
+					count: 1,
+					success(res) {
+						console.log("HeadImageBar.vue onChoseImage uni.chooseImage res: " + JSON.stringify(res));
+						
+						That.$emit("headImageBarClick", res.tempFilePaths);
+					},
+					fail(err) {
+						console.log("HeadImageBar.vue onChoseImage uni.chooseImage err: " + JSON.stringify(err));
+					}
+				})
+			}
+			
 		}
 	}
 </script>

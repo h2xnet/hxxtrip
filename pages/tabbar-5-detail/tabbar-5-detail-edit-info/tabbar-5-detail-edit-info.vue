@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="head-wrap" style="margin-top: 40upx;">
-			<HeadImageBar>
+			<HeadImageBar @headImageBarClick="onChoseHeadImage">
 				
 			</HeadImageBar>
 		</view>
@@ -62,7 +62,23 @@
 					console.log("tabbar-5-detail-edit-info.vue onEditUserInfo uniGotoPage err:" + JSON.stringify(err) + ", res:" + JSON.stringify(res));
 					
 				});
+			},
+			
+			//
+			// onChoseHeadImage : 选择头像
+			//
+			onChoseHeadImage(filePaths) {
+				console.log("tabbar-5-detail-edit-info.vue onChoseHeadImage params: " + JSON.stringify(filePaths));
+				
+				let url = "/pages/tabbar-5-detail/tabbar-5-detail-preview-image/tabbar-5-detail-preview-image";
+				url += "?path=" + filePaths[0];
+				// 预览确定
+				request.uniGotoPage(url, {}, function(code, res){
+					console.log("tabbar-5-detail-edit-info.vue onChoseHeadImage uniGotoPage code:" + code + ", res:" + JSON.stringify(res));
+					
+				});
 			}
+			
 		}
 	}
 </script>

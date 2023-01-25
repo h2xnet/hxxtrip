@@ -265,6 +265,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/tabbar-5-detail/tabbar-5-detail-preview-image/tabbar-5-detail-preview-image",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

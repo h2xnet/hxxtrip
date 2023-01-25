@@ -1,6 +1,6 @@
 {
+  "component": true,
   "usingComponents": {
     "big-image-card": "/components/BigImageCard/BigImageCard"
-  },
-  "component": true
+  }
 }
