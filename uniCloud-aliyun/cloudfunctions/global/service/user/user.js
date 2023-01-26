@@ -176,7 +176,7 @@ module.exports = class UserService extends Service {
 			
 			// add success : {"id":"63cceebee1a35c99699406dc"}
 			if (addResult.hasOwnProperty("id")) {
-				userInfo["id"] = addResult["id"];
+				userInfo["_id"] = addResult["id"];
 			}
 			else {
 				// fail

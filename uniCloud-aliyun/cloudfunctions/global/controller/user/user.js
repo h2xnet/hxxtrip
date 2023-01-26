@@ -87,9 +87,7 @@ module.exports = class UserController extends Controller {
 			return getAck(ERROR_CODE.ERROR_CODE_TOKEN_INVALID, ERROR_MSG.ERROR_MSG_TOKEN_INVALID);
 		}
 		
-		//let accountId = "C1C2B566AE";
-		
-		return await service.user.user.userAttrUpdate(accountId, postParam)
+		return await service.user.user.userAttrUpdate(accountId, postParam);
 	}
 	
 };

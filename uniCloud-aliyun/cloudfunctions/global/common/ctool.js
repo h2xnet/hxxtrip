@@ -4,6 +4,26 @@ const appId = "wx56e4f0b2026fbdf0";
 const secret = "8191a650d4e5b4be0127d84a02389f40";
 
 //
+// FILE_STATE_CODE : 文件状态码
+//
+const FILE_STATE_CODE = {
+	FILE_STATE_CODE_DISABLE : 0,
+	FILE_STATE_CODE_NORMAL : 1,
+	FILE_STATE_CODE_LOGIC_REMOVE : 2,
+	FILE_STATE_CODE_PHYSICS_REMOVE :3
+}
+
+//
+// FILE_STATE_MSG : 文件状态消息
+//
+const FILE_STATE_MSG = {
+	FILE_STATE_MSG_DISABLE : "禁止使用",
+	FILE_STATE_MSG_NORMAL : "正常",
+	FILE_STATE_MSG_LOGIC_REMOVE : "逻辑删除",
+	FILE_STATE_MSG_PHYSICS_REMOVE : "物理删除"
+}
+
+//
 // uuid : 生成UUID
 // @len: 长度，默认为16位
 // @radix: 基数，默认为16进制
@@ -135,6 +155,8 @@ async function virifyTokenValid(token) {
 }
 
 module.exports = {
+	FILE_STATE_CODE,
+	FILE_STATE_MSG,
 	uuid,
 	getOpenId,
 	createToken,

@@ -21840,6 +21840,16 @@ var uniShowToast = function uniShowToast(title, icon) {
 };
 
 //
+// uniPreviewImage : 预览图片
+//
+var uniPreviewImage = function uniPreviewImage(imgs, index) {
+  uni.previewImage({
+    urls: imgs,
+    current: index
+  });
+};
+
+//
 // getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
 //
 var getWeixinOepnInfo = function getWeixinOepnInfo(appId, secret, accessCode, callfunc) {
@@ -21907,6 +21917,31 @@ var getCategoryHumainAstro = function getCategoryHumainAstro(param, callfunc) {
     "data": param
   }, callfunc);
 };
+
+//
+// cloudUploadFile : uniCloud文件上传
+// @cloudFilePath: 云端文件路径，即文件名
+// @localFilePath: 上传的本地文件路径
+// @fileType: 文件类型，支付宝小程序、钉钉小程序必填，可选image、video、audio
+// @uploadProgressEvent: 上传进度，可以为空
+// @callHandler: 上传结果
+//
+var cloudUploadFile = function cloudUploadFile(cloudFileName, localFileName, fileType, uploadProgressEvent, callfunc) {
+  return _uniCloudHttp.default.cloudUploadFile(cloudFileName, localFileName, fileType, uploadProgressEvent, callfunc);
+};
+
+//
+// uploadImageLogAdd : 上传图片日志添加
+//
+var uploadImageLogAdd = function uploadImageLogAdd(token, param, callfunc) {
+  var postParam = {};
+  postParam["token"] = token;
+  postParam["param"] = param;
+  return _uniCloudHttp.default.cloudCallFunc("global", {
+    "action": "log/file_log/uploadImageLog",
+    "data": postParam
+  }, callfunc);
+};
 var _default = {
   getUuid: getUuid,
   getOpenId: getOpenId,
@@ -21917,6 +21952,7 @@ var _default = {
   uniGetUserProfile: uniGetUserProfile,
   uniShowModel: uniShowModel,
   uniShowToast: uniShowToast,
+  uniPreviewImage: uniPreviewImage,
   getWeixinOepnInfo: getWeixinOepnInfo,
   getAccountLoginRegist: getAccountLoginRegist,
   getUserAttrUpdate: getUserAttrUpdate,
@@ -21924,7 +21960,9 @@ var _default = {
   categoryTwoRequest: categoryTwoRequest,
   routerRequest: routerRequest,
   getCategory: getCategory,
-  getCategoryHumainAstro: getCategoryHumainAstro
+  getCategoryHumainAstro: getCategoryHumainAstro,
+  cloudUploadFile: cloudUploadFile,
+  uploadImageLogAdd: uploadImageLogAdd
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
@@ -21988,6 +22026,7 @@ var cloudCallFunc = function cloudCallFunc(url, params, callHandler) {
 // cloudUploadFile : 云上传文件
 // @cloudFilePath: 云端文件路径，即文件名
 // @localFilePath: 上传的本地文件路径
+// @fileType: 文件类型，支付宝小程序、钉钉小程序必填，可选image、video、audio
 // @uploadProgressEvent: 上传进度，可以为空
 // @callHandler: 上传结果
 //

@@ -115,7 +115,7 @@
 			<!-- 用户基础信息 -->
 			<view class="line-box" style="height: 140upx; background-color: transparent;">
 				<!-- 头像 -->
-				<view class="line-box-item">
+				<view class="line-box-item" @click="onPreviewHead">
 					<image :src="userInfo.headUrl" 
 					mode="aspectFill" style="width: 128upx; height: 128upx; border-radius: 8upx;"></image>
 				</view>
@@ -427,6 +427,20 @@
 				console.log("tabbar-5.vue onScan");
 				let That = this;
 			},
+			
+			//
+			// onPreviewHead : 预览头像
+			//
+			onPreviewHead() {
+				console.log("tabbar-5.vue onPreviewHead.");
+				
+				let That = this;
+				
+				let imgs = [];
+				imgs.push(That.userInfo.headUrl);
+				
+				request.uniPreviewImage(imgs, 0);
+			}
 			
 			
 		}

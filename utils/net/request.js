@@ -168,6 +168,16 @@ const uniShowToast = (title, icon, duration = 3000) => {
 }
 
 //
+// uniPreviewImage : 预览图片
+//
+const uniPreviewImage = (imgs, index) => {
+	uni.previewImage({
+		urls: imgs,
+		current: index
+	});
+}
+
+//
 // getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
 //
 const getWeixinOepnInfo = (appId, secret, accessCode, callfunc) => {
@@ -230,6 +240,27 @@ const getCategoryHumainAstro = (param, callfunc) => {
 	return uniCloudHttp.cloudCallFunc("router", {"action": "humain/astrol/astrolCategory", "data": param}, callfunc);
 }
 
+//
+// cloudUploadFile : uniCloud文件上传
+// @cloudFilePath: 云端文件路径，即文件名
+// @localFilePath: 上传的本地文件路径
+// @fileType: 文件类型，支付宝小程序、钉钉小程序必填，可选image、video、audio
+// @uploadProgressEvent: 上传进度，可以为空
+// @callHandler: 上传结果
+//
+const cloudUploadFile = (cloudFileName, localFileName, fileType, uploadProgressEvent, callfunc) => {
+	return uniCloudHttp.cloudUploadFile(cloudFileName, localFileName, fileType, uploadProgressEvent, callfunc);
+};
+
+//
+// uploadImageLogAdd : 上传图片日志添加
+//
+const uploadImageLogAdd = (token, param, callfunc) => {
+	let postParam = {};
+	postParam["token"] = token;
+	postParam["param"] = param;
+	return uniCloudHttp.cloudCallFunc("global", {"action": "log/file_log/uploadImageLog", "data": postParam}, callfunc);
+}
 
 
 export default {
@@ -242,6 +273,7 @@ export default {
 	uniGetUserProfile,
 	uniShowModel,
 	uniShowToast,
+	uniPreviewImage,
 	getWeixinOepnInfo,
 	getAccountLoginRegist,
 	getUserAttrUpdate,
@@ -249,5 +281,7 @@ export default {
 	categoryTwoRequest,
 	routerRequest,
 	getCategory,
-	getCategoryHumainAstro
+	getCategoryHumainAstro,
+	cloudUploadFile,
+	uploadImageLogAdd
 }

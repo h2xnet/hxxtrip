@@ -29,9 +29,9 @@
 			</view>
 		</view>
 		<view class="toolbar">
-			<view @tap="oncancle" class="btn-cancel">取消</view>
-			<view @tap="rotateAngle" class="btn-rotate">旋转</view>
-			<view @tap="onok" class="btn-ok">确定</view>
+			<view @tap="oncancle" class="btn-cancel font-size-max">取消</view>
+			<view @tap="rotateAngle" class="btn-rotate font-size-max">旋转</view>
+			<view @tap="onok" class="btn-ok font-size-max">确定</view>
 		</view>
 	</view>
 </view>
@@ -968,4 +968,17 @@ export default {
 .transit {
 	transition: width 0.3s, height 0.3s, left 0.3s, top 0.3s, transform 0.3s;
 }
+
+.font-size-max {
+	font-size: 32upx;
+}
+
+.font-size-mid {
+	font-size: 30upx;
+}
+
+.font-size-min {
+	font-size: 26upx;
+}
+
 </style>

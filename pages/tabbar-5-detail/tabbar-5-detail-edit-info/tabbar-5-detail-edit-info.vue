@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="head-wrap" style="margin-top: 40upx;">
-			<HeadImageBar @headImageBarClick="onChoseHeadImage">
+			<HeadImageBar :imageUrl="userInfo.avatar_url" @headImageBarClick="onChoseHeadImage">
 				
 			</HeadImageBar>
 		</view>
@@ -36,7 +36,7 @@
 		onLoad() {
 			console.log("tabbar-5-detail-edit-info.vue onLoad.");
 			
-			let That = this;
+			/*let That = this;
 			
 			// 获取缓存用户信息
 			let cacheUserInfo = That.$storage.getUserInfo();
@@ -44,7 +44,22 @@
 			if (cacheUserInfo != null) {
 				cacheUserInfo["position_list"] = cacheUserInfo["position"].join(",");
 				That.userInfo = cacheUserInfo;
+			}*/
+		},
+		
+		onShow() {
+			console.log("tabbar-5-detail-edit-info.vue onShow.");
+			
+			let That = this;
+			
+			// 获取缓存用户信息
+			let cacheUserInfo = That.$storage.getUserInfo();
+			console.log("tabbar-5-detail-edit-info.vue onShow cacheUserInfo:" + JSON.stringify(cacheUserInfo));
+			if (cacheUserInfo != null) {
+				cacheUserInfo["position_list"] = cacheUserInfo["position"].join(",");
+				That.userInfo = cacheUserInfo;
 			}
+			
 		},
 		
 		methods: {

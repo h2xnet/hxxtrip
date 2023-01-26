@@ -44,6 +44,7 @@ const cloudCallFunc = (url, params, callHandler) => {
 // cloudUploadFile : 云上传文件
 // @cloudFilePath: 云端文件路径，即文件名
 // @localFilePath: 上传的本地文件路径
+// @fileType: 文件类型，支付宝小程序、钉钉小程序必填，可选image、video、audio
 // @uploadProgressEvent: 上传进度，可以为空
 // @callHandler: 上传结果
 //

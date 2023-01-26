@@ -572,6 +572,16 @@ var _default = {
       // 扫一扫
       console.log("tabbar-5.vue onScan");
       var That = this;
+    },
+    //
+    // onPreviewHead : 预览头像
+    //
+    onPreviewHead: function onPreviewHead() {
+      console.log("tabbar-5.vue onPreviewHead.");
+      var That = this;
+      var imgs = [];
+      imgs.push(That.userInfo.headUrl);
+      _request.default.uniPreviewImage(imgs, 0);
     }
   }
 };
