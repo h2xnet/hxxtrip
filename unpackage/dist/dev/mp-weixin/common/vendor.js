@@ -17504,6 +17504,12 @@ var _default = {
       "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
+  }, {
+    "path": "pages/tabbar-3-detial/tabbar-3-detial-image-cropper/tabbar-3-detial-image-cropper",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
   }],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -17573,7 +17579,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 385:
+/***/ 391:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**************************************************************************/
@@ -18611,7 +18617,143 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 414:
+/***/ 42:
+/*!*******************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/init.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
+var _config = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/config.js */ 43));
+// 导入配置
+
+// uni-id的云对象
+var uniIdCo = uniCloud.importObject("uni-id-co", {
+  customUI: true
+});
+// 用户配置的登录方式、是否打开调试模式
+var loginTypes = _config.default.loginTypes,
+  debug = _config.default.debug;
+function _default() {
+  return _ref.apply(this, arguments);
+}
+function _ref() {
+  _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+    var _yield$uniIdCo$getSup, supportedLoginType, data, list, db, onDBError;
+    return _regenerator.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            onDBError = function _onDBError(_ref2) {
+              var code = _ref2.code,
+                message = _ref2.message;
+            } // console.error('onDBError', {code,message});
+            ;
+            if (!debug) {
+              _context2.next = 10;
+              break;
+            }
+            _context2.next = 4;
+            return uniIdCo.getSupportedLoginType();
+          case 4:
+            _yield$uniIdCo$getSup = _context2.sent;
+            supportedLoginType = _yield$uniIdCo$getSup.supportedLoginType;
+            console.log("supportedLoginType: " + JSON.stringify(supportedLoginType));
+            //登录方式，服务端和客户端的映射关系
+            data = {
+              smsCode: 'mobile-code',
+              univerify: 'univerify',
+              username: 'username-password',
+              weixin: 'weixin',
+              qq: 'qq',
+              xiaomi: 'xiaomi',
+              sinaweibo: 'sinaweibo',
+              taobao: 'taobao',
+              facebook: 'facebook',
+              google: 'google',
+              alipay: 'alipay',
+              apple: "apple"
+            }; //遍历客户端配置的登录方式，与服务端比对。并在错误时抛出错误提示
+            list = loginTypes.filter(function (type) {
+              return !supportedLoginType.includes(data[type]);
+            });
+            if (list.length) {
+              console.error("\u9519\u8BEF\uFF1A\u524D\u7AEF\u542F\u7528\u7684\u767B\u5F55\u65B9\u5F0F:".concat(list.join('，'), ";\u6CA1\u6709\u5728\u670D\u52A1\u7AEF\u5B8C\u6210\u914D\u7F6E\u3002\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A\"/uni_modules/uni-config-center/uniCloud/cloudfunctions/common/uni-config-center/uni-id/config.json\""));
+            }
+          case 10:
+            //3. 绑定clientDB错误事件
+            // clientDB对象
+            db = uniCloud.database();
+            db.on('error', onDBError);
+            //clientDB的错误提示
+
+            // 解绑clientDB错误事件
+            //db.off('error', onDBError)
+
+            //4. 同步客户端push_clientid至device表
+            if (uniCloud.onRefreshToken) {
+              uniCloud.onRefreshToken(function () {
+                // console.log('onRefreshToken');
+                if (uni.getPushClientId) {
+                  uni.getPushClientId({
+                    success: function () {
+                      var _success = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {
+                        var pushClientId, res;
+                        return _regenerator.default.wrap(function _callee$(_context) {
+                          while (1) {
+                            switch (_context.prev = _context.next) {
+                              case 0:
+                                // console.log(e)
+                                pushClientId = e.cid; // console.log(pushClientId);
+                                _context.next = 3;
+                                return uniIdCo.setPushCid({
+                                  pushClientId: pushClientId
+                                });
+                              case 3:
+                                res = _context.sent;
+                              case 4:
+                              case "end":
+                                return _context.stop();
+                            }
+                          }
+                        }, _callee);
+                      }));
+                      function success(_x) {
+                        return _success.apply(this, arguments);
+                      }
+                      return success;
+                    }(),
+                    fail: function fail(e) {
+                      console.log(e);
+                    }
+                  });
+                }
+              });
+            }
+          case 13:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _ref.apply(this, arguments);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 420:
 /*!***********************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/mp-html/components/mp-html/parser.js ***!
   \***********************************************************************/
@@ -19824,142 +19966,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 42:
-/*!*******************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/init.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
-var _config = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-id-pages/config.js */ 43));
-// 导入配置
-
-// uni-id的云对象
-var uniIdCo = uniCloud.importObject("uni-id-co", {
-  customUI: true
-});
-// 用户配置的登录方式、是否打开调试模式
-var loginTypes = _config.default.loginTypes,
-  debug = _config.default.debug;
-function _default() {
-  return _ref.apply(this, arguments);
-}
-function _ref() {
-  _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
-    var _yield$uniIdCo$getSup, supportedLoginType, data, list, db, onDBError;
-    return _regenerator.default.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            onDBError = function _onDBError(_ref2) {
-              var code = _ref2.code,
-                message = _ref2.message;
-            } // console.error('onDBError', {code,message});
-            ;
-            if (!debug) {
-              _context2.next = 10;
-              break;
-            }
-            _context2.next = 4;
-            return uniIdCo.getSupportedLoginType();
-          case 4:
-            _yield$uniIdCo$getSup = _context2.sent;
-            supportedLoginType = _yield$uniIdCo$getSup.supportedLoginType;
-            console.log("supportedLoginType: " + JSON.stringify(supportedLoginType));
-            //登录方式，服务端和客户端的映射关系
-            data = {
-              smsCode: 'mobile-code',
-              univerify: 'univerify',
-              username: 'username-password',
-              weixin: 'weixin',
-              qq: 'qq',
-              xiaomi: 'xiaomi',
-              sinaweibo: 'sinaweibo',
-              taobao: 'taobao',
-              facebook: 'facebook',
-              google: 'google',
-              alipay: 'alipay',
-              apple: "apple"
-            }; //遍历客户端配置的登录方式，与服务端比对。并在错误时抛出错误提示
-            list = loginTypes.filter(function (type) {
-              return !supportedLoginType.includes(data[type]);
-            });
-            if (list.length) {
-              console.error("\u9519\u8BEF\uFF1A\u524D\u7AEF\u542F\u7528\u7684\u767B\u5F55\u65B9\u5F0F:".concat(list.join('，'), ";\u6CA1\u6709\u5728\u670D\u52A1\u7AEF\u5B8C\u6210\u914D\u7F6E\u3002\u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84\uFF1A\"/uni_modules/uni-config-center/uniCloud/cloudfunctions/common/uni-config-center/uni-id/config.json\""));
-            }
-          case 10:
-            //3. 绑定clientDB错误事件
-            // clientDB对象
-            db = uniCloud.database();
-            db.on('error', onDBError);
-            //clientDB的错误提示
-
-            // 解绑clientDB错误事件
-            //db.off('error', onDBError)
-
-            //4. 同步客户端push_clientid至device表
-            if (uniCloud.onRefreshToken) {
-              uniCloud.onRefreshToken(function () {
-                // console.log('onRefreshToken');
-                if (uni.getPushClientId) {
-                  uni.getPushClientId({
-                    success: function () {
-                      var _success = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {
-                        var pushClientId, res;
-                        return _regenerator.default.wrap(function _callee$(_context) {
-                          while (1) {
-                            switch (_context.prev = _context.next) {
-                              case 0:
-                                // console.log(e)
-                                pushClientId = e.cid; // console.log(pushClientId);
-                                _context.next = 3;
-                                return uniIdCo.setPushCid({
-                                  pushClientId: pushClientId
-                                });
-                              case 3:
-                                res = _context.sent;
-                              case 4:
-                              case "end":
-                                return _context.stop();
-                            }
-                          }
-                        }, _callee);
-                      }));
-                      function success(_x) {
-                        return _success.apply(this, arguments);
-                      }
-                      return success;
-                    }(),
-                    fail: function fail(e) {
-                      console.log(e);
-                    }
-                  });
-                }
-              });
-            }
-          case 13:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _ref.apply(this, arguments);
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
 /***/ 43:
 /*!*********************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/config.js ***!
@@ -20166,108 +20172,6 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 464:
-/*!**************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  data: function data() {
-    return {};
-  },
-  created: function created() {
-    this.popup = this.getParent();
-  },
-  methods: {
-    /**
-     * 获取父元素实例
-     */
-    getParent: function getParent() {
-      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'uniPopup';
-      var parent = this.$parent;
-      var parentName = parent.$options.name;
-      while (parentName !== name) {
-        parent = parent.$parent;
-        if (!parent) return false;
-        parentName = parent.$options.name;
-      }
-      return parent;
-    }
-  }
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 465:
-/*!*******************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 466));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 467));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 468));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 466:
-/*!******************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
-  \******************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
-
-/***/ }),
-
-/***/ 467:
-/*!***********************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
-  \***********************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
-/***/ 468:
-/*!***********************************************************************************!*\
-  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
-  \***********************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
 /***/ 47:
 /*!*********************************************!*\
   !*** D:/h2x/hxxtrip/utils/cache/storage.js ***!
@@ -20358,6 +20262,24 @@ var _default = {
   getArticleData: function getArticleData() {
     var That = this;
     return That.get("articleData");
+  },
+  //
+  // setCropperImageData : 设置裁剪图片数据
+  //
+  setCropperImageData: function setCropperImageData(data) {
+    var That = this;
+    That.set("cropperImage", data);
+  },
+  //
+  // getCropperImageData : 获取裁剪图片数据
+  //
+  getCropperImageData: function getCropperImageData() {
+    var That = this;
+    return That.get("cropperImage");
+  },
+  removeCropperImageData: function removeCropperImageData() {
+    var That = this;
+    That.remove("cropperImage");
   }
 };
 exports.default = _default;
@@ -20365,7 +20287,127 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 497:
+/***/ 470:
+/*!**************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  data: function data() {
+    return {};
+  },
+  created: function created() {
+    this.popup = this.getParent();
+  },
+  methods: {
+    /**
+     * 获取父元素实例
+     */
+    getParent: function getParent() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'uniPopup';
+      var parent = this.$parent;
+      var parentName = parent.$options.name;
+      while (parentName !== name) {
+        parent = parent.$parent;
+        if (!parent) return false;
+        parentName = parent.$options.name;
+      }
+      return parent;
+    }
+  }
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 471:
+/*!*******************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 472));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 473));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 474));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 472:
+/*!******************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
+  \******************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
+
+/***/ }),
+
+/***/ 473:
+/*!***********************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \***********************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 474:
+/*!***********************************************************************************!*\
+  !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \***********************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 5:
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 6);
+var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 7);
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
+var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 10);
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 503:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils.js ***!
   \*********************************************************************************************/
@@ -20621,25 +20663,7 @@ function imageTouchMoveOfCalcOffset(data, clientXForLeft, clientYForLeft) {
 
 /***/ }),
 
-/***/ 5:
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 6);
-var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 7);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
-var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 10);
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 519:
+/***/ 525:
 /*!*****************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \*****************************************************************************/
@@ -21331,7 +21355,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 520:
+/***/ 526:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/utils.js ***!
   \**************************************************************************/
@@ -22191,7 +22215,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 577:
+/***/ 583:
 /*!****************************************************************!*\
   !*** D:/h2x/hxxtrip/components/wangding-pickerAddress/data.js ***!
   \****************************************************************/
@@ -32486,7 +32510,7 @@ module.exports = _arrayWithHoles, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 601:
+/***/ 607:
 /*!*****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \*****************************************************************************************/
@@ -32501,9 +32525,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 602));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 603));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 604));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 608));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 609));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 610));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -32513,7 +32537,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 602:
+/***/ 608:
 /*!****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \****************************************************************************************/
@@ -32524,7 +32548,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 603:
+/***/ 609:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \*********************************************************************************************/
@@ -32535,7 +32559,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 604:
+/***/ 610:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \*********************************************************************************************/
@@ -32546,7 +32570,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 612:
+/***/ 618:
 /*!*************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
   \*************************************************************************************/
@@ -32561,9 +32585,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 613));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 614));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 615));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 619));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 620));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 621));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -32573,7 +32597,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 613:
+/***/ 619:
 /*!************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
   \************************************************************************************/
@@ -32584,7 +32608,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 614:
+/***/ 620:
 /*!*****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
   \*****************************************************************************************/
@@ -32595,7 +32619,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 615:
+/***/ 621:
 /*!*****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \*****************************************************************************************/
@@ -32606,7 +32630,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 672:
+/***/ 678:
 /*!**********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \**********************************************************************************************/
@@ -32740,7 +32764,7 @@ function createAnimation(option, _this) {
 
 /***/ }),
 
-/***/ 692:
+/***/ 698:
 /*!***************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \***************************************************************************/

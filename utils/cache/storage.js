@@ -74,6 +74,27 @@ export default {
 	getArticleData() {
 		let That = this;
 		return That.get("articleData");
+	},
+	
+	//
+	// setCropperImageData : 设置裁剪图片数据
+	//
+	setCropperImageData(data) {
+		let That = this;
+		That.set("cropperImage", data);
+	},
+	
+	//
+	// getCropperImageData : 获取裁剪图片数据
+	//
+	getCropperImageData() {
+		let That = this;
+		return That.get("cropperImage");
+	},
+	
+	removeCropperImageData() {
+		let That = this;
+		That.remove("cropperImage");
 	}
 	
 }

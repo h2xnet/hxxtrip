@@ -283,6 +283,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/tabbar-3-detial/tabbar-3-detial-image-cropper/tabbar-3-detial-image-cropper",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

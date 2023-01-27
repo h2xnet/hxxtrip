@@ -38,7 +38,8 @@
     "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
     "pages/tabbar-5-detail/tabbar-5-detail-edit-info-item/tabbar-5-detail-edit-info-item",
     "pages/tabbar-5-detail/tabbar-5-detail-preview-image/tabbar-5-detail-preview-image",
-    "pages/tabbar-3-detial/tabbar-3-detial-article-publish/tabbar-3-detial-article-publish"
+    "pages/tabbar-3-detial/tabbar-3-detial-article-publish/tabbar-3-detial-article-publish",
+    "pages/tabbar-3-detial/tabbar-3-detial-image-cropper/tabbar-3-detial-image-cropper"
   ],
   "subPackages": [],
   "window": {

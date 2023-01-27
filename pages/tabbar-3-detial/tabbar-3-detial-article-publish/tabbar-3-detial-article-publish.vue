@@ -1,45 +1,107 @@
 <template>
 	<view class="container">
 		<view class="cover-wrap">
+			<!-- 封面 -->
 			<block v-if="curCoverUrlName == 'coverUrl1'">
 				<view v-if="articleInfo.coverUrl1 == ''" class="cover-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
-					<view class="cover-wrap box-shadown" style="width: 100%; height: 100%; border-radius: 8upx;">
+					<view class="cover-wrap box-shadown" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
 						<uni-icons type="plusempty" size="36" color="#ccc"></uni-icons>
 					</view>
 				</view>
 				<view v-else class="cover-image-wrap">
-					<block v-if="curCoverUrlName == 'coverUrl1'">
-						<image src="https://mp-1b269a9a-d85c-47bc-9a6b-93394729eabf.cdn.bspapp.com/cloudstorage/3b317b44-8f49-4513-ab9a-e10d291533aa.png" mode="aspectFill" style="height: 196upx;"></image>
-					</block>
-					<block v-else>
-						<image src="https://mp-1b269a9a-d85c-47bc-9a6b-93394729eabf.cdn.bspapp.com/cloudstorage/3b317b44-8f49-4513-ab9a-e10d291533aa.png" mode="aspectFill" style="width: 196upx; height: 196upx;"></image>
-					</block>
+					<image :src="articleInfo.coverUrl1" mode="aspectFill" style="height: 196upx;"></image>
 				</view>
 			</block>
 			<block v-else>
-				<view v-if="articleInfo.coverUrl1 == ''" class="cover-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
-					<view class="cover-wrap box-shadown" style="width: 100%; height: 100%; border-radius: 8upx;">
+				<view v-if="articleInfo.coverUrl2 == ''" class="cover-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
+					<view class="cover-wrap box-shadown" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
 						<uni-icons type="plusempty" size="36" color="#ccc"></uni-icons>
 					</view>
 				</view>
 				<view v-else class="cover-image-wrap">
-					<block v-if="curCoverUrlName == 'coverUrl1'">
-						<image src="https://mp-1b269a9a-d85c-47bc-9a6b-93394729eabf.cdn.bspapp.com/cloudstorage/3b317b44-8f49-4513-ab9a-e10d291533aa.png" mode="aspectFill" style="height: 196upx;"></image>
-					</block>
-					<block v-else>
-						<image src="https://mp-1b269a9a-d85c-47bc-9a6b-93394729eabf.cdn.bspapp.com/cloudstorage/3b317b44-8f49-4513-ab9a-e10d291533aa.png" mode="aspectFill" style="width: 196upx; height: 196upx;"></image>
-					</block>
+					<image :src="articleInfo.coverUrl2" mode="aspectFill" style="width: 196upx; height: 196upx;"></image>
 				</view>
 			</block>
 			
-			<view class="line-box justify-content-center margin-top-min">
+			<!--<view class="line-box justify-content-center margin-top-min">
 				<view class="line-box-item" @click="onSwitchCover('coverUrl1');">
-					<image src="" mode="aspectFill" style="width: 226upx; height: 96upx;"></image>
+					<image :src="articleInfo.coverUrl1" mode="aspectFill" style="width: 226upx; height: 96upx;"></image>
 				</view>
 				<view class="line-box-item margin-left-mid" @click="onSwitchCover('coverUrl2');">
-					<image src="" mode="aspectFill" style="width: 96upx; height: 96upx;"></image>
+					<image :src="articleInfo.coverUrl2" mode="aspectFill" style="width: 96upx; height: 96upx;"></image>
+				</view>
+			</view>-->
+			
+			<!-- 标题 -->
+			<view class="line-box margin-top-max justify-content-flex-start">
+				<view class="line-box-item font-size-max">
+					<text class="margin-left-max font-weight-bold">{{articleInfo.title}}</text>
 				</view>
 			</view>
+			
+			<!-- 摘要 -->
+			<view class="line-box margin-top-max justify-content-flex-start font-size-mid" style="height: 200upx;">
+				<textarea class="margin-left-max margin-right-max font-size-mid" 
+					maxlength="200" placeholder="输入摘要, 选填" :value="articleInfo.precis" @input="onInputPrecis">
+					
+				</textarea>
+			</view>
+			
+			<!-- 原创 -->
+			<view class="card-wrap margin-top-max">
+				<view class="line-box justify-content-space-between border-radius-mid" style="width: auto;">
+					<view>
+						<text class="font-size-mid">原创</text>
+					</view>
+					
+					<view>
+						<block v-if="articleInfo.originalState > 0">
+							<switch checked="true" @change="onOriginalStateChange" style="transform:scale(0.8); margin-right: -25upx;"></switch>
+						</block>
+						<block v-else>
+							<switch @change="onOriginalStateChange" style="transform:scale(0.8); margin-right: -25upx;"></switch>
+						</block>
+					</view>
+				</view>
+				<view class="line-box justify-content-space-between border-radius-mid" style="width: auto;">
+					<view>
+						<text class="font-size-mid">作者</text>
+					</view>
+					<view>	
+						<input class="font-size-mid" type="text" :value="articleInfo.originalAuthor" placeholder="输入作者名" 
+							@input="onOriginalAuthor" style="text-align: right;"/>
+					</view>
+				</view>
+			</view>
+			
+			<!-- 合集 -->
+			<view class="card-wrap margin-top-max">
+				<view class="line-box justify-content-space-between border-radius-mid" @click="onTopicSetsClick"
+					style="width: auto;">
+					<view>
+						<text class="font-size-mid">合集</text>
+					</view>
+					<view>
+						<uni-icons type="right" color="gray" size="16"></uni-icons>
+					</view>
+				</view>
+				<view class="line-box justify-content-flex-start border-radius-mid" style="width: auto;">
+					<block v-for="(item,index) in articleInfo.topicSets">
+						<uni-tag :circle="true" :text="item" type="primary" size="mini"></uni-tag>
+						<view class="margin-left-min"></view>
+					</block>
+				</view>
+			</view>
+			
+			<!-- 合集弹出层 -->
+			<view>
+				<uni-popup ref="topicSetDialog" type="bottom">
+					<view style="width: 100%; height: 800upx; background-color: #fff;">
+						ddd
+					</view>
+				</uni-popup>
+			</view>
+			
 		</view>
 		
 		<view class="fixed-bottom" style="height: 100upx;">
@@ -77,12 +139,13 @@
 					"title": "",
 					"html": "",
 					"coverUrl1": "", //封面1
-					"coverUrl2": "", //封面2
+					"coverUrl2": "", //封面2，暂时不用
 					"precis": "", //摘要
-					"originalState": 1, // 原创开启标志
+					"originalState": 0, // 原创开启标志
 					"originalAuthor": "" ,// 原创作者
 					"topicSets": [] // 话题合集
 				},
+				isCropper: 0 // 截剪标志
 			}
 		},
 		
@@ -94,7 +157,40 @@
 			console.log("tabbar-3-detial-article-publish.vue onLoad cacheArticleInfo: " + JSON.stringify(cacheArticleInfo));
 			
 			if (cacheArticleInfo) {
+				
+				cacheArticleInfo["originalState"] = 0;
+				//cacheArticleInfo["precis"] = "dkdwe33";
+				//cacheArticleInfo["topicSets"] = ["11","22","33"];
+				
 				That.articleInfo = cacheArticleInfo;
+			}
+		},
+		
+		onShow() {
+			console.log("tabbar-3-detial-article-publish.vue onShow.");
+			
+			let That = this;
+			
+			if (That.isCropper > 0) {
+				That.isCropper = 0;
+				
+				let cacheCropperImageData = That.$storage.getCropperImageData();
+				console.log("tabbar-3-detial-article-publish.vue onShow cacheCropperImageData: " + JSON.stringify(cacheCropperImageData));
+				
+				if (cacheCropperImageData) {
+					let imgUrl = cacheCropperImageData["path"];
+					console.log("tabbar-3-detial-article-publish.vue onShow imgUrl: " + imgUrl);
+					
+					if (imgUrl != "") {
+						if (That.curCoverUrlName == "coverUrl1") {
+							That.articleInfo.coverUrl1 = imgUrl;
+						}
+					}
+					
+					// 清空缓存
+					That.$storage.removeCropperImageData();
+				}
+				
 			}
 		},
 		
@@ -109,6 +205,96 @@
 				let That = this;
 				
 				That.curCoverUrlName = name;
+			},
+			
+			//
+			// onChoseCoverImage : 选择封面图片
+			//
+			onChoseCoverImage() {
+				console.log("tabbar-3-detial-article-publish.vue onChoseCoverImage.");
+				
+				let That = this;
+				
+				request.uniChoseImage(1, function(code, res){
+					console.log("tabbar-3-detial-article-publish.vue onChoseCoverImage uniChoseImage code:" + code + ", res:" + JSON.stringify(res));
+					
+					if (code != 0) {
+						request.uniShowToast("图片加载失败", null, 3000);
+						return;
+					}
+					
+					let tempFilePaths = res["tempFilePaths"];
+					let imgPath = tempFilePaths[0];
+					
+					// 截剪
+					That.isCropper = 1;
+					
+					let height = 196;
+					let width = 196;
+					if (That.curCoverUrlName == "coverUrl1") {
+						width = 460;
+					}
+					
+					let url = "/pages/tabbar-3-detial/tabbar-3-detial-image-cropper/tabbar-3-detial-image-cropper";
+					url += "?width=" + width;
+					url += "&height=" + height;
+					url += "&path=" + imgPath;
+					request.uniGotoPage(url, {}, function(code, res, param) {
+						console.log("tabbar-3-detial-article-publish.vue onChoseCoverImage uniGotoPage code:" + code + ", res:" + JSON.stringify(res));
+						
+					});
+					
+				});
+			},
+			
+			//
+			// onInputPrecis : 输入摘要
+			//
+			onInputPrecis(e) {
+				console.log("tabbar-3-detial-article-publish.vue onInputPrecis params, " + JSON.stringify(e));
+				
+				let That = this;
+				
+				That.articleInfo.precis = e.detail.value;
+				
+			},
+			
+			//
+			// onOriginalStateChange : 原创标志事件
+			//
+			onOriginalStateChange(e) {
+				console.log("tabbar-3-detial-article-publish.vue onOriginalStateChange params, " + JSON.stringify(e));
+				
+				let That = this;
+				
+				let state = 0;
+				if (e.detail.value) {
+					state = 1;
+				}
+				
+				That.articleInfo.originalState = state;
+			},
+			
+			//
+			// onOriginalAuthor : 原创作者
+			//
+			onOriginalAuthor(e) {
+				console.log("tabbar-3-detial-article-publish.vue onOriginalAuthor params, " + JSON.stringify(e));
+				
+				let That = this;
+				
+				That.articleInfo.originalAuthor = e.detail.value;
+			},
+			
+			//
+			// onTopicSetsClick : 合集事件
+			//
+			onTopicSetsClick() {
+				console.log("tabbar-3-detial-article-publish.vue onTopicSetsClick");
+				
+				let That = this;
+				
+				That.$refs.topicSetDialog.open("bottom");
 			}
 			
 		}
@@ -175,6 +361,18 @@
 	justify-content: space-around;
 }
 
+.justify-content-flex-start {
+	justify-content: flex-start;
+}
+
+.justify-content-flex-end {
+	justify-content: flex-end;
+}
+
+.justify-content-space-between {
+	justify-content: space-between;
+}
+
 .font-size-max {
 	font-size: 32upx;
 }
@@ -185,6 +383,10 @@
 
 .font-size-min {
 	font-size: 26upx;
+}
+
+.font-weight-bold {
+	font-weight: bold;
 }
 
 .margin-top-min {
@@ -209,6 +411,31 @@
 
 .box-shadown {
 	box-shadow: 0upx -5upx 14upx #e3e6e6;
+}
+
+.card-wrap {
+	width: 90%;
+	border-radius: 8upx;
+	background-color: #e3e6e6;
+}
+
+.border-radius-min {
+	border-radius: 4upx;
+}
+
+.border-radius-mid {
+	border-radius: 8upx;
+}
+
+.border-radius-max {
+	border-radius: 15upx;
+}
+
+// 灰色分隔线
+.space-gray-line {
+	width: 90%;
+	height: 1upx;
+	background-color: #d9d9d9;
 }
 
 </style>
