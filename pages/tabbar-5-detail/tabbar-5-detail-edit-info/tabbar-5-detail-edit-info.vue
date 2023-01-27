@@ -36,15 +36,8 @@
 		onLoad() {
 			console.log("tabbar-5-detail-edit-info.vue onLoad.");
 			
-			/*let That = this;
+			let That = this;
 			
-			// 获取缓存用户信息
-			let cacheUserInfo = That.$storage.getUserInfo();
-			console.log("tabbar-5-detail-edit-info.vue onLoad cacheUserInfo:" + JSON.stringify(cacheUserInfo));
-			if (cacheUserInfo != null) {
-				cacheUserInfo["position_list"] = cacheUserInfo["position"].join(",");
-				That.userInfo = cacheUserInfo;
-			}*/
 		},
 		
 		onShow() {

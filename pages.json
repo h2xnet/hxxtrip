@@ -274,6 +274,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/tabbar-3-detial/tabbar-3-detial-article-publish/tabbar-3-detial-article-publish",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -59,7 +59,7 @@ const uniGotoPage = (url, param, callfunc) => {
 		fail(err) {
 			console.log("request.js uniGotoPage fail, err:" + JSON.stringify(err));
 			if (callfunc) {
-				callfunc(err, null, param);
+				callfunc(err, err, param);
 			}
 		}
 	});
@@ -178,6 +178,25 @@ const uniPreviewImage = (imgs, index) => {
 }
 
 //
+// uniChoseImage : 选择图片
+//
+const uniChoseImage = (count, callfunc) => {
+	uni.chooseImage({
+		count: count,
+		success(res) {
+			if (callfunc) {
+				callfunc(0, res);
+			}
+		},
+		fail(err) {
+			if (callfunc) {
+				callfunc(1, err);
+			}
+		}
+	})
+}
+
+//
 // getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
 //
 const getWeixinOepnInfo = (appId, secret, accessCode, callfunc) => {
@@ -253,13 +272,23 @@ const cloudUploadFile = (cloudFileName, localFileName, fileType, uploadProgressE
 };
 
 //
-// uploadImageLogAdd : 上传图片日志添加
+// uploadImageLog : 上传头像图片
 //
-const uploadImageLogAdd = (token, param, callfunc) => {
+const uploadImageLog = (token, param, callfunc) => {
 	let postParam = {};
 	postParam["token"] = token;
 	postParam["param"] = param;
 	return uniCloudHttp.cloudCallFunc("global", {"action": "log/file_log/uploadImageLog", "data": postParam}, callfunc);
+}
+
+//
+// uploadImagePrivate : 上传私有图库图片
+//
+const uploadImagePrivate = (token, param, callfunc) => {
+	let postParam = {};
+	postParam["token"] = token;
+	postParam["param"] = param;
+	return uniCloudHttp.cloudCallFunc("global", {"action": "log/file_log/uploadImagePrivate", "data": postParam}, callfunc);
 }
 
 
@@ -274,6 +303,7 @@ export default {
 	uniShowModel,
 	uniShowToast,
 	uniPreviewImage,
+	uniChoseImage,
 	getWeixinOepnInfo,
 	getAccountLoginRegist,
 	getUserAttrUpdate,
@@ -283,5 +313,6 @@ export default {
 	getCategory,
 	getCategoryHumainAstro,
 	cloudUploadFile,
-	uploadImageLogAdd
+	uploadImageLog,
+	uploadImagePrivate
 }

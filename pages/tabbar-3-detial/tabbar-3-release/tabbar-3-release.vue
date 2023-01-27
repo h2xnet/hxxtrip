@@ -1,15 +1,15 @@
 <template>
-	<view class="content">
-		<view class="work-area">
-			<view class="line-box">
-				<view class="line-box-item green-color" @tap="onNext">下一步</view>
-				<!--<view class="line-box-item gray-color">保存</view>-->
+	<view class="container">
+		<view class="work-wrap">
+			<view class="line-box line-box-flex-end font-size-max">
+				<view class="margin-right-max color-green" @tap="onNext">下一步</view>
+				<!--<view class="margin-right-max color-gray">保存</view>-->
 			</view>
 			
-			<uni-card :is-shadow="false" is-full>
-				<uni-easyinput v-model="articleTitle" :inputBorder="false" :placeholderStyle="placeholderStyle" 
-				placeholder="请输入标题" ></uni-easyinput>
-			</uni-card>
+			<view class="line-box line-box-flex-start font-size-max font-weight-bold">
+				<uni-easyinput v-model="articleTitle" :inputBorder="false" :placeholderStyle="placeholderStyle"
+				placeholder="请输入标题" @input="onTitleInput" ></uni-easyinput>
+			</view>
 			
 			<view class="editor-toolbox">
 				<i class="iconfont icon-undo" @tap="onEditorToolTap('undo');" />
@@ -22,7 +22,7 @@
 				<i class="iconfont icon-save" @tap="onEditorToolTap('save');" />
 			</view>
 			
-			<view class="editor-body" :style="{height: editorBodyHeight + 'px'}">
+			<view class="editor-body font-size-mid" :style="{height: editorBodyHeight + 'px'}">
 				<editor id="editorId" class="editor-plugin" :placeholder="placeholder" @ready="onEditorReady">
 				</editor>
 								
@@ -36,6 +36,9 @@
 	
 	import mpHtml from '@/uni_modules/mp-html/components/mp-html/mp-html'
 	
+	// 网络请求
+	import request from '../../../utils/net/request.js'
+	
 	export default {
 		components: {
 			mpHtml
@@ -43,9 +46,10 @@
 		data() {
 			return {
 				title: 'Hello',
+				articleTitle: '',
 				placeholder: '请输入内容...',
 				editorBodyHeight: 400,
-				editorHtml: 'Hello word!'
+				editorHtml: ''
 			}
 		},
 		onLoad() {
@@ -62,7 +66,15 @@
 						That.editorBodyHeight = winh - data.top  //计算高度：元素高度=窗口高度-元素距离顶部的距离（data.top）
 					}).exec()
 				}
-			})
+			});
+			
+			// 获取缓存
+			let cacheArticleInfo = That.$storage.getArticleData();
+			console.log("tabbar-3-release.vue onLoad cacheArticleInfo: " + JSON.stringify(cacheArticleInfo));
+			if (cacheArticleInfo) {
+				That.articleTitle = cacheArticleInfo["title"];
+				That.editorHtml = cacheArticleInfo["html"];
+			}
 			
 		},
 		
@@ -86,6 +98,15 @@
 				  
 				}).exec()
 				// #endif
+			},
+			
+			// 标题栏输入事件
+			onTitleInput(val) {
+				console.log("tabbar-3-release.vue onTitleInput params, val: " + JSON.stringify(val));
+				
+				let That = this;
+				
+				That.articleTitle = val;
 			},
 			
 			//
@@ -129,31 +150,30 @@
 				console.log("tabbar-3-release.vuew onInsertImg");
 				
 				let That = this;
+				
+				request.uniChoseImage(20, function(code, res){
+					console.log("tabbar-3-release.vuew onInsertImg uniChoseImage code:" + code + ", res:" + JSON.stringify(res));
 					
-				/*uni.chooseImage({
-					count: 1,
-					success: function(res) {
-						console.log("tabbar-3-release.vue onInsertImg uni.chooseImage res: " + JSON.stringify(res));
-						if(process.env.NODE_ENV === 'development'){
-							console.log('开发环境');
-							That.upurl = 'http://local.yongen.com/api.php/Upload/uploadMoreImg';
-						}
-						else{
-							console.log('生产环境');
-							That.upurl = '/api.php/Upload/uploadMoreImg';
-						}
-						
-						let url = res.tempFilePaths[0];
-						
-						That.editorCtx.insertImage({
-							src: url,
-							alt: '图片',
-							success: function(e) {
-								
-							}
+					if (code == 0) {
+						let tempFilePaths = res["tempFilePaths"];
+						tempFilePaths.forEach((item, index, tempFilePaths) => {
+							console.log("tabbar-3-release.vuew onInsertImg forEach, index:" + index + ", item:" + item);
+							
+							// 插入图片到编辑器
+							That.editorCtx.insertImage({
+								src: item,
+								alt: "articleImage",
+								success: function(res) {
+									console.log("tabbar-3-release.vuew onInsertImg insertImage success, res:" + JSON.stringify(res));
+								},
+								fail: function(err) {
+									console.log("tabbar-3-release.vuew onInsertImg insertImage fail, err:" + JSON.stringify(err));
+								}
+							});
 						});
-					}							
-				});*/
+					}
+					
+				});
 				
 			},
 			
@@ -263,9 +283,53 @@
 				
 				let That = this;
 				
+				// 判断标题是否为空
+				let articleTitle = That.articleTitle;
+				console.log("tabbar-3-release onNext articleTitle:" + articleTitle);
+				if (articleTitle == "") {
+					request.uniShowToast("标题不能为空", null, 3000);
+					return;
+				}
+				
 				That.editorCtx.getContents({
 					success: function(res) {
-						console.log('onNext editor contents:', res.html);
+						// res.html
+						console.log('tabbar-3-release onNext editor getContents success, res:', JSON.stringify(res));
+						// {"errMsg":"ok","html":"<p><br></p>","text":"\n","delta":{"ops":[{"insert":"\n"}]}}
+						let editorHtml = res["html"];
+						if (editorHtml == "" || editorHtml == "<p><br></p>") {
+							request.uniShowToast("内容不能为空", null, 3000);
+							return;
+						}
+						
+						// coverUrl
+						// 1 : 1
+						// 2.35 : 1
+						
+						let imgUrl = "https://mp-1b269a9a-d85c-47bc-9a6b-93394729eabf.cdn.bspapp.com/cloudstorage/3b317b44-8f49-4513-ab9a-e10d291533aa.png";
+						
+						// 存入本地缓存
+						let editorData = {};
+						editorData["title"] = articleTitle;
+						editorData["html"] = editorHtml;
+						editorData["coverUrl1"] = "";
+						editorData["coverUrl2"] = "";
+						editorData["precis"] = "";
+						editorData["originalState"] = 1;
+						editorData["originalAuthor"] = "";
+						editorData["topicSets"] = [];
+						
+						That.$storage.setArticleData(editorData);
+						
+						// 跳转下一页
+						let url = "/pages/tabbar-3-detial/tabbar-3-detial-article-publish/tabbar-3-detial-article-publish";
+						request.uniGotoPage(url, {}, function(code2, res2, param){
+							console.log("tabbar-3-release onNext uniGotoPage code:" + code2 + ", res:" + JSON.stringify(res2));
+						});
+						
+					},
+					fail: function(err) {
+						console.log('onNext editor getContents fail, err:', JSON.stringify(err));
 					}
 				});
 				
@@ -276,7 +340,7 @@
 </script>
 
 <style>
-	.content {
+	.container {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -290,32 +354,66 @@
 		background-color: transparent;
 	}
 	
-	.work-area {
+	.work-wrap {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
 		background-color: white;
-		border-radius: 4upx;
+		border-radius: 8upx;
 	}
 	
 	.line-box {
-		margin-top: 10upx;
-		margin-bottom: 10upx;
-		margin-left: 15upx;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
+	
+	.line-box-flex-start {
+		justify-content: flex-start;
+	}
+	
+	.line-box-flex-center {
+		justify-content: center;
+	}
+	
+	.line-box-flex-end {
+		justify-content: flex-end;
+	}
+	
+	.font-weight-bold {
+		font-weight: bold;
+	}
+	
+	.font-size-max {
+		font-size: 32upx;
+	}
+	
+	.font-size-mid {
+		font-size: 30upx;
+	}
+	
+	.font-size-min {
+		font-size: 26upx;
+	}
+	
+	.margin-right-min {
 		margin-right: 15upx;
-		display: inline-block;
 	}
 	
-	.line-box-item {
-		float: right;
+	.margin-right-mid {
+		margin-right: 20upx;
 	}
 	
-	.gray-color {
+	.margin-right-max {
+		margin-right: 30upx;
+	}
+	
+	.color-gray {
 		color: gray;
 	}
 	
-	.green-color {
+	.color-green {
 		color: green;
 	}
 	

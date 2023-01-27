@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="image-wrap">
-			<ksp-cropper mode="free" :width="200" :height="200" :maxWidth="1024" 
+			<ksp-cropper mode="free" :width="256" :height="256" :maxWidth="1024" 
 			:maxHeight="1024" :url="url" @cancel="onCropperCancel" @ok="onCropperOk">
 				
 			</ksp-cropper>
@@ -154,8 +154,8 @@
 						console.log("tabbar-5-detail-preview-image.vue onUploadHeadImageFile logInfo: " + JSON.stringify(logInfo));
 						
 						// 添加数据库日志记录
-						request.uploadImageLogAdd(token, logInfo, function(code3, res3){
-							console.log("tabbar-5-detail-preview-image.vue onUploadHeadImageFile uploadImageLogAdd code:" + code3 + ", res:" + JSON.stringify(res3));
+						request.uploadImageLog(token, logInfo, function(code3, res3){
+							console.log("tabbar-5-detail-preview-image.vue onUploadHeadImageFile uploadImageLog code:" + code3 + ", res:" + JSON.stringify(res3));
 							
 							That.onGotoBack();
 						});

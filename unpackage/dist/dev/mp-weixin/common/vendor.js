@@ -17498,6 +17498,12 @@ var _default = {
       "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
+  }, {
+    "path": "pages/tabbar-3-detial/tabbar-3-detial-article-publish/tabbar-3-detial-article-publish",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
   }],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -17546,7 +17552,28 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 377:
+/***/ 38:
+/*!*************************************************!*\
+  !*** D:/h2x/hxxtrip/pages.json?{"type":"stat"} ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  "appid": "__UNI__6CCEBA0"
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 385:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**************************************************************************/
@@ -18568,27 +18595,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 38:
-/*!*************************************************!*\
-  !*** D:/h2x/hxxtrip/pages.json?{"type":"stat"} ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  "appid": "__UNI__6CCEBA0"
-};
-exports.default = _default;
-
-/***/ }),
-
 /***/ 4:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
@@ -18605,7 +18611,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 413:
+/***/ 414:
 /*!***********************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/mp-html/components/mp-html/parser.js ***!
   \***********************************************************************/
@@ -20160,7 +20166,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 463:
+/***/ 464:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
   \**************************************************************************/
@@ -20202,7 +20208,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 464:
+/***/ 465:
 /*!*******************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
   \*******************************************************************************/
@@ -20217,9 +20223,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 465));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 466));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 467));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 466));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 467));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 468));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -20229,7 +20235,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 465:
+/***/ 466:
 /*!******************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
   \******************************************************************************/
@@ -20240,7 +20246,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 466:
+/***/ 467:
 /*!***********************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
   \***********************************************************************************/
@@ -20251,7 +20257,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 467:
+/***/ 468:
 /*!***********************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
   \***********************************************************************************/
@@ -20325,13 +20331,33 @@ var _default = {
     // 清空缓存
     uni.clearStorageSync();
   },
+  //
+  // getUserInfo : 获取用户信息
+  //
   getUserInfo: function getUserInfo() {
     var That = this;
     return That.get("userInfo");
   },
-  setUserInfo: function setUserInfo(info) {
+  //
+  // setUserInfo : 设置用户信息
+  //
+  setUserInfo: function setUserInfo(data) {
     var That = this;
-    That.set("userInfo", info);
+    That.set("userInfo", data);
+  },
+  //
+  // setArticleData : 设置文件数据
+  //
+  setArticleData: function setArticleData(data) {
+    var That = this;
+    That.set("articleData", data);
+  },
+  //
+  // getArticleData : 获取文章数据
+  //
+  getArticleData: function getArticleData() {
+    var That = this;
+    return That.get("articleData");
   }
 };
 exports.default = _default;
@@ -20339,7 +20365,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 496:
+/***/ 497:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils.js ***!
   \*********************************************************************************************/
@@ -20613,7 +20639,7 @@ module.exports = _slicedToArray, module.exports.__esModule = true, module.export
 
 /***/ }),
 
-/***/ 518:
+/***/ 519:
 /*!*****************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \*****************************************************************************/
@@ -21305,7 +21331,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 519:
+/***/ 520:
 /*!**************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/utils.js ***!
   \**************************************************************************/
@@ -21729,7 +21755,7 @@ var uniGotoPage = function uniGotoPage(url, param, callfunc) {
     fail: function fail(err) {
       console.log("request.js uniGotoPage fail, err:" + JSON.stringify(err));
       if (callfunc) {
-        callfunc(err, null, param);
+        callfunc(err, err, param);
       }
     }
   });
@@ -21850,6 +21876,25 @@ var uniPreviewImage = function uniPreviewImage(imgs, index) {
 };
 
 //
+// uniChoseImage : 选择图片
+//
+var uniChoseImage = function uniChoseImage(count, callfunc) {
+  uni.chooseImage({
+    count: count,
+    success: function success(res) {
+      if (callfunc) {
+        callfunc(0, res);
+      }
+    },
+    fail: function fail(err) {
+      if (callfunc) {
+        callfunc(1, err);
+      }
+    }
+  });
+};
+
+//
 // getWeixinOepnInfo : 获取微信开放信息，主要是openId和session_key
 //
 var getWeixinOepnInfo = function getWeixinOepnInfo(appId, secret, accessCode, callfunc) {
@@ -21931,14 +21976,27 @@ var cloudUploadFile = function cloudUploadFile(cloudFileName, localFileName, fil
 };
 
 //
-// uploadImageLogAdd : 上传图片日志添加
+// uploadImageLog : 上传头像图片
 //
-var uploadImageLogAdd = function uploadImageLogAdd(token, param, callfunc) {
+var uploadImageLog = function uploadImageLog(token, param, callfunc) {
   var postParam = {};
   postParam["token"] = token;
   postParam["param"] = param;
   return _uniCloudHttp.default.cloudCallFunc("global", {
     "action": "log/file_log/uploadImageLog",
+    "data": postParam
+  }, callfunc);
+};
+
+//
+// uploadImagePrivate : 上传私有图库图片
+//
+var uploadImagePrivate = function uploadImagePrivate(token, param, callfunc) {
+  var postParam = {};
+  postParam["token"] = token;
+  postParam["param"] = param;
+  return _uniCloudHttp.default.cloudCallFunc("global", {
+    "action": "log/file_log/uploadImagePrivate",
     "data": postParam
   }, callfunc);
 };
@@ -21953,6 +22011,7 @@ var _default = {
   uniShowModel: uniShowModel,
   uniShowToast: uniShowToast,
   uniPreviewImage: uniPreviewImage,
+  uniChoseImage: uniChoseImage,
   getWeixinOepnInfo: getWeixinOepnInfo,
   getAccountLoginRegist: getAccountLoginRegist,
   getUserAttrUpdate: getUserAttrUpdate,
@@ -21962,7 +22021,8 @@ var _default = {
   getCategory: getCategory,
   getCategoryHumainAstro: getCategoryHumainAstro,
   cloudUploadFile: cloudUploadFile,
-  uploadImageLogAdd: uploadImageLogAdd
+  uploadImageLog: uploadImageLog,
+  uploadImagePrivate: uploadImagePrivate
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
@@ -22131,7 +22191,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 576:
+/***/ 577:
 /*!****************************************************************!*\
   !*** D:/h2x/hxxtrip/components/wangding-pickerAddress/data.js ***!
   \****************************************************************/
@@ -32426,7 +32486,7 @@ module.exports = _arrayWithHoles, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 600:
+/***/ 601:
 /*!*****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \*****************************************************************************************/
@@ -32441,9 +32501,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 601));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 602));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 603));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 602));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 603));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 604));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -32453,7 +32513,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 601:
+/***/ 602:
 /*!****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \****************************************************************************************/
@@ -32464,7 +32524,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 602:
+/***/ 603:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \*********************************************************************************************/
@@ -32475,7 +32535,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 603:
+/***/ 604:
 /*!*********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \*********************************************************************************************/
@@ -32486,7 +32546,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 611:
+/***/ 612:
 /*!*************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
   \*************************************************************************************/
@@ -32501,9 +32561,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 612));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 613));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 614));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 613));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 614));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 615));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -32513,7 +32573,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 612:
+/***/ 613:
 /*!************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
   \************************************************************************************/
@@ -32524,7 +32584,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 613:
+/***/ 614:
 /*!*****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
   \*****************************************************************************************/
@@ -32535,7 +32595,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 614:
+/***/ 615:
 /*!*****************************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \*****************************************************************************************/
@@ -32546,7 +32606,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 664:
+/***/ 672:
 /*!**********************************************************************************************!*\
   !*** D:/h2x/hxxtrip/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \**********************************************************************************************/
@@ -32680,7 +32740,7 @@ function createAnimation(option, _this) {
 
 /***/ }),
 
-/***/ 684:
+/***/ 692:
 /*!***************************************************************************!*\
   !*** D:/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \***************************************************************************/

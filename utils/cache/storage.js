@@ -44,14 +44,36 @@ export default {
         uni.clearStorageSync();
     },
 	
+	//
+	// getUserInfo : 获取用户信息
+	//
 	getUserInfo() {
 		let That = this;
 		return That.get("userInfo");
 	},
 	
-	setUserInfo(info) {
+	//
+	// setUserInfo : 设置用户信息
+	//
+	setUserInfo(data) {
 		let That = this;
-		That.set("userInfo", info);
+		That.set("userInfo", data);
+	},
+	
+	//
+	// setArticleData : 设置文件数据
+	//
+	setArticleData(data) {
+		let That = this;
+		That.set("articleData", data);
+	},
+	
+	//
+	// getArticleData : 获取文章数据
+	//
+	getArticleData() {
+		let That = this;
+		return That.get("articleData");
 	}
 	
 }

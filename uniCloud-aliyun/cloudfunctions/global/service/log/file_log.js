@@ -26,7 +26,7 @@ const {
 module.exports = class FileLogService extends Service {
 	
 	//
-	// uploadImageLog : 上传图片日志
+	// uploadImageLog : 上传头像图片日志
 	//
 	async uploadImageLog(accountId, params) {
 		console.log("global/service/log/file_log.js uploadImageLog params, accountId:" + accountId + ", params:" + JSON.stringify(params));
@@ -66,6 +66,59 @@ module.exports = class FileLogService extends Service {
 		let addResult = await hxxtripUploadImageLog.add(logInfo);
 		// add success : {"id":"63cceebee1a35c99699406dc"}
 		console.log("global/service/log/file_log.js uploadImageLog add result: " + JSON.stringify(addResult));
+		
+		if (addResult.hasOwnProperty("id")) {
+			logInfo["_id"] = addResult["id"];
+		}
+		else {
+			// fail
+			return getAck(ERROR_CODE.ERROR_CODE_UPLOAD_IMAGE_FAIL, ERROR_MSG.ERROR_MSG_UPLOAD_IMAGE_FAIL, null);
+		}
+		
+		return getAck(ERROR_CODE.ERROR_CODE_OK, ERROR_MSG.ERROR_MSG_OK, logInfo);	
+	}
+	
+	//
+	// uploadImagePrivate : 上传个人私有图片
+	//
+	async uploadImagePrivate(accountId, params) {
+		console.log("global/service/log/file_log.js uploadImagePrivate params, accountId:" + accountId + ", params:" + JSON.stringify(params));
+		const { ctx, db } = this;
+		
+		let times = new Date().getTime();
+		
+		let hxxtripImagePrivate = await db.collection("hxxtrip_image_private");
+		
+		let logInfo = {};
+		
+		logInfo["account_id"] = accountId;
+		
+		logInfo["create_time"] = times;
+		logInfo["last_modify_time"] = times;
+		
+		logInfo["remove_time"] = 0;
+		
+		// 状态说明：0禁止使用，1正常，2逻辑删除，3物理删除
+		logInfo["state"] = FILE_STATE_CODE.FILE_STATE_CODE_NORMAL;
+		
+		logInfo["purpose"] = params["purpose"]; // 图片用途，articl:文章，
+		
+		if (!params.hasOwnProperty("fileType")) {
+			logInfo["file_type"] = "image";
+		}
+		else {
+			logInfo["file_type"] = params["fileType"]; // 文件类型, image、video、audio
+		}
+		logInfo["file_name"] = params["fileName"];
+		logInfo["ext"] = params["ext"]; // 文件扩展名，相当于是图片文件类型
+		logInfo["img_url"] = params["imgUrl"];
+		logInfo["remark"] = params["remark"];
+		
+		console.log("global/service/log/file_log.js uploadImagePrivate logInfo: " + JSON.stringify(logInfo));
+		
+		let addResult = await hxxtripImagePrivate.add(logInfo);
+		// add success : {"id":"63cceebee1a35c99699406dc"}
+		console.log("global/service/log/file_log.js uploadImagePrivate add result: " + JSON.stringify(addResult));
 		
 		if (addResult.hasOwnProperty("id")) {
 			logInfo["_id"] = addResult["id"];

@@ -101,11 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uniCard: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 394))
-    },
     uniEasyinput: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 401))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 402))
     },
   }
 } catch (e) {
@@ -164,13 +161,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net/request.js */ 54));
 var mpHtml = function mpHtml() {
   Promise.all(/*! require.ensure | uni_modules/mp-html/components/mp-html/mp-html */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mp-html/components/mp-html/mp-html")]).then((function () {
-    return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 408));
+    return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 409));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -180,9 +179,10 @@ var _default = {
   data: function data() {
     return {
       title: 'Hello',
+      articleTitle: '',
       placeholder: '请输入内容...',
       editorBodyHeight: 400,
-      editorHtml: 'Hello word!'
+      editorHtml: ''
     };
   },
   onLoad: function onLoad() {
@@ -198,6 +198,14 @@ var _default = {
         }).exec();
       }
     });
+
+    // 获取缓存
+    var cacheArticleInfo = That.$storage.getArticleData();
+    console.log("tabbar-3-release.vue onLoad cacheArticleInfo: " + JSON.stringify(cacheArticleInfo));
+    if (cacheArticleInfo) {
+      That.articleTitle = cacheArticleInfo["title"];
+      That.editorHtml = cacheArticleInfo["html"];
+    }
   },
   methods: {
     onEditorReady: function onEditorReady() {
@@ -210,6 +218,12 @@ var _default = {
           html: That.editorHtml
         });
       }).exec();
+    },
+    // 标题栏输入事件
+    onTitleInput: function onTitleInput(val) {
+      console.log("tabbar-3-release.vue onTitleInput params, val: " + JSON.stringify(val));
+      var That = this;
+      That.articleTitle = val;
     },
     //
     // onEditorToolTap : 编辑器工具栏按钮事件
@@ -237,31 +251,27 @@ var _default = {
     onInsertImg: function onInsertImg() {
       console.log("tabbar-3-release.vuew onInsertImg");
       var That = this;
+      _request.default.uniChoseImage(20, function (code, res) {
+        console.log("tabbar-3-release.vuew onInsertImg uniChoseImage code:" + code + ", res:" + JSON.stringify(res));
+        if (code == 0) {
+          var tempFilePaths = res["tempFilePaths"];
+          tempFilePaths.forEach(function (item, index, tempFilePaths) {
+            console.log("tabbar-3-release.vuew onInsertImg forEach, index:" + index + ", item:" + item);
 
-      /*uni.chooseImage({
-      	count: 1,
-      	success: function(res) {
-      		console.log("tabbar-3-release.vue onInsertImg uni.chooseImage res: " + JSON.stringify(res));
-      		if(process.env.NODE_ENV === 'development'){
-      			console.log('开发环境');
-      			That.upurl = 'http://local.yongen.com/api.php/Upload/uploadMoreImg';
-      		}
-      		else{
-      			console.log('生产环境');
-      			That.upurl = '/api.php/Upload/uploadMoreImg';
-      		}
-      		
-      		let url = res.tempFilePaths[0];
-      		
-      		That.editorCtx.insertImage({
-      			src: url,
-      			alt: '图片',
-      			success: function(e) {
-      				
-      			}
-      		});
-      	}							
-      });*/
+            // 插入图片到编辑器
+            That.editorCtx.insertImage({
+              src: item,
+              alt: "articleImage",
+              success: function success(res) {
+                console.log("tabbar-3-release.vuew onInsertImg insertImage success, res:" + JSON.stringify(res));
+              },
+              fail: function fail(err) {
+                console.log("tabbar-3-release.vuew onInsertImg insertImage fail, err:" + JSON.stringify(err));
+              }
+            });
+          });
+        }
+      });
     },
     //
     // 添加日期
@@ -346,9 +356,51 @@ var _default = {
     onNext: function onNext() {
       console.log("tabbar-3-release onNext.");
       var That = this;
+
+      // 判断标题是否为空
+      var articleTitle = That.articleTitle;
+      console.log("tabbar-3-release onNext articleTitle:" + articleTitle);
+      if (articleTitle == "") {
+        _request.default.uniShowToast("标题不能为空", null, 3000);
+        return;
+      }
       That.editorCtx.getContents({
         success: function success(res) {
-          console.log('onNext editor contents:', res.html);
+          // res.html
+          console.log('tabbar-3-release onNext editor getContents success, res:', JSON.stringify(res));
+          // {"errMsg":"ok","html":"<p><br></p>","text":"\n","delta":{"ops":[{"insert":"\n"}]}}
+          var editorHtml = res["html"];
+          if (editorHtml == "" || editorHtml == "<p><br></p>") {
+            _request.default.uniShowToast("内容不能为空", null, 3000);
+            return;
+          }
+
+          // coverUrl
+          // 1 : 1
+          // 2.35 : 1
+
+          var imgUrl = "https://mp-1b269a9a-d85c-47bc-9a6b-93394729eabf.cdn.bspapp.com/cloudstorage/3b317b44-8f49-4513-ab9a-e10d291533aa.png";
+
+          // 存入本地缓存
+          var editorData = {};
+          editorData["title"] = articleTitle;
+          editorData["html"] = editorHtml;
+          editorData["coverUrl1"] = "";
+          editorData["coverUrl2"] = "";
+          editorData["precis"] = "";
+          editorData["originalState"] = 1;
+          editorData["originalAuthor"] = "";
+          editorData["topicSets"] = [];
+          That.$storage.setArticleData(editorData);
+
+          // 跳转下一页
+          var url = "/pages/tabbar-3-detial/tabbar-3-detial-article-publish/tabbar-3-detial-article-publish";
+          _request.default.uniGotoPage(url, {}, function (code2, res2, param) {
+            console.log("tabbar-3-release onNext uniGotoPage code:" + code2 + ", res:" + JSON.stringify(res2));
+          });
+        },
+        fail: function fail(err) {
+          console.log('onNext editor getContents fail, err:', JSON.stringify(err));
         }
       });
     }
