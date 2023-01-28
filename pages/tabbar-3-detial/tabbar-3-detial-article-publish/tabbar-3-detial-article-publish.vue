@@ -107,19 +107,33 @@
 									<button type="primary" size="mini">完成</button>
 								</view>
 							</view>
-							<view class="line-box justify-content-space-between font-size-mid" >
-								<view class="line-box-item margin-left-max margin-right-max background-color" style="width: 100%; align-items: flex-start;">
-									<input type="text" placeholder="选择或输入合集" />
+							
+							<view class="line-box justify-content-flex-start font-size-mid">
+								<view class="line-box-item font-size-mid color-gray margin-left-max">当前合集</view>
+							</view>
+							<view class="line-box-height-auto justify-content-flex-start font-size-mid" >
+								<view class="margin-left-max margin-top-max">
+									<block v-for="(item, index) in articleInfo.topicSets">
+										<view class="line-box-item margin-left-mid" :key="index" @click="onTopicSetsRemove(index);" style="height: 80upx;">
+											<uni-tag type="success" :inverted="true" :text="'#' + item"></uni-tag>
+										</view>
+									</block>
+								</view>
+								<view class="line-box justify-content-flex-start font-size-mid margin-top-max">
+									<view class="line-box-item margin-left-max margin-right-max background-color" style="width: 100%; align-items: flex-start;">
+										<input type="text" :value="inputTopicSets" placeholder="选择或输入合集" @input="onInputTopicSets" @blur="onBlurTopicSets" />
+									</view>
 								</view>
 							</view>
+							
 							<view class="line-box justify-content-flex-start font-size-mid">
 								<view class="line-box-item font-size-mid color-gray margin-left-max">最近合集</view>
 							</view>
-							<view class="line-box justify-content-flex-start font-size-mid margin-top-min" style="height: 400upx; flex-wrap: wrap;">
-								<view class="margin-left-max">
+							<view class="line-box-height-auto justify-content-flex-start font-size-mid">
+								<view class="margin-left-max margin-top-max">
 									<block v-for="(item,index) in topicSetsList">
-										<view class="line-box-item margin-left-min margin-top-min" style="height: 60upx;">
-											<uni-tag :text="'#' + item"></uni-tag>
+										<view class="line-box-item margin-left-mid" :key="index" @click="onTopicAdd(index);" style="height: 80upx;">
+											<uni-tag type="default" :text="'#' + item"></uni-tag>
 										</view>
 									</block>
 								</view>
@@ -174,7 +188,8 @@
 					"topicSets": [] // 话题合集
 				},
 				isCropper: 0, // 截剪标志
-				topicSetsList: [] // 备选话题列表
+				topicSetsList: [], // 备选话题列表
+				inputTopicSets: '' // 输入的合集
 			}
 		},
 		
@@ -334,6 +349,83 @@
 				let That = this;
 				
 				That.$refs.topicSetDialog.open("bottom");
+			},
+			
+			//
+			// onTopicAdd : 添加合集
+			//
+			onTopicAdd(index) {
+				console.log("tabbar-3-detial-article-publish.vue onTopicAdd parmas, index:" + index);
+				
+				let That = this;
+				
+				if (That.articleInfo.topicSets.length >= 5) {
+					return;
+				}
+				
+				let val = That.topicSetsList[index];
+				
+				for(let idx = 0; idx < That.articleInfo.topicSets.length; idx++) {
+					if (That.articleInfo.topicSets[idx] == val) {
+						return 0;
+					}
+				}
+				
+				That.articleInfo.topicSets.push(val);
+			},
+			
+			//
+			// onTopicSetsRemove : 移除合集
+			//
+			onTopicSetsRemove(index) {
+				console.log("tabbar-3-detial-article-publish.vue onTopicSetsRemove params, index: " + index);
+				
+				let That = this;
+				
+				if (index >= 0 && index < That.articleInfo.topicSets.length) {
+					That.articleInfo.topicSets.splice(index, 1);
+					
+					console.log("tabbar-3-detial-article-publish.vue onTopicSetsRemove new topicSets: " + JSON.stringify(That.articleInfo.topicSets));
+				}
+			},
+			
+			//
+			// onInputTopicSets : 输入合集
+			//
+			onInputTopicSets(e) {
+				console.log("tabbar-3-detial-article-publish.vue onInputTopicSets params, " + JSON.stringify(e));
+				
+				let That = this;
+				
+				That.inputTopicSets = e.detail.value;
+			},
+			
+			//
+			// onBlurTopicSets :
+			//
+			onBlurTopicSets(e) {
+				console.log("tabbar-3-detial-article-publish.vue onBlurTopicSets params, " + JSON.stringify(e));
+				
+				let That = this;
+				
+				let val = That.inputTopicSets;
+				if (val == "") {
+					return;
+				}
+				
+				if (That.articleInfo.topicSets.length >= 5) {
+					return;
+				}
+				
+				for(let idx = 0; idx < That.articleInfo.topicSets.length; idx++) {
+					if (That.articleInfo.topicSets[idx] == val) {
+						return 0;
+					}
+				}
+				
+				That.articleInfo.topicSets.push(val);
+				
+				That.inputTopicSets = "";
 			}
 			
 		}
@@ -382,6 +474,13 @@
 	flex-direction: row;
 	width: 100%;
 	height: 80upx;
+}
+
+.line-box-height-auto {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
 }
 
 .line-box-item {
