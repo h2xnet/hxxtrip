@@ -1,24 +1,24 @@
 <template>
 	<view class="container">
-		<view class="cover-wrap">
+		<view class="page-wrap">
 			<!-- 封面 -->
 			<block v-if="curCoverUrlName == 'coverUrl1'">
-				<view v-if="articleInfo.coverUrl1 == ''" class="cover-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
-					<view class="cover-wrap box-shadown" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
+				<view v-if="articleInfo.coverUrl1 == ''" class="page-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
+					<view class="page-wrap" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
 						<uni-icons type="plusempty" size="36" color="#ccc"></uni-icons>
 					</view>
 				</view>
-				<view v-else class="cover-image-wrap">
+				<view v-else class="page-image-wrap">
 					<image :src="articleInfo.coverUrl1" mode="aspectFill" style="height: 196upx;"></image>
 				</view>
 			</block>
 			<block v-else>
-				<view v-if="articleInfo.coverUrl2 == ''" class="cover-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
-					<view class="cover-wrap box-shadown" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
+				<view v-if="articleInfo.coverUrl2 == ''" class="page-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
+					<view class="page-wrap" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
 						<uni-icons type="plusempty" size="36" color="#ccc"></uni-icons>
 					</view>
 				</view>
-				<view v-else class="cover-image-wrap">
+				<view v-else class="page-image-wrap">
 					<image :src="articleInfo.coverUrl2" mode="aspectFill" style="width: 196upx; height: 196upx;"></image>
 				</view>
 			</block>
@@ -40,10 +40,10 @@
 			</view>
 			
 			<!-- 摘要 -->
-			<view class="line-box margin-top-max justify-content-flex-start font-size-mid" style="height: 200upx;">
+			<view class="line-box margin-top-max justify-content-flex-start font-size-mid" style="height: 220upx;">
 				<textarea class="margin-left-max margin-right-max font-size-mid" 
-					maxlength="200" placeholder="输入摘要, 选填" :value="articleInfo.precis" @input="onInputPrecis">
-					
+					maxlength="200" placeholder="输入摘要, 选填" :value="articleInfo.precis" @input="onInputPrecis"
+					 style="height: 200upx;">
 				</textarea>
 			</view>
 			
@@ -78,8 +78,8 @@
 			<view class="card-wrap margin-top-max">
 				<view class="line-box justify-content-space-between border-radius-mid" @click="onTopicSetsClick"
 					style="width: auto;">
-					<view>
-						<text class="font-size-mid">合集</text>
+					<view class="font-size-mid">
+						合集<text class="color-gray">{{articleInfo.topicSets.length}}/5</text>
 					</view>
 					<view>
 						<uni-icons type="right" color="gray" size="16"></uni-icons>
@@ -96,8 +96,36 @@
 			<!-- 合集弹出层 -->
 			<view>
 				<uni-popup ref="topicSetDialog" type="bottom">
-					<view style="width: 100%; height: 800upx; background-color: #fff;">
-						ddd
+					<view class="container" style="width: 100%; height: 880upx; background-color: #fff;">
+						<view class="page-wrap">
+							<view class="line-box justify-content-space-between">
+								<view class="line-box-item font-size-mid color-gray margin-left-max">
+									<button type="default" size="mini">取消</button>
+								</view>
+								<view class="line-box-item font-size-mid color-gray">合集</view>
+								<view class="line-box-item margin-right-max">
+									<button type="primary" size="mini">完成</button>
+								</view>
+							</view>
+							<view class="line-box justify-content-space-between font-size-mid" >
+								<view class="line-box-item margin-left-max margin-right-max background-color" style="width: 100%; align-items: flex-start;">
+									<input type="text" placeholder="选择或输入合集" />
+								</view>
+							</view>
+							<view class="line-box justify-content-flex-start font-size-mid">
+								<view class="line-box-item font-size-mid color-gray margin-left-max">最近合集</view>
+							</view>
+							<view class="line-box justify-content-flex-start font-size-mid margin-top-min" style="height: 400upx; flex-wrap: wrap;">
+								<view class="margin-left-max">
+									<block v-for="(item,index) in topicSetsList">
+										<view class="line-box-item margin-left-min margin-top-min" style="height: 60upx;">
+											<uni-tag :text="'#' + item"></uni-tag>
+										</view>
+									</block>
+								</view>
+							</view>
+							
+						</view>
 					</view>
 				</uni-popup>
 			</view>
@@ -145,7 +173,8 @@
 					"originalAuthor": "" ,// 原创作者
 					"topicSets": [] // 话题合集
 				},
-				isCropper: 0 // 截剪标志
+				isCropper: 0, // 截剪标志
+				topicSetsList: [] // 备选话题列表
 			}
 		},
 		
@@ -164,6 +193,16 @@
 				
 				That.articleInfo = cacheArticleInfo;
 			}
+			
+			// 备选话题列表
+			That.topicSetsList.push("星座运势");
+			That.topicSetsList.push("2023");
+			That.topicSetsList.push("周运");
+			That.topicSetsList.push("星座运程");
+			That.topicSetsList.push("苏珊米勒");
+			That.topicSetsList.push("玛法达");
+			That.topicSetsList.push("娜迪亚");
+			
 		},
 		
 		onShow() {
@@ -308,7 +347,7 @@
 	width: 100%;
 }	
 
-.cover-wrap {
+.page-wrap {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -316,7 +355,7 @@
 	align-items: center;
 }
 
-.cover-image-wrap {
+.page-image-wrap {
 	margin-left: 30upx;
 	margin-right: 30upx;
 	width: auto;
@@ -416,6 +455,10 @@
 .card-wrap {
 	width: 90%;
 	border-radius: 8upx;
+	background-color: #e3e6e6;
+}
+
+.background-color {
 	background-color: #e3e6e6;
 }
 
