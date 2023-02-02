@@ -1,9 +1,9 @@
 <template>
 	<view class="container">
-		<view class="page-wrap">
+		<view class="page-wrap margin-top-max">
 			<!-- 封面 -->
 			<block v-if="curCoverUrlName == 'coverUrl1'">
-				<view v-if="articleInfo.coverUrl1 == ''" class="page-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
+				<view v-if="articleInfo.coverUrl1 == ''" class="page-image-wrap justify-content-center text-align-center" style="width: 90%;">
 					<view class="page-wrap" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
 						<uni-icons type="plusempty" size="36" color="#ccc"></uni-icons>
 					</view>
@@ -13,7 +13,7 @@
 				</view>
 			</block>
 			<block v-else>
-				<view v-if="articleInfo.coverUrl2 == ''" class="page-image-wrap justify-content-center text-align-center margin-top-min" style="width: 90%;">
+				<view v-if="articleInfo.coverUrl2 == ''" class="page-image-wrap justify-content-center text-align-center" style="width: 90%;">
 					<view class="page-wrap" @click="onChoseCoverImage();" style="width: 100%; height: 100%; border-radius: 8upx; background-color: #e3e6e6;">
 						<uni-icons type="plusempty" size="36" color="#ccc"></uni-icons>
 					</view>
@@ -87,7 +87,7 @@
 				</view>
 				<view class="line-box justify-content-flex-start border-radius-mid" style="width: auto;">
 					<block v-for="(item,index) in articleInfo.topicSets">
-						<uni-tag :circle="true" :text="item" type="primary" size="mini"></uni-tag>
+						<uni-tag type="success" :inverted="true" :text="'#' + item" size="mini"></uni-tag>
 						<view class="margin-left-min"></view>
 					</block>
 				</view>
@@ -100,11 +100,11 @@
 						<view class="page-wrap">
 							<view class="line-box justify-content-space-between">
 								<view class="line-box-item font-size-mid color-gray margin-left-max">
-									<button type="default" size="mini">取消</button>
+									<button type="default" size="mini" @click="onTopicSetsCloseClick('cancel');">取消</button>
 								</view>
 								<view class="line-box-item font-size-mid color-gray">合集</view>
 								<view class="line-box-item margin-right-max">
-									<button type="primary" size="mini">完成</button>
+									<button type="primary" size="mini" @click="onTopicSetsCloseClick('ok');">完成</button>
 								</view>
 							</view>
 							
@@ -120,8 +120,8 @@
 									</block>
 								</view>
 								<view class="line-box justify-content-flex-start font-size-mid margin-top-max">
-									<view class="line-box-item margin-left-max margin-right-max background-color" style="width: 100%; align-items: flex-start;">
-										<input type="text" :value="inputTopicSets" placeholder="选择或输入合集" @input="onInputTopicSets" @blur="onBlurTopicSets" />
+									<view class="line-box-item background-color margin-left-max margin-right-max" style="width: 100%; align-items: flex-start;">
+										<input type="text" :value="inputTopicSets" placeholder="选择或输入合集" @input="onInputTopicSets" @blur="onBlurTopicSets" style="padding-left: 20upx;" />
 									</view>
 								</view>
 							</view>
@@ -148,18 +148,18 @@
 		
 		<view class="fixed-bottom" style="height: 100upx;">
 			<view class="line-box justify-content-space-around margin-top-min">
-				<view class="line-box-item font-size-mid">
+				<view class="line-box-item font-size-mid" @click="onPublishClick('saveDraft');">
 					<uni-icons type="cloud-upload" size="24"></uni-icons>
 					<text>存草稿</text>
 				</view>
-				<view class="line-box-item font-size-mid">
+				<view class="line-box-item font-size-mid" @click="onPublishClick('timeSend');">
 					<uni-icons type="notification" size="24"></uni-icons>
 					<text>定时发表</text>
 				</view>
-				<view class="line-box-item">
+				<view class="line-box-item" @click="onPublishClick('preview');">
 					<button type="default" size="mini">预览</button>
 				</view>
-				<view class="line-box-item">
+				<view class="line-box-item" @click="onPublishClick('send');">
 					<button type="primary" size="mini">发表</button>
 				</view>
 			</view>
@@ -426,6 +426,86 @@
 				That.articleInfo.topicSets.push(val);
 				
 				That.inputTopicSets = "";
+			},
+			
+			//
+			// onTopicSetsCloseClick : 合集关闭事件
+			//
+			onTopicSetsCloseClick(flag) {
+				console.log("tabbar-3-detial-article-publish.vue onTopicSetsCloseClick params, flag:" + flag);
+				
+				let That = this;
+				
+				if (flag == "cancel") {
+					// 清空命令内容
+					That.articleInfo.topicSets = [];
+				}
+				else if (flag == "ok") {
+					
+				}
+				
+				That.$refs.topicSetDialog.close();
+			},
+			
+			//
+			// onPublishClick : 发布事件
+			//
+			onPublishClick(flag) {
+				console.log("tabbar-3-detial-article-publish.vue onPublishClick params, flag:" + flag);
+				
+				let That = this;
+				
+				if (flag == "saveDraft") {
+					// 存草稿
+					That.onPublishSaveDraft();
+				}
+				else if (flag == "timeSend") {
+					// 定时发表
+					That.onPublishSend(true);
+				}
+				else if (flag == "preview") {
+					// 预览
+					That.onPublishPreview();
+				}
+				else if (flag == "send") {
+					// 发表
+					That.onPublishSend(false);
+				}
+			},
+			
+			//
+			// onPublishSend : 发表
+			// isTimeSend: 定时发表标志，true为定时发表 ，false为立即发表
+			//
+			onPublishSend(isTimeSend) {
+				console.log("tabbar-3-detial-article-publish.vue onPublishSend params, isTimeSend:" + isTimeSend);
+				
+				let That = this;
+				
+				if (That.articleInfo.coverUrl1 == "") {
+					request.uniShowToast("请添加封面", null, 3000);
+					return;
+				}
+				
+			},
+			
+			//
+			// onPublishSaveDraft : 发布之存草稿
+			//
+			onPublishSaveDraft() {
+				console.log("tabbar-3-detial-article-publish.vue onPublishSaveDraft");
+				
+				let That = this;
+				
+			},
+			
+			//
+			// onPublishPreview : 发布之预览
+			//
+			onPublishPreview() {
+				console.log("tabbar-3-detial-article-publish.vue onPublishPreview");
+				
+				let That = this;
 			}
 			
 		}

@@ -15,21 +15,21 @@ const {
 
 
 /*
- * ClassName: FileLogController
- * Desc: 文件日志控制器类
+ * ClassName: FileController
+ * Desc: 创建中心文件控制器类
  * Author: zfs
- * Date: 2023-01-26 12:28
+ * Date: 2023-02-03 07:23
  */
-module.exports = class FileLogController extends Controller {
+module.exports = class FileController extends Controller {
 	
 	//
-	// uploadImageLog : 上传图片日志，主要用于上传用户头像
+	// uploadImagePrivate : 上传私有图片，主要用于个人图片库图片上传
 	//
-	async uploadImageLog() {
+	async uploadImagePrivate() {
 		const { ctx, service } = this;
 		
 		let params = ctx.data;
-		console.log("global/controller/log/file_log.js uploadImageLog params: " + JSON.stringify(params));
+		console.log("router/controller/create/file/file.js uploadImagePrivate params: " + JSON.stringify(params));
 		
 		let token = "";
 		let postParam = {};
@@ -43,19 +43,17 @@ module.exports = class FileLogController extends Controller {
 		
 		if (token == "") {
 			// token无效
-			console.log("global/controller/log/file_log.js uploadImageLog token invalid");
+			console.log("router/controller/create/file/file.js uploadImagePrivate token invalid");
 			return getAck(ERROR_CODE.ERROR_CODE_TOKEN_INVALID, ERROR_MSG.ERROR_MSG_TOKEN_INVALID);
 		}
 		
 		let accountId = await virifyTokenValid(token);
 		if (accountId == "") {
-			console.log("global/controller/log/file_log.js uploadImageLog virifyTokenValid fail");
+			console.log("router/controller/create/file/file.js uploadImagePrivate virifyTokenValid fail");
 			return getAck(ERROR_CODE.ERROR_CODE_TOKEN_INVALID, ERROR_MSG.ERROR_MSG_TOKEN_INVALID);
 		}
 		
-		return await service.log.file_log.uploadImageLog(accountId, postParam)
+		return await service.create.file.file.uploadImagePrivate(accountId, postParam)
 	}
 	
-	
-	
-}
+};

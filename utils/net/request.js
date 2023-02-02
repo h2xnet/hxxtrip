@@ -282,13 +282,17 @@ const uploadImageLog = (token, param, callfunc) => {
 }
 
 //
-// uploadImagePrivate : 上传私有图库图片
+// 创作中心相关
 //
-const uploadImagePrivate = (token, param, callfunc) => {
+
+//
+// createUploadImagePrivate : 上传私有图库图片
+//
+const createUploadImagePrivate = (token, param, callfunc) => {
 	let postParam = {};
 	postParam["token"] = token;
 	postParam["param"] = param;
-	return uniCloudHttp.cloudCallFunc("global", {"action": "log/file_log/uploadImagePrivate", "data": postParam}, callfunc);
+	return uniCloudHttp.cloudCallFunc("router", {"action": "create/file/file/uploadImagePrivate", "data": postParam}, callfunc);
 }
 
 
@@ -314,5 +318,5 @@ export default {
 	getCategoryHumainAstro,
 	cloudUploadFile,
 	uploadImageLog,
-	uploadImagePrivate
+	createUploadImagePrivate
 }
