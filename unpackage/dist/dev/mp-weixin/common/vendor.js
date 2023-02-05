@@ -1477,7 +1477,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9060,7 +9060,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9081,14 +9081,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9184,7 +9184,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"hxxtrip","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -21972,14 +21972,27 @@ var uploadImageLog = function uploadImageLog(token, param, callfunc) {
 //
 
 //
-// createUploadImagePrivate : 上传私有图库图片
+// createUploadImagePrivateAdd : 增加上传私有图库图片记录（只是增加数据库记录，图片已经上传到云上）
 //
-var createUploadImagePrivate = function createUploadImagePrivate(token, param, callfunc) {
+var createUploadImagePrivateAdd = function createUploadImagePrivateAdd(token, param, callfunc) {
   var postParam = {};
   postParam["token"] = token;
   postParam["param"] = param;
   return _uniCloudHttp.default.cloudCallFunc("router", {
     "action": "create/file/file/uploadImagePrivate",
+    "data": postParam
+  }, callfunc);
+};
+
+//
+// createUploadImagePublishAdd : 增加上传发布图片记录（只是增加数据库记录，图片已经上传到云上）
+//
+var createUploadImagePublishAdd = function createUploadImagePublishAdd(token, param, callfunc) {
+  var postParam = {};
+  postParam["token"] = token;
+  postParam["param"] = param;
+  return _uniCloudHttp.default.cloudCallFunc("router", {
+    "action": "create/file/file/uploadImagePublish",
     "data": postParam
   }, callfunc);
 };
@@ -22005,7 +22018,8 @@ var _default = {
   getCategoryHumainAstro: getCategoryHumainAstro,
   cloudUploadFile: cloudUploadFile,
   uploadImageLog: uploadImageLog,
-  createUploadImagePrivate: createUploadImagePrivate
+  createUploadImagePrivateAdd: createUploadImagePrivateAdd,
+  createUploadImagePublishAdd: createUploadImagePublishAdd
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
@@ -33788,6 +33802,71 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
 }
 module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 773:
+/*!***********************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/utils/tool/string_tool.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+// getSubStrs : 获取子字符串集，返回查找到的字符串数组
+// @str: 被查找字符串
+// @strMatchStart: 匹配的起始字符串，不能为空
+// @strMatchEnd: 匹配的结束字符串，可以为空
+// @nStart: 查找的开始位置
+// @outDatas: 返回查找到的字符串数组
+// @返回值：无
+//
+var getSubStrs = function getSubStrs(str, strMatchStart, strMatchEnd, nStart) {
+  var outDatas = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
+  console.log("string_tool.js getSubStrs params, strMatchStart:" + strMatchStart + ", strMatchEnd:" + strMatchEnd + ", nStart:" + nStart);
+  if (str == "" || strMatchStart == "") {
+    console.log("string_tool.js getSubStrs str or strMatchStart isEmpty");
+    return;
+  }
+  if (nStart < 0 || nStart >= str.length) {
+    console.log("string_tool.js getSubStrs nStart < 0 or nStart < str length, nStart:" + nStart + ", str length:" + str.length);
+    outDatas.push(str);
+    return;
+  }
+  var pos1 = str.indexOf(strMatchStart, nStart);
+  console.log("string_tool.js getSubStrs pos1:" + pos1);
+  if (pos1 < 0) {
+    return;
+  }
+  if (strMatchEnd == "") {
+    // 只匹配起始字符串，则相当于截取右边子字符串
+    outDatas.push(str.substr(pos1 + strMatchStart.length));
+    return;
+  }
+  var offset = pos1 + strMatchStart.length;
+  var pos2 = str.indexOf(strMatchEnd, offset);
+  console.log("string_tool.js getSubStrs pos2:" + pos2);
+  if (pos2 < 0) {
+    return;
+  }
+  outDatas.push(str.substr(offset, pos2 - pos1 - strMatchStart.length));
+
+  // 递归调用
+  pos1 = pos2 + strMatchEnd.length;
+  pos2 = -1;
+  getSubStrs(str, strMatchStart, strMatchEnd, pos1, outDatas);
+};
+var _default = {
+  getSubStrs: getSubStrs
+};
+exports.default = _default;
 
 /***/ }),
 

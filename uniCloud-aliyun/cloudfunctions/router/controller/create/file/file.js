@@ -56,4 +56,41 @@ module.exports = class FileController extends Controller {
 		return await service.create.file.file.uploadImagePrivate(accountId, postParam)
 	}
 	
+	//
+	// Func: uploadImagePublic
+	// Desc: 上传发布图片
+	// Author: zfs
+	// Date: 2023-02-05 08:44
+	//
+	async uploadImagePublic() {
+		const { ctx, service } = this;
+		
+		let params = ctx.data;
+		console.log("router/controller/create/file/file.js uploadImagePublic params: " + JSON.stringify(params));
+		
+		let token = "";
+		let postParam = {};
+		if (params.hasOwnProperty("token")) {
+			token = params["token"];
+		}
+		
+		if (params.hasOwnProperty("param")) {
+			postParam = params["param"];
+		}
+		
+		if (token == "") {
+			// token无效
+			console.log("router/controller/create/file/file.js uploadImagePublic token invalid");
+			return getAck(ERROR_CODE.ERROR_CODE_TOKEN_INVALID, ERROR_MSG.ERROR_MSG_TOKEN_INVALID);
+		}
+		
+		let accountId = await virifyTokenValid(token);
+		if (accountId == "") {
+			console.log("router/controller/create/file/file.js uploadImagePublic virifyTokenValid fail");
+			return getAck(ERROR_CODE.ERROR_CODE_TOKEN_INVALID, ERROR_MSG.ERROR_MSG_TOKEN_INVALID);
+		}
+		
+		return await service.create.file.file.uploadImagePublic(accountId, postParam)
+	}
+	
 };

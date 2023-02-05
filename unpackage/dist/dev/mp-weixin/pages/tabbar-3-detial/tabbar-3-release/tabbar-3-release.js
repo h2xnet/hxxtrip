@@ -383,6 +383,7 @@ var _default = {
 
           // 存入本地缓存
           var editorData = {};
+          editorData["_id"] = "";
           editorData["title"] = articleTitle;
           editorData["html"] = editorHtml;
           editorData["coverUrl1"] = "";

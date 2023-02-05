@@ -171,6 +171,7 @@
 <script>
 	
 	import request from '../../../utils/net/request.js'
+	import StringTool from '../../../utils/tool/string_tool.js'
 	
 	export default {
 		data() {
@@ -178,6 +179,7 @@
 				curCoverUrlName: "coverUrl1",
 				// 文章信息
 				articleInfo: {
+					"_id": "",
 					"title": "",
 					"html": "",
 					"coverUrl1": "", //封面1
@@ -487,15 +489,35 @@
 					return;
 				}
 				
+				let ret = -1;
+				
+				// 保存文章
+				ret = That.onCloudSaveArticle();
+				if (ret != 0) {
+					request.uniShowToast("文章保存失败", null, 3000);
+					return;
+				}
+				
 			},
 			
 			//
-			// onPublishSaveDraft : 发布之存草稿
+			// onPublishSaveDraft : 发布之存草稿，保存到云上
 			//
 			onPublishSaveDraft() {
 				console.log("tabbar-3-detial-article-publish.vue onPublishSaveDraft");
 				
 				let That = this;
+				
+				let ret = -1;
+				
+				// 保存文章
+				ret = That.onCloudSaveArticle();
+				if (ret != 0) {
+					request.uniShowToast("文章保存失败", null, 3000);
+					return;
+				}
+				
+				request.uniShowToast("保存成功", null, 3000);
 				
 			},
 			
@@ -506,6 +528,25 @@
 				console.log("tabbar-3-detial-article-publish.vue onPublishPreview");
 				
 				let That = this;
+			},
+			
+			//
+			// onCloudSaveArticle : 云保存文章
+			//
+			onCloudSaveArticle() {
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle");
+				
+				let That = this;
+				
+				// 解析html中的所有图片
+				let strHtml = That.articleInfo["html"];
+				
+				let tmpSrcImgs = [];
+				StringTool.getSubStrs(strHtml, "src=\"", "\"", 0, tmpSrcImgs);
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle tmpSrcImgs:" + JSON.stringify(tmpSrcImgs));
+				
+				// 将全部图片上传
+				
 			}
 			
 		}

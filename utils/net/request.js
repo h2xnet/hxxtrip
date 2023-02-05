@@ -286,15 +286,24 @@ const uploadImageLog = (token, param, callfunc) => {
 //
 
 //
-// createUploadImagePrivate : 上传私有图库图片
+// createUploadImagePrivateAdd : 增加上传私有图库图片记录（只是增加数据库记录，图片已经上传到云上）
 //
-const createUploadImagePrivate = (token, param, callfunc) => {
+const createUploadImagePrivateAdd = (token, param, callfunc) => {
 	let postParam = {};
 	postParam["token"] = token;
 	postParam["param"] = param;
 	return uniCloudHttp.cloudCallFunc("router", {"action": "create/file/file/uploadImagePrivate", "data": postParam}, callfunc);
 }
 
+//
+// createUploadImagePublishAdd : 增加上传发布图片记录（只是增加数据库记录，图片已经上传到云上）
+//
+const createUploadImagePublishAdd = (token, param, callfunc) => {
+	let postParam = {};
+	postParam["token"] = token;
+	postParam["param"] = param;
+	return uniCloudHttp.cloudCallFunc("router", {"action": "create/file/file/uploadImagePublish", "data": postParam}, callfunc);
+}
 
 export default {
 	getUuid,
@@ -318,5 +327,6 @@ export default {
 	getCategoryHumainAstro,
 	cloudUploadFile,
 	uploadImageLog,
-	createUploadImagePrivate
+	createUploadImagePrivateAdd,
+	createUploadImagePublishAdd
 }

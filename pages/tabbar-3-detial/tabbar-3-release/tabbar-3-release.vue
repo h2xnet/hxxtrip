@@ -310,6 +310,7 @@
 						
 						// 存入本地缓存
 						let editorData = {};
+						editorData["_id"] = "";
 						editorData["title"] = articleTitle;
 						editorData["html"] = editorHtml;
 						editorData["coverUrl1"] = "";

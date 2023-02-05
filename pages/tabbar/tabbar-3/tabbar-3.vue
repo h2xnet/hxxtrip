@@ -11,10 +11,10 @@
 					<image class="box-image" src="../../../static/img/video.png" mode="aspectFit"></image>
 					<text class="explain">发视频</text>
 				</view>
-				<view class="tabbar-box-item" @click="goToPage('/pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa')">
+				<!--<view class="tabbar-box-item" @click="goToPage('/pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa')">
 					<image class="box-image" src="../../../static/img/qa.png" mode="aspectFit"></image>
 					<text class="explain">商品</text>
-				</view>
+				</view>-->
 			</view>
 		</view>
 	</view>
