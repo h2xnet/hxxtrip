@@ -1,5 +1,8 @@
 <template>
 	<view class="container">
+		<!-- 加载动画 -->
+		<RequestLoading :loading="loading"></RequestLoading>
+		
 		<view class="page-wrap margin-top-max">
 			<!-- 封面 -->
 			<block v-if="curCoverUrlName == 'coverUrl1'">
@@ -177,6 +180,7 @@
 		data() {
 			return {
 				curCoverUrlName: "coverUrl1",
+				loading: 0, // 加载状态
 				// 文章信息
 				articleInfo: {
 					"_id": "",
@@ -546,6 +550,33 @@
 				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle tmpSrcImgs:" + JSON.stringify(tmpSrcImgs));
 				
 				// 将全部图片上传
+				let completeImgs = [];
+				let completeCount = 0;
+				for(let idx = 0; idx < tmpSrcImgs.length; idx++) {
+					let itemImg = tmpSrcImgs[idx];
+					let fileName = StringTool.getName(itemImg);
+					
+					request.cloudUploadFile(fileName, itemImg, "image", null, (code, res) => {
+						console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle cloudUploadFile itemImg:" + itemImg + ", code:" + code + " ,res:" + JSON.stringify(res));
+						
+						let subStrItem = {};
+						if (code == 0) {
+							// 上传成功
+							subStrItem["subStr"] = itemImg;
+							subStrItem["replaceStr"] = res["fileID"];
+							
+							completeImgs.push(subStrItem);
+							
+							completeCount++;
+						}
+						else {
+							// 上传失败
+						}
+						
+					});
+				}
+				
+				
 				
 			}
 			

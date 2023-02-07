@@ -17536,7 +17536,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 390:
+/***/ 391:
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \*************************************************************************************/
@@ -18712,7 +18712,84 @@ function _ref() {
 
 /***/ }),
 
-/***/ 419:
+/***/ 42:
+/*!********************************************************************!*\
+  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-id-pages/config.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  //调试模式
+  "debug": false,
+  /*
+  	登录类型 未列举到的或运行环境不支持的，将被自动隐藏。
+  	如果需要在不同平台有不同的配置，直接用条件编译即可
+  */
+  "isAdmin": true,
+  // 区分管理端与用户端
+  "loginTypes": [
+  // "qq",
+  // "xiaomi",
+  // "sinaweibo",
+  // "taobao",
+  // "facebook",
+  // "google",
+  // "alipay",
+  // "douyin",
+
+  "weixin", "username", "smsCode"],
+  //政策协议
+  "agreements": {
+    "serviceUrl": "https://xxx",
+    //用户服务协议链接
+    "privacyUrl": "https://xxx",
+    //隐私政策条款链接
+    // 哪些场景下显示，1.注册（包括登录并注册，如：微信登录、苹果登录、短信验证码登录）、2.登录（如：用户名密码登录）
+    "scope": ['register', 'login']
+  },
+  // 提供各类服务接入（如微信登录服务）的应用id
+  "appid": {
+    "weixin": {
+      // 微信公众号的appid，来源:登录微信公众号（https://mp.weixin.qq.com）-> 设置与开发 -> 基本配置 -> 公众号开发信息 -> AppID
+      "h5": "xxxxxx",
+      // 微信开放平台的appid，来源:登录微信开放平台（https://open.weixin.qq.com） -> 管理中心 -> 网站应用 -> 选择对应的应用名称，点击查看 -> AppID
+      "web": "xxxxxx"
+    }
+  },
+  /**
+   * 密码强度
+   * super（超强：密码必须包含大小写字母、数字和特殊符号，长度范围：8-16位之间）
+   * strong（强: 密密码必须包含字母、数字和特殊符号，长度范围：8-16位之间）
+   * medium (中：密码必须为字母、数字和特殊符号任意两种的组合，长度范围：8-16位之间)
+   * weak（弱：密码必须包含字母和数字，长度范围：6-16位之间）
+   * 为空或false则不验证密码强度
+   */
+  "passwordStrength": "medium",
+  /**
+   * 登录后允许用户设置密码（只针对未设置密码得用户）
+   * 开启此功能将 setPasswordAfterLogin 设置为 true 即可
+   * "setPasswordAfterLogin": false
+   *
+   * 如果允许用户跳过设置密码 将 allowSkip 设置为 true
+   * "setPasswordAfterLogin": {
+   *   "allowSkip": true
+   * }
+   * */
+  "setPasswordAfterLogin": false
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 420:
 /*!**********************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/mp-html/components/mp-html/parser.js ***!
   \**********************************************************************************/
@@ -19925,83 +20002,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 42:
-/*!********************************************************************!*\
-  !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-id-pages/config.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  //调试模式
-  "debug": false,
-  /*
-  	登录类型 未列举到的或运行环境不支持的，将被自动隐藏。
-  	如果需要在不同平台有不同的配置，直接用条件编译即可
-  */
-  "isAdmin": true,
-  // 区分管理端与用户端
-  "loginTypes": [
-  // "qq",
-  // "xiaomi",
-  // "sinaweibo",
-  // "taobao",
-  // "facebook",
-  // "google",
-  // "alipay",
-  // "douyin",
-
-  "weixin", "username", "smsCode"],
-  //政策协议
-  "agreements": {
-    "serviceUrl": "https://xxx",
-    //用户服务协议链接
-    "privacyUrl": "https://xxx",
-    //隐私政策条款链接
-    // 哪些场景下显示，1.注册（包括登录并注册，如：微信登录、苹果登录、短信验证码登录）、2.登录（如：用户名密码登录）
-    "scope": ['register', 'login']
-  },
-  // 提供各类服务接入（如微信登录服务）的应用id
-  "appid": {
-    "weixin": {
-      // 微信公众号的appid，来源:登录微信公众号（https://mp.weixin.qq.com）-> 设置与开发 -> 基本配置 -> 公众号开发信息 -> AppID
-      "h5": "xxxxxx",
-      // 微信开放平台的appid，来源:登录微信开放平台（https://open.weixin.qq.com） -> 管理中心 -> 网站应用 -> 选择对应的应用名称，点击查看 -> AppID
-      "web": "xxxxxx"
-    }
-  },
-  /**
-   * 密码强度
-   * super（超强：密码必须包含大小写字母、数字和特殊符号，长度范围：8-16位之间）
-   * strong（强: 密密码必须包含字母、数字和特殊符号，长度范围：8-16位之间）
-   * medium (中：密码必须为字母、数字和特殊符号任意两种的组合，长度范围：8-16位之间)
-   * weak（弱：密码必须包含字母和数字，长度范围：6-16位之间）
-   * 为空或false则不验证密码强度
-   */
-  "passwordStrength": "medium",
-  /**
-   * 登录后允许用户设置密码（只针对未设置密码得用户）
-   * 开启此功能将 setPasswordAfterLogin 设置为 true 即可
-   * "setPasswordAfterLogin": false
-   *
-   * 如果允许用户跳过设置密码 将 allowSkip 设置为 true
-   * "setPasswordAfterLogin": {
-   *   "allowSkip": true
-   * }
-   * */
-  "setPasswordAfterLogin": false
-};
-exports.default = _default;
-
-/***/ }),
-
 /***/ 45:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -20246,7 +20246,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 469:
+/***/ 470:
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/popup.js ***!
   \*************************************************************************************/
@@ -20288,7 +20288,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 470:
+/***/ 471:
 /*!******************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
   \******************************************************************************************/
@@ -20303,9 +20303,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 471));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 472));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 473));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 472));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 473));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 474));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -20315,7 +20315,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 471:
+/***/ 472:
 /*!*****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
   \*****************************************************************************************/
@@ -20326,7 +20326,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 472:
+/***/ 473:
 /*!**********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
   \**********************************************************************************************/
@@ -20337,7 +20337,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 473:
+/***/ 474:
 /*!**********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
   \**********************************************************************************************/
@@ -20362,7 +20362,7 @@ module.exports = _arrayWithHoles, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 502:
+/***/ 503:
 /*!********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils.js ***!
   \********************************************************************************************************/
@@ -20618,7 +20618,7 @@ function imageTouchMoveOfCalcOffset(data, clientXForLeft, clientYForLeft) {
 
 /***/ }),
 
-/***/ 524:
+/***/ 525:
 /*!****************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \****************************************************************************************/
@@ -21310,7 +21310,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 525:
+/***/ 526:
 /*!*************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-forms/components/uni-forms/utils.js ***!
   \*************************************************************************************/
@@ -22188,7 +22188,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 582:
+/***/ 583:
 /*!***************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/components/wangding-pickerAddress/data.js ***!
   \***************************************************************************/
@@ -32509,7 +32509,7 @@ module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module
 
 /***/ }),
 
-/***/ 606:
+/***/ 607:
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************/
@@ -32524,9 +32524,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 607));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 608));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 609));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 608));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 609));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 610));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -32536,7 +32536,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 607:
+/***/ 608:
 /*!***************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************/
@@ -32547,7 +32547,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 608:
+/***/ 609:
 /*!********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************/
@@ -32558,7 +32558,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 609:
+/***/ 610:
 /*!********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************/
@@ -32569,7 +32569,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 617:
+/***/ 618:
 /*!************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/index.js ***!
   \************************************************************************************************/
@@ -32584,9 +32584,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 618));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 619));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 620));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 619));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 620));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 621));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -32596,7 +32596,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 618:
+/***/ 619:
 /*!***********************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/en.json ***!
   \***********************************************************************************************/
@@ -32607,7 +32607,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 619:
+/***/ 620:
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hans.json ***!
   \****************************************************************************************************/
@@ -32618,7 +32618,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 620:
+/***/ 621:
 /*!****************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-search-bar/i18n/zh-Hant.json ***!
   \****************************************************************************************************/
@@ -32629,7 +32629,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 677:
+/***/ 678:
 /*!*********************************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \*********************************************************************************************************/
@@ -32763,7 +32763,7 @@ function createAnimation(option, _this) {
 
 /***/ }),
 
-/***/ 697:
+/***/ 698:
 /*!**************************************************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \**************************************************************************************/
@@ -33805,7 +33805,7 @@ module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, 
 
 /***/ }),
 
-/***/ 773:
+/***/ 780:
 /*!***********************************************************!*\
   !*** D:/curProject/h2x/hxxtrip/utils/tool/string_tool.js ***!
   \***********************************************************/
@@ -33863,8 +33863,52 @@ var getSubStrs = function getSubStrs(str, strMatchStart, strMatchEnd, nStart) {
   pos2 = -1;
   getSubStrs(str, strMatchStart, strMatchEnd, pos1, outDatas);
 };
+
+//
+// replaceStrs : 替换字符串
+// @str: 被替换字符串
+// @substrs: 替换字符串数组，可以包含多个子字符串
+// @replaceAll: 是否替换全部的标志
+// 返回值：返回新字符串
+var replaceStrs = function replaceStrs(str, substrs, replaceAll) {
+  var tmpStr = str;
+  for (var idx = 0; idx < substrs.length; idx++) {
+    var itemObj = substrs[idx];
+    var itemSubStr = itemObj["subStr"];
+    var itemSubReplaceStr = itemObj["replaceStr"];
+    if (replaceAll) {
+      tmpStr = tmpStr.replace(/itemSubStr/g, itemSubReplaceStr);
+    } else {
+      tmpStr = tmpStr.replace(/itemSubStr/, itemSubReplaceStr);
+    }
+  }
+  return tmpStr;
+};
+
+//
+// getName : 从路径字符串中获取名称
+//
+var getName = function getName(str) {
+  if (str == null || str == "") {
+    return "";
+  }
+  var strKey1 = "/";
+  var strKey2 = "\\";
+  var offset = strKey1.length;
+  var pos = str.lastIndexOf(strKey1);
+  if (pos < 0) {
+    offset = strKey2.length;
+    pos = str.lastIndexOf(strKey2);
+    if (pos < 0) {
+      return str;
+    }
+  }
+  return str.substr(pos + offset);
+};
 var _default = {
-  getSubStrs: getSubStrs
+  getSubStrs: getSubStrs,
+  replaceStrs: replaceStrs,
+  getName: getName
 };
 exports.default = _default;
 

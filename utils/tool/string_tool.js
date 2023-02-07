@@ -49,6 +49,53 @@ const getSubStrs = (str, strMatchStart, strMatchEnd, nStart, outDatas = []) => {
 	getSubStrs(str, strMatchStart, strMatchEnd, pos1, outDatas);
 }
 
+//
+// replaceStrs : 替换字符串
+// @str: 被替换字符串
+// @substrs: 替换字符串数组，可以包含多个子字符串
+// @replaceAll: 是否替换全部的标志
+// 返回值：返回新字符串
+const replaceStrs = (str, substrs, replaceAll) => {
+	let tmpStr = str;
+	for(let idx = 0; idx < substrs.length; idx++) {
+		let itemObj = substrs[idx];
+		let itemSubStr = itemObj["subStr"];
+		let itemSubReplaceStr = itemObj["replaceStr"];
+		if (replaceAll) {
+			tmpStr = tmpStr.replace(/itemSubStr/g, itemSubReplaceStr);
+		}
+		else {
+			tmpStr = tmpStr.replace(/itemSubStr/, itemSubReplaceStr);
+		}
+	}
+	return tmpStr;
+}
+
+//
+// getName : 从路径字符串中获取名称
+//
+const getName = (str) => {
+	if (str == null || str == "") {
+		return "";
+	} 
+	
+	let strKey1 = "/";
+	let strKey2 = "\\";
+	
+	let offset = strKey1.length;
+	let pos = str.lastIndexOf(strKey1);
+	if (pos < 0) {
+		offset = strKey2.length;
+		pos = str.lastIndexOf(strKey2);
+		if (pos < 0) {
+			return str;
+		}
+	}
+	return str.substr(pos + offset);
+}
+
 export default {
-	getSubStrs
+	getSubStrs,
+	replaceStrs,
+	getName
 }
