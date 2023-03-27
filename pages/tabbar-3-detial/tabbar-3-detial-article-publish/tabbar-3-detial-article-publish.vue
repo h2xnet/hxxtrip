@@ -195,7 +195,18 @@
 				},
 				isCropper: 0, // 截剪标志
 				topicSetsList: [], // 备选话题列表
-				inputTopicSets: '' // 输入的合集
+				inputTopicSets: '', // 输入的合集
+				localArticlInfo: { // 本地文章信息
+					"sendType": 0, // 发送类型
+					"strHtml": "", // 文章内容
+					"tmpSrcImgs": [], // 临时图片列表
+					"uploadImgs": [] // 已上传图片列表
+				},
+				"waitTimer": { // 等待定时器
+					"timer": null,
+					"count": 0,
+					"delayTime": 1000
+				}
 			}
 		},
 		
@@ -463,11 +474,11 @@
 				
 				if (flag == "saveDraft") {
 					// 存草稿
-					That.onPublishSaveDraft();
+					That.onPublishSaveDraft(2);
 				}
 				else if (flag == "timeSend") {
 					// 定时发表
-					That.onPublishSend(true);
+					That.onPublishSend(1);
 				}
 				else if (flag == "preview") {
 					// 预览
@@ -475,7 +486,7 @@
 				}
 				else if (flag == "send") {
 					// 发表
-					That.onPublishSend(false);
+					That.onPublishSend(0);
 				}
 			},
 			
@@ -483,8 +494,8 @@
 			// onPublishSend : 发表
 			// isTimeSend: 定时发表标志，true为定时发表 ，false为立即发表
 			//
-			onPublishSend(isTimeSend) {
-				console.log("tabbar-3-detial-article-publish.vue onPublishSend params, isTimeSend:" + isTimeSend);
+			onPublishSend(sendType) {
+				console.log("tabbar-3-detial-article-publish.vue onPublishSend params, sendType:" + sendType);
 				
 				let That = this;
 				
@@ -496,7 +507,7 @@
 				let ret = -1;
 				
 				// 保存文章
-				ret = That.onCloudSaveArticle();
+				ret = That.onCloudSaveArticle(sendType);
 				if (ret != 0) {
 					request.uniShowToast("文章保存失败", null, 3000);
 					return;
@@ -507,21 +518,21 @@
 			//
 			// onPublishSaveDraft : 发布之存草稿，保存到云上
 			//
-			onPublishSaveDraft() {
-				console.log("tabbar-3-detial-article-publish.vue onPublishSaveDraft");
+			onPublishSaveDraft(sendType) {
+				console.log("tabbar-3-detial-article-publish.vue onPublishSaveDraft sendType:" + sendType);
 				
 				let That = this;
 				
 				let ret = -1;
 				
 				// 保存文章
-				ret = That.onCloudSaveArticle();
+				ret = That.onCloudSaveArticle(sendType);
+				console.log("tabbar-3-detial-article-publish.vue onPublishSaveDraft onCloudSaveArticle status:" + ret);
+				
 				if (ret != 0) {
-					request.uniShowToast("文章保存失败", null, 3000);
+					request.uniShowToast("草稿保存失败", null, 3000);
 					return;
 				}
-				
-				request.uniShowToast("保存成功", null, 3000);
 				
 			},
 			
@@ -536,24 +547,30 @@
 			
 			//
 			// onCloudSaveArticle : 云保存文章
+			// sendType: 0为发表，1为定时发表，2保存草稿
 			//
-			onCloudSaveArticle() {
-				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle");
+			onCloudSaveArticle(sendType) {
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle sendType:" + sendType);
 				
 				let That = this;
 				
-				// 解析html中的所有图片
-				let strHtml = That.articleInfo["html"];
+				// 清空历史信息
+				That.localArticlInfo = {};
 				
-				let tmpSrcImgs = [];
-				StringTool.getSubStrs(strHtml, "src=\"", "\"", 0, tmpSrcImgs);
-				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle tmpSrcImgs:" + JSON.stringify(tmpSrcImgs));
+				That.localArticlInfo.sendType = sendType;
+				// 解析html中的所有图片
+				That.localArticlInfo.strHtml = That.articleInfo["html"];
+				
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle strHtml:" + That.localArticlInfo.strHtml);
+				
+				That.localArticlInfo.tmpSrcImgs = [];
+				StringTool.getSubStrs(That.localArticlInfo.strHtml, "src=\"", "\"", 0, That.localArticlInfo.tmpSrcImgs);
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle tmpSrcImgs:" + JSON.stringify(That.localArticlInfo.tmpSrcImgs));
 				
 				// 将全部图片上传
-				let completeImgs = [];
-				let completeCount = 0;
-				for(let idx = 0; idx < tmpSrcImgs.length; idx++) {
-					let itemImg = tmpSrcImgs[idx];
+				That.localArticlInfo.uploadImgs = [];
+				for(let idx = 0; idx < That.localArticlInfo.tmpSrcImgs.length; idx++) {
+					let itemImg = That.localArticlInfo.tmpSrcImgs[idx];
 					let fileName = StringTool.getName(itemImg);
 					
 					request.cloudUploadFile(fileName, itemImg, "image", null, (code, res) => {
@@ -564,21 +581,89 @@
 							// 上传成功
 							subStrItem["subStr"] = itemImg;
 							subStrItem["replaceStr"] = res["fileID"];
-							
-							completeImgs.push(subStrItem);
-							
-							completeCount++;
 						}
 						else {
 							// 上传失败
+							subStrItem["subStr"] = itemImg;
+							subStrItem["replaceStr"] = "";
 						}
+						That.localArticlInfo.uploadImgs.push(subStrItem);
 						
 					});
 				}
 				
+				// 等待上传完成
+				if (That.waitTimer.timer != null) {
+					clearInterval(That.waitTimer.timer);
+					That.waitTimer.timer = null;
+				}
+				That.waitTimer.count = 0;
+				That.waitTimer.delayTime = 1000;
+				
+				That.waitTimer.timer = setInterval(That.onCloudSaveArticleWaitCompleted, That.waitTimer.delayTime);
+				if (That.waitTimer.timer == null) {
+					console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle setInterval fail");
+					return -1;
+				}
+				
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticle setInterval success");
+				
+				return 0;
+				
+			},
+			
+			//
+			// onCloudSaveArticleWaitCompleted : 等待保存完成
+			//
+			onCloudSaveArticleWaitCompleted() {
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticleWaitCompleted");
+				
+				let That = this;
+				
+				let isUploadOK = false;
+				if (That.localArticlInfo.tmpSrcImgs.length == That.localArticlInfo.uploadImgs.length) {
+					// 上传完成
+					isUploadOK = true;
+				}
+				else {
+					That.waitTimer.count += 1;
+				}
+				
+				// 超时或者上传完成，则停止定时器
+				if (That.waitTimer.count > 180 || isUploadOK) {
+					clearInterval(That.waitTimer.timer);
+					That.waitTimer.timer = null;
+					
+					if (isUploadOK) {
+						// success
+						That.onCloudSaveArticleNotify(0, "success");
+					}
+					else {
+						// timeout
+						That.onCloudSaveArticleNotify(-1, "timeout");
+					}
+					
+				}
+				
+			},
+			
+			//
+			// onCloudSaveArticleNotify : 云文章保存通知
+			//
+			onCloudSaveArticleNotify(code, msg) {
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticleNotify params, code:" + code + ", msg:" + msg);
+				
+				let That = this;
+				
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticleNotify uploadImgs:" + JSON.stringify(That.localArticlInfo.uploadImgs));
+				// 替换内容
+				That.localArticlInfo.strHtml = StringTool.replaceStrs(That.localArticlInfo.strHtml, That.localArticlInfo.uploadImgs, true);
+				
+				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticleNotify new strHtml:" + That.localArticlInfo.strHtml);
 				
 				
 			}
+			
 			
 		}
 	}

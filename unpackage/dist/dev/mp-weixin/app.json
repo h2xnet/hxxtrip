@@ -86,9 +86,6 @@
       }
     ]
   },
-  "secureNetwork": {
-    "enable": false
-  },
   "permission": {},
   "usingComponents": {}
 }
