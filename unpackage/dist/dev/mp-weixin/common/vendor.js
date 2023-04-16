@@ -17543,17 +17543,20 @@ var getSubStrs = function getSubStrs(str, strMatchStart, strMatchEnd, nStart) {
 // @substrs: 替换字符串数组，可以包含多个子字符串
 // @replaceAll: 是否替换全部的标志
 // 返回值：返回新字符串
-var replaceStrs = function replaceStrs(str, substrs, replaceAll) {
+var replaceStrs = function replaceStrs(str, substrs, isReplaceAll) {
   var tmpStr = str;
+  console.log("string_tool.js replaceStrs params, tmpStr:" + tmpStr);
   for (var idx = 0; idx < substrs.length; idx++) {
     var itemObj = substrs[idx];
     var itemSubStr = itemObj["subStr"];
     var itemSubReplaceStr = itemObj["replaceStr"];
-    if (replaceAll) {
-      tmpStr = tmpStr.replace(/itemSubStr/g, itemSubReplaceStr);
+    console.log("string_tool.js replaceStrs idx:" + idx + ", itemSubStr:" + itemSubStr + ", itemSubReplaceStr:" + itemSubReplaceStr);
+    if (isReplaceAll) {
+      tmpStr = tmpStr.replaceAll(itemSubStr, itemSubReplaceStr);
     } else {
-      tmpStr = tmpStr.replace(/itemSubStr/, itemSubReplaceStr);
+      tmpStr = tmpStr.replace(itemSubStr, itemSubReplaceStr);
     }
+    console.log("string_tool.js replace newStr, idx:" + idx + ", newStr:" + tmpStr);
   }
   return tmpStr;
 };
@@ -20642,6 +20645,20 @@ var _default = {
   removeCropperImageData: function removeCropperImageData() {
     var That = this;
     That.remove("cropperImage");
+  },
+  //
+  // setTestData : 设置测试数据
+  //
+  setTestData: function setTestData(data) {
+    var That = this;
+    That.set("test", data);
+  },
+  //
+  // getTestData : 获取测试数据
+  //
+  getTestData: function getTestData() {
+    var That = this;
+    return That.get("test");
   }
 };
 exports.default = _default;

@@ -95,6 +95,22 @@ export default {
 	removeCropperImageData() {
 		let That = this;
 		That.remove("cropperImage");
+	},
+	
+	//
+	// setTestData : 设置测试数据
+	//
+	setTestData(data) {
+		let That = this;
+		That.set("test", data);
+	},
+	
+	//
+	// getTestData : 获取测试数据
+	//
+	getTestData() {
+		let That = this;
+		return That.get("test");
 	}
 	
 }

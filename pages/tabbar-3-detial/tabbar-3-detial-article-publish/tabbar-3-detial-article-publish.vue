@@ -268,6 +268,14 @@
 		methods: {
 			
 			//
+			// onTest: 测试
+			//
+			onTest() {
+				let That = this;
+				
+			},
+			
+			//
 			// onSwitchCover : 切换封面
 			//
 			onSwitchCover(name) {
@@ -661,6 +669,10 @@
 				
 				console.log("tabbar-3-detial-article-publish.vue onCloudSaveArticleNotify new strHtml:" + That.localArticlInfo.strHtml);
 				
+				//let testData = {};
+				//testData["html"] = That.localArticlInfo.strHtml;
+				//testData["uploadImgs"] = That.localArticlInfo.uploadImgs;
+				//That.$storage.setTestData(testData)
 				
 			}
 			

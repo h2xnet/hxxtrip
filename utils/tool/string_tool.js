@@ -55,18 +55,25 @@ const getSubStrs = (str, strMatchStart, strMatchEnd, nStart, outDatas = []) => {
 // @substrs: 替换字符串数组，可以包含多个子字符串
 // @replaceAll: 是否替换全部的标志
 // 返回值：返回新字符串
-const replaceStrs = (str, substrs, replaceAll) => {
+const replaceStrs = (str, substrs, isReplaceAll) => {
 	let tmpStr = str;
+	
+	console.log("string_tool.js replaceStrs params, tmpStr:" + tmpStr);
+	
 	for(let idx = 0; idx < substrs.length; idx++) {
 		let itemObj = substrs[idx];
 		let itemSubStr = itemObj["subStr"];
 		let itemSubReplaceStr = itemObj["replaceStr"];
-		if (replaceAll) {
-			tmpStr = tmpStr.replace(/itemSubStr/g, itemSubReplaceStr);
+		
+		console.log("string_tool.js replaceStrs idx:" + idx + ", itemSubStr:" + itemSubStr + ", itemSubReplaceStr:" + itemSubReplaceStr);
+		
+		if (isReplaceAll) {
+			tmpStr = tmpStr.replaceAll(itemSubStr, itemSubReplaceStr);
 		}
 		else {
-			tmpStr = tmpStr.replace(/itemSubStr/, itemSubReplaceStr);
+			tmpStr = tmpStr.replace(itemSubStr, itemSubReplaceStr);
 		}
+		console.log("string_tool.js replace newStr, idx:" + idx + ", newStr:" + tmpStr);
 	}
 	return tmpStr;
 }

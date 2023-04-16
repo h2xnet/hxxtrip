@@ -38,6 +38,7 @@
 	
 	// 网络请求
 	import request from '../../../utils/net/request.js'
+	import StringTool from '../../../utils/tool/string_tool.js'
 	
 	export default {
 		components: {
@@ -76,9 +77,36 @@
 				That.editorHtml = cacheArticleInfo["html"];
 			}
 			
+			// test
+			That.onTest();
+			
 		},
 		
 		methods: {
+			
+			//
+			// onTest: 测试
+			//
+			onTest() {
+				let That = this;
+				
+				//let testData = {};
+				//testData["html"] = That.localArticlInfo.strHtml;
+				//testData["uploadImgs"] = That.localArticlInfo.uploadImgs;
+				//That.$storage.setTestData(testData)
+				
+				let testData = That.$storage.getTestData();
+				if (testData) {
+					console.log("tabbar-3-release.vue onTest testData:" + JSON.stringify(testData));
+					
+					let strHtml = testData["html"];
+					let uploadImgs = testData["uploadImgs"];
+					let strHtml2 = StringTool.replaceStrs(strHtml, uploadImgs, true);
+					console.log("tabbar-3-release.vue onTest strHtml2: " + strHtml2);
+					
+				}
+				
+			},
 			
 			onEditorReady() {
 				let That = this;

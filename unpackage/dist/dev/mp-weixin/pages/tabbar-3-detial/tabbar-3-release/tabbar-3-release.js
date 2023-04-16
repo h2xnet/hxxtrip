@@ -167,6 +167,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _request = _interopRequireDefault(__webpack_require__(/*! ../../../utils/net/request.js */ 54));
+var _string_tool = _interopRequireDefault(__webpack_require__(/*! ../../../utils/tool/string_tool.js */ 343));
 var mpHtml = function mpHtml() {
   Promise.all(/*! require.ensure | uni_modules/mp-html/components/mp-html/mp-html */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mp-html/components/mp-html/mp-html")]).then((function () {
     return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 416));
@@ -206,8 +207,31 @@ var _default = {
       That.articleTitle = cacheArticleInfo["title"];
       That.editorHtml = cacheArticleInfo["html"];
     }
+
+    // test
+    That.onTest();
   },
   methods: {
+    //
+    // onTest: 测试
+    //
+    onTest: function onTest() {
+      var That = this;
+
+      //let testData = {};
+      //testData["html"] = That.localArticlInfo.strHtml;
+      //testData["uploadImgs"] = That.localArticlInfo.uploadImgs;
+      //That.$storage.setTestData(testData)
+
+      var testData = That.$storage.getTestData();
+      if (testData) {
+        console.log("tabbar-3-release.vue onTest testData:" + JSON.stringify(testData));
+        var strHtml = testData["html"];
+        var uploadImgs = testData["uploadImgs"];
+        var strHtml2 = _string_tool.default.replaceStrs(strHtml, uploadImgs, true);
+        console.log("tabbar-3-release.vue onTest strHtml2: " + strHtml2);
+      }
+    },
     onEditorReady: function onEditorReady() {
       var That = this;
       uni.createSelectorQuery().select('#editorId').context(function (res) {
